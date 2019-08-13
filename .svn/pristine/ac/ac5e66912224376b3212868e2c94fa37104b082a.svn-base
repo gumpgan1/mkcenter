@@ -1,0 +1,22 @@
+package com.mktech.service.impl;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.mktech.dao.DbJiangyinLogDao;
+import com.mktech.entity.DbJiangyinLog;
+import com.mktech.service.DbJiangyinLogService;
+
+@Service
+public class DbJiangyinLogServiceImpl implements DbJiangyinLogService {
+
+	@Resource
+	private DbJiangyinLogDao dbJangyinLogMapper;
+	
+	@Override
+	public int insert(DbJiangyinLog dbJiangyinLog) {
+		return dbJangyinLogMapper.insert(dbJiangyinLog);
+	}
+
+}

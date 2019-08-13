@@ -1,0 +1,11 @@
+package com.mktech.service;
+
+import org.springframework.stereotype.Service;
+
+import com.mktech.entity.DbJiangyinLog;
+
+
+public interface DbJiangyinLogService {
+	
+	int insert(DbJiangyinLog dbJiangyinLog);
+}

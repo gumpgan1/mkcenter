@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mktech.dao.ChartConfigDao">
+  <resultMap id="BaseResultMap" type="com.mktech.entity.ChartConfig">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="LINEID" jdbcType="INTEGER" property="lineId" />
+    <result column="POSITION" jdbcType="VARCHAR" property="position" />
+    <result column="TYPE" jdbcType="VARCHAR" property="type" />
+    <result column="CHARTID" jdbcType="VARCHAR" property="chartid" />
+    <result column="CHARTNAME" jdbcType="VARCHAR" property="chartname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+   	LINEID,POSITION,TYPE,CHARTID,CHARTNAME
+  </sql>
+  <select id="selectConfigByLine" resultType="java.util.LinkedHashMap">
+	select
+	<include refid="Base_Column_List" />
+	from RQ_CHART
+	where LINEID=#{lineId, jdbcType=INTEGER} and POSITION = #{position,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAllConfigByLine" resultType="java.util.LinkedHashMap">
+	select
+	<include refid="Base_Column_List" />
+	from RQ_CHART
+	where LINEID=#{lineId, jdbcType=INTEGER}
+  </select>
+  <insert id="insertConfigByLine" parameterType="com.mktech.entity.ChartConfig">
+    insert into RQ_CHART (LINEID, POSITION, TYPE, 
+      CHARTID, CHARTNAME)
+    values (#{lineId,jdbcType=INTEGER}, #{position,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{chartid,jdbcType=VARCHAR}, #{chartname,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateConfigByLine" parameterType="com.mktech.entity.ChartConfig">
+    update RQ_CHART
+    set
+      POSITION = #{position,jdbcType=VARCHAR},
+      CHARTID = #{chartid,jdbcType=VARCHAR},
+      CHARTNAME = #{chartname,jdbcType=VARCHAR}
+    where LINEID = #{lineId,jdbcType=INTEGER} and POSITION = #{position,jdbcType=VARCHAR}
+  </update>
+</mapper>

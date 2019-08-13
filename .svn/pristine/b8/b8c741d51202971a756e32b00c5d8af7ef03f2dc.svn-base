@@ -1,0 +1,325 @@
+/**
+ * @author Chnyge Lin
+ */
+package com.mktech.controller;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+
+import javax.annotation.Resource;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.annotations.Param;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.google.gson.Gson;
+
+import com.mktech.dao.SnUserTicketDao;
+import com.mktech.entity.DbLimo;
+import com.mktech.service.impl.DbLimoServiceImpl;
+
+import com.mktech.service.impl.BoardConfigServiceImpl;
+import com.mktech.service.impl.InfoCompanyServiceImpl;
+import com.mktech.service.impl.InfoLineServiceImpl;
+import com.mktech.service.impl.InfoStationServiceImpl;
+
+import com.mktech.utils.CommonUtil;
+
+/**
+ * controller 4 index
+ * 
+ * @author gumpgan szt.
+ * 
+ */
+@Controller
+@RequestMapping(value = "/limo")
+public class DataController {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(DataController.class);
+
+	@Resource
+	private DbLimoServiceImpl dbLimoService;
+	
+	@Resource
+	private InfoCompanyServiceImpl infoCompanyService;
+	
+	@Resource
+	private InfoLineServiceImpl infoLineService;
+	
+	@Resource
+	private InfoStationServiceImpl infoStationService;
+	
+	@Resource
+	private BoardConfigServiceImpl boardConfigService;
+	
+	
+	/**
+	 * 返回不大于当前时间的最近记录的key，根据记录回溯20*10条记录（即10分钟）
+	 * @param timestamp
+	 * @return
+	 */
+	public int findNearestRecord(String timestamp){
+		return dbLimoService.selectNearestRecord(timestamp).getId(); 
+	}
+	
+	@RequestMapping(value = {"/get"},method = {RequestMethod.GET})
+	public String getLimo500(HttpServletRequest request,
+							HttpServletResponse response) throws IOException {
+		String result = null;	
+		List<Map<String, Object>> list = dbLimoService.selectLatestRecord500();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		Gson gson = new Gson();
+		result = gson.toJson(map);
+		CommonUtil.writeToWeb(result, "html", response);
+		return null;
+	}
+	
+	@RequestMapping(value = {"/getyw"},method = {RequestMethod.GET})
+	public String getLimoIntoYewu(HttpServletRequest request,
+							HttpServletResponse response) throws IOException {
+		List<Map<String, Object>> list = dbLimoService.initYewu();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		Gson gson = new Gson();
+		String result = gson.toJson(map);
+		CommonUtil.writeToWeb(result, "html", response);
+		return null;
+	}
+	
+	@RequestMapping(value = {"/getLatestWeek"},method = {RequestMethod.GET})
+	public String getLatest(HttpServletRequest request,
+							HttpServletResponse response,
+							@RequestParam("timestamp") Long timestamp) throws IOException {
+		List<Map<String, Object>> list = dbLimoService.updateLatestByWeek(timestamp);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		Gson gson = new Gson();
+		String result = gson.toJson(map);
+		CommonUtil.writeToWeb(result, "html", response);
+		return null;
+	}
+	
+	@RequestMapping(value = {"/updateyw"},method = {RequestMethod.GET})
+	public String updateLimoIntoYewu(HttpServletRequest request,
+							HttpServletResponse response,
+							@RequestParam("start") long start,
+							@RequestParam("end") long end) throws IOException {
+		List<Map<String, Object>> list = dbLimoService.updateYewu(start+8*3600*1000, end+8*3600*1000);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		Gson gson = new Gson();
+		String result = gson.toJson(map);
+		CommonUtil.writeToWeb(result, "html", response);
+		return null;
+	}
+	
+	@RequestMapping(value = {"selectRange"},method = {RequestMethod.GET})
+	public String selectRange(HttpServletRequest request,
+							HttpServletResponse response,
+							@RequestParam("start") long start,
+							@RequestParam("end") long end) throws IOException {
+		List<Map<String, Object>> list = dbLimoService.selectDataByRange(start+8*3600*1000, end+8*3600*1000);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		Gson gson = new Gson();
+		String result = gson.toJson(map);
+		CommonUtil.writeToWeb(result, "html", response);
+		return null;
+	}
+	
+	@RequestMapping(value = {"/update"},method = {RequestMethod.GET})
+	public String updateDataCell(HttpServletRequest request,
+							HttpServletResponse response) throws IOException {
+		String result = null;		
+		List<Map<String, Object>> list = dbLimoService.selectLatestRecord();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		Gson gson = new Gson();
+		result = gson.toJson(map);
+		CommonUtil.writeToWeb(result, "html", response);
+		return null;
+	}
+	
+	@RequestMapping(value = {"/factories"},method = {RequestMethod.GET})
+	public String indexGetFactories(HttpServletRequest request,
+						HttpServletResponse response) throws IOException{
+		String result = null;		
+		List<Map<String, Object>> list = infoCompanyService.selectAll();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		Gson gson = new Gson();
+		result = gson.toJson(map);
+		CommonUtil.writeToWeb(result, "html", response);
+		return null;
+	}
+	
+	@RequestMapping(value = {"/lines"},method = {RequestMethod.GET})
+	public String indexGetLines(HttpServletRequest request,
+						HttpServletResponse response,
+						@CookieValue("ticket") String ticket) throws IOException{
+		String result = null;		
+		List<Map<String, Object>> list = infoLineService.selectAll(ticket);		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		Gson gson = new Gson();
+		result = gson.toJson(map);
+		CommonUtil.writeToWeb(result, "html", response);
+		return null;
+	}
+	
+	@RequestMapping(value = {"/point"}, method = {RequestMethod.GET})
+	public String indexPoint(HttpServletRequest request,
+						HttpServletResponse response,
+						@RequestParam("company_id") int companyId) throws IOException{
+		String result = null;		
+		List<Map<String, Object>> list = infoLineService.selectByCompany(companyId);	
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		Gson gson = new Gson();
+		result = gson.toJson(map);
+		CommonUtil.writeToWeb(result, "html", response);
+		return null;
+	}
+	
+	//获得指定产线数据
+	@RequestMapping(value = {"/getLine"}, method = {RequestMethod.GET})
+	public String limoPoint(HttpServletRequest request,
+						HttpServletResponse response,
+						@RequestParam("id") int id) throws IOException{
+		String result = null;		
+		List<Map<String, Object>> list = infoLineService.selectById(id);	
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		Gson gson = new Gson();
+		result = gson.toJson(map);
+		CommonUtil.writeToWeb(result, "html", response);
+		return null;
+	}
+	
+	//获得指定产线上所有设备基本信息
+	@RequestMapping(value = {"/getStation"}, method = {RequestMethod.GET})
+	public String getStation(HttpServletRequest request,
+						HttpServletResponse response,
+						@RequestParam("line_id") int lineId) throws IOException{
+		String result = null;		
+		List<Map<String, Object>> list = infoStationService.selectByLine(lineId);	
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		Gson gson = new Gson();
+		result = gson.toJson(map);
+		CommonUtil.writeToWeb(result, "html", response);
+		return null;
+	}
+	
+	//获得谷城立磨最新数据
+	@RequestMapping(value = {"/getNew"}, method = {RequestMethod.GET})
+	public String getLimo(HttpServletRequest request,
+						HttpServletResponse response
+						) throws IOException{
+		String result = null;		
+		List<Map<String, Object>> list = dbLimoService.selectLatestRecord();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		Gson gson = new Gson();
+		result = gson.toJson(map);
+		CommonUtil.writeToWeb(result, "html", response);
+		return null;
+	}
+	
+	//获得对应线默认配置（board面板能耗与振动）
+	@RequestMapping(value = {"/getDefaultConfig"}, method = {RequestMethod.GET})
+	public String getDefaultConfig(HttpServletRequest request,
+						HttpServletResponse response,
+						@RequestParam("line_id") int lineId
+						) throws IOException{
+		String result = null;		
+		List<Map<String, Object>> list = boardConfigService.selectDefaultConfigByLine(lineId);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		Gson gson = new Gson();
+		result = gson.toJson(map);
+		CommonUtil.writeToWeb(result, "html", response);
+		return null;
+	}
+	
+	//获得对应线默认配置（yewu面板）
+		@RequestMapping(value = {"/getDefaultConfigYw"}, method = {RequestMethod.GET})
+		public String getDefaultConfigInYw(HttpServletRequest request,
+							HttpServletResponse response,
+							@RequestParam("line_id") int lineId
+							) throws IOException{
+			String result = null;		
+			List<Map<String, Object>> list = boardConfigService.selectYwConfigByLine(lineId);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("list", list);
+			Gson gson = new Gson();
+			result = gson.toJson(map);
+			CommonUtil.writeToWeb(result, "html", response);
+			return null;
+		}
+	
+	//获得对应产线个性化配置
+	@RequestMapping(value = {"/getConfig"}, method = {RequestMethod.GET})
+	public String getConfig(HttpServletRequest request,
+						HttpServletResponse response,
+						@RequestParam("line_id") int lineId,
+						@RequestParam("code") String code
+						) throws IOException{
+		String result = null;		
+		List<Map<String, Object>> list = boardConfigService.selectConfigByCode(lineId, code);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		Gson gson = new Gson();
+		result = gson.toJson(map);
+		CommonUtil.writeToWeb(result, "html", response);
+		return null;
+	}
+	
+	//更新对应线个性化配置
+		@RequestMapping(value = {"/updateConfig"}, method = {RequestMethod.POST})
+		public String updateConfig(HttpServletRequest request,
+							HttpServletResponse response,
+							@RequestParam("id") int id,
+							@RequestParam("code") String code,
+							@RequestParam("stats") String stats,
+							@RequestParam("pars") String pars,
+							@CookieValue("ticket") String ticket
+							) throws IOException{
+			String i = boardConfigService.updateConfigByCode(ticket, id, code, stats, pars);
+			if(i=="0"){
+				CommonUtil.writeToWeb("0", "html", response);
+			}else{
+				CommonUtil.writeToWeb(i, "html", response);
+			}
+			return null;
+		}
+	
+	//获得时间戳范围
+		@RequestMapping(value = {"/getRange"}, method = {RequestMethod.GET})
+		public String getRange(HttpServletRequest request,
+							HttpServletResponse response
+							) throws IOException{
+			String result = null;		
+			List<Map<String, Object>> list = dbLimoService.selectRange();
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("list", list);
+			Gson gson = new Gson();
+			result = gson.toJson(map);
+			CommonUtil.writeToWeb(result, "html", response);
+			return null;
+		}
+}

@@ -1,0 +1,10 @@
+package com.mktech.service;
+
+
+import com.mktech.entity.DbJiangyinLogChange;
+
+
+public interface DbJiangyinLogChangeService {
+	
+	void insert(DbJiangyinLogChange dbJiangyinLogChange);
+}

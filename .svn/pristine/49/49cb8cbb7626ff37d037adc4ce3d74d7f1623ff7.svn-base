@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@CIMS213—工业大屏后台管理系统</title>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/local.css" />
+
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- you need to include the shieldui css and js assets in order for the charts to work -->
+    <link rel="stylesheet" type="text/css" href="css/all.min.css" />
+    <link id="gridcss" rel="stylesheet" type="text/css" href="css/grid_all.min.css" />
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/shieldui-all.min.js"></script>
+    <script type="text/javascript" src="js/layer/layer.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+		  <!--   导航栏		  -->	
+          <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">CIMS-213</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul id="active" class="nav navbar-nav side-nav">
+                    <li class="selected"><a href="_index.html"><i class="fa fa-bullseye"></i> 总览</a></li>
+                    <li><a href="_self.html"><i class="fa fa-user" style="margin-left:3px"></i> 个人信息</a></li>
+                    
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-user">
+					 <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span id="time"></span></a>
+                    </li>
+                    <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>&nbsp;&nbsp;<span id="user"></span>&nbsp;&nbsp;<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:void(0)" onclick="logout()"><i class="fa fa-power-off"></i>登出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+		<!-- 导航栏结束 -->
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>总览 <small><span>欢迎尊敬的</span><span id="role"></span><span>,</span><span id="name"></span></small></h1>
+					<br/>
+                    <div class="alert alert-dismissable alert-warning">
+                        <button data-dismiss="alert" class="close" type="button">&times;</button>
+                        欢迎使用工业数据在线运行状态监控平台的后台管理系统
+						<br/>
+						<b>&copy; Copyright 2018-? CIMS-213 from ZJU</b>
+                    </div>
+                </div>
+            </div>
+			<div class="row">
+				<div class="text-center" style="margin-top:-5px;margin-bottom:20px">
+                    <h1 style="color:#cccccc">关于我们</h1>
+                </div>
+				<br/>
+				<div class="row">
+					<div class="col-lg-3">
+                        <div class="well">
+                            <img class="thumbnail img-responsive" alt="浙大" src="img/index_4.jpg" />
+                            <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浙江大学工业工程专业本科生培养始于1996年的机械工程及自动化专业的CAD/CAM及管理方向，2002年正式设立工业工程专业；研究生培养始于1987年的机械制造的CIMS研究方向，2007年正式在机械工程一级下设立工业工程博士点和硕士点。浙江大学工业工程专业培养从事工业生产和社会服务系统的分析、设计、改善和运营的，兼有理工科思维和人文社科思维的综合型工程技术和管理人才，擅于运用信息化手段持续改进系统的效率、成本和质量。
+                            </span>
+                        </div>
+                    </div>
+					<div class="col-lg-3">
+                        <div class="well">
+                            <img class="thumbnail img-responsive" alt="大数据" src="img/index_3.jpg" />
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大屏幕显示系统广泛应用于工业、通信、军队指挥机构，在提供共享信息、决策支持、态势显示、BSV液晶拼接分割画面显示方面发挥着重要作用。在大数据时代来领后，大屏显示系统也不再单单作为显示工具，只是将图像、数据信号传输到大屏幕上显示给用户，而是需要对海量的数据信息进行高效率的分析，实现硬件搭载软件的完美结合，帮助管理者发现数据背后的关系和规律，为决策提供依据。
+                            </span>
+                        </div>
+                    </div>
+					<div class="col-lg-3">
+                        <div class="well">
+                            <img class="thumbnail img-responsive" alt="水泥" src="img/index_2.png" />
+                            <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                            流程工业是加工业的一个大类。它泛指炼油、石化、化工、冶金、造纸、制药、酿造、建材、电力等原材料加工和能源工业行业，其特点是对生产原料的连续加工过程，一般伴有化学、物理、相变等物性变化的过程。流程工业具有多个特点：生产过程连续；生产工艺复杂；生产环境苛刻；产品结构复杂；产品种类繁多；自动化水平高。流程工业控制的主要目标有安全性、稳定性、低耗、高质量和减少污染等。
+                            </span>
+                        </div>
+                    </div>
+					<div class="col-lg-3">
+                        <div class="well">
+                            <img class="thumbnail img-responsive" alt="水泥" src="img/index_1.png" />
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该平台可获取合作企业的实时数据，经Axis2提供的WebService服务传输至服务器，存储在当下最流行的数据库管理系统Mysql中，并以Redis作为缓存满足工业大数据展示的实时性需要。这些工业数据经数据清洗、后台算法等处理之后，借助Highchart、HighMap等可视化插件呈现在工业大屏之上，效果直观显著，适合企业管理人员进行监测、分析和评估。
+                            </span>
+                        </div>
+                    </div>
+				</div>
+			</div>
+        </div>
+    </div>
+
+    
+</body>
+<script type="text/javascript" src="js/chny-lin.js"></script>
+<script type="text/javascript" src="js/logout.js"></script>
+</html>

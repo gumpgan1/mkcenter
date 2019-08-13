@@ -1,0 +1,14 @@
+MANIFEST.in
+setup.cfg
+setup.py
+src/easyPyMySQL/Table.py
+src/easyPyMySQL/TableField.py
+src/easyPyMySQL/TableLine.py
+src/easyPyMySQL/__init__.py
+src/easyPyMySQL/easyPyMySQL.py
+src/easyPyMySQL.egg-info/PKG-INFO
+src/easyPyMySQL.egg-info/SOURCES.txt
+src/easyPyMySQL.egg-info/dependency_links.txt
+src/easyPyMySQL.egg-info/requires.txt
+src/easyPyMySQL.egg-info/top_level.txt
+src/easyPyMySQL.egg-info/zip-safe

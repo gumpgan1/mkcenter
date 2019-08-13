@@ -1,0 +1,72 @@
+package com.mktech.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+import com.mktech.entity.DbJiangyin;
+
+
+@Repository
+public interface DbJiangyinDao {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(DbJiangyin record);
+
+    int insertSelective(DbJiangyin record);
+
+    DbJiangyin selectByPrimaryKey(Integer id);
+    
+    DbJiangyin selectNearestRecord(String timestamp);
+    
+    DbJiangyin selectNearestRecord2();
+
+    List<Map<String, Object>> selectLatestRecord();
+    
+    List<Map<String, Object>> selectLatestRecord500();
+    
+    int updateByPrimaryKeySelective(DbJiangyin record);
+
+    int updateByPrimaryKey(DbJiangyin record);
+    
+    List<Map<String, Object>> selectLatestRecordByAll();
+    
+    List<Map<String, Object>> selectLatestRecordByDay(@Param("start") String start,@Param("end") String end);
+    
+    List<Map<String, Object>> selectLatestRecordByHour(@Param("start") String start,@Param("end") String end);
+    
+    List<Map<String, Object>> selectLatestRecordByMin(@Param("start") String start,@Param("end") String end);
+    
+    List<Map<String, Object>> selectLatestRecordBySec(@Param("start") String start,@Param("end") String end);
+
+    DbJiangyin selectLatestRecordInHour();
+    
+    
+    int insertInHour(DbJiangyin dbJiangyin);
+    
+    DbJiangyin selectLatestRecordInMin();
+    
+    Map<String, Object> selectLatestRecordInMinByMap();
+
+    int insertInMin(DbJiangyin dbJiangyin);
+    
+    DbJiangyin selectLatestRecordInDay();
+    
+    int insertInDay(DbJiangyin dbJiangyin);
+    
+    List<Map<String, Object>> selectRange();
+    
+    DbJiangyin selectByTimeRangeLimit1(@Param("min") String min,@Param("max") String max);
+
+	double selectLatestRecordStatId(String statId);
+
+	List<Map<String, Object>> selectLatestRecordInHour24();
+
+	List<Map<String, Object>> selectLatestRecordMinute100();
+
+
+
+    
+}

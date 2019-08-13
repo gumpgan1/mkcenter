@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mktech.dao.DbJiangyinLogDao">
+  <resultMap id="BaseResultMap" type="com.mktech.entity.DbJiangyinLog">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="START1" jdbcType="VARCHAR" property="start1" />
+    <result column="START2" jdbcType="VARCHAR" property="start2" />
+    <result column="END" jdbcType="VARCHAR" property="end" />
+    <result column="INTERVAL" jdbcType="VARCHAR" property="interval" />
+    <result column="L0060" jdbcType="VARCHAR" property="l0060" />
+    <result column="L0077" jdbcType="VARCHAR" property="l0077" />
+    <result column="L0093" jdbcType="VARCHAR" property="l0093" />
+    <result column="L0033" jdbcType="VARCHAR" property="l0033" />
+    <result column="L0036" jdbcType="VARCHAR" property="l0036" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, START1 , START2, END, INTERVAL, L0060, L0077, L0093, L0033, L0036
+  </sql>
+  <select id ="selectNew" resultMap="BaseResultMap">
+  		select
+		<include refid="Base_Column_List" />
+		from DB_JIANGYIN_LOG
+		order by ID desc limit 1
+  </select>
+  <insert id="insert" parameterType="com.mktech.entity.DbJiangyinLog">
+    insert into DB_JIANGYIN_LOG 
+    (ID, START1 , START2, END, INTERVAL, L0060, L0077, L0093, L0033, L0036)
+    values 
+    (#{id,jdbcType=INTEGER}, #{start1,jdbcType=VARCHAR}, #{start2,jdbcType=VARCHAR},
+      #{end,jdbcType=VARCHAR}, #{interval,jdbcType=VARCHAR}, #{l0060,jdbcType=VARCHAR},
+      #{l0077,jdbcType=VARCHAR}, #{l0093,jdbcType=VARCHAR}, #{l0033,jdbcType=VARCHAR},#{l0036,jdbcType=VARCHAR} )
+  </insert>
+
+</mapper>

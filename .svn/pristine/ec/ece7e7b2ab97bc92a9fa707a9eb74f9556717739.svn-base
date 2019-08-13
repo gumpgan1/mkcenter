@@ -1,0 +1,111 @@
+package com.mktech.entity;
+
+public class DbJiangyinLog {
+
+	private Integer id;
+
+	private String start1;
+
+	private String start2;
+
+	private String end;
+	
+	private String interval;
+
+	private String l0060;
+	
+	private String l0077;
+	
+	private String l0093;
+	
+	private String l0033;
+	
+	private String l0036;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getStart1() {
+		return start1;
+	}
+
+	public void setStart1(String start1) {
+		this.start1 = start1;
+	}
+
+	public String getStart2() {
+		return start2;
+	}
+
+	public void setStart2(String start2) {
+		this.start2 = start2;
+	}
+
+	public String getL0060() {
+		return l0060;
+	}
+
+	public void setL0060(String l0060) {
+		this.l0060 = l0060;
+	}
+
+	public String getL0077() {
+		return l0077;
+	}
+
+	public void setL0077(String l0077) {
+		this.l0077 = l0077;
+	}
+
+	public String getL0093() {
+		return l0093;
+	}
+
+	public void setL0093(String l0093) {
+		this.l0093 = l0093;
+	}
+
+	public String getL0033() {
+		return l0033;
+	}
+
+	public void setL0033(String l0033) {
+		this.l0033 = l0033;
+	}
+
+	public String getL0036() {
+		return l0036;
+	}
+
+	public void setL0036(String l0036) {
+		this.l0036 = l0036;
+	}
+
+	public String getEnd() {
+		return end;
+	}
+
+	public void setEnd(String end) {
+		this.end = end;
+	}
+
+	public String getInterval() {
+		return interval;
+	}
+
+	public void setInterval(String interval) {
+		this.interval = interval;
+	}
+
+	@Override
+	public String toString() {
+		return "DbJiangyinLog [id=" + id + ", start1=" + start1 + ", start2=" + start2 + ", end=" + end + ", l0060="
+				+ l0060 + ", l0077=" + l0077 + ", l0093=" + l0093 + ", l0033=" + l0033 + ", l0036=" + l0036 + "]";
+	}
+
+}

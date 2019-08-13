@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mktech.dao.DbStationDataDao">
+  <resultMap id="BaseResultMap" type="com.mktech.entity.DbStationData">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="LINE_ID" jdbcType="INTEGER" property="line_id" />
+    <result column="STATION_ID" jdbcType="VARCHAR" property="station_id" />
+    <result column="POSITION_LEFT" jdbcType="VARCHAR" property="position_left" />
+    <result column="POSITION_TOP" jdbcType="VARCHAR" property="position_top" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, LINE_ID, STATION_ID, POSITION_LEFT, POSITION_TOP
+  </sql>
+
+  <insert id="insertStationData" parameterType="com.mktech.entity.DbStationData">
+    insert into STATION_ATTRIBUTE (ID, LINE_ID,STATION_ID,POSITION_LEFT,POSITION_TOP
+      )
+    values (#{id,jdbcType=INTEGER}, #{line_id,jdbcType=INTEGER}, 
+    #{station_id,jdbcType=VARCHAR}, #{position_left,jdbcType=VARCHAR}, #{position_top,jdbcType=VARCHAR}
+      )
+  </insert>
+  <select id="getStationDataByLineId" resultType="java.util.LinkedHashMap">
+    select 
+      S.ID, S.LINE_ID, S.STATION_ID, S.POSITION_LEFT, S.POSITION_TOP
+    from STATION_ATTRIBUTE S
+    where LINE_ID = #{line_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteStationDataByLineId" parameterType="java.lang.Integer">
+  	delete from STATION_ATTRIBUTE
+    where LINE_ID = #{line_id,jdbcType=INTEGER}
+  </delete>
+ 
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="mkcenter"
+  id="myeclipse.1345460939632"
+  context-root="/mkcenter"
+  j2ee-spec="6.0"
+  archive="mkcenter.war">
+  <attributes>
+    <attribute name="webrootdir" value="&lt;prjroot&gt;" />
+  </attributes>
+</project-module>
+

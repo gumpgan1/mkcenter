@@ -1,0 +1,116 @@
+<%@page import="org.springframework.web.servlet.ModelAndView"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <base href="<%=basePath%>">
+    
+   <title>Welcome!--ZJU@CIMS213</title>
+	<link href="login/css/index.css" rel="stylesheet" type="text/css" />
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<script>
+	//展现登录框
+	window.onload = function(){
+		window.onresize =function(){
+			var el = document.getElementById("dialogMove");
+			autoCenter(el);
+			var bac = document.getElementById("mask");
+			toAll(bac);
+		}
+		//弹出提示框
+		var msg = document.getElementById("msg").value;
+		if(msg!='null'){
+			alert(msg);
+			showDialog();
+			document.getElementById("username").value='${username}';
+		}
+	}
+		
+	function showDialog(){
+		var el = document.getElementById("dialogMove");
+		var bac = document.getElementById("mask");
+		el.style.display="block";
+		autoCenter(el);
+		bac.style.display="block";
+		toAll(bac);
+	}
+	//自动居中
+	function autoCenter( el ){
+    var bodyW = document.documentElement.clientWidth;
+    var bodyH = document.documentElement.clientHeight;
+    var elW = el.offsetWidth;
+    var elH = el.offsetHeight;
+    el.style.left = (bodyW-elW)/2 + 'px';
+    el.style.top = (bodyH-elH)/2 + 'px';
+}
+	//全屏扩展
+	function toAll(el){
+	el.style.width  = document.body.scrollWidth+"px";
+    el.style.height = document.body.scrollHeight+"px";
+	}
+	//关闭
+	function tabclose(){
+		var el = document.getElementById("dialogMove");
+		var bac = document.getElementById("mask");
+		bac.style.display="none";
+		el.style.display="none";
+	}
+</script>
+
+ </head>
+  
+<body oncontextmenu=self.event.returnValue=false>
+<div class="logo">
+  <div class="setbar">
+  <%-- <a href="<%=request.getContextPath() %>/0729/index.html" title="首页" target="_self"><strong>首页</strong></a> --%>
+   <a onclick="showDialog()" title="登录" target="_self" style="cursor:pointer"><strong>登录</strong></a>
+  </div>
+  <p align="center"> 
+  <img src="login/logo.png" width="305" height="94" align="middle" />
+  </p>
+  <p align="center">机械工程学院&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp工业工程 </p>
+</div>
+<div class="over">
+  <div class="window">
+  <div class="word">
+    </div>
+  </div>
+</div>
+<div class="copyright">
+</div> 
+
+<form id="login" action="login.do" method="post">
+	<input id="msg" type="hidden" value="<%= request.getAttribute("msg") %>"/>
+	<div class="ui-dialog" id="dialogMove" onselectstart='return false;' >
+    <div class="ui-dialog-title" id="dialogDrag"  onselectstart="return false;" >
+       	 登录 
+    </div>
+  	<div class="ui-dialog-content">
+        <div class="ui-dialog-l40 ui-dialog-pt15">
+            <input id="username" class="ui-dialog-input ui-dialog-input-username" type="input" name="username" placeholder="手机/邮箱/用户名" />
+        </div>
+        <div class="ui-dialog-l40 ui-dialog-pt15">
+            <input class="ui-dialog-input ui-dialog-input-password" type="password" name="password" placeholder="密码" />
+        </div>
+        <div class="ui-dialog-l40">
+            <a id="a1" href="#">忘记密码</a>
+			<a id="a2" href="#">立即注册</a>
+        </div>
+		<div>
+            <input class="ui-dialog-submit" type="submit" value="登录">
+      </div>
+    </div>
+</div>
+</form>
+<div class="ui-mask" id="mask" onclick="tabclose()"  onselectstart='return false;'></div>
+</body>
+</html>

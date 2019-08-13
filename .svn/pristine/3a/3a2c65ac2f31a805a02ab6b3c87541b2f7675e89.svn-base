@@ -1,0 +1,17 @@
+body { font-family: sans-serif; }
+
+.draggable {
+  width: 280px;
+  height: 20px;
+  background: #F90;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+.draggable.is-pointer-down {
+  background: #09F;
+}
+.draggable.is-dragging { opacity: 0.7; }
+
+.handle {
+  
+}

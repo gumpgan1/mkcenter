@@ -1,0 +1,133 @@
+package com.mktech.task;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+import com.mktech.entity.DbJiangyin;
+import com.mktech.entity.DbJiangyinLog;
+import com.mktech.service.impl.DbJiangyinLogServiceImpl;
+import com.mktech.service.impl.DbJiangyinServiceImpl;
+
+@Component
+public class LogTask {
+
+	@Resource
+	private DbJiangyinServiceImpl dbJiangyinService;
+	
+	@Resource
+	private DbJiangyinLogServiceImpl dbJinyinLogService;
+
+	@Scheduled(cron = "0/20 * * * * * ")
+	public void checkStart() throws Exception {
+		// 存储变化状态
+		List<String> changes = new ArrayList<String>();
+		DbJiangyinLog log = new DbJiangyinLog();
+		// 找出最新的一条数据
+		DbJiangyin now = dbJiangyinService.selectNearestRecord2();
+		// 获取前一个的时间戳?
+		long timeBefore = Long.parseLong(now.getTimestamp()) - 30 * 1000;
+		DbJiangyin before = dbJiangyinService.selectNearestRecord(String.valueOf(timeBefore));
+
+		// 根据是否发生了调控数据变化来进行对应操作
+		if (compareEntity(now, before) == 1) {
+			return;
+		} else {
+			// 进行了调控操作
+			// 设定操作开始时间
+			log.setStart1(now.getTimestamp());
+			// checkStart2()，等待20s
+			Thread.sleep(20000);
+			DbJiangyin next = dbJiangyinService.selectNearestRecord2();
+			DbJiangyin temp = now;
+			// 将temp和next的实体进行比较，如果不同则睡眠，继续比较，直到相同，即是一组操作全部完成
+			while (compareEntity(temp, next) != 1) {
+				temp = next;
+				Thread.sleep(20000);
+				next = dbJiangyinService.selectNearestRecord2();
+			}
+			// 一组操作完成后更新changes
+			try {
+				changes.add(compareData(now.getL0060(), temp.getL0060()));
+				changes.add(compareData(now.getL0077(), temp.getL0077()));
+				changes.add(compareData(now.getL0093(), temp.getL0093()));
+				changes.add(compareData(now.getL0033(), temp.getL0033()));
+				changes.add(compareData(now.getL0036(), temp.getL0036()));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			// 注入start2时间
+			log.setStart2(temp.getTimestamp());
+			// 注入第一次的全部操作记录，存changes
+			log.setL0060(changes.get(0));
+			log.setL0077(changes.get(1));
+			log.setL0093(changes.get(2));
+			log.setL0033(changes.get(3));
+			log.setL0036(changes.get(4));
+
+			// checkEnd();
+			Thread.sleep(20 * 1000);
+			DbJiangyin endData = dbJiangyinService.selectNearestRecord2();
+			while (checkEnd(endData) != 0) {
+				Thread.sleep(20000);
+				endData = dbJiangyinService.selectNearestRecord2();
+			}
+
+			// 获取end的实体，获取时间戳并注入
+			log.setEnd(endData.getTimestamp());
+			dbJinyinLogService.insert(log);
+		}
+
+	}
+
+	public static String compareData(Double oldData, Double newData) {
+		if (oldData > newData) {
+			return "变小";
+		} else if (oldData < newData) {
+			return "变大";
+		} else {
+			return "不变";
+		}
+	}
+
+	public static int compareEntity(DbJiangyin a, DbJiangyin b) {
+		int i = 1;
+		if (a.getL0060() != b.getL0060())
+			i++;
+		if (a.getL0077() != b.getL0077())
+			i++;
+		if (a.getL0093() != b.getL0093())
+			i++;
+		if (a.getL0033() != b.getL0033())
+			i++;
+		if (a.getL0036() != b.getL0036())
+			i++;
+		return i;
+	}
+
+	public static int checkEnd(DbJiangyin endEntity) {
+		int diffStatus = 0;
+		long diff1 = (long) Math.abs(endEntity.getL0061() / endEntity.getL0060() - 1);
+		long diff2 = (long) Math.abs(endEntity.getL0078() / endEntity.getL0077() - 1);
+		long diff3 = (long) Math.abs(endEntity.getL0094() / endEntity.getL0093() - 1);
+		long diff4 = (long) Math.abs(endEntity.getL0034() / endEntity.getL0033() - 1);
+		long diff5 = (long) Math.abs(endEntity.getL0061() / endEntity.getL0060() - 1);
+		if (diff1 > 0.055)
+			diffStatus++;
+		if (diff2 > 0.001235)
+			diffStatus++;
+		if (diff3 > 0.000001)
+			diffStatus++;
+		if (diff4 > 0.01)
+			diffStatus++;
+		if (diff5 > 0.00002)
+			diffStatus++;
+		return diffStatus;
+
+	}
+
+}

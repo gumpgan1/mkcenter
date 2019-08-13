@@ -1,0 +1,665 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>board</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/board/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+   <!--  <script src="resources/scripts/prototypePre.js"></script> -->
+    <script src="resources/scripts/jquery.cookie.js"></script>
+    <script src="files/layer/layer.js"></script>
+   <!--  <script src="data/document.js"></script>
+    <script src="resources/scripts/prototypePost.js"></script>
+    <script src="files/board/data.js"></script> -->
+    <script src="resources/highchart/highcharts.js"></script>
+    <script src="resources/highchart/highcharts-more.js"></script>
+    <script src="files/logout.js"></script>
+    <!-- <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script> -->
+    <style type="text/css">
+	   p{
+	  	 white-space:nowrap;/* 不换行 */
+	     overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+	     text-overflow:ellipsis;
+	   } 
+	</style>
+  </head>
+  <body oncontextmenu=self.event.returnValue=false onselectstart="return false">
+    <div id="base" class="">
+
+      <!-- 总面板 (动态面板) -->
+      <div id="u360" class="ax_default" data-label="总面板">
+        <div id="u360_state0" class="panel_state" data-label="State1" style="">
+          <div id="u360_state0_content" class="panel_state_content">
+
+            <!-- header (动态面板) -->
+            <div id="u361" class="ax_default" data-label="header">
+              <div id="u361_state0" class="panel_state" data-label="State1" style="">
+                <div id="u361_state0_content" class="panel_state_content">
+
+                  <!-- Unnamed (组合 ) -->
+                  <div id="u362" class="ax_default" data-left="0" data-top="0" data-width="0" data-height="0">
+                  </div>
+                  
+                  <!-- Unnamed (组合 ) -->
+		           	<div id="u239" class="ax_default" >
+		           	  <div id= "user_block">
+		           	  	<p style="font-weight:900;color:#">
+		           	  	<a href="javascript:void(0)" style="font-weight:300" onclick="tiaozhuan();">流程参数</a>
+		   				&nbsp;&nbsp;&nbsp;&nbsp;当前用户&nbsp:&nbsp&nbsp
+		           	  	<span style="text-align: left;font-weight:300;width:80px;display:inline-block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;top: 3px;position: relative;color:#009dd9" id="username"></span>
+		           	  	<a href="javascript:void(0)" style="font-weight:300;" onclick="check2ad()">设置</a>
+		           	  	<span>&nbsp&nbsp&nbsp</span>
+		           	  	<a href="javascript:void(0)" style="font-weight:300;" onclick="logout();">注销</a>
+		           	  	</p>
+		           	  	</p>
+		           	  </div>
+		           	  <!-- 按钮 (矩形) -->
+		              <div id="index" class="ax_default button" data-label="按钮" style="cursor:pointer" onClick="javascript:window.open('index.html','_blank')">
+		                <div id="index_div" class=""></div>
+		                <div id="index_text" class="text ">
+		                  <p><span>首页</span></p>
+		                </div>
+		              </div>
+		             <!-- 按钮 (矩形) -->
+		              <div id="u240" class="ax_default button" data-label="按钮"  style="cursor:pointer">
+		                <div id="u240_div" class=""></div>
+		                <div id="u240_text" class="text ">
+		                  <p><span>运行数据查询</span></p>
+		                </div>
+		              </div>
+		              <!-- 按钮 (矩形) -->
+		              <div id="u241" class="ax_default button" data-label="按钮"  style="cursor:pointer">
+		                <div id="u241_div" class=""></div>
+		                <div id="u241_text" class="text ">
+		                  <p><span>设备状态监控</span></p>
+		                </div>
+		              </div>
+		              <!-- 按钮 (矩形) -->
+		              <div id="u242" class="ax_default button" data-label="按钮" style="cursor:pointer">
+		                <div id="u242_div" class=""></div>
+		                <div id="u242_text" class="text ">
+		                  <p><span>生产状态监控</span></p>
+		                </div>
+		              </div> 
+		             </div>
+                  <!--  -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (图片 ) -->
+            <div id="u364" class="ax_default image">
+              <img id="u364_img" class="img " src="images/index/bk.png"/>
+            </div>
+
+            <!-- Unnamed (图片 ) -->
+            <div id="u365" class="ax_default image">
+              <img id="u365_img" class="img " src="images/index/bk.png"/>
+            </div>
+
+            <!-- Unnamed (图片 ) -->
+            <div id="u366" class="ax_default image">
+              <img id="u366_img" class="img " src="images/index/bk.png"/>
+            </div>
+
+            <!-- Unnamed (图片 ) -->
+            <div id="u367" class="ax_default image">
+              <img id="u367_img" class="img " src="images/index/bk.png"/>
+            </div>
+
+            <!-- Unnamed (图片 ) -->
+            <div id="u368" class="ax_default image">
+              <img id="u368_img" class="img " src="images/index/bk.png"/>
+            </div>
+
+            <!-- Unnamed (图片 ) -->
+            <div id="u369" class="ax_default image">
+              <img id="u369_img" class="img " src="images/index/bk.png"/>
+            </div>
+
+            <!-- Unnamed (图片 ) -->
+            <div id="u370" class="ax_default image">
+              <img id="u370_img" class="img " src="images/index/bk.png"/>
+            </div>
+
+            <!-- Unnamed (图片 ) -->
+            <div id="u371" class="ax_default image">
+              <img id="u371_img" class="img " src="images/index/bk.png"/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 厂线左下角 (动态面板) -->
+      <div id="u372" class="ax_default" data-label="厂线">
+        <div id="u372_state0" class="panel_state" data-label="State1" style="">
+          <div id="u372_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u373" class="ax_default ellipse">
+              <img id="u373_img" class="img " src="images/limo/u232.png"/>
+              <div id="u373_text" class="text ">
+                <p><span>M</span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u374" class="ax_default ellipse">
+              <img id="u374_img" class="img " src="images/limo/u232.png"/>
+              <div id="u374_text" class="text ">
+                <p><span>M</span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u375" class="ax_default ellipse">
+              <img id="u375_img" class="img " src="images/limo/u232.png"/>
+              <div id="u375_text" class="text ">
+                <p><span>M</span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u376" class="ax_default" data-left="0" data-top="0" data-width="110" data-height="24">
+
+              <!-- Unnamed (形状) -->
+              <div id="u377" class="ax_default icon">
+                <img id="u377_img" class="img " src="images/index/u12.png"/>
+              </div>
+
+              <!-- Unnamed (矩形) -->
+              <div id="u378" class="ax_default _一级标题">
+                <div id="u378_div" class=""></div>
+                <div id="u378_text" class="text ">
+                  <p><span>更新时间</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u379" class="ax_default _一级标题">
+              <div id="u379_div" class=""></div>
+              <div id="u379_text" class="text ">
+                <p><span id="clock"></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u380" class="ax_default" data-left="687" data-top="837" data-width="585" data-height="34">
+
+              <!-- 按钮 (矩形) -->
+              <div id="u381" class="ax_default button" data-label="按钮">
+                <div id="u381_div" class=""></div>
+                <div id="u381_text" class="text ">
+                  <p><span>状态指标</span></p>
+                </div>
+              </div>
+
+              <!-- 按钮 (矩形) -->
+              <div id="u382" class="ax_default button" data-label="按钮">
+                <div id="u382_div" class=""></div>
+                <div id="u382_text" class="text ">
+                  <p><span>业务指标</span></p>
+                </div>
+              </div>
+
+              <!-- 按钮 (矩形) -->
+              <div id="u383" class="ax_default button" data-label="按钮">
+                <div id="u383_div" class=""></div>
+                <div id="u383_text" class="text ">
+                  <p><span>详细数据</span></p>
+                </div>
+              </div>
+
+              <!-- 按钮 (矩形) -->
+              <div id="u384" class="ax_default button" data-label="按钮">
+                <div id="u384_div" class=""></div>
+                <div id="u384_text" class="text ">
+                  <p><span>工位面板</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u385" class="ax_default ellipse" selectiongroup="states">
+              <img id="u385_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u386" class="ax_default ellipse" selectiongroup="states">
+              <img id="u386_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u387" class="ax_default ellipse" selectiongroup="states">
+              <img id="u387_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u388" class="ax_default ellipse" selectiongroup="states">
+              <img id="u388_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u389" class="ax_default ellipse" selectiongroup="states">
+              <img id="u389_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u390" class="ax_default ellipse" selectiongroup="states">
+              <img id="u390_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u391" class="ax_default ellipse" selectiongroup="states">
+              <img id="u391_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u392" class="ax_default ellipse" selectiongroup="states">
+              <img id="u392_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u393" class="ax_default ellipse" selectiongroup="states">
+              <img id="u393_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u394" class="ax_default ellipse" selectiongroup="states">
+              <img id="u394_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u395" class="ax_default ellipse" selectiongroup="states">
+              <img id="u395_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u396" class="ax_default ellipse" selectiongroup="states">
+              <img id="u396_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u397" class="ax_default ellipse" selectiongroup="states">
+              <img id="u397_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u398" class="ax_default ellipse" selectiongroup="states">
+              <img id="u398_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u399" class="ax_default ellipse" selectiongroup="states">
+              <img id="u399_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u400" class="ax_default ellipse" selectiongroup="states">
+              <img id="u400_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u401" class="ax_default ellipse" selectiongroup="states">
+              <img id="u401_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u402" class="ax_default ellipse" selectiongroup="states">
+              <img id="u402_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u403" class="ax_default ellipse" selectiongroup="states">
+              <img id="u403_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u404" class="ax_default ellipse" selectiongroup="states">
+              <img id="u404_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u405" class="ax_default ellipse" selectiongroup="states">
+              <img id="u405_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u406" class="ax_default ellipse" selectiongroup="states">
+              <img id="u406_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u407" class="ax_default ellipse" selectiongroup="states">
+              <img id="u407_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u408" class="ax_default ellipse" selectiongroup="states">
+              <img id="u408_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u409" class="ax_default ellipse" selectiongroup="states">
+              <img id="u409_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u410" class="ax_default ellipse" selectiongroup="states">
+              <img id="u410_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u411" class="ax_default ellipse" selectiongroup="states">
+              <img id="u411_img" class="img " src="images/board/u385.png"/>
+            </div>
+
+            <!-- Unnamed (椭圆形) -->
+            <div id="u412" class="ax_default ellipse" selectiongroup="states">
+              <img id="u412_img" class="img " src="images/board/u385.png"/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 按钮组 (动态面板)左上 -->
+      <div id="u413" class="ax_default" data-label="按钮组">
+        <div id="u413_state0" class="panel_state" data-label="State1" style="">
+          <div id="u413_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (矩形) -->
+            <div id="u414" class="ax_default box_1">
+              <img id="u414_img" class="img " src="images/board/u414.png"/>
+            </div>
+
+            <!-- 按钮 (矩形) -->
+            <div id="u415" class="ax_default button" data-label="按钮" onclick="reset()">
+              <div id="u415_div" class=""></div>
+              <div id="u415_text" class="text ">
+                <p><span>重置</span></p>
+              </div>
+            </div>
+
+            <!-- 按钮 (矩形) -->
+            <div id="u416" class="ax_default button" data-label="按钮" onclick="setBox()">
+              <div id="u416_div" class=""></div>
+              <div id="u416_text" class="text ">
+                <p><span>更新</span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u417" class="ax_default" data-left="30" data-top="12" data-width="89" data-height="22">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u418" class="ax_default label">
+                <div id="u418_div" class=""></div>
+                <div id="u418_text" class="text ">
+                  <p><span>默认配置</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (椭圆形) -->
+              <div id="u419" class="ax_default marker">
+                <img id="u419_img" class="img " src="images/limo/u95.png"/>
+              </div>
+            </div>
+
+            <!-- Unnamed (单选按钮) -->
+            <div id="u420" class="ax_default radio_button">
+              <label for="u420_input" style="position: absolute; left: 0px;">
+                <div id="u420_text" class="text ">
+                  <p><span>能耗相关</span></p>
+                </div>
+              </label>
+              <input id="u420_input" type="radio" value="ener" name="type"  onclick="setEner()"/>
+            </div>
+
+            <!-- Unnamed (单选按钮) -->
+            <div id="u421" class="ax_default radio_button">
+              <label for="u421_input" style="position: absolute; left: 0px;">
+                <div id="u421_text" class="text ">
+                  <p><span>振动相关</span></p>
+                </div>
+              </label>
+              <input id="u421_input" type="radio" value="shak" name="type" onclick="setShak()"/>
+            </div>
+
+            <!-- Unnamed (单选按钮) -->
+            <div id="u422" class="ax_default radio_button">
+              <label for="u422_input" style="position: absolute; left: 0px;">
+                <div id="u422_text" class="text ">
+                  <p><span>自定义</span></p>
+                </div>
+              </label>
+              <input id="u422_input" type="radio" value="init" name="type" checked onclick="setInit()"/>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u423" class="ax_default box_2" style="cursor:pointer;" onclick="setNum(this)">
+              <div id="u423_div" class=""></div>
+              <div id="u423_text" class="text ">
+                <p><span id="1">1</span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u424" class="ax_default box_2" style="cursor:pointer;" onclick="setNum(this)">
+              <div id="u424_div" class=""></div>
+              <div id="u424_text" class="text ">
+                <p><span id="2">2</span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u425" class="ax_default box_2" style="cursor:pointer;" onclick="setNum(this)">
+              <div id="u425_div" class=""></div>
+              <div id="u425_text" class="text ">
+                <p><span id="3">3</span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u426" class="ax_default box_2" style="cursor:pointer;" onclick="setNum(this)">
+              <div id="u426_div" class=""></div>
+              <div id="u426_text" class="text ">
+                <p><span id="4">4</span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u427" class="ax_default box_2" style="cursor:pointer;" onclick="setNum(this)">
+              <div id="u427_div" class=""></div>
+              <div id="u427_text" class="text ">
+                <p><span id="5">5</span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u428" class="ax_default box_2" style="cursor:pointer;" onclick="setNum(this)">
+              <div id="u428_div" class=""></div>
+              <div id="u428_text" class="text ">
+                <p><span id="6">6</span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u429" class="ax_default" data-left="44" data-top="138" data-width="68" data-height="17">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u430" class="ax_default label">
+                <div id="u430_div" class=""></div>
+                <div id="u430_text" class="text ">
+                  <p><span>序号</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (矩形) -->
+              <div id="u431" class="ax_default label">
+                <div id="u431_div" class=""></div>
+                <div id="u431_text" class="text ">
+                  <p><span id="num"></span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u432" class="ax_default" data-left="122" data-top="135" data-width="148" data-height="23">
+
+              <!-- At (组合 ) -->
+              <div id="u433" class="ax_default" data-label="At" data-left="161" data-top="135" data-width="109" data-height="23">
+
+                <!-- Unnamed (下拉列表框) -->
+                <div id="u434" class="ax_default droplist">
+                  <select id="u434_input">
+                  </select>
+                </div>
+              </div>
+
+              <!-- Unnamed (矩形) -->
+              <div id="u435" class="ax_default label">
+                <div id="u435_div" class=""></div>
+                <div id="u435_text" class="text ">
+                  <p><span>工位</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u436" class="ax_default label">
+              <div id="u436_div" class=""></div>
+              <div id="u436_text" class="text ">
+                <p><span>面板预览</span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u437" class="ax_default" data-left="281" data-top="135" data-width="129" data-height="23">
+
+              <!-- At (组合 ) -->
+              <div id="u438" class="ax_default" data-label="At" data-left="319" data-top="135" data-width="91" data-height="23">
+
+                <!-- Unnamed (下拉列表框) -->
+                <div id="u439" class="ax_default droplist">
+                  <select id="u439_input">
+                  </select>
+                </div>
+              </div>
+
+              <!-- Unnamed (矩形) -->
+              <div id="u440" class="ax_default label">
+                <div id="u440_div" class=""></div>
+                <div id="u440_text" class="text ">
+                  <p><span>类型</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 按钮 (矩形) -->
+            <div id="u441" class="ax_default button" data-label="按钮"  onclick="save()">
+              <div id="u441_div" class=""></div>
+              <div id="u441_text" class="text ">
+                <p><span>存储配置</span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u442" class="ax_default label">
+              <div id="u442_div" class=""></div>
+              <div id="u442_text" class="text ">
+                <p><span>&gt;&gt;</span><span style="text-decoration:underline;">导入配置</span></p>
+              </div>
+            </div>
+            
+            <form id="box1">
+					<input type="hidden" name="id" id="cid"/>
+					<input type="hidden" name="code" id="code"/>
+					<input type="hidden" name="stats" id="stats"/>
+					<input type="hidden" name="pars" id="pars"/>
+			</form>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- #1 -->
+      <div id="u443" class="ax_default">
+        <div id="container1" style="width: 100%; height: 100%;border-width:1px"></div>
+      </div>
+
+      <!-- #2 -->
+      <div id="u444" class="ax_default">
+      	<div id="container2" style="width: 100%; height: 100%;border-width:1px"></div>
+      </div>
+
+      <!-- #4 -->
+      <div id="u445" class="ax_default">
+       <div id="container4" style="width: 100%; height: 100%;border-width:1px"></div>
+      </div>
+
+      <!-- #6 -->
+      <div id="u446" class="ax_default">
+        <div id="container6" style="width: 100%; height: 100%;border-width:1px"></div>
+      </div>
+
+      <!-- #3 -->
+      <div id="u447" class="ax_default">
+        <div id="container3" style="width: 100%; height: 100%;border-width:1px"></div>
+      </div>
+
+      <!-- #5 -->
+      <div id="u448" class="ax_default">
+        <div id="container5" style="width: 100%; height: 100%;border-width:1px"></div>
+      </div>
+
+      <!-- Unnamed (组合 ) -->
+      <div id="u449" class="ax_default" data-left="25" data-top="58" data-width="231" data-height="25">
+
+        <!-- Unnamed (形状) -->
+        <div id="u450" class="ax_default icon">
+          <img id="u450_img" class="img " src="images/index/u12.png"/>
+        </div>
+
+        <!-- Unnamed (矩形) -->
+        <div id="u451" class="ax_default _一级标题">
+          <div id="u451_div" class=""></div>
+          <div id="u451_text" class="text ">
+            <p><span>项目：</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (矩形) -->
+        <div id="u452" class="ax_default label" style="width:150px">
+          <div id="u452_div" class=""></div>
+          <div id="u452_text" class="text ">
+            <p><span id="pageName"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="files/board/table.js"></script>
+    <script>
+    	function tiaozhuan(){
+	    	var url = window.location.href;
+	    	if(url.indexOf("5")>=0){
+	    		//window.location.href="http://mktech.zju.edu.cn/mkcenter/0729/jiangyin.html";
+	    		window.location.href="jiangyin.html";
+	    	}
+	    	else{
+	    		//window.location.href="http://mktech.zju.edu.cn/mkcenter/0729/limo.html";}
+	    		window.location.href="jiangyin.html";}
+	    }
+    </script>
+</html>

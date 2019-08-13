@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mktech.dao.DbJiangyinLogMntDao">
+  <resultMap id="BaseResultMap" type="com.mktech.entity.DbJiangyinLogMnt">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="TIMESTAMP" jdbcType="VARCHAR" property="timestamp" />
+    <result column="TIME" jdbcType="VARCHAR" property="time" />
+    <result column="L0069_PRE_60S" jdbcType="DOUBLE" property="l0069_pre_60s" />
+    <result column="L0069_PRE_30S" jdbcType="DOUBLE" property="l0069_pre_30s" />
+    <result column="L0069_PRE_10S" jdbcType="DOUBLE" property="l0069_pre_10s" />
+    <result column="L0069_PRE_5S" jdbcType="DOUBLE" property="l0069_pre_5s" />
+    <result column="L0069" jdbcType="DOUBLE" property="l0069" />
+    <result column="L0069_POST_5S" jdbcType="DOUBLE" property="l0069_post_5s" />
+    <result column="L0069_POST_10S" jdbcType="DOUBLE" property="l0069_post_10s" />
+    <result column="L0069_POST_30S" jdbcType="DOUBLE" property="l0069_post_30s" />
+    <result column="L0069_POST_60S" jdbcType="DOUBLE" property="l0069_post_60s" />
+    <result column="L0050_PRE_60S" jdbcType="DOUBLE" property="l0050_pre_60s" />
+    <result column="L0050_PRE_30S" jdbcType="DOUBLE" property="l0050_pre_30s" />
+    <result column="L0050_PRE_10S" jdbcType="DOUBLE" property="l0050_pre_10s" />
+    <result column="L0050_PRE_5S" jdbcType="DOUBLE" property="l0050_pre_5s" />
+    <result column="L0050" jdbcType="DOUBLE" property="l0050" />
+    <result column="L0050_POST_5S" jdbcType="DOUBLE" property="l0050_post_5s" />
+    <result column="L0050_POST_10S" jdbcType="DOUBLE" property="l0050_post_10s" />
+    <result column="L0050_POST_30S" jdbcType="DOUBLE" property="l0050_post_30s" />
+    <result column="L0050_POST_60S" jdbcType="DOUBLE" property="l0050_post_60s" />
+    <result column="L0049_PRE_60S" jdbcType="DOUBLE" property="l0049_pre_60s" />
+    <result column="L0049_PRE_30S" jdbcType="DOUBLE" property="l0049_pre_30s" />
+    <result column="L0049_PRE_10S" jdbcType="DOUBLE" property="l0049_pre_10s" />
+    <result column="L0049_PRE_5S" jdbcType="DOUBLE" property="l0049_pre_5s" />
+    <result column="L0049" jdbcType="DOUBLE" property="l0049" />
+    <result column="L0049_POST_5S" jdbcType="DOUBLE" property="l0049_post_5s" />
+    <result column="L0049_POST_10S" jdbcType="DOUBLE" property="l0049_post_10s" />
+    <result column="L0049_POST_30S" jdbcType="DOUBLE" property="l0049_post_30s" />
+    <result column="L0049_POST_60S" jdbcType="DOUBLE" property="l0049_post_60s" />
+    <result column="L0097_PRE_60S" jdbcType="DOUBLE" property="l0097_pre_60s" />
+    <result column="L0097_PRE_30S" jdbcType="DOUBLE" property="l0097_pre_30s" />
+    <result column="L0097_PRE_10S" jdbcType="DOUBLE" property="l0097_pre_10s" />
+    <result column="L0097_PRE_5S" jdbcType="DOUBLE" property="l0097_pre_5s" />
+    <result column="L0097" jdbcType="DOUBLE" property="l0097" />
+    <result column="L0097_POST_5S" jdbcType="DOUBLE" property="l0097_post_5s" />
+    <result column="L0097_POST_10S" jdbcType="DOUBLE" property="l0097_post_10s" />
+    <result column="L0097_POST_30S" jdbcType="DOUBLE" property="l0097_post_30s" />
+    <result column="L0097_POST_60S" jdbcType="DOUBLE" property="l0097_post_60s" />
+    <result column="L0040_PRE_60S" jdbcType="DOUBLE" property="l0040_pre_60s" />
+    <result column="L0040_PRE_30S" jdbcType="DOUBLE" property="l0040_pre_30s" />
+    <result column="L0040_PRE_10S" jdbcType="DOUBLE" property="l0040_pre_10s" />
+    <result column="L0040_PRE_5S" jdbcType="DOUBLE" property="l0040_pre_5s" />
+    <result column="L0040" jdbcType="DOUBLE" property="l0040" />
+    <result column="L0040_POST_5S" jdbcType="DOUBLE" property="l0040_post_5s" />
+    <result column="L0040_POST_10S" jdbcType="DOUBLE" property="l0040_post_10s" />
+    <result column="L0040_POST_30S" jdbcType="DOUBLE" property="l0040_post_30s" />
+    <result column="L0040_POST_60S" jdbcType="DOUBLE" property="l0040_post_60s" />
+    <result column="L0042_PRE_60S" jdbcType="DOUBLE" property="l0042_pre_60s" />
+    <result column="L0042_PRE_30S" jdbcType="DOUBLE" property="l0042_pre_30s" />
+    <result column="L0042_PRE_10S" jdbcType="DOUBLE" property="l0042_pre_10s" />
+    <result column="L0042_PRE_5S" jdbcType="DOUBLE" property="l0042_pre_5s" />
+    <result column="L0042" jdbcType="DOUBLE" property="l0042" />
+    <result column="L0042_POST_5S" jdbcType="DOUBLE" property="l0042_post_5s" />
+    <result column="L0042_POST_10S" jdbcType="DOUBLE" property="l0042_post_10s" />
+    <result column="L0042_POST_30S" jdbcType="DOUBLE" property="l0042_post_30s" />
+    <result column="L0042_POST_60S" jdbcType="DOUBLE" property="l0042_post_60s" />
+    <result column="L0039_PRE_60S" jdbcType="DOUBLE" property="l0039_pre_60s" />
+    <result column="L0039_PRE_30S" jdbcType="DOUBLE" property="l0039_pre_30s" />
+    <result column="L0039_PRE_10S" jdbcType="DOUBLE" property="l0039_pre_10s" />
+    <result column="L0039_PRE_5S" jdbcType="DOUBLE" property="l0039_pre_5s" />
+    <result column="L0039" jdbcType="DOUBLE" property="l0039" />
+    <result column="L0039_POST_5S" jdbcType="DOUBLE" property="l0039_post_5s" />
+    <result column="L0039_POST_10S" jdbcType="DOUBLE" property="l0039_post_10s" />
+    <result column="L0039_POST_30S" jdbcType="DOUBLE" property="l0039_post_30s" />
+    <result column="L0039_POST_60S" jdbcType="DOUBLE" property="l0039_post_60s" />
+    <result column="L0041_PRE_60S" jdbcType="DOUBLE" property="l0041_pre_60s" />
+    <result column="L0041_PRE_30S" jdbcType="DOUBLE" property="l0041_pre_30s" />
+    <result column="L0041_PRE_10S" jdbcType="DOUBLE" property="l0041_pre_10s" />
+    <result column="L0041_PRE_5S" jdbcType="DOUBLE" property="l0041_pre_5s" />
+    <result column="L0041" jdbcType="DOUBLE" property="l0041" />
+    <result column="L0041_POST_5S" jdbcType="DOUBLE" property="l0041_post_5s" />
+    <result column="L0041_POST_10S" jdbcType="DOUBLE" property="l0041_post_10s" />
+    <result column="L0041_POST_30S" jdbcType="DOUBLE" property="l0041_post_30s" />
+    <result column="L0041_POST_60S" jdbcType="DOUBLE" property="l0041_post_60s" />
+    <result column="INVALUE_PRE_60S" jdbcType="DOUBLE" property="inValue_pre_60s" />
+    <result column="INVALUE_PRE_30S" jdbcType="DOUBLE" property="inValue_pre_30s" />
+    <result column="INVALUE_PRE_10S" jdbcType="DOUBLE" property="inValue_pre_10s" />
+    <result column="INVALUE_PRE_5S" jdbcType="DOUBLE" property="inValue_pre_5s" />
+    <result column="INVALUE" jdbcType="DOUBLE" property="inValue" />
+    <result column="INVALUE_POST_5S" jdbcType="DOUBLE" property="inValue_post_5s" />
+    <result column="INVALUE_POST_10S" jdbcType="DOUBLE" property="inValue_post_10s" />
+    <result column="INVALUE_POST_30S" jdbcType="DOUBLE" property="inValue_post_30s" />
+    <result column="INVALUE_POST_60S" jdbcType="DOUBLE" property="inValue_post_60s" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, TIMESTAMP , TIME,
+    L0069_PRE_60S, L0069_PRE_30S, L0069_PRE_10S, L0069_PRE_5S, L0069,
+    L0069_POST_5S, L0069_POST_10S, L0069_POST_30S, L0069_POST_60S,
+    L0050_PRE_60S, L0050_PRE_30S, L0050_PRE_10S, L0050_PRE_5S, L0050,
+    L0050_POST_5S, L0050_POST_10S, L0050_POST_30S, L0050_POST_60S,
+    L0049_PRE_60S, L0049_PRE_30S, L0049_PRE_10S, L0049_PRE_5S, L0049,
+    L0049_POST_5S, L0049_POST_10S, L0049_POST_30S, L0049_POST_60S,
+    L0097_PRE_60S, L0097_PRE_30S, L0097_PRE_10S, L0097_PRE_5S, L0097,
+    L0097_POST_5S, L0097_POST_10S, L0097_POST_30S, L0097_POST_60S,
+    L0040_PRE_60S, L0040_PRE_30S, L0040_PRE_10S, L0040_PRE_5S, L0040,
+    L0040_POST_5S, L0040_POST_10S, L0040_POST_30S, L0040_POST_60S,
+    L0042_PRE_60S, L0042_PRE_30S, L0042_PRE_10S, L0042_PRE_5S, L0042,
+    L0042_POST_5S, L0042_POST_10S, L0042_POST_30S, L0042_POST_60S,
+    L0039_PRE_60S, L0039_PRE_30S, L0039_PRE_10S, L0039_PRE_5S, L0039,
+    L0039_POST_5S, L0039_POST_10S, L0039_POST_30S, L0039_POST_60S,
+    L0041_PRE_60S, L0041_PRE_30S, L0041_PRE_10S, L0041_PRE_5S, L0041,
+    L0041_POST_5S, L0041_POST_10S, L0041_POST_30S, L0041_POST_60S,
+    INVALUE_PRE_60S, INVALUE_PRE_30S, INVALUE_PRE_10S, INVALUE_PRE_5S, INVALUE,
+    INVALUE_POST_5S, INVALUE_POST_10S, INVALUE_POST_30S, INVALUE_POST_60S
+  </sql>
+  <select id ="selectNew" resultMap="BaseResultMap">
+  		select
+		<include refid="Base_Column_List" />
+		from DB_JIANGYIN_LOG_MNT
+		order by ID desc limit 1
+  </select>
+  <select id="selectLatest3" resultMap="BaseResultMap">
+		select 
+		<include refid="Base_Column_List" />
+		from (
+		select 
+		<include refid="Base_Column_List" />
+		from DB_JIANGYIN_LOG_MNT
+		order by ID desc limit 3) as tbl order by tbl.ID
+  </select>
+  <insert id="insert" parameterType="com.mktech.entity.DbJiangyinLogMnt">
+    insert into DB_JIANGYIN_LOG_MNT
+    (ID, TIMESTAMP, TIME,
+    L0069_PRE_60S, L0069_PRE_30S, L0069_PRE_10S, L0069_PRE_5S, L0069,
+    L0069_POST_5S, L0069_POST_10S, L0069_POST_30S, L0069_POST_60S,
+    L0050_PRE_60S, L0050_PRE_30S, L0050_PRE_10S, L0050_PRE_5S, L0050,
+    L0050_POST_5S, L0050_POST_10S, L0050_POST_30S, L0050_POST_60S,
+    L0049_PRE_60S, L0049_PRE_30S, L0049_PRE_10S, L0049_PRE_5S, L0049,
+    L0049_POST_5S, L0049_POST_10S, L0049_POST_30S, L0049_POST_60S,
+    L0097_PRE_60S, L0097_PRE_30S, L0097_PRE_10S, L0097_PRE_5S, L0097,
+    L0097_POST_5S, L0097_POST_10S, L0097_POST_30S, L0097_POST_60S,
+    L0040_PRE_60S, L0040_PRE_30S, L0040_PRE_10S, L0040_PRE_5S, L0040,
+    L0040_POST_5S, L0040_POST_10S, L0040_POST_30S, L0040_POST_60S,
+    L0042_PRE_60S, L0042_PRE_30S, L0042_PRE_10S, L0042_PRE_5S, L0042,
+    L0042_POST_5S, L0042_POST_10S, L0042_POST_30S, L0042_POST_60S,
+    L0039_PRE_60S, L0039_PRE_30S, L0039_PRE_10S, L0039_PRE_5S, L0039,
+    L0039_POST_5S, L0039_POST_10S, L0039_POST_30S, L0039_POST_60S,
+    L0041_PRE_60S, L0041_PRE_30S, L0041_PRE_10S, L0041_PRE_5S, L0041,
+    L0041_POST_5S, L0041_POST_10S, L0041_POST_30S, L0041_POST_60S,
+    INVALUE_PRE_60S, INVALUE_PRE_30S, INVALUE_PRE_10S, INVALUE_PRE_5S, INVALUE,
+    INVALUE_POST_5S, INVALUE_POST_10S, INVALUE_POST_30S, INVALUE_POST_60S)
+    values 
+    (#{id,jdbcType=INTEGER}, #{timestamp,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR},
+    #{l0069_pre_60s,jdbcType=DOUBLE}, #{l0069_pre_30s,jdbcType=DOUBLE}, #{l0069_pre_10s,jdbcType=DOUBLE},
+    #{l0069_pre_5s,jdbcType=DOUBLE}, #{l0069,jdbcType=DOUBLE}, #{l0069_post_5s,jdbcType=DOUBLE},
+    #{l0069_post_10s,jdbcType=DOUBLE}, #{l0069_post_30s,jdbcType=DOUBLE}, #{l0069_post_60s,jdbcType=DOUBLE},
+    #{l0050_pre_60s,jdbcType=DOUBLE}, #{l0050_pre_30s,jdbcType=DOUBLE}, #{l0050_pre_10s,jdbcType=DOUBLE},
+    #{l0050_pre_5s,jdbcType=DOUBLE}, #{l0050,jdbcType=DOUBLE}, #{l0050_post_5s,jdbcType=DOUBLE},
+    #{l0050_post_10s,jdbcType=DOUBLE}, #{l0050_post_30s,jdbcType=DOUBLE}, #{l0050_post_60s,jdbcType=DOUBLE},
+    #{l0049_pre_60s,jdbcType=DOUBLE}, #{l0049_pre_30s,jdbcType=DOUBLE}, #{l0049_pre_10s,jdbcType=DOUBLE},
+    #{l0049_pre_5s,jdbcType=DOUBLE}, #{l0049,jdbcType=DOUBLE}, #{l0049_post_5s,jdbcType=DOUBLE},
+    #{l0049_post_10s,jdbcType=DOUBLE}, #{l0049_post_30s,jdbcType=DOUBLE}, #{l0049_post_60s,jdbcType=DOUBLE},
+    #{l0097_pre_60s,jdbcType=DOUBLE}, #{l0097_pre_30s,jdbcType=DOUBLE}, #{l0097_pre_10s,jdbcType=DOUBLE},
+    #{l0097_pre_5s,jdbcType=DOUBLE}, #{l0097,jdbcType=DOUBLE}, #{l0097_post_5s,jdbcType=DOUBLE},
+    #{l0097_post_10s,jdbcType=DOUBLE}, #{l0097_post_30s,jdbcType=DOUBLE}, #{l0097_post_60s,jdbcType=DOUBLE},
+    #{l0040_pre_60s,jdbcType=DOUBLE}, #{l0040_pre_30s,jdbcType=DOUBLE}, #{l0040_pre_10s,jdbcType=DOUBLE},
+    #{l0040_pre_5s,jdbcType=DOUBLE}, #{l0040,jdbcType=DOUBLE}, #{l0040_post_5s,jdbcType=DOUBLE},
+    #{l0040_post_10s,jdbcType=DOUBLE}, #{l0040_post_30s,jdbcType=DOUBLE}, #{l0040_post_60s,jdbcType=DOUBLE},
+    #{l0042_pre_60s,jdbcType=DOUBLE}, #{l0042_pre_30s,jdbcType=DOUBLE}, #{l0042_pre_10s,jdbcType=DOUBLE},
+    #{l0042_pre_5s,jdbcType=DOUBLE}, #{l0042,jdbcType=DOUBLE}, #{l0042_post_5s,jdbcType=DOUBLE},
+    #{l0042_post_10s,jdbcType=DOUBLE}, #{l0042_post_30s,jdbcType=DOUBLE}, #{l0042_post_60s,jdbcType=DOUBLE},
+    #{l0039_pre_60s,jdbcType=DOUBLE}, #{l0039_pre_30s,jdbcType=DOUBLE}, #{l0039_pre_10s,jdbcType=DOUBLE},
+    #{l0039_pre_5s,jdbcType=DOUBLE}, #{l0039,jdbcType=DOUBLE}, #{l0039_post_5s,jdbcType=DOUBLE},
+    #{l0039_post_10s,jdbcType=DOUBLE}, #{l0039_post_30s,jdbcType=DOUBLE}, #{l0039_post_60s,jdbcType=DOUBLE},
+    #{l0041_pre_60s,jdbcType=DOUBLE}, #{l0041_pre_30s,jdbcType=DOUBLE}, #{l0041_pre_10s,jdbcType=DOUBLE},
+    #{l0041_pre_5s,jdbcType=DOUBLE}, #{l0041,jdbcType=DOUBLE}, #{l0041_post_5s,jdbcType=DOUBLE},
+    #{l0041_post_10s,jdbcType=DOUBLE}, #{l0041_post_30s,jdbcType=DOUBLE}, #{l0041_post_60s,jdbcType=DOUBLE},
+    #{inValue_pre_60s,jdbcType=DOUBLE}, #{inValue_pre_30s,jdbcType=DOUBLE}, #{inValue_pre_10s,jdbcType=DOUBLE},
+    #{inValue_pre_5s,jdbcType=DOUBLE}, #{inValue,jdbcType=DOUBLE}, #{inValue_post_5s,jdbcType=DOUBLE},
+    #{inValue_post_10s,jdbcType=DOUBLE}, #{inValue_post_30s,jdbcType=DOUBLE}, #{inValue_post_60s,jdbcType=DOUBLE})
+  </insert>
+  <update id="update" parameterType="com.mktech.entity.DbJiangyinLogMnt">
+    update DB_JIANGYIN_LOG_MNT
+    set 
+    L0069_PRE_60S = #{l0069_pre_60s,jdbcType=DOUBLE},
+    L0069_PRE_30S = #{l0069_pre_30s,jdbcType=DOUBLE},
+    L0069_PRE_10S = #{l0069_pre_10s,jdbcType=DOUBLE},
+    L0069_PRE_5S = #{l0069_pre_5s,jdbcType=DOUBLE},
+    L0069 = #{l0069,jdbcType=DOUBLE},
+    L0069_POST_5S = #{l0069_post_5s,jdbcType=DOUBLE},
+    L0069_POST_10S = #{l0069_post_10s,jdbcType=DOUBLE},
+    L0069_POST_30S = #{l0069_post_30s,jdbcType=DOUBLE},
+    L0050_PRE_60S = #{l0050_pre_60s,jdbcType=DOUBLE},
+    L0050_PRE_30S = #{l0050_pre_30s,jdbcType=DOUBLE},
+    L0050_PRE_10S = #{l0050_pre_10s,jdbcType=DOUBLE},
+    L0050_PRE_5S = #{l0050_pre_5s,jdbcType=DOUBLE},
+    L0050 = #{l0050,jdbcType=DOUBLE},
+    L0050_POST_5S = #{l0050_post_5s,jdbcType=DOUBLE},
+    L0050_POST_10S = #{l0050_post_10s,jdbcType=DOUBLE},
+    L0050_POST_30S = #{l0050_post_30s,jdbcType=DOUBLE},
+    L0049_PRE_60S = #{l0049_pre_60s,jdbcType=DOUBLE},
+    L0049_PRE_30S = #{l0049_pre_30s,jdbcType=DOUBLE},
+    L0049_PRE_10S = #{l0049_pre_10s,jdbcType=DOUBLE},
+    L0049_PRE_5S = #{l0049_pre_5s,jdbcType=DOUBLE},
+    L0049 = #{l0049,jdbcType=DOUBLE},
+    L0049_POST_5S = #{l0049_post_5s,jdbcType=DOUBLE},
+    L0049_POST_10S = #{l0049_post_10s,jdbcType=DOUBLE},
+    L0049_POST_30S = #{l0049_post_30s,jdbcType=DOUBLE},
+    L0097_PRE_60S = #{l0097_pre_60s,jdbcType=DOUBLE},
+    L0097_PRE_30S = #{l0097_pre_30s,jdbcType=DOUBLE},
+    L0097_PRE_10S = #{l0097_pre_10s,jdbcType=DOUBLE},
+    L0097_PRE_5S = #{l0097_pre_5s,jdbcType=DOUBLE},
+    L0097 = #{l0097,jdbcType=DOUBLE},
+    L0097_POST_5S = #{l0097_post_5s,jdbcType=DOUBLE},
+    L0097_POST_10S = #{l0097_post_10s,jdbcType=DOUBLE},
+    L0097_POST_30S = #{l0097_post_30s,jdbcType=DOUBLE},
+    L0040_PRE_60S = #{l0040_pre_60s,jdbcType=DOUBLE},
+    L0040_PRE_30S = #{l0040_pre_30s,jdbcType=DOUBLE},
+    L0040_PRE_10S = #{l0040_pre_10s,jdbcType=DOUBLE},
+    L0040_PRE_5S = #{l0040_pre_5s,jdbcType=DOUBLE},
+    L0040 = #{l0040,jdbcType=DOUBLE},
+    L0040_POST_5S = #{l0040_post_5s,jdbcType=DOUBLE},
+    L0040_POST_10S = #{l0040_post_10s,jdbcType=DOUBLE},
+    L0040_POST_30S = #{l0040_post_30s,jdbcType=DOUBLE},
+    L0042_PRE_60S = #{l0042_pre_60s,jdbcType=DOUBLE},
+    L0042_PRE_30S = #{l0042_pre_30s,jdbcType=DOUBLE},
+    L0042_PRE_10S = #{l0042_pre_10s,jdbcType=DOUBLE},
+    L0042_PRE_5S = #{l0042_pre_5s,jdbcType=DOUBLE},
+    L0042 = #{l0042,jdbcType=DOUBLE},
+    L0042_POST_5S = #{l0042_post_5s,jdbcType=DOUBLE},
+    L0042_POST_10S = #{l0042_post_10s,jdbcType=DOUBLE},
+    L0042_POST_30S = #{l0042_post_30s,jdbcType=DOUBLE},
+    L0039_PRE_60S = #{l0039_pre_60s,jdbcType=DOUBLE},
+    L0039_PRE_30S = #{l0039_pre_30s,jdbcType=DOUBLE},
+    L0039_PRE_10S = #{l0039_pre_10s,jdbcType=DOUBLE},
+    L0039_PRE_5S = #{l0039_pre_5s,jdbcType=DOUBLE},
+    L0039 = #{l0039,jdbcType=DOUBLE},
+    L0039_POST_5S = #{l0039_post_5s,jdbcType=DOUBLE},
+    L0039_POST_10S = #{l0039_post_10s,jdbcType=DOUBLE},
+    L0039_POST_30S = #{l0039_post_30s,jdbcType=DOUBLE},
+    L0041_PRE_60S = #{l0041_pre_60s,jdbcType=DOUBLE},
+    L0041_PRE_30S = #{l0041_pre_30s,jdbcType=DOUBLE},
+    L0041_PRE_10S = #{l0041_pre_10s,jdbcType=DOUBLE},
+    L0041_PRE_5S = #{l0041_pre_5s,jdbcType=DOUBLE},
+    L0041 = #{l0041,jdbcType=DOUBLE},
+    L0041_POST_5S = #{l0041_post_5s,jdbcType=DOUBLE},
+    L0041_POST_10S = #{l0041_post_10s,jdbcType=DOUBLE},
+    L0041_POST_30S = #{l0041_post_30s,jdbcType=DOUBLE},
+    INVALUE_PRE_60S = #{inValue_pre_60s,jdbcType=DOUBLE},
+    INVALUE_PRE_30S = #{inValue_pre_30s,jdbcType=DOUBLE},
+    INVALUE_PRE_10S = #{inValue_pre_10s,jdbcType=DOUBLE},
+    INVALUE_PRE_5S = #{inValue_pre_5s,jdbcType=DOUBLE},
+    INVALUE = #{inValue,jdbcType=DOUBLE},
+    INVALUE_POST_5S = #{inValue_post_5s,jdbcType=DOUBLE},
+    INVALUE_POST_10S = #{inValue_post_10s,jdbcType=DOUBLE},
+    INVALUE_POST_30S = #{inValue_post_30s,jdbcType=DOUBLE}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updatePost60s" parameterType="com.mktech.entity.DbJiangyinLogMnt">
+    update DB_JIANGYIN_LOG_MNT
+    set 
+    L0069_POST_60S = #{l0069_post_60s,jdbcType=DOUBLE},
+    L0050_POST_60S = #{l0050_post_60s,jdbcType=DOUBLE},
+    L0049_POST_60S = #{l0049_post_60s,jdbcType=DOUBLE},
+    L0097_POST_60S = #{l0097_post_60s,jdbcType=DOUBLE},
+    L0040_POST_60S = #{l0040_post_60s,jdbcType=DOUBLE},
+    L0042_POST_60S = #{l0042_post_60s,jdbcType=DOUBLE},
+    L0039_POST_60S = #{l0039_post_60s,jdbcType=DOUBLE},
+    L0041_POST_60S = #{l0041_post_60s,jdbcType=DOUBLE},
+    INVALUE_POST_60S = #{inValue_post_60s,jdbcType=DOUBLE}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>

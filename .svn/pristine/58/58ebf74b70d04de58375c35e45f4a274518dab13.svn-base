@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<serviceGroup>    
+       <!--   name属性配置WebService的名称 --> 
+      <!--  <service name="DataRevicerServer4Shaocheng">    
+              <description>Web Service</description>    
+              ServiceClass属性配置提供WebService服务类的全类名  
+              <parameter name="ServiceObjectSupplier">
+            org.apache.axis2.extensions.spring.receivers.SpringServletContextObjectSupplier  
+              </parameter> 
+              <parameter name="SpringBeanName">DataRevicerServer4Shaocheng</parameter>
+              <parameter name="ServiceClass">com.mktech.webservices.DataRevicerServer4Shaocheng</parameter>    
+              <messageReceivers>    
+                     <messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out" class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />    
+                     <messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only" class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />    
+              </messageReceivers>    
+       </service>  -->
+       
+       <service name="DataRevicerServer4Limo">    
+              <description>Web Service</description>    
+              ServiceClass属性配置提供WebService服务类的全类名  
+              <parameter name="ServiceObjectSupplier">
+            org.apache.axis2.extensions.spring.receivers.SpringServletContextObjectSupplier  
+              </parameter> 
+              <parameter name="SpringBeanName">DataRevicerServer4Limo</parameter>
+              <parameter name="ServiceClass">com.mktech.webservices.DataRevicerServer4Limo</parameter>    
+              <messageReceivers>    
+                     <messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out" class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />    
+                     <messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only" class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />    
+              </messageReceivers>    
+       </service>
+       
+       <service name="DataReceiverServer">    
+              <description>Web Service</description>    
+              <!-- ServiceClass属性配置提供WebService服务类的全类名 -->  
+              <parameter name="ServiceObjectSupplier">
+            org.apache.axis2.extensions.spring.receivers.SpringServletContextObjectSupplier  
+              </parameter> 
+              <parameter name="SpringBeanName">DataReceiverServer</parameter>
+              <parameter name="ServiceClass">com.mktech.webservices.DataReceiverServer</parameter>    
+              <messageReceivers>    
+                     <messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out" class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />    
+                     <messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only" class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />    
+              </messageReceivers>    
+       </service>      
+</serviceGroup>  

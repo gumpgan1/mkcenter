@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mktech.dao.SnUserDetailDao">
+  <resultMap id="BaseResultMap" type="com.mktech.entity.SnUserDetail">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="USER_ID" jdbcType="INTEGER" property="userId" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="SEX" jdbcType="VARCHAR" property="sex" />
+    <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="INSTRUCTION" jdbcType="VARCHAR" property="instruction" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mktech.entity.SnUserDetail">
+    <result column="PHOTO" jdbcType="LONGVARBINARY" property="photo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, USER_ID, NAME, SEX, PHONE, EMAIL, ADDRESS, INSTRUCTION
+  </sql>
+  <sql id="Blob_Column_List">
+    PHOTO
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from SN_USER_DETAIL
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByUser" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from SN_USER_DETAIL
+    where USER_ID = #{userid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from SN_USER_DETAIL
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mktech.entity.SnUserDetail">
+    insert into SN_USER_DETAIL (ID, USER_ID, NAME, 
+      SEX, PHONE, EMAIL, 
+      ADDRESS, INSTRUCTION, PHOTO
+      )	
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{instruction,jdbcType=VARCHAR}, #{photo,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mktech.entity.SnUserDetail">
+    insert into SN_USER_DETAIL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="phone != null">
+        PHONE,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+      <if test="address != null">
+        ADDRESS,
+      </if>
+      <if test="instruction != null">
+        INSTRUCTION,
+      </if>
+      <if test="photo != null">
+        PHOTO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="instruction != null">
+        #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mktech.entity.SnUserDetail">
+    update SN_USER_DETAIL
+    <set>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="instruction != null">
+        INSTRUCTION = #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        PHOTO = #{photo,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mktech.entity.SnUserDetail">
+    update SN_USER_DETAIL
+    set USER_ID = #{userId,jdbcType=INTEGER},
+      NAME = #{name,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      INSTRUCTION = #{instruction,jdbcType=VARCHAR},
+      PHOTO = #{photo,jdbcType=LONGVARBINARY}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mktech.entity.SnUserDetail">
+    update SN_USER_DETAIL
+    set USER_ID = #{userId,jdbcType=INTEGER},
+      NAME = #{name,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      INSTRUCTION = #{instruction,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: easyPyMySQL
+Version: 1.4
+Summary: 简单易用的数据库ORM模块
+Home-page: https://github.com/AkiYama-Ryou
+Author: akiyamaryou
+Author-email: crh51306@gmail.com
+License: UNKNOWN
+Description: UNKNOWN
+Keywords: mysql orm
+Platform: any

@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@CIMS213—工业大屏后台管理系统</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/local.css" />
+    <link rel="stylesheet" type="text/css" href="js/layer/theme/default/layer.css" />
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-table.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+    <!-- you need to include the shieldui css and js assets in order for the charts to work --> 
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/layer/layer.js"></script>
+    <style>
+    	.self_btn {background:transparent;border-width:2px;border-color:#cccccc}
+    	#linetable {background:transparent}
+    	#linetable thead{background:#000000}
+    	/* 特地注上td,防止因local.css中td:hover样式干扰tr:hover */
+    	#linetable tbody>tr:hover {
+			background-color: rgba(42, 159, 214,0.5)
+		}
+		#linetable tbody>tr:hover>td{
+			background:none;
+		}
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+		  <!--   导航栏		  -->	
+          <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">CIMS-213</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul id="active" class="nav navbar-nav side-nav">
+                    <li id="_index"><a href="_index.html"><i class="fa fa-bullseye"></i> 总览</a></li>
+                    <li id="_self"><a href="_self.html"><i class="fa fa-user" style="margin-left:3px"></i> 个人信息</a></li>
+                    
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-user">
+					 <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span id="time"></span></a>
+                    </li>
+                    <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>&nbsp;&nbsp;<span id="user"></span>&nbsp;&nbsp;<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:void(0)" onclick="logout()"><i class="fa fa-power-off"></i>登出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+		<!-- 导航栏结束 -->
+		<!-- 主窗体开始 -->
+        <div id="page-wrapper">
+           <div class="row">
+                <div class="col-lg-12">
+                    <h1>产线管理<small> 管理合作企业下属产线的基础信息</small></h1>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+            	<div class="col-lg-12">
+	            	<table id="linetable" class="table table-hover" >
+					</table>
+            	</div>
+				<div id="toolbar" class="btn-group">
+			        <button id="btn-add" type="button" class="btn self_btn btn-default">
+			            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+			        </button>
+			        <button id="btn-edit" type="button" class="btn self_btn btn-default">
+			            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+			        </button>
+			        <button id="btn-delete" type="button" class="btn self_btn btn-default">
+			            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+			        </button>
+  			    </div>  
+            </div>  
+        </div>
+        <!-- 主窗体结束 -->
+    </div>
+</body>
+<form id="createLine" style="color:#696666d9;display:none">
+	<br/>
+	<div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-users"></i> 所属企业:
+         </label>
+         <div class="col-md-9">
+              <select id="companyid" name="companyid" style="width:100%;height:38px;"></select>
+         </div>
+     </div>  
+     <br/>
+     <div class="row">
+         <label for="new_name" class="col-md-3" style="margin-top:10px">
+             	&nbsp;<i class="fa fa-user"></i>&nbsp;产线名称:
+         </label>
+         <div class="col-md-9">
+             <input type="text" name="name" class="form-control" id="new_name" placeholder="请输入产线名称">
+         </div>
+     </div> 
+     <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-warning"></i>&nbsp;当前状态:
+         </label>
+         <div class="col-md-9"  style="color:red;margin-top:10px;">
+             <i class="fa fa-warning"></i><span>该值在后端配置后自动显示，默认为【待机中】</span>
+         </div>
+     </div>   
+     <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-warning"></i>&nbsp;最近更新时间:
+         </label>
+         <div class="col-md-9"  style="color:red;margin-top:10px;">
+             <i class="fa fa-warning"></i><span>该值在后端配置后自动显示，默认为【0】</span>
+         </div>
+     </div>  
+     <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-bar-chart"></i> 能耗阈值:
+         </label>
+         <div class="col-md-1">
+	            <label class="form-label" style="margin-top:10px">下：</label>
+         </div>
+         <div class="col-md-3">
+            <input type="text" name="E_MIN" class="form-control" id="E_MIN" placeholder="请输入下阈值">
+         </div>
+         <div class="col-md-offset-1 col-md-1">
+            <label class="form-label" style="margin-top:10px">上：</label>
+         </div>
+         <div class="col-md-3">
+             <input type="text" name="E_MAX" class="form-control" id="E_MAX" placeholder="请输入上阈值">
+         </div>
+     </div> 
+      <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-bar-chart"></i> 振动阈值:
+         </label>
+         <div class="col-md-1">
+	            <label class="form-label" style="margin-top:10px">下：</label>
+         </div>
+         <div class="col-md-3">
+            <input type="text" name="S_MIN" class="form-control" id="S_MIN" placeholder="请输入下阈值">
+         </div>
+         <div class="col-md-offset-1 col-md-1">
+            <label class="form-label" style="margin-top:10px">上：</label>
+         </div>
+         <div class="col-md-3">
+             <input type="text" name="S_MAX" class="form-control" id="S_MAX" placeholder="请输入上阈值">
+         </div>
+     </div>
+     <br/>
+     <div class="row">
+         <label for="new_info" class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-file-o"></i>&nbsp;产线介绍:
+         </label>
+         <div class="col-md-9">
+             <textarea class="form-control" rows="5" name="info" id="new_info"  placeholder="请输入产线介绍（500字以内）"></textarea>
+         </div>
+     </div>      
+     <br/><br/>
+     <div class="row">
+    	<div class="col-lg-offset-3 col-lg-2">
+    		<button type="reset" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			重置	              		    
+            </button>
+    	</div>
+    	<div class="col-lg-offset-2 col-lg-2">
+    		<button type="button" id="new_ok" onclick="createLine()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			 确定
+     		</button>
+    	</div>
+   	</div>
+</form>
+<form id="changeLine" style="color:#696666d9;display:none">
+	<br/>
+	<input type="hidden" name="lineid" id="change_id"/>
+	<div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-users"></i> 所属企业:
+         </label>
+         <div class="col-md-9">
+             <label id="changeEntp" style="margin-top:10px">xx</label>
+         </div>
+     </div>  
+     <br/>
+     <div class="row">
+         <label for="change_name" class="col-md-3" style="margin-top:10px">
+             	&nbsp;<i class="fa fa-user"></i>&nbsp;产线名称:
+         </label>
+         <div class="col-md-9">
+             <input type="text" name="name" class="form-control" id="change_name" placeholder="请输入产线名称">
+         </div>
+     </div> 
+     <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-warning"></i>&nbsp;当前状态:
+         </label>
+         <div class="col-md-9"  style="color:red;margin-top:10px;">
+             <label id="change_status"></label>
+         </div>
+     </div>   
+     <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-warning"></i>&nbsp;最近更新时间:
+         </label>
+         <div class="col-md-9"  style="color:red;margin-top:10px;">
+             <label id="change_time"></label>
+         </div>
+     </div>  
+     <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-bar-chart"></i> 能耗阈值:
+         </label>
+         <div class="col-md-1">
+	            <label class="form-label" style="margin-top:10px">下：</label>
+         </div>
+         <div class="col-md-3">
+            <input type="text" name="E_MIN" class="form-control" id="cE_MIN" placeholder="请输入下阈值">
+         </div>
+         <div class="col-md-offset-1 col-md-1">
+            <label class="form-label" style="margin-top:10px">上：</label>
+         </div>
+         <div class="col-md-3">
+             <input type="text" name="E_MAX" class="form-control" id="cE_MAX" placeholder="请输入上阈值">
+         </div>
+     </div> 
+      <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-bar-chart"></i> 振动阈值:
+         </label>
+         <div class="col-md-1">
+	            <label class="form-label" style="margin-top:10px">下：</label>
+         </div>
+         <div class="col-md-3">
+            <input type="text" name="S_MIN" class="form-control" id="cS_MIN" placeholder="请输入下阈值">
+         </div>
+         <div class="col-md-offset-1 col-md-1">
+            <label class="form-label" style="margin-top:10px">上：</label>
+         </div>
+         <div class="col-md-3">
+             <input type="text" name="S_MAX" class="form-control" id="cS_MAX" placeholder="请输入上阈值">
+         </div>
+     </div>
+     <br/>
+     <div class="row">
+         <label for="change_info" class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-file-o"></i>&nbsp;产线介绍:
+         </label>
+         <div class="col-md-9">
+             <textarea class="form-control" rows="5" name="info" id="change_info"  placeholder="请输入产线介绍（500字以内）"></textarea>
+         </div>
+     </div>      
+     <br/><br/>
+     <div class="row">
+    	<div class="col-lg-offset-3 col-lg-2">
+    		<button type="reset" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			重置	              		    
+            </button>
+    	</div>
+    	<div class="col-lg-offset-2 col-lg-2">
+    		<button type="button" id="change_ok" onclick="changeLine()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			 确定
+     		</button>
+    	</div>
+   	</div>
+</form>
+<form id="deleteLine" style="color:#696666d9;display:none">
+	<br/>
+	<div class="row">
+         <label class="col-md-12" style="margin-top:10px;text-align:center;">
+             	<i class="fa fa-warning"></i>是否要删除所属企业为<span id="del_company" style="color:red"></span>的<span id="del_line" style="color:red"></span>产线？
+         </label>
+         <input type="hidden" name="lineid" id="del_id"/>
+     </div> 
+	<br/>
+     <div class="row">
+    	<div class="col-lg-offset-3 col-lg-2">
+    		<button type="button" id="del_no" onclick="closeDel()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			取消	              		    
+            </button>
+    	</div>
+    	<div class="col-lg-offset-2 col-lg-2">
+    		<button type="button" id="del_ok" onclick="deleteLine()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			 确定
+     		</button>
+    	</div>
+   	</div>
+</form>
+<script type="text/javascript" src="js/chny-lin.js"></script>
+<script type="text/javascript" src="js/_line.js"></script>
+<script type="text/javascript" src="js/logout.js"></script>
+</html>

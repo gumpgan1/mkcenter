@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mktech.dao.InfoLineDao">
+  <resultMap id="BaseResultMap" type="com.mktech.entity.InfoLine">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="COMPANY_ID" jdbcType="INTEGER" property="companyId" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+    <result column="DEVICE_CODE" jdbcType="VARCHAR" property="deviceCode" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="INSTRUCTION" jdbcType="VARCHAR" property="instruction" />
+    <result column="LAST_UPDATE" jdbcType="VARCHAR" property="lastUpdate" />
+    <result column="NUM_IN" jdbcType="DOUBLE" property="numIn" />
+    <result column="NUM_OUT" jdbcType="DOUBLE" property="numOut" />
+    <result column="LAST_BEGIN" jdbcType="VARCHAR" property="lastBegin" />
+    <result column="HREF" jdbcType="VARCHAR" property="href" />
+    <result column="INFO" jdbcType="VARCHAR" property="info" />
+    <result column="SHAKS" jdbcType="VARCHAR" property="shaks" />
+    <result column="ENERS" jdbcType="VARCHAR" property="eners" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, COMPANY_ID, STATUS, DEVICE_CODE, NAME, INSTRUCTION, LAST_UPDATE, NUM_IN, NUM_OUT, 
+    LAST_BEGIN,HREF,INFO,SHAKS, ENERS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from INFO_LINE
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="checkIfExist" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+     select 
+   		  <include refid="Base_Column_List" />
+    from INFO_LINE where COMPANY_ID=#{companyId,jdbcType=INTEGER} limit 1
+  </select>
+  <select id="checkLineExist" resultMap="BaseResultMap">
+     select 
+   		  <include refid="Base_Column_List" />
+    from INFO_LINE where COMPANY_ID=#{companyId,jdbcType=INTEGER} and INSTRUCTION = #{instruction,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from INFO_LINE
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mktech.entity.InfoLine">
+    insert into INFO_LINE (COMPANY_ID, STATUS, LAST_UPDATE,
+      INSTRUCTION,INFO, SHAKS, ENERS)
+    values (#{companyId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{lastUpdate,jdbcType=VARCHAR},
+      #{instruction,jdbcType=VARCHAR}, #{info,jdbcType=VARCHAR},
+      #{shaks,jdbcType=VARCHAR}, #{eners,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mktech.entity.InfoLine">
+    insert into INFO_LINE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="companyId != null">
+        COMPANY_ID,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="deviceCode != null">
+        DEVICE_CODE,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="instruction != null">
+        INSTRUCTION,
+      </if>
+      <if test="lastUpdate != null">
+        LAST_UPDATE,
+      </if>
+      <if test="numIn != null">
+        NUM_IN,
+      </if>
+      <if test="numOut != null">
+        NUM_OUT,
+      </if>
+      <if test="lastBegin != null">
+        LAST_BEGIN,
+      </if>
+      <if test="href != null">
+        HREF,
+      </if>
+      <if test="info != null">
+       INFO,
+      </if>
+       <if test="shaks != null">
+        SHAKS,
+      </if>
+      <if test="eners != null">
+        ENERS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="deviceCode != null">
+        #{deviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="instruction != null">
+        #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdate != null">
+        #{lastUpdate,jdbcType=VARCHAR},
+      </if>
+      <if test="numIn != null">
+        #{numIn,jdbcType=DOUBLE},
+      </if>
+      <if test="numOut != null">
+        #{numOut,jdbcType=DOUBLE},
+      </if>
+      <if test="lastBegin != null">
+        #{lastBegin,jdbcType=VARCHAR},
+      </if>
+       <if test="href != null">
+        #{href,jdbcType=VARCHAR},
+      </if>
+       <if test="info != null">
+        #{info,jdbcType=VARCHAR},
+      </if>
+        <if test="shaks != null">
+        #{shaks,jdbcType=VARCHAR},
+      </if>
+      <if test="eners != null">
+        #{eners,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mktech.entity.InfoLine">
+    update INFO_LINE
+    <set>
+      <if test="companyId != null">
+        COMPANY_ID = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="deviceCode != null">
+        DEVICE_CODE = #{deviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="instruction != null">
+        INSTRUCTION = #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdate != null">
+        LAST_UPDATE = #{lastUpdate,jdbcType=VARCHAR},
+      </if>
+      <if test="numIn != null">
+        NUM_IN = #{numIn,jdbcType=DOUBLE},
+      </if>
+      <if test="numOut != null">
+        NUM_OUT = #{numOut,jdbcType=DOUBLE},
+      </if>
+      <if test="lastBegin != null">
+        LAST_BEGIN = #{lastBegin,jdbcType=VARCHAR},
+      </if>
+      <if test="href != null">
+        HREF = #{href,jdbcType=VARCHAR},
+      </if>
+      <if test="info!= null">
+       INFO = #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="shaks != null">
+        SHAKS = #{shaks,jdbcType=VARCHAR},
+      </if>
+      <if test="eners != null">
+        ENERS = #{eners,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mktech.entity.InfoLine">
+    update INFO_LINE
+    set COMPANY_ID = #{companyId,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=INTEGER},
+      DEVICE_CODE = #{deviceCode,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      INSTRUCTION = #{instruction,jdbcType=VARCHAR},
+      LAST_UPDATE = #{lastUpdate,jdbcType=VARCHAR},
+      NUM_IN = #{numIn,jdbcType=DOUBLE},
+      NUM_OUT = #{numOut,jdbcType=DOUBLE},
+      LAST_BEGIN = #{lastBegin,jdbcType=VARCHAR},
+      HREF = #{href,jdbcType=VARCHAR},
+      INFO = #{info,jdbcType=VARCHAR},
+      SHAKS = #{shaks,jdbcType=VARCHAR},
+      ENERS = #{eners,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateLine" parameterType="com.mktech.entity.InfoLine">
+    update INFO_LINE
+    set 
+      INSTRUCTION = #{instruction,jdbcType=VARCHAR},
+      INFO = #{info,jdbcType=VARCHAR},
+      SHAKS = #{shaks,jdbcType=VARCHAR},
+      ENERS = #{eners,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByTask" parameterType="com.mktech.entity.InfoLine">
+    update INFO_LINE
+    set STATUS = #{status,jdbcType=INTEGER},
+      LAST_UPDATE = #{lastUpdate,jdbcType=VARCHAR},
+      NUM_IN = #{numIn,jdbcType=DOUBLE},
+      NUM_OUT = #{numOut,jdbcType=DOUBLE},
+      LAST_BEGIN = #{lastBegin,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultType="java.util.LinkedHashMap">
+    select 
+    L.ID, L.STATUS,L.NAME as SIGN,L.INSTRUCTION,C.NAME,L.HREF,L.LAST_UPDATE,L.NUM_IN,L.NUM_OUT,L.LAST_BEGIN,L.SHAKS,L.ENERS
+    from INFO_LINE L,INFO_COMPANY C where L.COMPANY_ID=C.ID
+   </select>
+    <select id="selectAllLines" resultType="java.util.LinkedHashMap">
+    select 
+       L.ID, L.STATUS,L.INSTRUCTION,L.NAME as SIGN, L.INFO,C.NAME,L.LAST_UPDATE,L.SHAKS,L.ENERS
+    from INFO_LINE L,INFO_COMPANY C where L.COMPANY_ID=C.ID
+   </select>
+   <select id="selectCompanyLineByCompanyId" resultType="java.util.LinkedHashMap">
+    select 
+       L.ID, L.STATUS,L.INSTRUCTION,L.NAME as SIGN, L.INFO,C.NAME,L.LAST_UPDATE,L.SHAKS,L.ENERS
+    from INFO_LINE L,INFO_COMPANY C where C.ID=#{id,jdbcType=INTEGER} and L.COMPANY_ID=C.ID
+   </select>
+   <select id="selectByCompany" resultType="java.util.LinkedHashMap" parameterType="java.lang.Integer">
+    select 
+    ID
+    from INFO_LINE where COMPANY_ID=#{companyId,jdbcType=INTEGER}
+   </select>
+   <select id="selectById" resultType="java.util.LinkedHashMap" parameterType="java.lang.Integer">
+    select 
+     L.ID, L.STATUS, L.NAME as ITEN, L.INSTRUCTION, L.LAST_UPDATE, L.NUM_IN, L.NUM_OUT, L.LAST_BEGIN,L.HREF,L.INFO,L.SHAKS,L.ENERS,C.NAME,C.ADDRESS
+    from INFO_LINE L, INFO_COMPANY C where L.ID=#{id,jdbcType=INTEGER} and L.COMPANY_ID=C.ID
+   </select>
+</mapper>

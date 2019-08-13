@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mktech.dao.InfoCompanyDao">
+  <resultMap id="BaseResultMap" type="com.mktech.entity.InfoCompany">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="INSTRUCTION" jdbcType="VARCHAR" property="instruction" />
+    <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+    <result column="HREF" jdbcType="VARCHAR" property="href" />
+    <result column="LOCATION_X" jdbcType="REAL" property="locationX" />
+    <result column="LOCATION_Y" jdbcType="REAL" property="locationY" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, NAME, ADDRESS, INSTRUCTION, PHONE, HREF, LOCATION_X, LOCATION_Y
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from INFO_COMPANY
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultType="java.util.LinkedHashMap">
+    select 
+    	ID, NAME, ADDRESS, INSTRUCTION, PHONE, HREF, LOCATION_X, LOCATION_Y,L.FLAG,L.NUMIN,L.NUMOUT,L.SUML
+    from INFO_COMPANY as C join (select COMPANY_ID,MAX(STATUS) as FLAG,SUM(NUM_IN) as NUMIN,SUM(NUM_OUT) as NUMOUT,COUNT(ID) as SUML from INFO_LINE group by COMPANY_ID) as L where C.ID=L.COMPANY_ID
+  </select>
+  <select id="selectAllCompany" resultType="java.util.LinkedHashMap">
+    select 
+    	<include refid="Base_Column_List" />
+    from INFO_COMPANY 
+  </select>
+    <select id="selectSelfCompanyById" resultType="java.util.LinkedHashMap">
+    select 
+    	<include refid="Base_Column_List" />
+    from INFO_COMPANY
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByXY" resultMap="BaseResultMap">
+    SELECT 
+    	<include refid="Base_Column_List" />
+    FROM INFO_COMPANY where abs(LOCATION_X - #{x,jdbcType=FLOAT}) &lt; 1e-5 AND abs(LOCATION_Y - #{y,jdbcType=FLOAT})  &lt; 1e-5;
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from INFO_COMPANY
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mktech.entity.InfoCompany">
+    insert into INFO_COMPANY (NAME, ADDRESS, 
+      INSTRUCTION, PHONE, HREF, 
+      LOCATION_X, LOCATION_Y)
+    values (#{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{instruction,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{href,jdbcType=VARCHAR}, 
+      #{locationX,jdbcType=REAL}, #{locationY,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mktech.entity.InfoCompany">
+    insert into INFO_COMPANY
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="address != null">
+        ADDRESS,
+      </if>
+      <if test="instruction != null">
+        INSTRUCTION,
+      </if>
+      <if test="phone != null">
+        PHONE,
+      </if>
+      <if test="href != null">
+        HREF,
+      </if>
+      <if test="locationX != null">
+        LOCATION_X,
+      </if>
+      <if test="locationY != null">
+        LOCATION_Y,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="instruction != null">
+        #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="href != null">
+        #{href,jdbcType=VARCHAR},
+      </if>
+      <if test="locationX != null">
+        #{locationX,jdbcType=REAL},
+      </if>
+      <if test="locationY != null">
+        #{locationY,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mktech.entity.InfoCompany">
+    update INFO_COMPANY
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="instruction != null">
+        INSTRUCTION = #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="href != null">
+        HREF = #{href,jdbcType=VARCHAR},
+      </if>
+      <if test="locationX != null">
+        LOCATION_X = #{locationX,jdbcType=REAL},
+      </if>
+      <if test="locationY != null">
+        LOCATION_Y = #{locationY,jdbcType=REAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mktech.entity.InfoCompany">
+    update INFO_COMPANY
+    set NAME = #{name,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      INSTRUCTION = #{instruction,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      HREF = #{href,jdbcType=VARCHAR},
+      LOCATION_X = #{locationX,jdbcType=REAL},
+      LOCATION_Y = #{locationY,jdbcType=REAL}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

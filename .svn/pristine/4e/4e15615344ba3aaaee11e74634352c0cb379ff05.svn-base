@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="    
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd  
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+	<context:component-scan base-package="com.mktech" />
+	<bean id="applicationContext"
+		class="org.apache.axis2.extensions.spring.receivers.ApplicationContextHolder" />
+	<bean id="mappingJacksonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="mappingJacksonHttpMessageConverter"></ref>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 保存变量到application范围 -->
+    <bean class="org.springframework.web.context.support.ServletContextAttributeExporter">
+        <property name="attributes">
+            <map>
+                <entry key="TmpLimo" value="${TmpLimo}"/>
+            </map>
+        </property>
+    </bean>
+
+	<!--规定模板文件的类型和位置 -->
+	<bean id="velocityConfigurer"
+		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<property name="resourceLoaderPath" value="/" />
+		<property name="velocityProperties">
+			<props>
+				<prop key="input.encoding">utf-8</prop>
+				<prop key="output.encoding">utf-8</prop>
+			</props>
+		</property>
+	</bean>
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"></property>
+        <property name="maxInMemorySize" value="10240000"></property>
+    </bean>
+	<!--配置附加工具，以及将后缀为html的文件交给下面的Resolver处理 -->
+	<bean id="velocityViewResolver"
+		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+		<property name="prefix" value="/" />
+		<property name="suffix" value=".html" />
+		<property name="order" value="0" />
+		<property name="contentType" value="text/html;charset=utf-8" />
+	</bean>
+	<bean id="jspviewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/"/>
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="1" />
+		<property name="contentType" value="text/html;charset=UTF-8" />
+	</bean>
+	<!-- 设置定时任务 -->
+	<task:annotation-driven scheduler="myScheduler"/> 
+	<task:scheduler id="myScheduler" pool-size="10"/>
+	<!-- lanjieqi -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<mvc:interceptors>	
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.mktech.interceptor.PassportInterceptor"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/main/**" />
+			<bean class="com.mktech.interceptor.LoginRequiredInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+</beans>  

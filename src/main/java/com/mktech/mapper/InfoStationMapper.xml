@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mktech.dao.InfoStationDao">
+  <resultMap id="BaseResultMap" type="com.mktech.entity.InfoStation">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="LINE_ID" jdbcType="INTEGER" property="lineId" />
+    <result column="STAT_ID" jdbcType="VARCHAR" property="statId" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="NICKNAME" jdbcType="VARCHAR" property="nickname" />
+    <result column="UNIT" jdbcType="VARCHAR" property="unit" />
+    <result column="INSTRUCTION" jdbcType="VARCHAR" property="instruction" />
+    <result column="MAX_VALUE" jdbcType="DOUBLE" property="maxValue" />
+    <result column="MIN_VALUE" jdbcType="DOUBLE" property="minValue" />
+    <result column="MAX_THRESHOLD" jdbcType="DOUBLE" property="maxThreshold" />
+    <result column="MIN_THRESHOLD" jdbcType="DOUBLE" property="minThreshold" />
+    <result column="RELATE_1" jdbcType="VARCHAR" property="relate1" />
+    <result column="RELATE_2" jdbcType="VARCHAR" property="relate2" />
+    <result column="RELATE_3" jdbcType="VARCHAR" property="relate3" />
+    <result column="ABNORMAL" jdbcType="INTEGER" property="abnormal" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, LINE_ID, STAT_ID, NAME, UNIT, INSTRUCTION, MAX_VALUE, MIN_VALUE, MAX_THRESHOLD, 
+    MIN_THRESHOLD, RELATE_1, RELATE_2, RELATE_3, ABNORMAL,NICKNAME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from INFO_STATION
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectNeedAbStations" parameterType="java.lang.Integer" resultType="java.util.LinkedHashMap">
+    select 
+    <include refid="Base_Column_List" />
+    from INFO_STATION
+    where LINE_ID = #{lineId,jdbcType=INTEGER} and ABNORMAL = 1
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from INFO_STATION
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mktech.entity.InfoStation">
+    insert into INFO_STATION ( LINE_ID, STAT_ID, 
+      NAME, NICKNAME, UNIT, INSTRUCTION, 
+      MAX_VALUE, MIN_VALUE, MAX_THRESHOLD, 
+      MIN_THRESHOLD, RELATE_1, RELATE_2, ABNORMAL)
+    values ( #{lineId,jdbcType=INTEGER}, #{statId,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{instruction,jdbcType=VARCHAR}, 
+      #{maxValue,jdbcType=DOUBLE}, #{minValue,jdbcType=DOUBLE}, #{maxThreshold,jdbcType=DOUBLE}, 
+      #{minThreshold,jdbcType=DOUBLE}, #{relate1,jdbcType=VARCHAR}, #{relate2,jdbcType=VARCHAR}, #{abnormal,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mktech.entity.InfoStation">
+    insert into INFO_STATION
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="lineId != null">
+        LINE_ID,
+      </if>
+      <if test="statId != null">
+        STAT_ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="unit != null">
+        UNIT,
+      </if>
+      <if test="instruction != null">
+        INSTRUCTION,
+      </if>
+      <if test="maxValue != null">
+        MAX_VALUE,
+      </if>
+      <if test="minValue != null">
+        MIN_VALUE,
+      </if>
+      <if test="maxThreshold != null">
+        MAX_THRESHOLD,
+      </if>
+      <if test="minThreshold != null">
+        MIN_THRESHOLD,
+      </if>
+      <if test="relate1 != null">
+        RELATE_1,
+      </if>
+      <if test="relate2 != null">
+        RELATE_2,
+      </if>
+      <if test="relate3 != null">
+        RELATE_3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="lineId != null">
+        #{lineId,jdbcType=INTEGER},
+      </if>
+      <if test="statId != null">
+        #{statId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="instruction != null">
+        #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="maxValue != null">
+        #{maxValue,jdbcType=DOUBLE},
+      </if>
+      <if test="minValue != null">
+        #{minValue,jdbcType=DOUBLE},
+      </if>
+      <if test="maxThreshold != null">
+        #{maxThreshold,jdbcType=DOUBLE},
+      </if>
+      <if test="minThreshold != null">
+        #{minThreshold,jdbcType=DOUBLE},
+      </if>
+      <if test="relate1 != null">
+        #{relate1,jdbcType=VARCHAR},
+      </if>
+      <if test="relate2 != null">
+        #{relate2,jdbcType=VARCHAR},
+      </if>
+      <if test="relate3 != null">
+        #{relate3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mktech.entity.InfoStation">
+    update INFO_STATION
+    <set>
+      <if test="lineId != null">
+        LINE_ID = #{lineId,jdbcType=INTEGER},
+      </if>
+      <if test="statId != null">
+        STAT_ID = #{statId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        UNIT = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="instruction != null">
+        INSTRUCTION = #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="maxValue != null">
+        MAX_VALUE = #{maxValue,jdbcType=DOUBLE},
+      </if>
+      <if test="minValue != null">
+        MIN_VALUE = #{minValue,jdbcType=DOUBLE},
+      </if>
+      <if test="maxThreshold != null">
+        MAX_THRESHOLD = #{maxThreshold,jdbcType=DOUBLE},
+      </if>
+      <if test="minThreshold != null">
+        MIN_THRESHOLD = #{minThreshold,jdbcType=DOUBLE},
+      </if>
+      <if test="relate1 != null">
+        RELATE_1 = #{relate1,jdbcType=VARCHAR},
+      </if>
+      <if test="relate2 != null">
+        RELATE_2 = #{relate2,jdbcType=VARCHAR},
+      </if>
+      <if test="relate3 != null">
+        RELATE_3 = #{relate3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mktech.entity.InfoStation">
+    update INFO_STATION
+    set LINE_ID = #{lineId,jdbcType=INTEGER},
+      STAT_ID = #{statId,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      UNIT = #{unit,jdbcType=VARCHAR},
+      INSTRUCTION = #{instruction,jdbcType=VARCHAR},
+      MAX_VALUE = #{maxValue,jdbcType=DOUBLE},
+      MIN_VALUE = #{minValue,jdbcType=DOUBLE},
+      MAX_THRESHOLD = #{maxThreshold,jdbcType=DOUBLE},
+      MIN_THRESHOLD = #{minThreshold,jdbcType=DOUBLE},
+      RELATE_1 = #{relate1,jdbcType=VARCHAR},
+      RELATE_2 = #{relate2,jdbcType=VARCHAR},
+      RELATE_3 = #{relate3,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByLine" parameterType="java.lang.Integer" resultType="java.util.LinkedHashMap">
+    select 
+    <include refid="Base_Column_List" />
+    from INFO_STATION
+    where LINE_ID = #{lineId,jdbcType=INTEGER}
+  </select>
+   <select id="checkifExist" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from INFO_STATION
+    where LINE_ID = #{lineId,jdbcType=INTEGER} limit 1
+  </select>
+   <select id="getAllLines" resultType="java.util.LinkedHashMap">
+    select 
+    	A.ID, A.LINE_ID as SIGN,B.INSTRUCTION, STAT_ID, A.NAME,NICKNAME,ABNORMAL,UNIT, A.INSTRUCTION as INFO, MAX_THRESHOLD, 
+    	MIN_THRESHOLD, RELATE_1, RELATE_2, RELATE_3
+    from INFO_STATION as A,INFO_LINE as B where A.LINE_ID = B.ID
+  </select>
+  <select id="getCompanyStation" resultType="java.util.LinkedHashMap">
+    select 
+    	A.ID, A.LINE_ID as SIGN,B.INSTRUCTION, STAT_ID, A.NAME,NICKNAME,ABNORMAL,UNIT, A.INSTRUCTION as INFO, MAX_THRESHOLD, 
+    	MIN_THRESHOLD, RELATE_1, RELATE_2, RELATE_3, C.ID
+    from INFO_STATION as A,INFO_LINE as B,INFO_COMPANY as C where A.LINE_ID = B.ID and B.COMPANY_ID = C.ID and C.ID = #{companyid,jdbcType=INTEGER}
+  </select>
+  <select id="check" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from INFO_STATION
+    where LINE_ID = #{lineid,jdbcType=INTEGER} and STAT_ID=#{statid,jdbcType=VARCHAR}
+  </select>
+  <update id="updateStat" parameterType="com.mktech.entity.InfoStation">
+    update INFO_STATION
+    set 
+      NAME = #{name,jdbcType=VARCHAR},
+      NICKNAME = #{nickname,jdbcType=VARCHAR},
+      UNIT = #{unit,jdbcType=VARCHAR},
+      INSTRUCTION = #{instruction,jdbcType=VARCHAR},
+      MAX_VALUE = #{maxValue,jdbcType=DOUBLE},
+      MIN_VALUE = #{minValue,jdbcType=DOUBLE},
+      MAX_THRESHOLD = #{maxThreshold,jdbcType=DOUBLE},
+      MIN_THRESHOLD = #{minThreshold,jdbcType=DOUBLE},
+      RELATE_1 = #{relate1,jdbcType=VARCHAR},
+      RELATE_2 = #{relate2,jdbcType=VARCHAR},
+      ABNORMAL = #{abnormal,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

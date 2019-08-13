@@ -1,0 +1,785 @@
+window.numin = '0';
+window.onload=function(){
+	login();
+}
+
+Highcharts.setOptions({ global: { useUTC: false } });
+//引导参数！
+var line_id = 5;
+//产线介绍+运行工况(初始化)
+function login(){
+	$.ajax({
+    	type:'POST',
+    	url:'../checkLogin.do',
+    	timeout:2000,
+    	async:false,//同步，保证有返回值(配合return使用)，为确保用户体验，使用异步+赋值的方法
+    	success:function(data){
+    		if(data!='0'){
+//    			console.log(data);
+    			initButton(data,line_id);
+    			getFactories();
+    			initchart3();//初始化高压油压图
+    			initchart2();//初始化水分子矿渣所占比
+    			
+    			initchart1();//初始化立磨振动趋势图	
+    			predictadd5();//先预测5个点
+    			initbox();//初始化异常推送
+    			roll(200);//报警信息2s刷新一次
+    			getLimo();//获取所有值
+    			minuteNew();//执行获取分钟最新值
+    			getStations();//获取tag的属性attr
+    			var abnormal=self.setInterval("initbox()",2000*30);
+    			var it = self.setInterval("refreshFactories()",2000);
+    			var li = self.setInterval("getLimo()",2000);
+    			var lt = self.setInterval("minuteNew()", 2000*30);
+    			var add= self.setInterval("predictadd5()", 2000*5);
+    		}else{
+    			alert('请先登录');
+        		window.location.href='/mkcenter';
+    		}
+    	},
+    	error:function(e){
+    		alert('初始化失败，将返回主页！');
+    		window.location.href='/mkcenter';
+    		return;
+    	}
+	});
+}
+function getFactories(){
+	$.ajax({
+	    	type:'GET',
+	    	url:'../limo/getLine.do?id='+line_id,
+	    	//async:false,//同步，保证有返回值(配合return使用)，为确保用户体验，使用异步+赋值的方法
+	    	success:function(data){
+	    		var json =  eval("("+data+")");
+	    		//console.log(json);
+	    		for(var key in json.list){
+	    			var t = '0';
+	    			if(json.list[key].STATUS=='1'){
+	    				t = setTime(new Date().getTime()-json.list[key].LAST_BEGIN+4*3600*1000);
+	    			}
+	    			$("#fac_name").html(json.list[key].INSTRUCTION);
+	    			$("#fac_inc").html(json.list[key].NAME);
+	    			$("#fac_add").html(json.list[key].ADDRESS);
+	    			$("#fac_ins").html(json.list[key].INFO);
+	    			$("#sta_now").html(setStatus(json.list[key].STATUS));
+	    			$("#sta_time").html(t);
+	    			window.numin = json.list[key].NUM_IN;
+	    		}
+	    	},
+	    	error:function(e){
+	    		alert('初始化失败');
+	    	}
+	 })
+	 //return factories; 
+};
+//初始化工位标签详细信息
+function getStations(){
+	$.ajax({
+	    	type:'GET',
+	    	url:'../limo/getStation.do?line_id='+line_id,
+	    	//async:false,//同步，保证有返回值(配合return使用)，为确保用户体验，使用异步+赋值的方法
+	    	success:function(data){
+	    		var json =  eval("("+data+")");
+	    		for(var key in json.list){
+	    			if(parseInt(key)<96){
+	    				var num = parseInt(key)+1;
+	    			}else{
+	    				var num = parseInt(key)+1;
+	    			}
+	    			var tag = 'L'+pad(num,4);
+	    			$('#'+tag).attr("title",json.list[key].NAME+"  单位："+json.list[key].UNIT);
+	    		}
+	    	},
+	    	error:function(e){
+	    		alert('加载工位信息失败');
+	    	}
+	 })
+	 //return factories; 
+};
+//刷新工况
+function refreshFactories(){
+	$.ajax({
+	    	type:'GET',
+	    	url:'../limo/getLine.do?id='+line_id,
+	    	//async:false,//同步，保证有返回值(配合return使用)，为确保用户体验，使用异步+赋值的方法
+	    	success:function(data){
+	    		var json =  eval("("+data+")");
+	    		for(var key in json.list){
+	    			var t = '0';
+	    			if(json.list[key].STATUS=='1'){
+	    				t = setTime(new Date().getTime()-json.list[key].LAST_BEGIN+4*3600*1000);
+	    			}
+	    			$("#sta_now").html(setStatus(json.list[key].STATUS));
+	    			$("#sta_time").html(t);
+	    		}
+	    	},
+	    	error:function(e){
+	    		console.log('获取数据失败');
+	    	}
+	 })
+};
+
+//获取图表和定位点
+function getLimo(){
+	$.ajax({
+	    	type:'GET',
+	    	url:'../jiangyin/getNew.do',
+	    	//async:false,//同步，保证有返回值(配合return使用)，为确保用户体验，使用异步+赋值的方法
+	    	success:function(data){
+	    		var json =  eval("("+data+")");
+	    		//console.log(json);
+	    		var pieData = [];
+	    		for(var key in json.list){
+	    			//左下模块----水分占比
+	    			var x = json.list[key].TIMESTAMP-8*3600*1000;
+	    			//console.log(x);
+	    			var y = json.list[key].L0097;
+	    			var y1 = json.list[key].L0100;
+	    			var y2=json.list[key].L0050;
+					chart3.series[0].addPoint([x,y1],true,true);
+					lw.series[0].addPoint([x,y2],true,true);
+					$("#now").html(y.toFixed(2));
+					$("#sta_out").html(((json.list[key].L0002+json.list[key].L0005+json.list[key].L0008)*0.92).toFixed(2));
+					//电流总量
+	    			var a = json.list[key].L0013+json.list[key].L0064+json.list[key].L0079;
+	    			if(window.numin=='0'){
+	    				$("#sta_cos").html('0');
+	    			}else{
+	    				$("#sta_cos").html(parseFloat(window.numin/a).toFixed(2));
+	    			}
+	    			var date = new Date(json.list[key].TIMESTAMP-8*3600*1000);
+	    			$("#time").html(date.format("yyyy-MM-dd hh:mm:ss"));	
+	    			$("#OUTVALUE").html(parseFloat(json.list[key].OUTVALUE).toFixed(2));
+	    			for(var i = 1;i<=200;i++){
+	    				var l = "L"+pad(i,4);
+	    				$("#"+l).html(((json.list[key])[l]).toFixed(2));
+	    			}
+	    		}
+	    	},
+	    	error:function(e){
+	    		console.log('获取数据失败');
+	    	}
+	 });
+/*	$.ajax({
+		type:'GET',
+		url: '../predict/getNew.do',
+		success:function(data){
+			var json=eval("("+data+")");
+			//console.log(json);
+			for(var key in json.list){
+				var x = json.list[key].TIMESTAMP -8*3600*1000;
+				//console.log(x);
+				var y = json.list[key].L0050;					
+				lw.series[1].addPoint([x,y],true,true);
+				//console.log(y);
+			}
+		},
+		error:function(e){
+			console.log('获取失败');
+		}
+	})*/
+	 
+};
+
+
+Date.prototype.format =function(format)
+{
+	var o = {
+	"M+" : this.getMonth()+1, //month
+	"d+" : this.getDate(), //day
+	"h+" : this.getHours(), //hour
+	"m+" : this.getMinutes(), //minute
+	"s+" : this.getSeconds(), //second
+	"q+" : Math.floor((this.getMonth()+3)/3), //quarter
+	"S" : this.getMilliseconds() //millisecond
+	}
+	if(/(y+)/.test(format)) format=format.replace(RegExp.$1,(this.getFullYear()+"").substr(4- RegExp.$1.length));
+	for(var k in o)
+		if(new RegExp("("+ k +")").test(format))
+		format = format.replace(RegExp.$1,RegExp.$1.length==1? o[k] :("00"+ o[k]).substr((""+ o[k]).length));
+	return format;
+}
+//初始化图高压油压趋势
+function initchart3(){
+	var chart3Data=[];
+	$.ajax({
+	    	type:'GET',
+	    	url:'../jiangyin/get.do',
+	    	//async:false,//同步，保证有返回值(配合return使用)，为确保用户体验，使用异步+赋值的方法
+	    	success:function(data){
+	    		var json =  eval("("+data+")");
+	    		//console.log(json);
+	    		for(var key in json.list){
+	    			chart3Data.push({
+						x : json.list[key].TIMESTAMP-3600*1000*8,
+						y : json.list[key].L0100
+					});
+
+	    		}
+	    		chart3.series[0].setData(chart3Data);
+	    	},
+	    	error:function(e){
+	    		alert('获取数据失败');
+	    	}
+	 })
+	 //return factories; 
+};
+
+
+//初始化图水分在矿渣所占比数据
+function initchart2(){
+	var chart2Data=[];
+	$.ajax({
+	    	type:'GET',
+	    	url:'../jiangyin/getminout100.do',
+	    	//async:false,//同步，保证有返回值(配合return使用)，为确保用户体验，使用异步+赋值的方法
+	    	success:function(data){
+	    		var json =  eval("("+data+")");
+	    		//console.log(json);
+	    		for(var i=0;i<json.length;i++){
+	    			chart2Data.push({
+						x : json[i].TIMESTAMP-3600*1000*8,
+						y : json[i].L0097
+					});
+	    			
+	    		}
+	    		//console.log(chart2Data);
+	    		spl.series[0].setData(chart2Data);
+	    	},
+	    	error:function(e){
+	    		alert('获取数据失败');
+	    	}
+	 })
+	 //return factories; 
+};
+
+function minuteNew(){
+	$.ajax({
+		type:'GET',
+		url:'../jiangyin/getminoutNew.do',
+		success:function(data){
+			var json =  eval("("+data+")");
+			//console.log(json);
+			for(var k in json){
+				var x= json.TIMESTAMP-3600*1000*8;
+				var y= json.L0097;				
+			}
+			//console.log(x);
+			//console.log(y);
+			spl.series[0].addPoint([x,y],true,true);
+		},
+		error:function(e){
+    		alert('获取数据失败');
+    	}
+	})
+}
+
+//
+function initchart1(){
+	var initData=[];
+	var initData2=[];
+	var count=0;
+	var count1=0;
+	$.ajax({
+		type:'GET',
+		url: '../jiangyin/get.do',
+		success:function(data){
+			var json=eval("("+data+")");
+			//console.log(json);
+			for(var key in json.list){
+				count= count+1;
+				if(count>=30){
+					initData.push({
+	    				x : json.list[key].TIMESTAMP-3600*1000*8,
+						y : json.list[key].L0050
+						
+	    			});
+				}
+				
+			}
+			//console.log(initData);
+			lw.series[0].setData(initData);
+		},
+		error:function(e){
+			alert('获取数据失败');
+		}
+	});
+	
+	$.ajax({
+		type:'GET',
+		url: '../predict/get100.do',
+		success:function(data){
+			var json=eval("("+data+")");
+			
+			for(var key in json.list){
+				count1=count1+1;
+				if(count1>=30){
+					initData2.push({
+	    				x : json.list[key].TIMESTAMP-3600*1000*8,
+						y : json.list[key].L0050
+	    			});
+				}
+				
+				
+			}
+			lw.series[1].setData(initData2);
+			//console.log(initData2);
+		},
+		error:function(e){
+			alert('获取数据失败');
+		}
+	});
+	
+	
+	
+
+}
+
+
+function predictadd5(){
+	$.ajax({
+		type:"GET",
+		url: "../predict/getNew.do",
+		success:function(data){
+			var json=eval("("+data+")");
+			//console.log(json);
+			var count=0;
+			for(var key in json.list){
+				var x = json.list[key].TIMESTAMP -8*3600*1000;
+				var y = json.list[key].L0050;					
+				lw.series[1].addPoint([x,y],true,true);
+				count++;
+				//console.log(count);
+			}
+		},
+		error:function(e){
+			alert('获取数据失败');
+		}
+			
+	})
+}
+
+//chart2
+var spl = Highcharts.chart('percent',{
+    	chart: {
+			type: 'area',
+			backgroundColor:'transparent',
+			marginRight: 10,
+			zoomType:'x'
+    		},
+		title: {
+			floating:false,
+			text:null,
+			style:{
+				fontSize:'16px',
+				fontWeight:'bold',
+				color:'#cccccc',
+				fontFamily:'微软雅黑'
+			}
+		},
+		xAxis: {
+				type: 'datetime',
+				tickPixelInterval:100,
+				maxPadding:0.5,
+				labels: {
+					style:{
+						color:'#cccccc'
+					}
+				},
+		},
+		yAxis: {
+				title: {
+						text: null
+				},
+				labels: {
+					style:{
+						color:'#cccccc'
+					},
+					formatter: function () {
+						return this.value + ' %';
+					},
+				},
+				gridLineColor:'rgba(156,156,156,0.4)',
+				tickPixelInterval:25,
+	//			maxPadding:0.4,
+				minPadding:0.4,
+				min:0,
+				
+
+		},
+		credits: {
+			enabled: false
+		},
+		tooltip: {
+			enabled:true,
+			formatter: function () {
+						return '<b>水分占比</b><br/>' +
+								Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+								Highcharts.numberFormat(this.y, 2);
+				},
+			crosshairs: [true, true]
+		
+		},
+		legend: {
+				enabled: false
+		},
+		plotOptions: {
+			series: {
+				marker: {
+					enabled: false
+				}
+			}
+		},
+		series: [{
+				name:[],
+				data:[]
+		}]
+    });
+//chart1
+var	lw = Highcharts.chart('hourout', {
+		chart: {
+				type: 'spline',
+				backgroundColor:'transparent',
+				marginRight: 10,
+				zoomType:'x',
+				
+		},
+		title: {
+			floating:true,
+			text: ''
+		},
+		xAxis: {
+				type: 'datetime',
+				tickPixelInterval:70,
+				maxPadding:0.5,
+				labels: {
+					style:{
+						color:'#cccccc'
+					},
+					step:2
+				},
+		},
+		yAxis: {
+				title: {
+					text: '',
+					style:{
+						color:'#cccccc'
+					},
+				},
+				gridLineColor:'rgba(156,156,156,0.4)',
+				tickPixelInterval:25,
+				labels: {
+					style:{
+						color:'#cccccc'
+					},
+					formatter: function () {
+						return this.value + ' mm';
+					},
+				},
+//				maxPadding:0.4,
+				minPadding:0.4,
+				
+		},
+		credits: {
+			enabled: false
+		},
+		tooltip: {
+			enabled:true,
+			formatter: function () {
+						return  this.series.name +
+								Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+								Highcharts.numberFormat(this.y, 2)+"mm";
+				}
+		},
+		legend: {
+				enabled: false
+		},
+		plotOptions: {
+
+		series: {
+			marker: {
+				enabled: false
+			}
+		}
+		},
+		series: [{
+			name:"立磨振动实时值",
+			data:[],
+			color:'	#4682B4',
+
+	},
+		{
+			name:"立磨振动预测值",
+			data:[],
+			color:'	#FFFACD',
+
+	}]
+	});
+//chart3
+var	chart3 = Highcharts.chart('chart3', {
+	chart: {
+		type: 'area',
+		backgroundColor:'transparent',
+		marginRight: 10,
+		zoomType:'x'
+	},
+	title: {
+		floating:true,
+		text: ''
+	},
+	xAxis: {
+		type: 'datetime',
+		tickPixelInterval:70,
+		maxPadding:0.5,
+		labels: {
+			style:{
+				color:'#cccccc'
+			},
+			step:2
+		},
+	},
+	yAxis: {
+		title: {
+			text: '',
+			style:{
+				color:'#cccccc'
+			},
+		},
+		gridLineColor:'rgba(156,156,156,0.4)',
+		tickPixelInterval:25,
+		labels: {
+			style:{
+				color:'#cccccc'
+			},
+			formatter: function () {
+				return this.value + ' Pa';
+			},
+		},
+//				maxPadding:0.4,
+		minPadding:0.4,
+		
+	},
+	credits: {
+		enabled: false
+	},
+	tooltip: {
+		enabled:true,
+		formatter: function () {
+			return '<b>高压油压</b><br/>'  +
+			Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+			Highcharts.numberFormat(this.y, 2);
+		}
+	},
+	legend: {
+		enabled: false
+	},
+	plotOptions: {
+		
+		series: {
+			marker: {
+				enabled: false
+			}
+		}
+	},
+	series: [{
+		data:[]
+	}]
+});
+
+
+function setStatus(e){
+	if(e=='1'){
+		return '运行中';
+	}else if(e=='0'){
+		return '待机中';
+	}else if(e=='-1'){
+		return '待维修';
+	}else{
+		alert('数据有问题！');
+	}
+}
+
+function setTime(e){
+	e = parseFloat(e);
+	var h = Math.floor(e/1000/3600);
+	var m =	Math.floor((e/1000-h*3600)/60);
+	var s = Math.floor(e/1000-h*3600-m*60);
+	var ms = e-h*3600*1000-m*60*1000-s*1000;
+	var t = h+"小时"+m+"分"+s+"秒"+ms;
+	return t;
+}
+
+//自动补0
+function pad(num, n) {
+    var len = num.toString().length;
+    while(len < n) {
+        num = "0" + num;
+        len++;
+    }
+    return num;
+}
+
+function timestampToTime(e){
+	var date =new Date(e);
+	var Y = date.getFullYear() + '-';
+    var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+    var D = date.getDate() + ' ';
+    var h = date.getHours()  +':';
+    var m = date.getMinutes() + ':';
+    var s = date.getSeconds();
+    return Y+M+D+h+m+s;
+}
+
+function roll(t) {
+    var ul1 = document.getElementById("ul1");
+    var ul2 = document.getElementById("ul2");
+    var box = document.getElementById("box");
+    ul2.innerHTML = ul1.innerHTML;
+    box.scrollTop = 0;
+    var timer = setInterval(rollStart, t);
+    //console.log(1);
+    box.onmouseover = function () {
+        clearInterval(timer)
+    }
+    box.onmouseout = function () {
+        timer = setInterval(rollStart, t);
+    }
+}
+
+function rollStart() {
+    if (box.scrollTop >= ul1.scrollHeight) {
+        box.scrollTop = 0;
+    } else {
+        box.scrollTop++;
+    }
+}
+
+function initbox(){
+	$.ajax({
+    	type:'GET',
+    	url:'../jiangyin/getAbnormalInfo.do',
+    	timeout:2000,
+    	async:false,//同步，保证有返回值(配合return使用)，为确保用户体验，使用异步+赋值的方法
+    	success:function(data){
+    		var list =  eval("("+data+")");
+   		//	console.log(list);
+    		if(list != null){
+    			$("#ul1").find("li").remove();    		
+    			for(var i=0;i<list.length;i++){
+    				if(list[i]!=null){
+    					$("#ul1").append('<li>'+list[i]+'</li>');
+    					}
+    			}
+    		}
+    	},
+    	error:function(e){
+    		alert('初始化失败');
+    	}
+	});
+}
+
+function tableshow(){
+	create_win=layer.open({
+		  type: 1,
+		  title:'日志记录',
+	      area: ['1100px', '500px'],
+	      left: '400px',
+	      anim:0,
+	      shadeClose: true, //点击遮罩关闭
+	      content: $("#alarmShow")
+	});
+	
+	$('#content').bootstrapTable({
+		ajax:function(request){
+			$.ajax({
+		    	type:'GET',
+		    	url:'../jiangyin/getAbnormalLog.do',
+		    	success:function(data){
+		    		//下面这条语句必须存在，不然加载不出数据……原因可能和源码有关 
+		    		request.success({ row:data });
+		    		var json =  eval("("+data+")");
+		    		//console.log(json);
+		    		var dt = [];			    		
+		    		for(var key in json.list){
+		    			var date = json.list[key].TIMESTAMP-0;
+		    			var time = timestampToTime(date);
+		    			dt.push({			    				
+		    				ID:json.list[key].ID,
+		    				TIME:time,
+		    				STAT_ID:json.list[key].STATION_ID,
+		    				STAT_NAME:json.list[key].STATION_NAME,
+		    				NOWDATA:json.list[key].NOW_DATA,			    				
+		    				MIN:parseFloat(json.list[key].MIN_THRESHOLD).toFixed(2),
+		    				MAX:parseFloat(json.list[key].MAX_THRESHOLD).toFixed(2),
+		    			    TEXT:json.list[key].ALARM_SHOW,
+		    			});
+		    		}
+		    		$('#content').bootstrapTable('load', dt);
+		    	},
+		    	error:function(e){
+		    		layer.msg('加载失败，请刷新页面', {
+						  icon: 2,
+						  time: 1500 //2秒关闭（如果不配置，默认是3秒）
+					});
+		    	}
+			});
+		},
+		pagination: true,
+		toolbar:'#toolbar',
+		singleSelect:true,
+		queryParamsType : "undefined",
+		clickToSelect:true,	
+		pageSize: 5,
+		pageNumber: 1,
+		pageList: "[10, 25, 50]",
+		showToggle: true,
+		showRefresh: true,
+		showColumns:true,
+		search: true,
+		maintainSelected:true,
+		sidePagination:"client",
+		sorttable: "true",
+		sortOrder: "desc",
+		sortName: "ID",
+	    uniqueId: "ID", //每一行的唯一标识，一般为主键列
+	    columns: [
+	                {	
+	                    radio: true,      
+	                },{
+	                    field: 'ID',
+	                    title: '序号',
+	                    sortable: true,
+	                },{
+	                    field: 'TIME',
+	                    title: '时间',
+	                    sortable: true,
+	                },{
+	                    field: 'STAT_ID',
+	                    title: '工位标识',
+	                    sortable: true,
+	                },{
+	                    field: 'STAT_NAME',
+	                    title: '工位名称',
+	                },{
+	                    field: 'NOWDATA',
+	                    title: '瞬时值',
+	                },{
+	                    field: 'MIN',
+	                    title: '下预警值<i class="fa fa-question-circle-o"></i>',
+	                    titleTooltip:'该值为工位的下预警值，在工位面板中的曲线显示'
+	                },{
+	                    field: 'MAX',
+	                    title: '上预警值<i class="fa fa-question-circle-o"></i>',
+	                    titleTooltip:'该值为工位的上预警值，在工位面板中的曲线显示'
+	                },{
+	                    field: 'TEXT',
+	                    title: '描述',
+	                }
+	            ],
+		});
+}
+
+
+
+           

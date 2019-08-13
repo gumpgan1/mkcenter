@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@CIMS213—工业大屏后台管理系统</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/local.css" />
+    <link rel="stylesheet" type="text/css" href="js/layer/theme/default/layer.css" />
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-table.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+    <!-- you need to include the shieldui css and js assets in order for the charts to work --> 
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/layer/layer.js"></script>
+    <style>
+    	.self_btn {background:transparent;border-width:2px;border-color:#cccccc}
+    	#stattable {background:transparent}
+    	#stattable thead{background:#000000}
+    	/* 特地注上td,防止因local.css中td:hover样式干扰tr:hover */
+    	#stattable tbody>tr:hover {
+			background-color: rgba(42, 159, 214,0.5)
+		}
+		#stattable tbody>tr:hover>td{
+			background:none;
+		}
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+		  <!--   导航栏		  -->	
+          <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">CIMS-213</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul id="active" class="nav navbar-nav side-nav">
+                    <li id="_index"><a href="_index.html"><i class="fa fa-bullseye"></i> 总览</a></li>
+                    <li id="_self"><a href="_self.html"><i class="fa fa-user" style="margin-left:3px"></i> 个人信息</a></li>
+                    
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-user">
+					 <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span id="time"></span></a>
+                    </li>
+                    <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>&nbsp;&nbsp;<span id="user"></span>&nbsp;&nbsp;<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:void(0)" onclick="logout()"><i class="fa fa-power-off"></i>登出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+		<!-- 导航栏结束 -->
+		<!-- 主窗体开始 -->
+        <div id="page-wrapper">
+           <div class="row">
+                <div class="col-lg-12">
+                    <h1>工位管理<small> 管理产线下属的工位信息</small></h1>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+            	<div class="col-lg-12">
+	            	<table id="stattable" class="table table-hover" >
+					</table>
+            	</div>
+				<div id="toolbar" class="btn-group">
+			        <button id="btn-add" type="button" class="btn self_btn btn-default">
+			            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+			        </button>
+			        <button id="btn-edit" type="button" class="btn self_btn btn-default">
+			            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+			        </button>
+			        <button id="btn-delete" type="button" class="btn self_btn btn-default">
+			            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+			        </button>
+			        <button id="btn-abnormal" type="button" class="btn self_btn btn-default">
+			        	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>阈值预测
+			        </button>
+  			    </div>  
+            </div>  
+        </div>
+        <!-- 主窗体结束 -->
+    </div>
+</body>
+<form id="createStat" style="color:#696666d9;display:none">
+	<br/>
+	<div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-users"></i> 所属产线:
+         </label>
+         <div class="col-md-9">
+              <select id="lineid" name="lineid" style="width:100%;height:38px;"></select>
+         </div>
+     </div>  
+     <br/>
+     <div class="row">
+         <label for="new_statid" class="col-md-3" style="margin-top:10px">
+             	&nbsp;<i class="fa fa-user"></i>&nbsp;工位标识:
+         </label>
+         <div class="col-md-9">
+             <input type="text" name="statid" class="form-control" id="new_statid" placeholder="请输入工位标识名">
+         </div>
+     </div> 
+     <br/>
+     <div class="row">
+         <label for="new_name" class="col-md-3" style="margin-top:10px">
+             	&nbsp;<i class="fa fa-user"></i>&nbsp;工位名称:
+         </label>
+         <div class="col-md-9">
+             <input type="text" name="name" class="form-control" id="new_name" placeholder="请输入工位名称">
+         </div>
+     </div> 
+     <br/>
+     <div class="row">
+         <label for="new_name" class="col-md-3" style="margin-top:10px">
+             	&nbsp;<i class="fa fa-user"></i>&nbsp;工位别名:
+         </label>
+         <div class="col-md-9">
+             <input type="text" name="nickname" class="form-control" id="new_nickname" placeholder="请输入工位别名">
+         </div>
+     </div> 
+     <br/>
+     <div class="row">
+         <label for="new_unit" class="col-md-3" style="margin-top:10px">
+             	&nbsp;<i class="fa fa-user"></i>&nbsp单位:
+         </label>
+         <div class="col-md-9">
+             <input type="text" name="unit" class="form-control" id="new_unit" placeholder="请输入单位">
+         </div>
+     </div> 
+     <br/>
+     <div class="row">
+         <label for="new_instruction" class="col-md-3" style="margin-top:10px">
+             	&nbsp;<i class="fa fa-user"></i>&nbsp工位介绍:
+         </label>
+         <div class="col-md-9">
+             <input type="text" name="instruction" class="form-control" id="new_instruction" placeholder="请输入工位介绍">
+         </div>
+     </div> 
+     <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-bar-chart"></i> 预警值:
+         </label>
+         <div class="col-md-1">
+	            <label class="form-label" style="margin-top:10px">下：</label>
+         </div>
+         <div class="col-md-3">
+            <input type="text" name="min" class="form-control" id="min" placeholder="请输入下预警值">
+         </div>
+         <div class="col-md-offset-1 col-md-1">
+            <label class="form-label" style="margin-top:10px">上：</label>
+         </div>
+         <div class="col-md-3">
+             <input type="text" name="max" class="form-control" id="max" placeholder="请输入上预警值">
+         </div>
+     </div>
+     <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-bar-chart"></i> 相关参数A:
+         </label>
+         <div class="col-md-1">
+	            <label class="form-label" style="margin-top:10px">名：</label>
+         </div>
+         <div class="col-md-3">
+            <select id="relate1n" name="relate1n" style="width:100%;height:38px;"></select>
+         </div>
+         <div class="col-md-offset-1 col-md-1">
+            <label class="form-label" style="margin-top:10px">值：</label>
+         </div>
+         <div class="col-md-3">
+             <input type="text" name="relate1v" class="form-control" id="relate1v" placeholder="请输入相关系数">
+         </div>
+     </div>
+     <br/>
+      <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-bar-chart"></i> 相关参数B:
+         </label>
+         <div class="col-md-1">
+	            <label class="form-label" style="margin-top:10px">名：</label>
+         </div>
+         <div class="col-md-3">
+            <select id="relate2n" name="relate2n" style="width:100%;height:38px;"></select>
+         </div>
+         <div class="col-md-offset-1 col-md-1">
+            <label class="form-label" style="margin-top:10px">值：</label>
+         </div>
+         <div class="col-md-3">
+             <input type="text" name="relate2v" class="form-control" id="relate2v" placeholder="请输入相关系数">
+         </div>
+     </div>
+     <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	是否推送异常:
+         </label>
+         <div class="col-md-8" id="active1">
+             <label class="radio" style="margin-top:10px">
+                <input type="radio" name="abnormal" id="isabnormal" value="1">
+                	 是
+             </label>  
+             <label class="radio" style="margin-top:10px">
+                <input type="radio" name="abnormal" id="noabnormal" value="0" checked >
+                	 否
+             </label>  
+     	</div>
+     </div>
+     <br/>
+     <div class="row">
+    	<div class="col-lg-offset-3 col-lg-2">
+    		<button type="button" onclick="resetnew()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			重置	              		    
+            </button>
+    	</div>
+    	<div class="col-lg-offset-2 col-lg-2">
+    		<button type="button" id="new_ok" onclick="createStat()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			 确定
+     		</button>
+    	</div>
+   	</div>
+</form>
+<form id="changeStat" style="color:#696666d9;display:none">
+	<br/>
+	 <input type="hidden" name="id" id="change_id"/>
+	<div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-users"></i> 所属产线:
+         </label>
+         <div class="col-md-9"  style="color:red;margin-top:10px;">
+             <label id="change_line"></label>
+         </div>
+     </div>  
+     <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	&nbsp;<i class="fa fa-user"></i>&nbsp;工位标识:
+         </label>
+         <div class="col-md-9"  style="color:red;margin-top:10px;">
+             <label id="change_statid"></label>
+         </div>
+     </div> 
+     <br/>
+     <div class="row">
+         <label for="change_name" class="col-md-3" style="margin-top:10px">
+             	&nbsp;<i class="fa fa-user"></i>&nbsp;工位名称:
+         </label>
+         <div class="col-md-9">
+             <input type="text" name="name" class="form-control" id="change_name" placeholder="请输入工位名称">
+         </div>
+     </div> 
+     <br/>
+          <div class="row">
+         <label for="change_nickname" class="col-md-3" style="margin-top:10px">
+             	&nbsp;<i class="fa fa-user"></i>&nbsp;工位别名:
+         </label>
+         <div class="col-md-9">
+             <input type="text" name="nickname" class="form-control" id="change_nickname" placeholder="请输入工位别名">
+         </div>
+     </div>
+     <br/>
+     <div class="row">
+         <label for="change_unit" class="col-md-3" style="margin-top:10px">
+             	&nbsp;<i class="fa fa-user"></i>&nbsp单位:
+         </label>
+         <div class="col-md-9">
+             <input type="text" name="unit" class="form-control" id="change_unit" placeholder="请输入单位">
+         </div>
+     </div> 
+     <br/>
+     <div class="row">
+         <label for="change_instruction" class="col-md-3" style="margin-top:10px">
+             	&nbsp;<i class="fa fa-user"></i>&nbsp工位介绍:
+         </label>
+         <div class="col-md-9">
+             <input type="text" name="instruction" class="form-control" id="change_instruction" placeholder="请输入工位介绍">
+         </div>
+     </div> 
+     <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-bar-chart"></i> 预警值:
+         </label>
+         <div class="col-md-1">
+	            <label class="form-label" style="margin-top:10px">下：</label>
+         </div>
+         <div class="col-md-3">
+            <input type="text" name="min" class="form-control" id="cmin" placeholder="请输入下预警值">
+         </div>
+         <div class="col-md-offset-1 col-md-1">
+            <label class="form-label" style="margin-top:10px">上：</label>
+         </div>
+         <div class="col-md-3">
+             <input type="text" name="max" class="form-control" id="cmax" placeholder="请输入上预警值">
+         </div>
+     </div>
+     <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-bar-chart"></i> 相关参数A:
+         </label>
+         <div class="col-md-1">
+	            <label class="form-label" style="margin-top:10px">名：</label>
+         </div>
+         <div class="col-md-3">
+            <select id="crelate1n" name="relate1n" style="width:100%;height:38px;"></select>
+         </div>
+         <div class="col-md-offset-1 col-md-1">
+            <label class="form-label" style="margin-top:10px">值：</label>
+         </div>
+         <div class="col-md-3">
+             <input type="text" name="relate1v" class="form-control" id="crelate1v" placeholder="请输入相关系数">
+         </div>
+     </div>
+     <br/>
+      <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-bar-chart"></i> 相关参数B:
+         </label>
+         <div class="col-md-1">
+	            <label class="form-label" style="margin-top:10px">名：</label>
+         </div>
+         <div class="col-md-3">
+            <select id="crelate2n" name="relate2n" style="width:100%;height:38px;"></select>
+         </div>
+         <div class="col-md-offset-1 col-md-1">
+            <label class="form-label" style="margin-top:10px">值：</label>
+         </div>
+         <div class="col-md-3">
+             <input type="text" name="relate2v" class="form-control" id="crelate2v" placeholder="请输入相关系数">
+         </div>
+     </div>
+     <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	是否推送异常:
+         </label>
+         <div class="col-md-8" id="active1">
+             <label class="radio" style="margin-top:10px">
+                <input type="radio" name="abnormal" id="isabnormal" value="1" checked>
+                	 是
+             </label>  
+             <label class="radio" style="margin-top:10px">
+                <input type="radio" name="abnormal" id="noabnormal" value="0">
+                	 否
+             </label>  
+     	</div>
+     </div>
+     <br/>
+     <br/>
+     <div class="row">
+    	<div class="col-lg-offset-3 col-lg-2">
+    		<button type="button" onclick="resetchange()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			重置	              		    
+            </button>
+    	</div>
+    	<div class="col-lg-offset-2 col-lg-2">
+    		<button type="button" id="change_ok" onclick="changeStat()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			 确定
+     		</button>
+    	</div>
+   	</div>
+</form>
+<form id="deleteStat" style="color:#696666d9;display:none">
+	<br/>
+	<div class="row">
+         <label class="col-md-12" style="margin-top:10px;text-align:center;">
+             	<i class="fa fa-warning"></i>是否要删除产线<span id="del_line" style="color:red"></span>内的<span id="del_stat" style="color:red"></span>工位？
+         </label>
+         <input type="hidden" name="id" id="del_id"/>
+     </div> 
+	<br/>
+     <div class="row">
+    	<div class="col-lg-offset-3 col-lg-2">
+    		<button type="button" id="del_no" onclick="closeDel()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			取消	              		    
+            </button>
+    	</div>
+    	<div class="col-lg-offset-2 col-lg-2">
+    		<button type="button" id="del_ok" onclick="deleteStat()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			 确定
+     		</button>
+    	</div>
+   	</div>
+</form>
+
+<form id="abForecast" style="color:#696666d9;display:none">
+	<br/>
+	 <input type="hidden" name="ab_id" id="ab_id"/>
+	 <input type="hidden" name="ab_statid1" id="ab_statid1"/>
+	 <input type="hidden" name="ab_name1" id="ab_name1"/>
+	<div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-users"></i> 所属产线:
+         </label>
+         <div class="col-md-9"  style="color:red;margin-top:10px;">
+             <label name="ab_line" id="ab_line"></label>
+         </div>
+     </div>  
+     <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	&nbsp;<i class="fa fa-user"></i>&nbsp;工位标识:
+         </label>
+         <div class="col-md-9"  style="color:red;margin-top:10px;">
+             <label name="ab_statid" id="ab_statid"></label>
+         </div>
+     </div> 
+     <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	&nbsp;<i class="fa fa-user"></i>&nbsp;工位名称:
+         </label>
+         <div class="col-md-9" style="color:red;margin-top:10px;">
+             <label id="ab_name"></label>
+         </div>
+     </div> 
+     <br/>
+     <div class="row">
+         <label  class="col-md-3" style="margin-top:10px">
+             	&nbsp;<i class="fa fa-user"></i>&nbsp单位:
+         </label>
+         <div class="col-md-9" style="color:red;margin-top:10px;">
+             <label id="ab_unit"></label>
+         </div>
+     </div> 
+     <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	<i class="fa fa-bar-chart"></i> 预警值:
+         </label>
+         <div class="col-md-1">
+	            <label class="form-label" style="margin-top:10px">下：</label>
+         </div>
+         <div class="col-md-3">
+            <label id="ab_min" style="margin-top:10px"></label>
+         </div>
+         <div class="col-md-offset-1 col-md-1">
+            <label class="form-label" style="margin-top:10px">上：</label>
+         </div>
+         <div class="col-md-3">
+            <label id="ab_max" style="margin-top:10px"></label>
+         </div>
+     </div>
+     <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	预警值区间
+         </label>
+         <div class="col-md-8" id="active1">
+             <input type="text" name="ab_sigma" class="form-control" id="ab_sigma" placeholder="默认值1-5，数字越大区间越大">
+     	</div>
+     </div>
+	 <br/>
+     <div class="row">
+         <label class="col-md-3" style="margin-top:10px">
+             	历史数据天数
+         </label>
+         <div class="col-md-8" id="active1">
+             <input type="text" name="ab_day" class="form-control" id="ab_day" placeholder="用来计算的过去历史天数">
+     	</div>
+     </div>
+     <br/>
+     <br/>
+     <div class="row">
+    	<div class="col-lg-offset-3 col-lg-2">
+    		<button type="button" onclick="ab_calculate()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			计算	              		    
+            </button>
+    	</div>
+   	</div>
+</form>
+<script type="text/javascript" src="js/chny-lin.js"></script>
+<script type="text/javascript" src="js/_stat.js"></script>
+<script type="text/javascript" src="js/logout.js"></script>
+</html>

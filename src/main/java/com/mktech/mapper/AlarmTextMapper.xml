@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mktech.dao.AlarmTextDao">
+	<resultMap id="BaseResultMap" type="com.mktech.entity.AlarmText">
+	    <id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="LINE_ID" jdbcType="INTEGER" property="line_id" />
+		<result column="TIMESTAMP" jdbcType="VARCHAR" property="timestamp" />
+		<result column="STATION_ID" jdbcType="VARCHAR" property="station_id" />
+		<result column="STATION_NAME" jdbcType="VARCHAR" property="station_name" />
+		<result column="NOW_DATA" jdbcType="DOUBLE" property="now_data" />
+		<result column="MIN_THRESHOLD" jdbcType="DOUBLE" property="min_threshold" />
+		<result column="MAX_THRESHOLD" jdbcType="DOUBLE" property="max_threshold" />
+		<result column="ALARM_SHOW" jdbcType="VARCHAR" property="alarm_show" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, LINE_ID, TIMESTAMP, STATION_ID, STATION_NAME, NOW_DATA, MIN_THRESHOLD, MAX_THRESHOLD, ALARM_SHOW 
+	</sql>
+
+
+	<select id="selectByLine" resultType="java.util.LinkedHashMap">
+		select
+		<include refid="Base_Column_List" />
+		from ALARM_TEXT
+		where LINE_ID = #{line_id,jdbcType=INTEGER}  ORDER BY ID DESC LIMIT 100
+	</select>
+	
+
+	<insert id="insert" parameterType="com.mktech.entity.AlarmText">
+		insert into ALARM_TEXT (ID, LINE_ID, TIMESTAMP, STATION_ID, STATION_NAME, NOW_DATA, 
+		MIN_THRESHOLD, MAX_THRESHOLD, ALARM_SHOW )
+		values (#{id,jdbcType=INTEGER},#{line_id,jdbcType=INTEGER},#{timestamp,jdbcType=VARCHAR},
+		#{station_id,jdbcType=VARCHAR},#{station_name,jdbcType=VARCHAR},#{now_data,jdbcType=DOUBLE},
+		#{min_threshold,jdbcType=DOUBLE},#{max_threshold,jdbcType=DOUBLE},#{alarm_show,jdbcType=VARCHAR})
+	</insert>
+
+</mapper>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>大营2号线</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/daying1/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/jquery.cookie.js"></script>
+	<!-- <script src="resources/scripts/prototypePre.js"></script> 
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/prototypePost.js"></script>  
+    <script src="files/daying1/data.js"></script> -->  
+    <script src="resources/highchart/highcharts.js"></script>
+    <script src="files/logout.js"></script>
+    <!-- <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>  -->
+  </head>
+  <body oncontextmenu=self.event.returnValue=false onselectstart="return false">
+    <div id="base" class="">
+      <!-- background (动态面板) -->
+      <div id="u79" class="ax_default" data-label="background">
+        <div id="u79_state0" class="panel_state" data-label="State1" style="">
+          <div id="u79_state0_content" class="panel_state_content">
+
+            <!-- header (动态面板) -->
+            <div id="u80" class="ax_default" data-label="header">
+              <div id="u80_state0" class="panel_state" data-label="State1" style="">
+                <div id="u80_state0_content" class="panel_state_content">
+					
+                  <!-- Unnamed (组合 ) -->
+                  <div id="u81" class="ax_default" data-left="0" data-top="0" data-width="0" data-height="0">
+                  </div>
+		            
+		           <!-- Unnamed (组合 ) -->
+		           	<div id="u239" class="ax_default" >
+		           	  <div id= "user_block">
+		           	  	<p style="font-weight:900;color:#">当前用户&nbsp:&nbsp&nbsp
+		           	  	<span style="text-align: left;font-weight:300;width:80px;display:inline-block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;top: 3px;position: relative;color:#009dd9" id="username"></span>
+		           	  	<a href="javascript:void(0)" style="font-weight:300;" onclick="check2ad()">设置</a>
+		           	  	<span>&nbsp&nbsp&nbsp</span>
+		           	  	<a href="javascript:void(0)" style="font-weight:300;" onclick="logout();">注销</a>
+		           	  	</p>
+		           	  </div>
+		           	  <!-- 按钮 (矩形) -->
+		              <div id="index" class="ax_default button" data-label="按钮" style="cursor:pointer" onClick="javascript:window.open('index.html','_blank')">
+		                <div id="index_div" class=""></div>
+		                <div id="index_text" class="text ">
+		                  <p><span>首页</span></p>
+		                </div>
+		              </div>
+		              <!-- 按钮 (矩形) -->
+		              <div id="u240" class="ax_default button" data-label="按钮" style="cursor:pointer">
+		                <div id="u240_div" class=""></div>
+		                <div id="u240_text" class="text ">
+		                  <p><span>运行数据查询</span></p>
+		                </div>
+		              </div>
+		              <!-- 按钮 (矩形) -->
+		              <div id="u241" class="ax_default button" data-label="按钮" style="cursor:pointer">
+		                <div id="u241_div" class=""></div>
+		                <div id="u241_text" class="text ">
+		                  <p><span>设备状态监控</span></p>
+		                </div>
+		              </div>
+		              <!-- 按钮 (矩形) -->
+		              <div id="u242" class="ax_default button" data-label="按钮" style="cursor:pointer">
+		                <div id="u242_div" class=""></div>
+		                <div id="u242_text" class="text ">
+		                  <p><span>生产状态监控</span></p>
+		                </div>
+		              </div> 
+		             </div>
+		            
+		            
+		            
+		          <!--  -->
+               	 </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (图片 ) -->
+            <div id="u82" class="ax_default image">
+              <img id="u82_img" class="img " src="images/index/bk.png"/>
+            </div>
+
+
+            <!-- 异常推送背景图 -->
+            <div id="u84" class="ax_default image">
+              <img id="u84_img" class="img " src="images/index/bk.png"/>
+            </div>
+
+			
+            
+            <!-- 比表面积趋势背景图 -->
+            <div id="u85" class="ax_default image">
+              <img id="u85_img" class="img " src="images/index/bk.png"/>
+            </div>
+
+            <!-- 立磨振动趋势背景图 -->
+            <div id="u86" class="ax_default image" style="z-index:1">
+              <img id="u86_img" class="img " src="images/index/bk.png"/>
+            </div>
+            
+            <!-- 高压油压趋势背景图 -->
+            <div id="u280" class="ax_default image" style="z-index:1">
+              <img id="u280_img" class="img " src="images/index/bk.png"/>
+            </div>
+            
+            <!-- 左下数据列表背景 -->
+            <div id="u281" class="ax_default image" style="z-index:1">
+              <img id="u281_img" class="img " src="images/index/bk.png"/>
+            </div>
+            
+            
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- 异常推送 -->
+      <div id="u87" class="ax_default" data-label="介绍">
+        <div id="u87_state0" class="panel_state" data-label="State1" style="">
+          <div id="u87_state0_content" class="panel_state_content">
+
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u89" class="ax_default" data-left="0" data-top="0" data-width="110" data-height="24">
+
+              <!-- Unnamed (形状) -->
+             <div id="u90" class="ax_default icon">
+                <img id="u90_img" class="img " src="images/index/u12.png"/>
+              </div>
+
+              <!-- Unnamed (矩形) -->
+              <div id="u91" class="ax_default _一级标题">
+                <div id="u91_div" class=""></div>
+                <div id="u91_text" class="text ">
+                  <p><span>异常推送</span></p>
+                </div>
+              </div>
+            </div>
+
+			<div id="box" style="position:absolute; left:120px; top:30px">
+              	<ul id="ul1"></ul>
+              	<ul id="ul2"></ul>
+              </div>
+ 
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+	
+
+
+      <!-- 水分在矿渣所占比 (动态面板) -->
+      <div id="u154" class="ax_default" data-label="能耗指标" >
+        <div id="u154_state0" class="panel_state" data-label="State1" style="z-index:2">
+          <div id="u154_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u155" class="ax_default" data-left="0" data-top="0" data-width="353" data-height="24">
+
+              <!-- Unnamed (形状) -->
+              <div id="u156" class="ax_default icon">
+                <img id="u156_img" class="img " src="images/index/u12.png"/>
+              </div>
+
+              <!-- Unnamed (矩形) -->
+              <div id="u157" class="ax_default _一级标题" style="width:480px">
+                <div id="u157_div" class=""></div>
+                <div id="u157_text" class="text " style="width:100%">
+                  <p><span>立磨振动&nbsp;&nbsp;</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 配比 水分所占比曲线图 -->
+            <div id="u158" class="ax_default">
+                <div id="percent" style="width:100%;height:100%;"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 厂线 (动态面板) -->
+      <div id="u189" class="ax_default" data-label="厂线">
+        <div id="u189_state0" class="panel_state" data-label="State1" style="">
+          <div id="u189_state0_content" class="panel_state_content">
+
+            <!--  矩形框
+            <div id="u190" class="ax_default box_1" style="width:102px;left:455px;">
+              <div id="u190_div" class="" style="width:100%"></div>
+            </div> -->
+
+            <!-- Unnamed (矩形) -->
+            <div id="u191" class="ax_default _一级标题">
+              <div id="u191_div" class=""></div>
+             	 <p><span style="color:#65c1ff;font-weight:700">选粉机转速给定反馈 </span></p>
+             	 <p><span id="L0048">123</span>rpm</p>
+            </div>
+
+			
+			<div id="u331" class="ax_default _一级标题">
+              <div id="u331_div" class=""></div>
+             	 <p><span style="color:#65c1ff;font-weight:700">电流</span><span id="">123</span>A</p>
+            	<!-- <p><span style="color:#65c1ff;font-weight:700">喷水量</span><span id="L0095">123</span>单位</p> -->
+            </div>
+			
+            <div id="u332" class="ax_default _一级标题">
+              <div id="u332_div" class=""></div>
+             	 <!-- <p><span style="color:#65c1ff;font-weight:700">出口温度</span><span id="L0069">123</span>℃</p> -->
+             	  <p><span style="color:#65c1ff;font-weight:700">进口压力</span><span id="L0056">123</span>Pa</p>
+            </div>
+            
+            <div id="u333" class="ax_default _一级标题">
+              <div id="u333_div" class=""></div>
+             	 <p><span style="color:#65c1ff;font-weight:700">压差</span><span style="color:#000000"id="L0058">123</span><span style="color:#000000">Pa</span></p>
+            </div>
+            
+            <div id="u334" class="ax_default _一级标题">
+              <div id="u334_div" class=""></div>
+             	 <p><span style="color:#65c1ff;font-weight:700">出口压力</span><span id="L0057">123</span>Pa</p>
+             	  <p><span style="color:#65c1ff;font-weight:700">出口温度</span><span id="L0059">123</span>℃</p>
+            </div>
+            
+            <div id="u335" class="ax_default _一级标题">
+              <div id="u335_div" class=""></div>
+             	 <p><span style="color:#65c1ff;font-weight:700">主排开度</span><span id="L0061">123</span>%</p>
+            </div>
+            
+            <div id="u336" class="ax_default _一级标题">
+              <div id="u336_div" class=""></div>
+             	 <p><span style="color:#65c1ff;font-weight:700">主排转速</span><span id="L0063">123</span>rpm</p>
+             	  <p><span style="color:#65c1ff;font-weight:700">主排电流</span><span id="L0064">123</span>A</p>
+            </div>
+            
+            
+            <div id="u337" class="ax_default _一级标题">
+              <div id="u337_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">振动</span></p>
+             	<p><span style="color:#000000"id="L0037">123</span><span style="color:#000000">mm</span></p>
+				<p><span style="color:#65c1ff;font-weight:700">压差</span></p>
+				<p><span style="color:#000000"id="L0049">123</span><span style="color:#000000">Pa</span></p>            
+            	<!-- <p><span style="color:#65c1ff;font-weight:700">主轴振动</span></p>
+            	<p><span style="color:#000000"id="L0019">123</span><span style="color:#000000">mm</span></p> -->
+            </div>
+            
+            <div id="u338" class="ax_default _一级标题">
+              <div id="u338_div" class=""></div>
+             	 <p><span style="color:#65c1ff;font-weight:700">管带机电流</span><span id="L0084">123</span>A</p>
+            </div>
+            
+            <div id="u339" class="ax_default _一级标题">
+              <div id="u339_div" class=""></div>
+             	 <p><span style="color:#65c1ff;font-weight:700">斗提机电流</span><span id="L0078">123</span>A</p>
+            </div>
+            
+            <div id="u340" class="ax_default _一级标题">
+              <div id="u340_div" class=""></div>
+             	 <p><span style="color:#65c1ff;font-weight:700">成品库库位</span></p>
+             	 <p><span style="color:#000000"id="L0079">123</span><span style="color:#000000">T/h</span></p>
+            </div>
+            
+            <div id="u341" class="ax_default _一级标题">
+              <div id="u341_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">风机东面轴承温度</span><span id="L0065">123</span>℃</p>
+             	<p><span style="color:#65c1ff;font-weight:700">风机西面轴承温度</span><span id="L0066">123</span>℃</p>
+            	<p><span style="color:#65c1ff;font-weight:700">主排电机西轴承温度</span><span id="L0069">123</span>℃</p>
+            	<p><span style="color:#65c1ff;font-weight:700">主排电机东轴承温度</span><span id="L0070">123</span>℃</p>
+            	<p><span style="color:#65c1ff;font-weight:700">主排风电机A相绕组温度</span></p>
+            	<p><span id="L0071">123</span>℃</p>
+            	<p><span style="color:#65c1ff;font-weight:700">主排风电机B相绕组温度</span></p>
+            	<p><span id="L0072">123</span>℃</p>
+            	<p><span style="color:#65c1ff;font-weight:700">主排风电机C相绕组温度</span></p>
+            	<p><span id="L0073">123</span>℃</p>
+            	<p><span style="color:#65c1ff;font-weight:700">风机西上方振动</span><span id="L0067">123</span>mm</p>
+            	<p><span style="color:#65c1ff;font-weight:700">风机东上方振动</span><span id="L0068">123</span>mm</p>
+            	<!-- <p><span style="color:#65c1ff;font-weight:700">风机东侧方振动</span><span id="L0084">123</span>mm</p>
+            	<p><span style="color:#65c1ff;font-weight:700">风机西侧方振动</span><span id="L0085">123</span>mm</p> -->
+            </div>
+            
+            <div id="u342" class="ax_default _一级标题">
+              <div id="u342_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">主电机绕组温度A</span><span id="L0008">123</span>℃</p>
+             	<p><span style="color:#65c1ff;font-weight:700">主电机绕组温度B</span><span id="L0009">123</span>℃</p>
+            	<p><span style="color:#65c1ff;font-weight:700">主电机轴承温度C</span><span id="L0010">123</span>℃</p>
+            	<p><span style="color:#65c1ff;font-weight:700">主电机轴承温度1</span><span id="L0011">123</span>℃</p>
+            	<p><span style="color:#65c1ff;font-weight:700">主电机轴承温度2</span><span id="L0012">123</span>℃</p>
+            	<p><span style="color:#65c1ff;font-weight:700">主电机电流</span><span id="L0007">123</span>A</p>
+            	<!-- <p><span style="color:#65c1ff;font-weight:700">主电机稀油动损</span><span id="">123</span>单位</p> -->
+            </div>
+            
+            <div id="u343" class="ax_default _一级标题">
+              <div id="u343_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">进口南负压</span><span id="L0026">123</span>Pa</p>
+             	<p><span style="color:#65c1ff;font-weight:700">进口南温度</span><span id="L0027">123</span>℃</p>
+            	<p><span style="color:#65c1ff;font-weight:700">进口北负压</span><span id="L0028">123</span>Pa</p>
+            	<p><span style="color:#65c1ff;font-weight:700">进口北温度</span><span id="L0029">123</span>℃</p>
+            </div>
+            
+            <div id="u344" class="ax_default _一级标题">
+              <div id="u344_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">热风炉温度</span><span id="L0019">123</span>℃</p>
+             	<p><span style="color:#65c1ff;font-weight:700">热风炉负压</span><span id="L0020">123</span>Pa</p>
+            	<p><span style="color:#65c1ff;font-weight:700">热风炉出口温度</span><span id="L0021">123</span>℃</p>
+            </div>
+            
+            <!-- <div id="u345" class="ax_default _一级标题">
+              <div id="u345_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">燃气阀开度</span><span id="L0158">123</span>%</p>
+             	<p><span style="color:#65c1ff;font-weight:700">燃气阀开位</span><span id="L0159">123</span></p>
+            	<p><span style="color:#65c1ff;font-weight:700">燃气阀关位</span><span id="L0160">123</span></p>
+            </div> -->
+            
+           <!--  <div id="u346" class="ax_default _一级标题">
+              <div id="u346_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">鼓风机电流</span><span id="L0016">123</span>A</p>
+             	<p><span style="color:#65c1ff;font-weight:700">鼓风机频率</span><span id="">123</span>单位</p>
+            </div> -->
+            
+            <div id="u347" class="ax_default _一级标题">
+              <div id="u347_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">补风阀开度</span><span id="L0016">123</span>%</p>
+            </div>
+            
+            <!-- <div id="u348" class="ax_default _一级标题">
+              <div id="u348_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">天然气压力</span><span id="L0165">123</span>Pa</p>
+             	<p><span style="color:#65c1ff;font-weight:700">天然气瞬时流量</span><span id="L0166">123</span>m³/h</p>
+            	<p><span style="color:#65c1ff;font-weight:700">氧气压力</span><span id="">123</span>单位</p>
+            	<p><span style="color:#65c1ff;font-weight:700">氧睡时流量力</span><span id="">123</span>单位</p>
+            </div> -->
+            
+            <!-- <div id="u349" class="ax_default _一级标题">
+              <div id="u349_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">高炉煤气瞬时变量</span><span id="L0162">123</span>m³/h</p>
+             	<p><span style="color:#65c1ff;font-weight:700">高炉煤气前压力</span><span id="L0163">123</span>Pa</p>
+            	<p><span style="color:#65c1ff;font-weight:700">高炉煤气后压力</span><span id="L0164">123</span>Pa</p>
+            </div> -->
+            
+           <!--  <div id="u350" class="ax_default _一级标题">
+              <div id="u350_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">主辊反压力设定</span><span id="L0038">123</span>bar</p>
+             	<p><span style="color:#65c1ff;font-weight:700">主辊反压力反馈</span><span id="L0039">---</span>bar</p>
+            	<p><span style="color:#65c1ff;font-weight:700">主辊反压力浮动</span><span id="L0040">123</span>bar</p>
+            	<p><span style="color:#65c1ff;font-weight:700">1#辅辊浮动</span><span id="L0152">123</span>mm</p>
+            	<p><span style="color:#65c1ff;font-weight:700">2#辅辊浮动</span><span id="L0153">123</span>mm</p>
+            	<p><span style="color:#65c1ff;font-weight:700">3#辅辊浮动</span><span id="L0154">123</span>mm</p>
+            </div> -->
+            
+            <div id="u351" class="ax_default _一级标题">
+              <div id="u351_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">主辊压力设定</span><span id="L0038">123</span>bar</p>
+             	 <p><span style="color:#65c1ff;font-weight:700">主辊压力反馈</span></p>
+             	 <p><span id="L0039"></span>bar<span style="color:red">（代校验</span></p> 
+            	<p><span style="color:#65c1ff;font-weight:700">主辊压力浮动</span><span id="L0040">123</span>bar</p>
+            </div>
+            
+            <div id="u352" class="ax_default box_1">
+              <div id="u352_div" class="" style="width:110%"></div>
+            </div>
+            
+            <div id="u353" class="ax_default _一级标题">
+              <div id="u353_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">位置</span><span id="L0044">123</span>mm</p>
+             	<p><span style="color:#65c1ff;font-weight:700">转速</span><span id="L0041">123</span>r/min</p>
+            	<p><span style="color:#65c1ff;font-weight:700">风压</span><span id="L0085">123</span>kPa</p>
+            </div>
+            
+            <div id="u354" class="ax_default box_1">
+              <div id="u354_div" class="" style="width:110%"></div>
+            </div>
+            
+            <div id="u355" class="ax_default _一级标题">
+              <div id="u355_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">位置</span><span id="L0045">123</span>mm</p>
+             	<p><span style="color:#65c1ff;font-weight:700">转速</span><span id="L0042">123</span>r/min</p>
+            	<p><span style="color:#65c1ff;font-weight:700">风压</span><span id="L0086">123</span>kPa</p>
+            </div>
+            
+            <div id="u356" class="ax_default box_1">
+              <div id="u356_div" class="" style="width:110%"></div>
+            </div>
+            
+            <div id="u357" class="ax_default _一级标题">
+              <div id="u357_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">位置</span><span id="L0046">123</span>mm</p>
+             	<p><span style="color:#65c1ff;font-weight:700">转速</span><span id="L0043">123</span>r/min</p>
+            	<p><span style="color:#65c1ff;font-weight:700">风压</span><span id="L0087">123</span>kPa</p>
+            </div>
+            
+            <!-- <div id="u358" class="ax_default box_1">
+              <div id="u358_div" class="" style="width:110%"></div>
+            </div> 
+            
+            <div id="u359" class="ax_default _一级标题">
+              <div id="u359_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">位置</span><span id="L0142">123</span>mm</p>
+             	<p><span style="color:#65c1ff;font-weight:700">转速</span><span id="L0139">123</span>r/min</p>
+            	<p><span style="color:#65c1ff;font-weight:700">风压</span><span id="L0145">123</span>kPa</p>
+            </div>
+            
+            <div id="u360" class="ax_default box_1">
+              <div id="u360_div" class="" style="width:110%"></div>
+            </div> 
+            
+            <div id="u361" class="ax_default _一级标题">
+              <div id="u361_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">位置</span><span id="L0143">123</span>mm</p>
+             	<p><span style="color:#65c1ff;font-weight:700">转速</span><span id="L0140">123</span>r/min</p>
+            	<p><span style="color:#65c1ff;font-weight:700">风压</span><span id="L0146">123</span>kPa</p>
+            </div>
+            
+           <div id="u362" class="ax_default box_1">
+              <div id="u362_div" class="" style="width:110%"></div>
+            </div> 
+            
+            <div id="u363" class="ax_default _一级标题">
+              <div id="u363_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">位置</span><span id="L0144">123</span>mm</p>
+             	<p><span style="color:#65c1ff;font-weight:700">转速</span><span id="L0140">123</span>r/min</p>
+            	<p><span style="color:#65c1ff;font-weight:700">风压</span><span id="L0147">123</span>kPa</p>
+            </div> -->
+            
+            <div id="map18" class="ax_default _一级标题">
+                <p><span  style="color:#65c1ff;font-weight:700">1#主辊</span></p>
+            </div>
+            <div id="map19" class="ax_default _一级标题">
+                <p><span  style="color:#65c1ff;font-weight:700">2#主辊</span></p>
+            </div>
+            <div id="map20" class="ax_default _一级标题">
+                <p><span  style="color:#65c1ff;font-weight:700">3#主辊</span></p>
+            </div>
+            <!-- <div id="map21" class="ax_default _一级标题">
+                <p><span  style="color:#65c1ff;font-weight:700">1#辅辊</span></p>
+            </div>
+            <div id="map22" class="ax_default _一级标题">
+                <p><span  style="color:#65c1ff;font-weight:700">2#辅辊</span></p>
+            </div>
+            <div id="map23" class="ax_default _一级标题">
+                <p><span  style="color:#65c1ff;font-weight:700">3#辅辊</span></p>
+            </div> -->
+            <!-- <div id="map1" class="ax_default _一级标题">
+                <p><span id="T_L0001" style="color:#65c1ff;font-weight:700">磨机 </span></p>
+            </div> -->
+			
+			<div id="u364" class="ax_default _一级标题">
+              <div id="u364_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">冷风阀调控值</span><span id="L0024">123</span>%</p>
+             	<p><span style="color:#65c1ff;font-weight:700">冷风阀反馈值</span><span id="L0025">123</span>%</p>
+            </div>
+            
+            <!-- <div id="u365" class="ax_default _一级标题">
+              <div id="u365_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">冷风阀调控值</span><span id="L0031">123</span>%</p>
+             	<p><span style="color:#65c1ff;font-weight:700">冷风阀反馈值</span><span id="L0032">123</span>%</p>
+            </div> -->
+            
+            <div id="u366" class="ax_default _一级标题">
+              <div id="u366_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">热风阀调控值</span><span id="L0023">123</span>%</p>
+             	<!-- <p><span style="color:#65c1ff;font-weight:700">热风阀反馈值</span><span id="L0034">123</span>%</p>
+            	<p><span style="color:#65c1ff;font-weight:700">冷风阀调控值</span><span id="L0035">123</span>%</p>
+             	<p><span style="color:#65c1ff;font-weight:700">冷风阀反馈值</span><span id="L0036">123</span>%</p> -->
+            </div>
+            
+            <!-- <div id="u367" class="ax_default _一级标题">
+              <div id="u367_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">冷风阀调控值</span><span id="L0037">123</span>%</p>
+             	<p><span style="color:#65c1ff;font-weight:700">冷风阀反馈值</span><span id="L0038">123</span>%</p>
+            </div> -->
+            
+			<div id="u368" class="ax_default _一级标题">
+              <div id="u368_div" class=""></div>
+             	<p><span style="color:#65c1ff;font-weight:700">入料量</span><span id="OUTVALUE">123</span>T/h</p>             	
+            </div>
+            
+            </div>
+          </div>
+        </div>
+   
+
+     
+      
+ 	<!--   立磨振动趋势   -->
+  	<div id="u263" class="ax_default" data-label="推送">
+  		<div id="u263_state0" class="panel_state" data-label="State1" style="">
+          <div id="u263_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u264" class="ax_default" data-left="0" data-top="0" data-width="110" data-height="24">
+
+              <!-- Unnamed (形状) -->
+              <div id="u265" class="ax_default icon">
+                <img id="u265_img" class="img " src="images/index/u12.png"/>
+              </div>
+
+              <!-- Unnamed (矩形) -->
+              <div id="u266" class="ax_default _一级标题">
+                <div id="u266_div" class=""></div>
+                <div id="u266_text" class="text ">
+                  <p><span>立磨主电机电流</span></p>
+                </div>
+              </div>
+            </div>
+            
+            
+            <div id="u267" class="ax_default" style="width:524px;height:140px;left:-10px">
+                <div id="hourout" style="width:100%;height:100%;"></div>
+            </div>
+            
+           </div>
+       </div>
+  	</div>
+  
+  		<!-- 高压油压趋势 -->
+    	<div id="u271" class="ax_default" data-label="推送">
+  		<div id="u271_state0" class="panel_state" data-label="State1" style="">
+          <div id="u271_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u275" class="ax_default" data-left="0" data-top="0" data-width="110" data-height="24">
+
+              <!-- Unnamed (形状) -->
+              <div id="u276" class="ax_default icon">
+                <img id="u276_img" class="img " src="images/index/u12.png"/>
+              </div>
+
+              <!-- Unnamed (矩形) -->
+              <div id="u278" class="ax_default _一级标题">
+                <div id="u278_div" class=""></div>
+                <div id="u278_text" class="text ">
+                  <p><span>主排风机轴承温度</span></p>
+                </div>
+              </div>
+            </div>
+            
+            
+            <div id="u279" class="ax_default" style="width:524px;height:140px;left:-10px">
+                <div id="chart3" style="width:100%;height:100%;"></div>
+            </div>
+            
+           </div>
+       </div>
+  	</div>
+  	
+  	<!-- 具体检测变量 -->
+  	<div id="u282" class="ax_default" data-label="推送">
+  		<div id="u282_state0" class="panel_state" data-label="State1" style="">
+          <div id="u282_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u283" class="ax_default" data-left="0" data-top="0" data-width="110" data-height="24">
+
+              <!-- Unnamed (形状) -->
+              <div id="u284" class="ax_default icon">
+                <img id="u284_img" class="img " src="images/index/u12.png"/>
+              </div>
+
+              <!-- 大标题监测变量 -->
+              <div id="u285" class="ax_default _一级标题">
+                <div id="u285_text" class="text ">
+                  <p><span>监测变量</span></p>
+                </div>
+              </div> 
+                                           
+            </div>
+            
+            <!-- 监测变量具体情况 -->
+            <div id="u286" class="ax_default _一级标题"">           
+            	<div id="u286_div" class="">  		          	
+  		          	<p><span style="color:#65c1ff;font-weight:700">滑动轴承温度1</span><span id="L0032"></span><span>℃</span></p>           		 	
+           		 </div>            		           		 
+            </div>
+            
+            <div id="u287" class="ax_default _一级标题"">            
+            	<div id="u287_div" class="">
+  		          	<p><span style="color:#65c1ff;font-weight:700">滑动轴承温度2</span><span id="L0033"></span><span>℃</span></p>
+           		 </div>            		           		 
+            </div>
+            
+            <div id="u288" class="ax_default _一级标题"">           
+            	<div id="u88_div" class="">
+  		          	<p><span style="color:#65c1ff;font-weight:700">滑动轴承温度3</span><span id="L0034"></span><span>℃</span></p>
+           		 </div>           		           		 
+            </div>
+            
+            <div id="u289" class="ax_default _一级标题"">           
+            	<div id="u289_div" class="">
+  		          	<p><span style="color:#65c1ff;font-weight:700">滑动轴承温度4</span><span id="L0035"></span><span>℃</span></p>
+           		 </div>            		           		 
+            </div>
+            
+            <div id="u290" class="ax_default _一级标题"">           
+            	<div id="u290_div" class="">
+  		          	<p><span style="color:#65c1ff;font-weight:700">上油箱温度</span><span id="">---</span><span>℃</span></p>
+           		 </div>           		           		 
+            </div>
+           
+            <div id="u291" class="ax_default _一级标题"">           
+            	<div id="u291_div" class="">
+  		          	<p><span style="color:#65c1ff;font-weight:700">输入轴外部温度</span><span id="">---</span><span>℃</span></p>
+           		 </div>            		           		 
+            </div>
+            
+            <div id="u292" class="ax_default _一级标题"">           
+            	<div id="u292_div" class="">
+  		          	<p><span style="color:#65c1ff;font-weight:700">输入轴内部温度</span><span id="">---</span><span>℃</span></p>
+           		 </div>            		           		 
+            </div>
+            
+            <div id="u293" class="ax_default _一级标题"">           
+            	<div id="u293_div" class="">
+  		          	<p><span style="color:#65c1ff;font-weight:700">外壳底部油温</span><span id="">---</span><span>℃</span></p>
+           		 </div>            		           		 
+            </div>
+            
+            <div id="u294" class="ax_default _一级标题"">           
+            	<div id="u294_div" class=""> 		          	
+  		          	<p><span style="color:#65c1ff;font-weight:700">主辊润滑油液位</span><span id="">---</span><span>mm</span></p>           		 	
+           		 </div>            		           		 
+            </div>
+            
+            <div id="u295" class="ax_default _一级标题"">           
+            	<div id="u295_div" class="">  		          	
+  		          	<p><span style="color:#65c1ff;font-weight:700">主辊润滑站油温</span><span id="">---</span><span>&℃</span></p>           		 	
+           		 </div>            		           		 
+            </div>
+            
+            <div id="u296" class="ax_default _一级标题"">           
+            	<div id="u296_div" class="">  		          	
+  		          	<p><span style="color:#65c1ff;font-weight:700">主辊润滑出口油温1</span><span id="">---</span><span>℃</span></p>           		 	
+           		 </div>            		           		 
+            </div>
+            
+            <div id="u297" class="ax_default _一级标题"">           
+            	<div id="u297_div" class="">		          	
+  		          	<p><span  style="color:#65c1ff;font-weight:700">主辊润滑出口油温2</span><span id="">---</span><span>℃</span></p>           		 	
+           		 </div>            		           		 
+            </div>
+            
+            <<div id="u298" class="ax_default _一级标题"">           
+            	<div id="u298_div" class=""> 		          	
+  		          	<p><span style="color:#65c1ff;font-weight:700">主辊润滑出口油温3</span><span id="">---</span><span>℃</span></p>                 		 	
+           		 </div>            		           		 
+            </div>
+            
+            <div id="u299" class="ax_default _一级标题"">           
+            	<div id="u299_div" class=""> 		          	
+  		          	<p><span style="color:#65c1ff;font-weight:700">主辊液压站油温</span><span id="">---</span><span>℃</span></p>               		 	
+           		 </div>            		           		 
+            </div>
+            
+             <div id="u300" class="ax_default _一级标题"">           
+            	<div id="u300_div" class="">		          	
+  		          	<p><span style="color:#65c1ff;font-weight:700">辅辊液压站油温</span><span id="">---</span><span>℃</span></p>        		 	
+           		 </div>            		           		 
+            </div> 
+            
+
+           </div>
+       </div>
+  	</div>
+  	
+  </body>
+  <script src="files/daying1/daying1.js"></script>
+</html>

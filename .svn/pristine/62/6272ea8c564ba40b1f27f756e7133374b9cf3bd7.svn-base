@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@CIMS213—工业大屏后台管理系统</title>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/local.css" />
+
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- you need to include the shieldui css and js assets in order for the charts to work -->
+    <link rel="stylesheet" type="text/css" href="css/all.min.css" />
+    <link id="gridcss" rel="stylesheet" type="text/css" href="css/grid_all.min.css" />
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/shieldui-all.min.js"></script>
+    <script type="text/javascript" src="js/layer/layer.js"></script>
+    <script type="text/javascript" src="js/logout.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+		  <!--   导航栏		  -->	
+          <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">CIMS-213</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul id="active" class="nav navbar-nav side-nav">
+                    <li id="_index"><a href="_index.html"><i class="fa fa-bullseye"></i> 总览</a></li>
+                    <li id="_self"><a href="_self.html"><i class="fa fa-user" style="margin-left:3px"></i> 个人信息</a></li>
+                    
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-user">
+					 <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span id="time"></span></a>
+                    </li>
+                    <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>&nbsp;&nbsp;<span id="user"></span>&nbsp;&nbsp;<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:void(0)" onclick="logout()"><i class="fa fa-power-off"></i>登出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+		<!-- 导航栏结束 -->
+		<!-- 主窗体开始 -->
+        <div id="page-wrapper">
+           <div class="row">
+                <div class="col-lg-12">
+                    <h1>个人信息<small> 查看/修改</small></h1>
+                </div>
+            </div>
+            <br/><br/><br/>
+            <div class="row">
+            	<form role="form" class="col-lg-12" id="selfInfo">
+            		<!-- 左列 -->
+            		<div class="row">
+	            		<div class="col-lg-6">
+	            			<div>
+					            <label class="col-md-3" style="margin-top:10px">
+					                	<i class="fa fa-user-circle"></i> UID：
+					            </label>
+					            <div class="col-md-9">
+					                <label style="margin-top:10px" id="uid">xxxxxxxx</label>
+					            </div>
+					        </div> 
+					        <br/><br/><br/>      
+	            			<div>
+					            <label class="col-md-3" style="margin-top:10px">
+					                	<i class="fa fa-user-o"></i> 帐号：
+					            </label>
+					            <div class="col-md-9">
+					                <label style="margin-top:10px" id="username">xxxxxxxx</label>
+					            </div>
+					        </div>
+					        <br/><br/><br/> 
+					        <div>
+					            <label class="col-md-3" style="margin-top:10px">
+					                	<i class="fa fa-user-o"></i> 权限：
+					            </label>
+					            <div class="col-md-9">
+					                <label style="margin-top:10px" id="prev">xxxxxxxx</label>
+					            </div>
+					        </div>
+					        <br/><br/><br/> 
+					        <div>
+					            <label for="firstname" class="col-md-3" style="margin-top:10px">
+					                	<i class="fa fa-key"></i> 密码：
+					            </label>
+					            <div class="col-md-9">
+					                 <button class="btn btn-primary" type="button" id="changePassword" >
+					               		     点击修改
+					                </button>
+					            </div>
+					        </div>
+					        <br/><br/><br/>     
+	            			<div>
+					            <label for="name" class="col-md-3" style="margin-top:10px">
+					                	<i class="fa fa-vcard"></i> 昵称：
+					            </label>
+					            <div class="col-md-9">
+					                <input type="text" class="form-control" name="name" id="name" placeholder="输入昵称">
+					            </div>
+					        </div>  
+					        <br/><br/><br/> 
+					        <div>
+					            <label for="sex" class="col-md-3" style="margin-top:10px">
+					                	<i class="fa fa-intersex"></i> 性别：
+					            </label>
+					            <div class="col-md-9">
+					                  <label class="radio-inline" style="margin-top:10px">
+					                     <input type="radio" name="sex" id="male" value="male" checked>
+					                  	   男
+					                  </label>
+					                  <label class="radio-inline" style="margin-top:10px">
+					                     <input type="radio" name="sex" id="female" value="female">
+					                  	   女
+					                  </label>
+					            </div>
+					        </div>
+					        <br/><br/><br/> 
+					        <div>
+					            <label for="phone" class="col-md-3" style="margin-top:10px">
+					                	<i class="fa fa-phone-square"></i> 电话：
+					            </label>
+					            <div class="col-md-9">
+					                <input type="text" class="form-control" name="phone" id="phone" placeholder="输入电话号码">
+					            </div>
+					        </div>
+					        <br/><br/><br/> 
+					        <div>
+					            <label for="email" class="col-md-3" style="margin-top:10px">
+					                	<i class="fa fa-envelope"></i> 邮箱：
+					            </label>
+					            <div class="col-md-9">
+					                <input type="text" class="form-control" name="email" id="email" placeholder="输入Email地址">
+					            </div>
+					        </div> 
+					        <br/><br/><br/> 
+					         <div>
+					            <label for="address" class="col-md-3" style="margin-top:10px">
+					                	<i class="fa fa-address-book"></i> 地址：
+					            </label>
+					            <div class="col-md-9">
+					                <input type="text" class="form-control" name="address" id="address" placeholder="输入地址">
+					            </div>
+					        </div>
+	            		</div>
+	            		<!-- 右列 -->
+	            		<div class="col-lg-6">
+		            		<div class="row">
+		            			<div class="col-lg-3">
+		            				 <label style="margin-top:70px">
+					                	<i class="fa fa-file-picture-o"></i> 头像：
+					            	 </label>
+					            	 <br/><br/>
+					            	 <input type="file" name="uploadimage" id="uploadimage" accept="image/jpeg,image/jpg,image/png">
+					            	 <p class="help-block" style="color:#2a9fd6">
+                   					       &spades; 允许上传类型: jpeg, jpg, png
+              						 </p>
+		            			</div>
+			            		<div class="col-lg-9">
+			            			<img class="thumbnail img-responsive" id="selfImg" alt="self photo" style="background:#ffffff;height:250px;margin:auto;" src="">
+			            		</div>
+		     				</div>
+		     				<br/>
+		     				<div class="row">
+		     					<div>
+						            <label for="instruction" class="col-md-3" style="">
+						                	<i class="fa fa-pencil"></i> 个人介绍：
+						            </label>
+						            <div class="col-md-9">
+						                	<textarea class="form-control" rows="9" name="instruction" id="instruction" style="height:272px" placeholder="输入个人介绍（500字以内）"></textarea>
+						            </div>
+					        	</div>
+		     				</div>
+	            		</div>
+	            	</div>
+	            	<br/><br/>   
+	            	<div class="row">
+		            	<div class="col-lg-offset-4 col-lg-2 col-xs-offset-1 col-xs-2">
+		            		<button type="reset" class="btn btn-default" style="width:120px">
+	                   			重置	              		    
+	                   		</button>
+		            	</div>
+		            	<div class="col-lg-offset-0 col-lg-2 col-xs-offset-3 col-xs-2">
+		            		<button type="button" class="btn btn-default" onclick="undateSelf()" style="width:120px">
+	                   			 更新
+	              		    </button>
+		            	</div>
+	            	</div>
+            	</form>
+            </div>
+        </div>
+        <!-- 主窗体结束 -->
+    </div>
+</body>
+<script type="text/javascript" src="js/chny-lin.js"></script>
+<script type="text/javascript">
+	$(window).on('beforeunload', function(){
+	 	 return '是否确定离开?';
+	});
+</script>
+<form id="changeP" style="color:#696666d9;display:none">
+	<br/>
+	<div>
+         <label for="oldP" class="col-md-4" style="margin-top:10px">
+             	<i class="fa fa-key"></i> 旧密码 :
+         </label>
+         <div class="col-md-8">
+             <input type="password" name="oldPassword" class="form-control" id="oldP" placeholder="输入旧密码">
+         </div>
+     </div>  
+     <br/><br/><br/> 
+     <div>
+         <label for="newP" class="col-md-4" style="margin-top:10px">
+             	<i class="fa fa-key"></i> 新密码 ：
+         </label>
+         <div class="col-md-8">
+             <input type="password" name="newPassword" class="form-control" id="newP" placeholder="密码长度为6-16字符，由数字、英文字母或者下划线组成 ">
+         </div>
+     </div>
+     <br/><br/><br/> 
+     <div>
+         <label for="reP" class="col-md-4" style="margin-top:10px">
+             	<i class="fa fa-key"></i> 重复密码 ：
+         </label>
+         <div class="col-md-8">
+             <input type="password" class="form-control" id="reP" placeholder="重复新密码">
+         </div>
+     </div>
+     <br/><br/><br/>
+     <div>
+    	<div class="col-lg-offset-3 col-lg-2">
+    		<button type="reset" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			重置	              		    
+            </button>
+    	</div>
+    	<div class="col-lg-offset-2 col-lg-2">
+    		<button type="button" id="btn_cp" onclick="changeP()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			 修改
+     		</button>
+    	</div>
+   	</div>
+</form>
+</html>

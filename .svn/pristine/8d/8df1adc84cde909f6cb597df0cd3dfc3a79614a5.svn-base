@@ -1,0 +1,179 @@
+/**
+ * @author Chnyge Lin
+ * @time 2018-7-3
+ * @comment 
+ */
+package com.mktech.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.mktech.dao.DbJiangyinDao;
+import com.mktech.entity.DbJiangyin;
+import com.mktech.service.DbJiangyinService;
+
+/**
+ * @author Chnyge Lin,gumpgan, Sunzt
+ * @time 2018-7-3
+ * @comment 
+ */
+@Service
+public class DbJiangyinServiceImpl implements DbJiangyinService {
+	@Resource
+	private DbJiangyinDao dbJiangyinMapper;
+	
+	@Override
+	public int deleteByPrimaryKey(Integer id) {
+		// TODO Auto-generated method stub
+		return dbJiangyinMapper.deleteByPrimaryKey(id);
+	}
+
+	@Override
+	public int insert(DbJiangyin record) {
+		// TODO Auto-generated method stub
+		return dbJiangyinMapper.insert(record);
+	}
+
+	@Override
+	public int insertSelective(DbJiangyin record) {
+		// TODO Auto-generated method stub
+		return dbJiangyinMapper.insertSelective(record);
+		
+	}
+
+	@Override
+	public DbJiangyin selectByPrimaryKey(Integer id) {
+		// TODO Auto-generated method stub
+		return dbJiangyinMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public int updateByPrimaryKeySelective(DbJiangyin record) {
+		// TODO Auto-generated method stub
+		return dbJiangyinMapper.updateByPrimaryKeySelective(record);
+	}
+
+	@Override
+	public int updateByPrimaryKey(DbJiangyin record) {
+		// TODO Auto-generated method stub
+		return dbJiangyinMapper.updateByPrimaryKey(record);
+	}
+	
+	public List<Map<String, Object>> selectLatestRecord() {
+		// TODO Auto-generated method stub
+		return dbJiangyinMapper.selectLatestRecord();
+	}
+	
+	public List<Map<String, Object>> selectLatestRecord500(){
+		return dbJiangyinMapper.selectLatestRecord500();
+	}
+	
+	public DbJiangyin selectNearestRecord(String timestamp){
+		return dbJiangyinMapper.selectNearestRecord(timestamp);
+	}
+	
+	public DbJiangyin selectNearestRecord2(){
+		return dbJiangyinMapper.selectNearestRecord2();
+	}
+	
+	public DbJiangyin selectByTimeRangelimit1(String min,String max) {
+		// TODO Auto-generated method stub
+		return dbJiangyinMapper.selectByTimeRangeLimit1(min, max);
+	}
+	
+	public DbJiangyin selectfromDbJiangyinHour(){
+		return dbJiangyinMapper.selectLatestRecordInHour();
+	}
+	public DbJiangyin selectLatestRecordInHour() {
+		// TODO Auto-generated method stub
+		return dbJiangyinMapper.selectLatestRecordInHour();
+	}
+	
+	public List<Map<String, Object>> selectLatestRecordInHour24() {
+		// TODO Auto-generated method stub
+		return dbJiangyinMapper.selectLatestRecordInHour24();
+	}
+	
+	public int insertIntoHour(DbJiangyin DbJiangyin){
+		return dbJiangyinMapper.insertInHour(DbJiangyin);
+	}
+	
+	public DbJiangyin selectfromDbJiangyinMin(){
+		return dbJiangyinMapper.selectLatestRecordInMin();
+	}
+	
+	public int insertIntoMin(DbJiangyin DbJiangyin){
+		return dbJiangyinMapper.insertInMin(DbJiangyin);
+	}
+	
+	public DbJiangyin selectfromDbJiangyinDay(){
+		return dbJiangyinMapper.selectLatestRecordInDay();
+	}
+	
+	public int insertIntoDay(DbJiangyin DbJiangyin){
+		return dbJiangyinMapper.insertInDay(DbJiangyin);
+	}
+	
+	public List<Map<String, Object>> selectRange(){
+		return dbJiangyinMapper.selectRange();
+	}
+	public List<Map<String, Object>> initYewu() {
+		return dbJiangyinMapper.selectLatestRecordByAll();
+	}
+	
+	public List<Map<String, Object>> selectDataByRange(Long start,Long end,String source){
+		if(source.equals("default")) {
+			Long range = (end - start)/1000;
+			if(range<=3600*24){//小于1天返回原始数据
+				return dbJiangyinMapper.selectLatestRecordBySec(String.valueOf(start),String.valueOf(end));
+			}else if(range<= 3600*24*31){//小于一月返回分钟数据
+				return dbJiangyinMapper.selectLatestRecordByMin(String.valueOf(start),String.valueOf(end));
+			}else{//2678400
+				return dbJiangyinMapper.selectLatestRecordByHour(String.valueOf(start),String.valueOf(end));
+			}
+		}else if(source.equals("hour")) {
+			return dbJiangyinMapper.selectLatestRecordByHour(String.valueOf(start),String.valueOf(end));
+		}else if(source.equals("min")) {
+			return dbJiangyinMapper.selectLatestRecordByMin(String.valueOf(start),String.valueOf(end));
+		}else{
+			return dbJiangyinMapper.selectLatestRecordBySec(String.valueOf(start),String.valueOf(end));
+		}
+	}
+	
+	public List<Map<String, Object>> updateLatestByWeek(Long timestamp){
+		//对于已停产线的特殊处理
+		timestamp+=8*3600*1000;
+		System.out.println("1");
+		return dbJiangyinMapper.selectLatestRecordByHour(String.valueOf(timestamp-604800000),String.valueOf(timestamp));
+	}
+	
+	public List<Map<String, Object>> updateYewu(Long start,Long end){
+		Long range = (end - start)/1000;
+		if(range<3600*24*7){
+			return dbJiangyinMapper.selectLatestRecordByHour(String.valueOf(start),String.valueOf(end));
+		}else{
+			return dbJiangyinMapper.selectLatestRecordByDay(String.valueOf(start),String.valueOf(end));
+		}
+	}
+
+	public double selectLatestRecordByStatId(String statId) {
+		
+		return dbJiangyinMapper.selectLatestRecordStatId(statId);
+	}
+
+	public List<Map<String, Object>> selectLatestRecordMinute100() {
+		// TODO Auto-generated method stub
+		return dbJiangyinMapper.selectLatestRecordMinute100();
+	}
+
+	public Map<String, Object> selectLatestRecordMinuteNew() {
+		// TODO Auto-generated method stub
+		return dbJiangyinMapper.selectLatestRecordInMinByMap();
+	}
+
+	
+}

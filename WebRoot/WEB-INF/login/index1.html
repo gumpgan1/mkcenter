@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Welcome!--ZJU@CIMS213</title>
+<link href="login/css/index.css" rel="stylesheet" type="text/css" />
+<script>
+	//展现登录框
+	window.onload = function(){
+		window.onresize =function(){
+			var el = document.getElementById("dialogMove");
+			autoCenter(el);
+			var bac = document.getElementById("mask");
+			toAll(bac);
+		}
+		
+		var msg = '$!{msg}';
+	}
+		
+	function showDialog(){
+		var el = document.getElementById("dialogMove");
+		var bac = document.getElementById("mask");
+		el.style.display="block";
+		autoCenter(el);
+		bac.style.display="block";
+		toAll(bac);
+	}
+	//自动居中
+	function autoCenter( el ){
+    var bodyW = document.documentElement.clientWidth;
+    var bodyH = document.documentElement.clientHeight;
+    var elW = el.offsetWidth;
+    var elH = el.offsetHeight;
+    el.style.left = (bodyW-elW)/2 + 'px';
+    el.style.top = (bodyH-elH)/2 + 'px';
+}
+	//全屏扩展
+	function toAll(el){
+	el.style.width  = document.body.scrollWidth+"px";
+    el.style.height = document.body.scrollHeight+"px";
+	}
+	//关闭
+	function tabclose(){
+		var el = document.getElementById("dialogMove");
+		var bac = document.getElementById("mask");
+		bac.style.display="none";
+		el.style.display="none";
+	}
+</script>
+</head>
+
+<body oncontextmenu=self.event.returnValue=false>
+<div class="logo">
+  <div class="setbar">
+  <a href="/0729/index.html" title="首页" target="_self"><strong>首页</strong></a>
+   <a onclick="showDialog()" title="首页" target="_self"><strong>登录</strong></a>
+  </div>
+  <p align="center"> 
+  <img src="login/logo.png" width="305" height="94" align="middle" />
+  </p>
+  <p align="center">机械工程学院&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp工业工程 </p>
+</div>
+<div class="over">
+  <div class="window">
+  <div class="word">
+  	<h3>
+    	专业介绍
+    </h3>
+  	<hr />
+  	<p>
+  	  浙江大学工业工程专业本科生培养始于1996年的机械工程及自动化专业的CAD/CAM及管理方向，2002年正式设立工业工程专业；研究生培养始于1987年的机械制造的CIMS研究方向，2007年正式在机械工程一级下设立工业工程博士点和硕士点。
+	  </p>
+     <p>
+浙江大学工业工程专业培养从事工业生产和社会服务系统的分析、设计、改善和运营的，兼有理工科思维和人文社科思维的综合型工程技术和管理人才，擅于运用信息化手段持续改进系统的效率、成本和质量。
+    </p>
+    </div>
+  </div>
+</div>
+<div class="copyright">
+	<p>&copy;浙江大学机械工程学院工业工程 版权所有</p>
+</div>
+<form id="login" action="login.do" method="post">
+	<input id="msg" type="hidden" value=$!{msg}/>
+	<div class="ui-dialog" id="dialogMove" onselectstart='return false;' >
+    <div class="ui-dialog-title" id="dialogDrag"  onselectstart="return false;" >
+       	 登录 
+    </div>
+  <div class="ui-dialog-content">
+        <div class="ui-dialog-l40 ui-dialog-pt15">
+            <input class="ui-dialog-input ui-dialog-input-username" type="input" name="username" placeholder="手机/邮箱/用户名" />
+        </div>
+        <div class="ui-dialog-l40 ui-dialog-pt15">
+            <input class="ui-dialog-input ui-dialog-input-password" type="input" name="password" placeholder="密码" />
+        </div>
+        <div class="ui-dialog-l40">
+            <a id="a1" href="#">忘记密码</a>
+			<a id="a2" href="#">立即注册</a>
+        </div>
+		<div>
+            <input class="ui-dialog-submit" type="submit" value="登录">
+      </div>
+    </div>
+</div>
+</form>
+<div class="ui-mask" id="mask" onclick="tabclose()"  onselectstart='return false;'></div>
+</body>
+</html>

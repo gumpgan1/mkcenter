@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@CIMS213—工业大屏后台管理系统</title>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/local.css" />
+
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- you need to include the shieldui css and js assets in order for the charts to work -->
+    <link rel="stylesheet" type="text/css" href="css/all.min.css" />
+    <link id="gridcss" rel="stylesheet" type="text/css" href="css/grid_all.min.css" />
+
+    <script type="text/javascript" src="js/shieldui-all.min.js"></script>
+    <script type="text/javascript">
+	 	setTimeout(function(){
+			window.location.href ='../adms/_index.html';
+		},2000);
+	</script>
+</head>
+<body>
+    <div id="wrapper">
+		  <!--   导航栏		  -->	
+          <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">CIMS-213</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right navbar-user">
+					 <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span id="time"></span></a>
+                    </li>
+                    <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> 登陆中 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><i class="fa fa-power-off"></i>登出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+		<!-- 导航栏结束 -->
+        <div id="page-wrapper">
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+            <div class="row">
+				<div class="text-center" style="margin:-5px 0 20px -260px">
+                    <h3 style="color:#cccccc">正在加载...</h3>
+                </div>
+			</div>
+        </div>
+    </div>
+
+    
+</body>
+<script type="text/javascript">
+	function setTime(){
+		var time = new Date().format('hh:mm:ss');		
+		$("#time").html(time);
+	}
+	window.onload = function(){
+		setTime();
+		setInterval("setTime()",1000);
+	}
+	Date.prototype.format =function(format)
+	{
+		var o = {
+		"M+" : this.getMonth()+1, //month
+		"d+" : this.getDate(), //day
+		"h+" : this.getHours(), //hour
+		"m+" : this.getMinutes(), //minute
+		"s+" : this.getSeconds(), //second
+		"q+" : Math.floor((this.getMonth()+3)/3), //quarter
+		"S" : this.getMilliseconds() //millisecond
+		}
+		if(/(y+)/.test(format)) format=format.replace(RegExp.$1,(this.getFullYear()+"").substr(4- RegExp.$1.length));
+		for(var k in o)
+			if(new RegExp("("+ k +")").test(format))
+			format = format.replace(RegExp.$1,RegExp.$1.length==1? o[k] :("00"+ o[k]).substr((""+ o[k]).length));
+		return format;
+	}
+
+</script>
+</html>

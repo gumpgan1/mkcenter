@@ -1,0 +1,1671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mktech.dao.DbJuhuaDao">
+  <resultMap id="BaseResultMap" type="com.mktech.entity.DbJuhua">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="TIMESTAMP" jdbcType="VARCHAR" property="timestamp" />
+    <result column="JH001" jdbcType="DOUBLE" property="jh001" />
+    <result column="JH002" jdbcType="DOUBLE" property="jh002" />
+    <result column="JH003" jdbcType="DOUBLE" property="jh003" />
+    <result column="JH004" jdbcType="DOUBLE" property="jh004" />
+    <result column="JH005" jdbcType="DOUBLE" property="jh005" />
+    <result column="JH006" jdbcType="DOUBLE" property="jh006" />
+    <result column="JH007" jdbcType="DOUBLE" property="jh007" />
+    <result column="JH008" jdbcType="DOUBLE" property="jh008" />
+    <result column="JH009" jdbcType="DOUBLE" property="jh009" />
+    <result column="JH010" jdbcType="DOUBLE" property="jh010" />
+    <result column="JH011" jdbcType="DOUBLE" property="jh011" />
+    <result column="JH012" jdbcType="DOUBLE" property="jh012" />
+    <result column="JH013" jdbcType="DOUBLE" property="jh013" />
+    <result column="JH014" jdbcType="DOUBLE" property="jh014" />
+    <result column="JH015" jdbcType="DOUBLE" property="jh015" />
+    <result column="JH016" jdbcType="DOUBLE" property="jh016" />
+    <result column="JH017" jdbcType="DOUBLE" property="jh017" />
+    <result column="JH018" jdbcType="DOUBLE" property="jh018" />
+    <result column="JH019" jdbcType="DOUBLE" property="jh019" />
+    <result column="JH020" jdbcType="DOUBLE" property="jh020" />
+    <result column="JH021" jdbcType="DOUBLE" property="jh021" />
+    <result column="JH022" jdbcType="DOUBLE" property="jh022" />
+    <result column="JH023" jdbcType="DOUBLE" property="jh023" />
+    <result column="JH024" jdbcType="DOUBLE" property="jh024" />
+    <result column="JH025" jdbcType="DOUBLE" property="jh025" />
+    <result column="JH026" jdbcType="DOUBLE" property="jh026" />
+    <result column="JH027" jdbcType="DOUBLE" property="jh027" />
+    <result column="JH028" jdbcType="DOUBLE" property="jh028" />
+    <result column="JH029" jdbcType="DOUBLE" property="jh029" />
+    <result column="JH030" jdbcType="DOUBLE" property="jh030" />
+    <result column="JH031" jdbcType="DOUBLE" property="jh031" />
+    <result column="JH032" jdbcType="DOUBLE" property="jh032" />
+    <result column="JH033" jdbcType="DOUBLE" property="jh033" />
+    <result column="JH034" jdbcType="DOUBLE" property="jh034" />
+    <result column="JH035" jdbcType="DOUBLE" property="jh035" />
+    <result column="JH036" jdbcType="DOUBLE" property="jh036" />
+    <result column="JH037" jdbcType="DOUBLE" property="jh037" />
+    <result column="JH038" jdbcType="DOUBLE" property="jh038" />
+    <result column="JH039" jdbcType="DOUBLE" property="jh039" />
+    <result column="JH040" jdbcType="DOUBLE" property="jh040" />
+    <result column="JH041" jdbcType="DOUBLE" property="jh041" />
+    <result column="JH042" jdbcType="DOUBLE" property="jh042" />
+    <result column="JH043" jdbcType="DOUBLE" property="jh043" />
+    <result column="JH044" jdbcType="DOUBLE" property="jh044" />
+    <result column="JH045" jdbcType="DOUBLE" property="jh045" />
+    <result column="JH046" jdbcType="DOUBLE" property="jh046" />
+    <result column="JH047" jdbcType="DOUBLE" property="jh047" />
+    <result column="JH048" jdbcType="DOUBLE" property="jh048" />
+    <result column="JH049" jdbcType="DOUBLE" property="jh049" />
+    <result column="JH050" jdbcType="DOUBLE" property="jh050" />
+    <result column="JH051" jdbcType="DOUBLE" property="jh051" />
+    <result column="JH052" jdbcType="DOUBLE" property="jh052" />
+    <result column="JH053" jdbcType="DOUBLE" property="jh053" />
+    <result column="JH054" jdbcType="DOUBLE" property="jh054" />
+    <result column="JH055" jdbcType="DOUBLE" property="jh055" />
+    <result column="JH056" jdbcType="DOUBLE" property="jh056" />
+    <result column="JH057" jdbcType="DOUBLE" property="jh057" />
+    <result column="JH058" jdbcType="DOUBLE" property="jh058" />
+    <result column="JH059" jdbcType="DOUBLE" property="jh059" />
+    <result column="JH060" jdbcType="DOUBLE" property="jh060" />
+    <result column="JH061" jdbcType="DOUBLE" property="jh061" />
+    <result column="JH062" jdbcType="DOUBLE" property="jh062" />
+    <result column="JH063" jdbcType="DOUBLE" property="jh063" />
+    <result column="JH064" jdbcType="DOUBLE" property="jh064" />
+    <result column="JH065" jdbcType="DOUBLE" property="jh065" />
+    <result column="JH066" jdbcType="DOUBLE" property="jh066" />
+    <result column="JH067" jdbcType="DOUBLE" property="jh067" />
+    <result column="JH068" jdbcType="DOUBLE" property="jh068" />
+    <result column="JH069" jdbcType="DOUBLE" property="jh069" />
+    <result column="JH070" jdbcType="DOUBLE" property="jh070" />
+    <result column="JH071" jdbcType="DOUBLE" property="jh071" />
+    <result column="JH072" jdbcType="DOUBLE" property="jh072" />
+    <result column="JH073" jdbcType="DOUBLE" property="jh073" />
+    <result column="JH074" jdbcType="DOUBLE" property="jh074" />
+    <result column="JH075" jdbcType="DOUBLE" property="jh075" />
+    <result column="JH076" jdbcType="DOUBLE" property="jh076" />
+    <result column="JH077" jdbcType="DOUBLE" property="jh077" />
+    <result column="JH078" jdbcType="DOUBLE" property="jh078" />
+    <result column="JH079" jdbcType="DOUBLE" property="jh079" />
+    <result column="JH080" jdbcType="DOUBLE" property="jh080" />
+    <result column="JH081" jdbcType="DOUBLE" property="jh081" />
+    <result column="JH082" jdbcType="DOUBLE" property="jh082" />
+    <result column="JH083" jdbcType="DOUBLE" property="jh083" />
+    <result column="JH084" jdbcType="DOUBLE" property="jh084" />
+    <result column="JH085" jdbcType="DOUBLE" property="jh085" />
+    <result column="JH086" jdbcType="DOUBLE" property="jh086" />
+    <result column="JH087" jdbcType="DOUBLE" property="jh087" />
+    <result column="JH088" jdbcType="DOUBLE" property="jh088" />
+    <result column="JH089" jdbcType="DOUBLE" property="jh089" />
+    <result column="JH090" jdbcType="DOUBLE" property="jh090" />
+    <result column="JH091" jdbcType="DOUBLE" property="jh091" />
+    <result column="JH092" jdbcType="DOUBLE" property="jh092" />
+    <result column="JH093" jdbcType="DOUBLE" property="jh093" />
+    <result column="JH094" jdbcType="DOUBLE" property="jh094" />
+    <result column="JH095" jdbcType="DOUBLE" property="jh095" />
+    <result column="JH096" jdbcType="DOUBLE" property="jh096" />
+    <result column="JH097" jdbcType="DOUBLE" property="jh097" />
+    <result column="JH098" jdbcType="DOUBLE" property="jh098" />
+    <result column="JH099" jdbcType="DOUBLE" property="jh099" />
+    <result column="JH100" jdbcType="DOUBLE" property="jh100" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, TIMESTAMP, JH001, JH002, JH003, JH004, JH005, JH006, JH007, JH008, JH009, JH010, 
+    JH011, JH012, JH013, JH014, JH015, JH016, JH017, JH018, JH019, JH020, JH021, JH022, 
+    JH023, JH024, JH025, JH026, JH027, JH028, JH029, JH030, JH031, JH032, JH033, JH034, 
+    JH035, JH036, JH037, JH038, JH039, JH040, JH041, JH042, JH043, JH044, JH045, JH046, 
+    JH047, JH048, JH049, JH050, JH051, JH052, JH053, JH054, JH055, JH056, JH057, JH058, 
+    JH059, JH060, JH061, JH062, JH063, JH064, JH065, JH066, JH067, JH068, JH069, JH070, 
+    JH071, JH072, JH073, JH074, JH075, JH076, JH077, JH078, JH079, JH080, JH081, JH082, 
+    JH083, JH084, JH085, JH086, JH087, JH088, JH089, JH090, JH091, JH092, JH093, JH094, 
+    JH095, JH096, JH097, JH098, JH099, JH100
+  </sql>
+  <sql id="Avg_List">
+		avg(id) as ID,avg(TIMESTAMP) as TIMESTAMP,avg(JH001) as JH001,avg(JH002) as JH002,avg(JH003) as JH003,
+		avg(JH004) as JH004,avg(JH005) as JH005,avg(JH006) as JH006,avg(JH007) as JH007,
+		avg(JH008) as JH008,avg(JH009) as JH009,avg(JH010) as JH010,avg(JH011) as JH011,
+		avg(JH012) as JH012,avg(JH013) as JH013,avg(JH014) as JH014,avg(JH015) as JH015,
+		avg(JH016) as JH016,avg(JH017) as JH017,avg(JH018) as JH018,avg(JH019) as JH019,
+		avg(JH020) as JH020,avg(JH021) as JH021,avg(JH022) as JH022,avg(JH023) as JH023,
+		avg(JH024) as JH024,avg(JH025) as JH025,avg(JH026) as JH026,avg(JH027) as JH027,
+		avg(JH028) as JH028,avg(JH029) as JH029,avg(JH030) as JH030,avg(JH031) as JH031,
+		avg(JH032) as JH032,avg(JH033) as JH033,avg(JH034) as JH034,avg(JH035) as JH035,
+		avg(JH036) as JH036,avg(JH037) as JH037,avg(JH038) as JH038,avg(JH039) as JH039,
+		avg(JH040) as JH040,avg(JH041) as JH041,avg(JH042) as JH042,avg(JH043) as JH043,
+		avg(JH044) as JH044,avg(JH045) as JH045,avg(JH046) as JH046,avg(JH047) as JH047,
+		avg(JH048) as JH048,avg(JH049) as JH049,avg(JH050) as JH050,avg(JH051) as JH051,
+		avg(JH052) as JH052,avg(JH053) as JH053,avg(JH054) as JH054,avg(JH055) as JH055,
+		avg(JH056) as JH056,avg(JH057) as JH057,avg(JH058) as JH058,avg(JH059) as JH059,
+		avg(JH060) as JH060,avg(JH061) as JH061,avg(JH062) as JH062,avg(JH063) as JH063,
+		avg(JH064) as JH064,avg(JH065) as JH065,avg(JH066) as JH066,avg(JH067) as JH067,
+		avg(JH068) as JH068,avg(JH069) as JH069,avg(JH070) as JH070,avg(JH071) as JH071,
+		avg(JH072) as JH072,avg(JH073) as JH073,avg(JH074) as JH074,avg(JH075) as JH075,
+		avg(JH076) as JH076,avg(JH077) as JH077,avg(JH078) as JH078,avg(JH079) as JH079,
+		avg(JH080) as JH080,avg(JH081) as JH081,avg(JH082) as JH082,avg(JH083) as JH083,
+		avg(JH084) as JH084,avg(JH085) as JH085,avg(JH086) as JH086,avg(JH087) as JH087,
+		avg(JH088) as JH088,avg(JH089) as JH089,avg(JH090) as JH090,avg(JH091) as JH091,
+		avg(JH092) as JH092,avg(JH093) as JH093,avg(JH094) as JH094,avg(JH095) as JH095,
+		avg(JH096) as JH096,avg(JH097) as JH097,avg(JH098) as JH098,avg(JH099) as JH099,
+		avg(JH100) as JH100
+	</sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from DB_JUHUA
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectNearestRecord" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from DB_JUHUA
+		where TIMESTAMP &lt;= #{timestamp,jdbcType=VARCHAR} order by ID desc limit 1
+	</select>
+  <select id="selectLatestRecord" resultType="java.util.LinkedHashMap">
+		select
+		<include refid="Base_Column_List" />,(JH002+JH005+JH008) as OUTVALUE
+		from DB_JUHUA
+		order by ID desc limit 1
+	</select>
+	<select id="selectLatestRecord500" resultType="java.util.LinkedHashMap">
+		select 
+		<include refid="Base_Column_List" />,(JH002+JH005+JH008) as OUTVALUE
+		from (
+		select 
+		<include refid="Base_Column_List" />
+		from DB_JUHUA
+		order by ID desc limit 100) as tbl order by tbl.ID
+	</select>
+	<select id="selectNearestRecord2" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from DB_JUHUA
+		order by ID desc limit 1
+	</select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from DB_JUHUA
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mktech.entity.DbJuhua">
+    insert into DB_JUHUA (ID, TIMESTAMP, JH001, 
+      JH002, JH003, JH004, JH005, 
+      JH006, JH007, JH008, JH009, 
+      JH010, JH011, JH012, JH013, 
+      JH014, JH015, JH016, JH017, 
+      JH018, JH019, JH020, JH021, 
+      JH022, JH023, JH024, JH025, 
+      JH026, JH027, JH028, JH029, 
+      JH030, JH031, JH032, JH033, 
+      JH034, JH035, JH036, JH037, 
+      JH038, JH039, JH040, JH041, 
+      JH042, JH043, JH044, JH045, 
+      JH046, JH047, JH048, JH049, 
+      JH050, JH051, JH052, JH053, 
+      JH054, JH055, JH056, JH057, 
+      JH058, JH059, JH060, JH061, 
+      JH062, JH063, JH064, JH065, 
+      JH066, JH067, JH068, JH069, 
+      JH070, JH071, JH072, JH073, 
+      JH074, JH075, JH076, JH077, 
+      JH078, JH079, JH080, JH081, 
+      JH082, JH083, JH084, JH085, 
+      JH086, JH087, JH088, JH089, 
+      JH090, JH091, JH092, JH093, 
+      JH094, JH095, JH096, JH097, 
+      JH098, JH099, JH100
+      )
+    values (#{id,jdbcType=INTEGER}, #{timestamp,jdbcType=VARCHAR}, #{JH001,jdbcType=DOUBLE}, 
+      #{JH002,jdbcType=DOUBLE}, #{JH003,jdbcType=DOUBLE}, #{JH004,jdbcType=DOUBLE}, #{JH005,jdbcType=DOUBLE}, 
+      #{JH006,jdbcType=DOUBLE}, #{JH007,jdbcType=DOUBLE}, #{JH008,jdbcType=DOUBLE}, #{JH009,jdbcType=DOUBLE}, 
+      #{JH010,jdbcType=DOUBLE}, #{JH011,jdbcType=DOUBLE}, #{JH012,jdbcType=DOUBLE}, #{JH013,jdbcType=DOUBLE}, 
+      #{JH014,jdbcType=DOUBLE}, #{JH015,jdbcType=DOUBLE}, #{JH016,jdbcType=DOUBLE}, #{JH017,jdbcType=DOUBLE}, 
+      #{JH018,jdbcType=DOUBLE}, #{JH019,jdbcType=DOUBLE}, #{JH020,jdbcType=DOUBLE}, #{JH021,jdbcType=DOUBLE}, 
+      #{JH022,jdbcType=DOUBLE}, #{JH023,jdbcType=DOUBLE}, #{JH024,jdbcType=DOUBLE}, #{JH025,jdbcType=DOUBLE}, 
+      #{JH026,jdbcType=DOUBLE}, #{JH027,jdbcType=DOUBLE}, #{JH028,jdbcType=DOUBLE}, #{JH029,jdbcType=DOUBLE}, 
+      #{JH030,jdbcType=DOUBLE}, #{JH031,jdbcType=DOUBLE}, #{JH032,jdbcType=DOUBLE}, #{JH033,jdbcType=DOUBLE}, 
+      #{JH034,jdbcType=DOUBLE}, #{JH035,jdbcType=DOUBLE}, #{JH036,jdbcType=DOUBLE}, #{JH037,jdbcType=DOUBLE}, 
+      #{JH038,jdbcType=DOUBLE}, #{JH039,jdbcType=DOUBLE}, #{JH040,jdbcType=DOUBLE}, #{JH041,jdbcType=DOUBLE}, 
+      #{JH042,jdbcType=DOUBLE}, #{JH043,jdbcType=DOUBLE}, #{JH044,jdbcType=DOUBLE}, #{JH045,jdbcType=DOUBLE}, 
+      #{JH046,jdbcType=DOUBLE}, #{JH047,jdbcType=DOUBLE}, #{JH048,jdbcType=DOUBLE}, #{JH049,jdbcType=DOUBLE}, 
+      #{JH050,jdbcType=DOUBLE}, #{JH051,jdbcType=DOUBLE}, #{JH052,jdbcType=DOUBLE}, #{JH053,jdbcType=DOUBLE}, 
+      #{JH054,jdbcType=DOUBLE}, #{JH055,jdbcType=DOUBLE}, #{JH056,jdbcType=DOUBLE}, #{JH057,jdbcType=DOUBLE}, 
+      #{JH058,jdbcType=DOUBLE}, #{JH059,jdbcType=DOUBLE}, #{JH060,jdbcType=DOUBLE}, #{JH061,jdbcType=DOUBLE}, 
+      #{JH062,jdbcType=DOUBLE}, #{JH063,jdbcType=DOUBLE}, #{JH064,jdbcType=DOUBLE}, #{JH065,jdbcType=DOUBLE}, 
+      #{JH066,jdbcType=DOUBLE}, #{JH067,jdbcType=DOUBLE}, #{JH068,jdbcType=DOUBLE}, #{JH069,jdbcType=DOUBLE}, 
+      #{JH070,jdbcType=DOUBLE}, #{JH071,jdbcType=DOUBLE}, #{JH072,jdbcType=DOUBLE}, #{JH073,jdbcType=DOUBLE}, 
+      #{JH074,jdbcType=DOUBLE}, #{JH075,jdbcType=DOUBLE}, #{JH076,jdbcType=DOUBLE}, #{JH077,jdbcType=DOUBLE}, 
+      #{JH078,jdbcType=DOUBLE}, #{JH079,jdbcType=DOUBLE}, #{JH080,jdbcType=DOUBLE}, #{JH081,jdbcType=DOUBLE}, 
+      #{JH082,jdbcType=DOUBLE}, #{JH083,jdbcType=DOUBLE}, #{JH084,jdbcType=DOUBLE}, #{JH085,jdbcType=DOUBLE}, 
+      #{JH086,jdbcType=DOUBLE}, #{JH087,jdbcType=DOUBLE}, #{JH088,jdbcType=DOUBLE}, #{JH089,jdbcType=DOUBLE}, 
+      #{JH090,jdbcType=DOUBLE}, #{JH091,jdbcType=DOUBLE}, #{JH092,jdbcType=DOUBLE}, #{JH093,jdbcType=DOUBLE}, 
+      #{JH094,jdbcType=DOUBLE}, #{JH095,jdbcType=DOUBLE}, #{JH096,jdbcType=DOUBLE}, #{JH097,jdbcType=DOUBLE}, 
+      #{JH098,jdbcType=DOUBLE}, #{JH099,jdbcType=DOUBLE}, #{JH100,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mktech.entity.DbJuhua">
+    insert into DB_JUHUA
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="timestamp != null">
+        TIMESTAMP,
+      </if>
+      <if test="JH001 != null">
+        JH001,
+      </if>
+      <if test="JH002 != null">
+        JH002,
+      </if>
+      <if test="JH003 != null">
+        JH003,
+      </if>
+      <if test="JH004 != null">
+        JH004,
+      </if>
+      <if test="JH005 != null">
+        JH005,
+      </if>
+      <if test="JH006 != null">
+        JH006,
+      </if>
+      <if test="JH007 != null">
+        JH007,
+      </if>
+      <if test="JH008 != null">
+        JH008,
+      </if>
+      <if test="JH009 != null">
+        JH009,
+      </if>
+      <if test="JH010 != null">
+        JH010,
+      </if>
+      <if test="JH011 != null">
+        JH011,
+      </if>
+      <if test="JH012 != null">
+        JH012,
+      </if>
+      <if test="JH013 != null">
+        JH013,
+      </if>
+      <if test="JH014 != null">
+        JH014,
+      </if>
+      <if test="JH015 != null">
+        JH015,
+      </if>
+      <if test="JH016 != null">
+        JH016,
+      </if>
+      <if test="JH017 != null">
+        JH017,
+      </if>
+      <if test="JH018 != null">
+        JH018,
+      </if>
+      <if test="JH019 != null">
+        JH019,
+      </if>
+      <if test="JH020 != null">
+        JH020,
+      </if>
+      <if test="JH021 != null">
+        JH021,
+      </if>
+      <if test="JH022 != null">
+        JH022,
+      </if>
+      <if test="JH023 != null">
+        JH023,
+      </if>
+      <if test="JH024 != null">
+        JH024,
+      </if>
+      <if test="JH025 != null">
+        JH025,
+      </if>
+      <if test="JH026 != null">
+        JH026,
+      </if>
+      <if test="JH027 != null">
+        JH027,
+      </if>
+      <if test="JH028 != null">
+        JH028,
+      </if>
+      <if test="JH029 != null">
+        JH029,
+      </if>
+      <if test="JH030 != null">
+        JH030,
+      </if>
+      <if test="JH031 != null">
+        JH031,
+      </if>
+      <if test="JH032 != null">
+        JH032,
+      </if>
+      <if test="JH033 != null">
+        JH033,
+      </if>
+      <if test="JH034 != null">
+        JH034,
+      </if>
+      <if test="JH035 != null">
+        JH035,
+      </if>
+      <if test="JH036 != null">
+        JH036,
+      </if>
+      <if test="JH037 != null">
+        JH037,
+      </if>
+      <if test="JH038 != null">
+        JH038,
+      </if>
+      <if test="JH039 != null">
+        JH039,
+      </if>
+      <if test="JH040 != null">
+        JH040,
+      </if>
+      <if test="JH041 != null">
+        JH041,
+      </if>
+      <if test="JH042 != null">
+        JH042,
+      </if>
+      <if test="JH043 != null">
+        JH043,
+      </if>
+      <if test="JH044 != null">
+        JH044,
+      </if>
+      <if test="JH045 != null">
+        JH045,
+      </if>
+      <if test="JH046 != null">
+        JH046,
+      </if>
+      <if test="JH047 != null">
+        JH047,
+      </if>
+      <if test="JH048 != null">
+        JH048,
+      </if>
+      <if test="JH049 != null">
+        JH049,
+      </if>
+      <if test="JH050 != null">
+        JH050,
+      </if>
+      <if test="JH051 != null">
+        JH051,
+      </if>
+      <if test="JH052 != null">
+        JH052,
+      </if>
+      <if test="JH053 != null">
+        JH053,
+      </if>
+      <if test="JH054 != null">
+        JH054,
+      </if>
+      <if test="JH055 != null">
+        JH055,
+      </if>
+      <if test="JH056 != null">
+        JH056,
+      </if>
+      <if test="JH057 != null">
+        JH057,
+      </if>
+      <if test="JH058 != null">
+        JH058,
+      </if>
+      <if test="JH059 != null">
+        JH059,
+      </if>
+      <if test="JH060 != null">
+        JH060,
+      </if>
+      <if test="JH061 != null">
+        JH061,
+      </if>
+      <if test="JH062 != null">
+        JH062,
+      </if>
+      <if test="JH063 != null">
+        JH063,
+      </if>
+      <if test="JH064 != null">
+        JH064,
+      </if>
+      <if test="JH065 != null">
+        JH065,
+      </if>
+      <if test="JH066 != null">
+        JH066,
+      </if>
+      <if test="JH067 != null">
+        JH067,
+      </if>
+      <if test="JH068 != null">
+        JH068,
+      </if>
+      <if test="JH069 != null">
+        JH069,
+      </if>
+      <if test="JH070 != null">
+        JH070,
+      </if>
+      <if test="JH071 != null">
+        JH071,
+      </if>
+      <if test="JH072 != null">
+        JH072,
+      </if>
+      <if test="JH073 != null">
+        JH073,
+      </if>
+      <if test="JH074 != null">
+        JH074,
+      </if>
+      <if test="JH075 != null">
+        JH075,
+      </if>
+      <if test="JH076 != null">
+        JH076,
+      </if>
+      <if test="JH077 != null">
+        JH077,
+      </if>
+      <if test="JH078 != null">
+        JH078,
+      </if>
+      <if test="JH079 != null">
+        JH079,
+      </if>
+      <if test="JH080 != null">
+        JH080,
+      </if>
+      <if test="JH081 != null">
+        JH081,
+      </if>
+      <if test="JH082 != null">
+        JH082,
+      </if>
+      <if test="JH083 != null">
+        JH083,
+      </if>
+      <if test="JH084 != null">
+        JH084,
+      </if>
+      <if test="JH085 != null">
+        JH085,
+      </if>
+      <if test="JH086 != null">
+        JH086,
+      </if>
+      <if test="JH087 != null">
+        JH087,
+      </if>
+      <if test="JH088 != null">
+        JH088,
+      </if>
+      <if test="JH089 != null">
+        JH089,
+      </if>
+      <if test="JH090 != null">
+        JH090,
+      </if>
+      <if test="JH091 != null">
+        JH091,
+      </if>
+      <if test="JH092 != null">
+        JH092,
+      </if>
+      <if test="JH093 != null">
+        JH093,
+      </if>
+      <if test="JH094 != null">
+        JH094,
+      </if>
+      <if test="JH095 != null">
+        JH095,
+      </if>
+      <if test="JH096 != null">
+        JH096,
+      </if>
+      <if test="JH097 != null">
+        JH097,
+      </if>
+      <if test="JH098 != null">
+        JH098,
+      </if>
+      <if test="JH099 != null">
+        JH099,
+      </if>
+      <if test="JH100 != null">
+        JH100,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="timestamp != null">
+        #{timestamp,jdbcType=VARCHAR},
+      </if>
+      <if test="JH001 != null">
+        #{JH001,jdbcType=DOUBLE},
+      </if>
+      <if test="JH002 != null">
+        #{JH002,jdbcType=DOUBLE},
+      </if>
+      <if test="JH003 != null">
+        #{JH003,jdbcType=DOUBLE},
+      </if>
+      <if test="JH004 != null">
+        #{JH004,jdbcType=DOUBLE},
+      </if>
+      <if test="JH005 != null">
+        #{JH005,jdbcType=DOUBLE},
+      </if>
+      <if test="JH006 != null">
+        #{JH006,jdbcType=DOUBLE},
+      </if>
+      <if test="JH007 != null">
+        #{JH007,jdbcType=DOUBLE},
+      </if>
+      <if test="JH008 != null">
+        #{JH008,jdbcType=DOUBLE},
+      </if>
+      <if test="JH009 != null">
+        #{JH009,jdbcType=DOUBLE},
+      </if>
+      <if test="JH010 != null">
+        #{JH010,jdbcType=DOUBLE},
+      </if>
+      <if test="JH011 != null">
+        #{JH011,jdbcType=DOUBLE},
+      </if>
+      <if test="JH012 != null">
+        #{JH012,jdbcType=DOUBLE},
+      </if>
+      <if test="JH013 != null">
+        #{JH013,jdbcType=DOUBLE},
+      </if>
+      <if test="JH014 != null">
+        #{JH014,jdbcType=DOUBLE},
+      </if>
+      <if test="JH015 != null">
+        #{JH015,jdbcType=DOUBLE},
+      </if>
+      <if test="JH016 != null">
+        #{JH016,jdbcType=DOUBLE},
+      </if>
+      <if test="JH017 != null">
+        #{JH017,jdbcType=DOUBLE},
+      </if>
+      <if test="JH018 != null">
+        #{JH018,jdbcType=DOUBLE},
+      </if>
+      <if test="JH019 != null">
+        #{JH019,jdbcType=DOUBLE},
+      </if>
+      <if test="JH020 != null">
+        #{JH020,jdbcType=DOUBLE},
+      </if>
+      <if test="JH021 != null">
+        #{JH021,jdbcType=DOUBLE},
+      </if>
+      <if test="JH022 != null">
+        #{JH022,jdbcType=DOUBLE},
+      </if>
+      <if test="JH023 != null">
+        #{JH023,jdbcType=DOUBLE},
+      </if>
+      <if test="JH024 != null">
+        #{JH024,jdbcType=DOUBLE},
+      </if>
+      <if test="JH025 != null">
+        #{JH025,jdbcType=DOUBLE},
+      </if>
+      <if test="JH026 != null">
+        #{JH026,jdbcType=DOUBLE},
+      </if>
+      <if test="JH027 != null">
+        #{JH027,jdbcType=DOUBLE},
+      </if>
+      <if test="JH028 != null">
+        #{JH028,jdbcType=DOUBLE},
+      </if>
+      <if test="JH029 != null">
+        #{JH029,jdbcType=DOUBLE},
+      </if>
+      <if test="JH030 != null">
+        #{JH030,jdbcType=DOUBLE},
+      </if>
+      <if test="JH031 != null">
+        #{JH031,jdbcType=DOUBLE},
+      </if>
+      <if test="JH032 != null">
+        #{JH032,jdbcType=DOUBLE},
+      </if>
+      <if test="JH033 != null">
+        #{JH033,jdbcType=DOUBLE},
+      </if>
+      <if test="JH034 != null">
+        #{JH034,jdbcType=DOUBLE},
+      </if>
+      <if test="JH035 != null">
+        #{JH035,jdbcType=DOUBLE},
+      </if>
+      <if test="JH036 != null">
+        #{JH036,jdbcType=DOUBLE},
+      </if>
+      <if test="JH037 != null">
+        #{JH037,jdbcType=DOUBLE},
+      </if>
+      <if test="JH038 != null">
+        #{JH038,jdbcType=DOUBLE},
+      </if>
+      <if test="JH039 != null">
+        #{JH039,jdbcType=DOUBLE},
+      </if>
+      <if test="JH040 != null">
+        #{JH040,jdbcType=DOUBLE},
+      </if>
+      <if test="JH041 != null">
+        #{JH041,jdbcType=DOUBLE},
+      </if>
+      <if test="JH042 != null">
+        #{JH042,jdbcType=DOUBLE},
+      </if>
+      <if test="JH043 != null">
+        #{JH043,jdbcType=DOUBLE},
+      </if>
+      <if test="JH044 != null">
+        #{JH044,jdbcType=DOUBLE},
+      </if>
+      <if test="JH045 != null">
+        #{JH045,jdbcType=DOUBLE},
+      </if>
+      <if test="JH046 != null">
+        #{JH046,jdbcType=DOUBLE},
+      </if>
+      <if test="JH047 != null">
+        #{JH047,jdbcType=DOUBLE},
+      </if>
+      <if test="JH048 != null">
+        #{JH048,jdbcType=DOUBLE},
+      </if>
+      <if test="JH049 != null">
+        #{JH049,jdbcType=DOUBLE},
+      </if>
+      <if test="JH050 != null">
+        #{JH050,jdbcType=DOUBLE},
+      </if>
+      <if test="JH051 != null">
+        #{JH051,jdbcType=DOUBLE},
+      </if>
+      <if test="JH052 != null">
+        #{JH052,jdbcType=DOUBLE},
+      </if>
+      <if test="JH053 != null">
+        #{JH053,jdbcType=DOUBLE},
+      </if>
+      <if test="JH054 != null">
+        #{JH054,jdbcType=DOUBLE},
+      </if>
+      <if test="JH055 != null">
+        #{JH055,jdbcType=DOUBLE},
+      </if>
+      <if test="JH056 != null">
+        #{JH056,jdbcType=DOUBLE},
+      </if>
+      <if test="JH057 != null">
+        #{JH057,jdbcType=DOUBLE},
+      </if>
+      <if test="JH058 != null">
+        #{JH058,jdbcType=DOUBLE},
+      </if>
+      <if test="JH059 != null">
+        #{JH059,jdbcType=DOUBLE},
+      </if>
+      <if test="JH060 != null">
+        #{JH060,jdbcType=DOUBLE},
+      </if>
+      <if test="JH061 != null">
+        #{JH061,jdbcType=DOUBLE},
+      </if>
+      <if test="JH062 != null">
+        #{JH062,jdbcType=DOUBLE},
+      </if>
+      <if test="JH063 != null">
+        #{JH063,jdbcType=DOUBLE},
+      </if>
+      <if test="JH064 != null">
+        #{JH064,jdbcType=DOUBLE},
+      </if>
+      <if test="JH065 != null">
+        #{JH065,jdbcType=DOUBLE},
+      </if>
+      <if test="JH066 != null">
+        #{JH066,jdbcType=DOUBLE},
+      </if>
+      <if test="JH067 != null">
+        #{JH067,jdbcType=DOUBLE},
+      </if>
+      <if test="JH068 != null">
+        #{JH068,jdbcType=DOUBLE},
+      </if>
+      <if test="JH069 != null">
+        #{JH069,jdbcType=DOUBLE},
+      </if>
+      <if test="JH070 != null">
+        #{JH070,jdbcType=DOUBLE},
+      </if>
+      <if test="JH071 != null">
+        #{JH071,jdbcType=DOUBLE},
+      </if>
+      <if test="JH072 != null">
+        #{JH072,jdbcType=DOUBLE},
+      </if>
+      <if test="JH073 != null">
+        #{JH073,jdbcType=DOUBLE},
+      </if>
+      <if test="JH074 != null">
+        #{JH074,jdbcType=DOUBLE},
+      </if>
+      <if test="JH075 != null">
+        #{JH075,jdbcType=DOUBLE},
+      </if>
+      <if test="JH076 != null">
+        #{JH076,jdbcType=DOUBLE},
+      </if>
+      <if test="JH077 != null">
+        #{JH077,jdbcType=DOUBLE},
+      </if>
+      <if test="JH078 != null">
+        #{JH078,jdbcType=DOUBLE},
+      </if>
+      <if test="JH079 != null">
+        #{JH079,jdbcType=DOUBLE},
+      </if>
+      <if test="JH080 != null">
+        #{JH080,jdbcType=DOUBLE},
+      </if>
+      <if test="JH081 != null">
+        #{JH081,jdbcType=DOUBLE},
+      </if>
+      <if test="JH082 != null">
+        #{JH082,jdbcType=DOUBLE},
+      </if>
+      <if test="JH083 != null">
+        #{JH083,jdbcType=DOUBLE},
+      </if>
+      <if test="JH084 != null">
+        #{JH084,jdbcType=DOUBLE},
+      </if>
+      <if test="JH085 != null">
+        #{JH085,jdbcType=DOUBLE},
+      </if>
+      <if test="JH086 != null">
+        #{JH086,jdbcType=DOUBLE},
+      </if>
+      <if test="JH087 != null">
+        #{JH087,jdbcType=DOUBLE},
+      </if>
+      <if test="JH088 != null">
+        #{JH088,jdbcType=DOUBLE},
+      </if>
+      <if test="JH089 != null">
+        #{JH089,jdbcType=DOUBLE},
+      </if>
+      <if test="JH090 != null">
+        #{JH090,jdbcType=DOUBLE},
+      </if>
+      <if test="JH091 != null">
+        #{JH091,jdbcType=DOUBLE},
+      </if>
+      <if test="JH092 != null">
+        #{JH092,jdbcType=DOUBLE},
+      </if>
+      <if test="JH093 != null">
+        #{JH093,jdbcType=DOUBLE},
+      </if>
+      <if test="JH094 != null">
+        #{JH094,jdbcType=DOUBLE},
+      </if>
+      <if test="JH095 != null">
+        #{JH095,jdbcType=DOUBLE},
+      </if>
+      <if test="JH096 != null">
+        #{JH096,jdbcType=DOUBLE},
+      </if>
+      <if test="JH097 != null">
+        #{JH097,jdbcType=DOUBLE},
+      </if>
+      <if test="JH098 != null">
+        #{JH098,jdbcType=DOUBLE},
+      </if>
+      <if test="JH099 != null">
+        #{JH099,jdbcType=DOUBLE},
+      </if>
+      <if test="JH100 != null">
+        #{JH100,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mktech.entity.DbJuhua">
+    update DB_JUHUA
+    <set>
+      <if test="timestamp != null">
+        TIMESTAMP = #{timestamp,jdbcType=VARCHAR},
+      </if>
+      <if test="JH001 != null">
+        JH001 = #{JH001,jdbcType=DOUBLE},
+      </if>
+      <if test="JH002 != null">
+        JH002 = #{JH002,jdbcType=DOUBLE},
+      </if>
+      <if test="JH003 != null">
+        JH003 = #{JH003,jdbcType=DOUBLE},
+      </if>
+      <if test="JH004 != null">
+        JH004 = #{JH004,jdbcType=DOUBLE},
+      </if>
+      <if test="JH005 != null">
+        JH005 = #{JH005,jdbcType=DOUBLE},
+      </if>
+      <if test="JH006 != null">
+        JH006 = #{JH006,jdbcType=DOUBLE},
+      </if>
+      <if test="JH007 != null">
+        JH007 = #{JH007,jdbcType=DOUBLE},
+      </if>
+      <if test="JH008 != null">
+        JH008 = #{JH008,jdbcType=DOUBLE},
+      </if>
+      <if test="JH009 != null">
+        JH009 = #{JH009,jdbcType=DOUBLE},
+      </if>
+      <if test="JH010 != null">
+        JH010 = #{JH010,jdbcType=DOUBLE},
+      </if>
+      <if test="JH011 != null">
+        JH011 = #{JH011,jdbcType=DOUBLE},
+      </if>
+      <if test="JH012 != null">
+        JH012 = #{JH012,jdbcType=DOUBLE},
+      </if>
+      <if test="JH013 != null">
+        JH013 = #{JH013,jdbcType=DOUBLE},
+      </if>
+      <if test="JH014 != null">
+        JH014 = #{JH014,jdbcType=DOUBLE},
+      </if>
+      <if test="JH015 != null">
+        JH015 = #{JH015,jdbcType=DOUBLE},
+      </if>
+      <if test="JH016 != null">
+        JH016 = #{JH016,jdbcType=DOUBLE},
+      </if>
+      <if test="JH017 != null">
+        JH017 = #{JH017,jdbcType=DOUBLE},
+      </if>
+      <if test="JH018 != null">
+        JH018 = #{JH018,jdbcType=DOUBLE},
+      </if>
+      <if test="JH019 != null">
+        JH019 = #{JH019,jdbcType=DOUBLE},
+      </if>
+      <if test="JH020 != null">
+        JH020 = #{JH020,jdbcType=DOUBLE},
+      </if>
+      <if test="JH021 != null">
+        JH021 = #{JH021,jdbcType=DOUBLE},
+      </if>
+      <if test="JH022 != null">
+        JH022 = #{JH022,jdbcType=DOUBLE},
+      </if>
+      <if test="JH023 != null">
+        JH023 = #{JH023,jdbcType=DOUBLE},
+      </if>
+      <if test="JH024 != null">
+        JH024 = #{JH024,jdbcType=DOUBLE},
+      </if>
+      <if test="JH025 != null">
+        JH025 = #{JH025,jdbcType=DOUBLE},
+      </if>
+      <if test="JH026 != null">
+        JH026 = #{JH026,jdbcType=DOUBLE},
+      </if>
+      <if test="JH027 != null">
+        JH027 = #{JH027,jdbcType=DOUBLE},
+      </if>
+      <if test="JH028 != null">
+        JH028 = #{JH028,jdbcType=DOUBLE},
+      </if>
+      <if test="JH029 != null">
+        JH029 = #{JH029,jdbcType=DOUBLE},
+      </if>
+      <if test="JH030 != null">
+        JH030 = #{JH030,jdbcType=DOUBLE},
+      </if>
+      <if test="JH031 != null">
+        JH031 = #{JH031,jdbcType=DOUBLE},
+      </if>
+      <if test="JH032 != null">
+        JH032 = #{JH032,jdbcType=DOUBLE},
+      </if>
+      <if test="JH033 != null">
+        JH033 = #{JH033,jdbcType=DOUBLE},
+      </if>
+      <if test="JH034 != null">
+        JH034 = #{JH034,jdbcType=DOUBLE},
+      </if>
+      <if test="JH035 != null">
+        JH035 = #{JH035,jdbcType=DOUBLE},
+      </if>
+      <if test="JH036 != null">
+        JH036 = #{JH036,jdbcType=DOUBLE},
+      </if>
+      <if test="JH037 != null">
+        JH037 = #{JH037,jdbcType=DOUBLE},
+      </if>
+      <if test="JH038 != null">
+        JH038 = #{JH038,jdbcType=DOUBLE},
+      </if>
+      <if test="JH039 != null">
+        JH039 = #{JH039,jdbcType=DOUBLE},
+      </if>
+      <if test="JH040 != null">
+        JH040 = #{JH040,jdbcType=DOUBLE},
+      </if>
+      <if test="JH041 != null">
+        JH041 = #{JH041,jdbcType=DOUBLE},
+      </if>
+      <if test="JH042 != null">
+        JH042 = #{JH042,jdbcType=DOUBLE},
+      </if>
+      <if test="JH043 != null">
+        JH043 = #{JH043,jdbcType=DOUBLE},
+      </if>
+      <if test="JH044 != null">
+        JH044 = #{JH044,jdbcType=DOUBLE},
+      </if>
+      <if test="JH045 != null">
+        JH045 = #{JH045,jdbcType=DOUBLE},
+      </if>
+      <if test="JH046 != null">
+        JH046 = #{JH046,jdbcType=DOUBLE},
+      </if>
+      <if test="JH047 != null">
+        JH047 = #{JH047,jdbcType=DOUBLE},
+      </if>
+      <if test="JH048 != null">
+        JH048 = #{JH048,jdbcType=DOUBLE},
+      </if>
+      <if test="JH049 != null">
+        JH049 = #{JH049,jdbcType=DOUBLE},
+      </if>
+      <if test="JH050 != null">
+        JH050 = #{JH050,jdbcType=DOUBLE},
+      </if>
+      <if test="JH051 != null">
+        JH051 = #{JH051,jdbcType=DOUBLE},
+      </if>
+      <if test="JH052 != null">
+        JH052 = #{JH052,jdbcType=DOUBLE},
+      </if>
+      <if test="JH053 != null">
+        JH053 = #{JH053,jdbcType=DOUBLE},
+      </if>
+      <if test="JH054 != null">
+        JH054 = #{JH054,jdbcType=DOUBLE},
+      </if>
+      <if test="JH055 != null">
+        JH055 = #{JH055,jdbcType=DOUBLE},
+      </if>
+      <if test="JH056 != null">
+        JH056 = #{JH056,jdbcType=DOUBLE},
+      </if>
+      <if test="JH057 != null">
+        JH057 = #{JH057,jdbcType=DOUBLE},
+      </if>
+      <if test="JH058 != null">
+        JH058 = #{JH058,jdbcType=DOUBLE},
+      </if>
+      <if test="JH059 != null">
+        JH059 = #{JH059,jdbcType=DOUBLE},
+      </if>
+      <if test="JH060 != null">
+        JH060 = #{JH060,jdbcType=DOUBLE},
+      </if>
+      <if test="JH061 != null">
+        JH061 = #{JH061,jdbcType=DOUBLE},
+      </if>
+      <if test="JH062 != null">
+        JH062 = #{JH062,jdbcType=DOUBLE},
+      </if>
+      <if test="JH063 != null">
+        JH063 = #{JH063,jdbcType=DOUBLE},
+      </if>
+      <if test="JH064 != null">
+        JH064 = #{JH064,jdbcType=DOUBLE},
+      </if>
+      <if test="JH065 != null">
+        JH065 = #{JH065,jdbcType=DOUBLE},
+      </if>
+      <if test="JH066 != null">
+        JH066 = #{JH066,jdbcType=DOUBLE},
+      </if>
+      <if test="JH067 != null">
+        JH067 = #{JH067,jdbcType=DOUBLE},
+      </if>
+      <if test="JH068 != null">
+        JH068 = #{JH068,jdbcType=DOUBLE},
+      </if>
+      <if test="JH069 != null">
+        JH069 = #{JH069,jdbcType=DOUBLE},
+      </if>
+      <if test="JH070 != null">
+        JH070 = #{JH070,jdbcType=DOUBLE},
+      </if>
+      <if test="JH071 != null">
+        JH071 = #{JH071,jdbcType=DOUBLE},
+      </if>
+      <if test="JH072 != null">
+        JH072 = #{JH072,jdbcType=DOUBLE},
+      </if>
+      <if test="JH073 != null">
+        JH073 = #{JH073,jdbcType=DOUBLE},
+      </if>
+      <if test="JH074 != null">
+        JH074 = #{JH074,jdbcType=DOUBLE},
+      </if>
+      <if test="JH075 != null">
+        JH075 = #{JH075,jdbcType=DOUBLE},
+      </if>
+      <if test="JH076 != null">
+        JH076 = #{JH076,jdbcType=DOUBLE},
+      </if>
+      <if test="JH077 != null">
+        JH077 = #{JH077,jdbcType=DOUBLE},
+      </if>
+      <if test="JH078 != null">
+        JH078 = #{JH078,jdbcType=DOUBLE},
+      </if>
+      <if test="JH079 != null">
+        JH079 = #{JH079,jdbcType=DOUBLE},
+      </if>
+      <if test="JH080 != null">
+        JH080 = #{JH080,jdbcType=DOUBLE},
+      </if>
+      <if test="JH081 != null">
+        JH081 = #{JH081,jdbcType=DOUBLE},
+      </if>
+      <if test="JH082 != null">
+        JH082 = #{JH082,jdbcType=DOUBLE},
+      </if>
+      <if test="JH083 != null">
+        JH083 = #{JH083,jdbcType=DOUBLE},
+      </if>
+      <if test="JH084 != null">
+        JH084 = #{JH084,jdbcType=DOUBLE},
+      </if>
+      <if test="JH085 != null">
+        JH085 = #{JH085,jdbcType=DOUBLE},
+      </if>
+      <if test="JH086 != null">
+        JH086 = #{JH086,jdbcType=DOUBLE},
+      </if>
+      <if test="JH087 != null">
+        JH087 = #{JH087,jdbcType=DOUBLE},
+      </if>
+      <if test="JH088 != null">
+        JH088 = #{JH088,jdbcType=DOUBLE},
+      </if>
+      <if test="JH089 != null">
+        JH089 = #{JH089,jdbcType=DOUBLE},
+      </if>
+      <if test="JH090 != null">
+        JH090 = #{JH090,jdbcType=DOUBLE},
+      </if>
+      <if test="JH091 != null">
+        JH091 = #{JH091,jdbcType=DOUBLE},
+      </if>
+      <if test="JH092 != null">
+        JH092 = #{JH092,jdbcType=DOUBLE},
+      </if>
+      <if test="JH093 != null">
+        JH093 = #{JH093,jdbcType=DOUBLE},
+      </if>
+      <if test="JH094 != null">
+        JH094 = #{JH094,jdbcType=DOUBLE},
+      </if>
+      <if test="JH095 != null">
+        JH095 = #{JH095,jdbcType=DOUBLE},
+      </if>
+      <if test="JH096 != null">
+        JH096 = #{JH096,jdbcType=DOUBLE},
+      </if>
+      <if test="JH097 != null">
+        JH097 = #{JH097,jdbcType=DOUBLE},
+      </if>
+      <if test="JH098 != null">
+        JH098 = #{JH098,jdbcType=DOUBLE},
+      </if>
+      <if test="JH099 != null">
+        JH099 = #{JH099,jdbcType=DOUBLE},
+      </if>
+      <if test="JH100 != null">
+        JH100 = #{JH100,jdbcType=DOUBLE},
+	  </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mktech.entity.DbJuhua">
+    update DB_JUHUA
+    set TIMESTAMP = #{timestamp,jdbcType=VARCHAR},
+      JH001 = #{JH001,jdbcType=DOUBLE},
+      JH002 = #{JH002,jdbcType=DOUBLE},
+      JH003 = #{JH003,jdbcType=DOUBLE},
+      JH004 = #{JH004,jdbcType=DOUBLE},
+      JH005 = #{JH005,jdbcType=DOUBLE},
+      JH006 = #{JH006,jdbcType=DOUBLE},
+      JH007 = #{JH007,jdbcType=DOUBLE},
+      JH008 = #{JH008,jdbcType=DOUBLE},
+      JH009 = #{JH009,jdbcType=DOUBLE},
+      JH010 = #{JH010,jdbcType=DOUBLE},
+      JH011 = #{JH011,jdbcType=DOUBLE},
+      JH012 = #{JH012,jdbcType=DOUBLE},
+      JH013 = #{JH013,jdbcType=DOUBLE},
+      JH014 = #{JH014,jdbcType=DOUBLE},
+      JH015 = #{JH015,jdbcType=DOUBLE},
+      JH016 = #{JH016,jdbcType=DOUBLE},
+      JH017 = #{JH017,jdbcType=DOUBLE},
+      JH018 = #{JH018,jdbcType=DOUBLE},
+      JH019 = #{JH019,jdbcType=DOUBLE},
+      JH020 = #{JH020,jdbcType=DOUBLE},
+      JH021 = #{JH021,jdbcType=DOUBLE},
+      JH022 = #{JH022,jdbcType=DOUBLE},
+      JH023 = #{JH023,jdbcType=DOUBLE},
+      JH024 = #{JH024,jdbcType=DOUBLE},
+      JH025 = #{JH025,jdbcType=DOUBLE},
+      JH026 = #{JH026,jdbcType=DOUBLE},
+      JH027 = #{JH027,jdbcType=DOUBLE},
+      JH028 = #{JH028,jdbcType=DOUBLE},
+      JH029 = #{JH029,jdbcType=DOUBLE},
+      JH030 = #{JH030,jdbcType=DOUBLE},
+      JH031 = #{JH031,jdbcType=DOUBLE},
+      JH032 = #{JH032,jdbcType=DOUBLE},
+      JH033 = #{JH033,jdbcType=DOUBLE},
+      JH034 = #{JH034,jdbcType=DOUBLE},
+      JH035 = #{JH035,jdbcType=DOUBLE},
+      JH036 = #{JH036,jdbcType=DOUBLE},
+      JH037 = #{JH037,jdbcType=DOUBLE},
+      JH038 = #{JH038,jdbcType=DOUBLE},
+      JH039 = #{JH039,jdbcType=DOUBLE},
+      JH040 = #{JH040,jdbcType=DOUBLE},
+      JH041 = #{JH041,jdbcType=DOUBLE},
+      JH042 = #{JH042,jdbcType=DOUBLE},
+      JH043 = #{JH043,jdbcType=DOUBLE},
+      JH044 = #{JH044,jdbcType=DOUBLE},
+      JH045 = #{JH045,jdbcType=DOUBLE},
+      JH046 = #{JH046,jdbcType=DOUBLE},
+      JH047 = #{JH047,jdbcType=DOUBLE},
+      JH048 = #{JH048,jdbcType=DOUBLE},
+      JH049 = #{JH049,jdbcType=DOUBLE},
+      JH050 = #{JH050,jdbcType=DOUBLE},
+      JH051 = #{JH051,jdbcType=DOUBLE},
+      JH052 = #{JH052,jdbcType=DOUBLE},
+      JH053 = #{JH053,jdbcType=DOUBLE},
+      JH054 = #{JH054,jdbcType=DOUBLE},
+      JH055 = #{JH055,jdbcType=DOUBLE},
+      JH056 = #{JH056,jdbcType=DOUBLE},
+      JH057 = #{JH057,jdbcType=DOUBLE},
+      JH058 = #{JH058,jdbcType=DOUBLE},
+      JH059 = #{JH059,jdbcType=DOUBLE},
+      JH060 = #{JH060,jdbcType=DOUBLE},
+      JH061 = #{JH061,jdbcType=DOUBLE},
+      JH062 = #{JH062,jdbcType=DOUBLE},
+      JH063 = #{JH063,jdbcType=DOUBLE},
+      JH064 = #{JH064,jdbcType=DOUBLE},
+      JH065 = #{JH065,jdbcType=DOUBLE},
+      JH066 = #{JH066,jdbcType=DOUBLE},
+      JH067 = #{JH067,jdbcType=DOUBLE},
+      JH068 = #{JH068,jdbcType=DOUBLE},
+      JH069 = #{JH069,jdbcType=DOUBLE},
+      JH070 = #{JH070,jdbcType=DOUBLE},
+      JH071 = #{JH071,jdbcType=DOUBLE},
+      JH072 = #{JH072,jdbcType=DOUBLE},
+      JH073 = #{JH073,jdbcType=DOUBLE},
+      JH074 = #{JH074,jdbcType=DOUBLE},
+      JH075 = #{JH075,jdbcType=DOUBLE},
+      JH076 = #{JH076,jdbcType=DOUBLE},
+      JH077 = #{JH077,jdbcType=DOUBLE},
+      JH078 = #{JH078,jdbcType=DOUBLE},
+      JH079 = #{JH079,jdbcType=DOUBLE},
+      JH080 = #{JH080,jdbcType=DOUBLE},
+      JH081 = #{JH081,jdbcType=DOUBLE},
+      JH082 = #{JH082,jdbcType=DOUBLE},
+      JH083 = #{JH083,jdbcType=DOUBLE},
+      JH084 = #{JH084,jdbcType=DOUBLE},
+      JH085 = #{JH085,jdbcType=DOUBLE},
+      JH086 = #{JH086,jdbcType=DOUBLE},
+      JH087 = #{JH087,jdbcType=DOUBLE},
+      JH088 = #{JH088,jdbcType=DOUBLE},
+      JH089 = #{JH089,jdbcType=DOUBLE},
+      JH090 = #{JH090,jdbcType=DOUBLE},
+      JH091 = #{JH091,jdbcType=DOUBLE},
+      JH092 = #{JH092,jdbcType=DOUBLE},
+      JH093 = #{JH093,jdbcType=DOUBLE},
+      JH094 = #{JH094,jdbcType=DOUBLE},
+      JH095 = #{JH095,jdbcType=DOUBLE},
+      JH096 = #{JH096,jdbcType=DOUBLE},
+      JH097 = #{JH097,jdbcType=DOUBLE},
+      JH098 = #{JH098,jdbcType=DOUBLE},
+      JH099 = #{JH099,jdbcType=DOUBLE},
+      JH100 = #{JH100,jdbcType=DOUBLE}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectLatestRecordByAll" resultType="java.util.LinkedHashMap">
+		select 
+		<include refid="Base_Column_List" />,(JH002+JH005+JH008)*24 as OUTVALUE 
+		from DB_JUHUA_DAY 
+	</select>
+	
+	
+	
+	
+	<select id="selectLatestRecordInHour" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from DB_JUHUA_HOUR
+		order by ID desc limit 1
+	</select>
+	<insert id="insertInHour" parameterType="com.mktech.entity.DbJuhua">
+		insert into DB_JUHUA_HOUR (ID,
+		TIMESTAMP, JH001,
+		JH002, JH003, JH004, JH005,
+		JH006, JH007, JH008,
+		JH009,
+		JH010, JH011, JH012, JH013,
+		JH014, JH015, JH016, JH017,
+		JH018,
+		JH019, JH020, JH021,
+		JH022, JH023, JH024, JH025,
+		JH026, JH027, JH028,
+		JH029,
+		JH030, JH031, JH032, JH033,
+		JH034, JH035, JH036, JH037,
+		JH038,
+		JH039, JH040, JH041,
+		JH042, JH043, JH044, JH045,
+		JH046, JH047, JH048,
+		JH049,
+		JH050, JH051, JH052, JH053,
+		JH054, JH055, JH056, JH057,
+		JH058,
+		JH059, JH060, JH061,
+		JH062, JH063, JH064, JH065,
+		JH066, JH067, JH068,
+		JH069,
+		JH070, JH071, JH072, JH073,
+		JH074, JH075, JH076, JH077,
+		JH078,
+		JH079, JH080, JH081,
+		JH082, JH083, JH084, JH085,
+		JH086, JH087, JH088,
+		JH089,
+		JH090, JH091, JH092, JH093,
+		JH094, JH095, JH096, JH097,
+		JH098,
+		JH099, JH100
+		)
+		values
+		(#{id,jdbcType=INTEGER}, #{timestamp,jdbcType=VARCHAR},
+		#{JH001,jdbcType=DOUBLE},
+		#{JH002,jdbcType=DOUBLE},
+		#{JH003,jdbcType=DOUBLE}, #{JH004,jdbcType=DOUBLE},
+		#{JH005,jdbcType=DOUBLE},
+		#{JH006,jdbcType=DOUBLE},
+		#{JH007,jdbcType=DOUBLE}, #{JH008,jdbcType=DOUBLE},
+		#{JH009,jdbcType=DOUBLE},
+		#{JH010,jdbcType=DOUBLE},
+		#{JH011,jdbcType=DOUBLE}, #{JH012,jdbcType=DOUBLE},
+		#{JH013,jdbcType=DOUBLE},
+		#{JH014,jdbcType=DOUBLE},
+		#{JH015,jdbcType=DOUBLE}, #{JH016,jdbcType=DOUBLE},
+		#{JH017,jdbcType=DOUBLE},
+		#{JH018,jdbcType=DOUBLE},
+		#{JH019,jdbcType=DOUBLE}, #{JH020,jdbcType=DOUBLE},
+		#{JH021,jdbcType=DOUBLE},
+		#{JH022,jdbcType=DOUBLE},
+		#{JH023,jdbcType=DOUBLE}, #{JH024,jdbcType=DOUBLE},
+		#{JH025,jdbcType=DOUBLE},
+		#{JH026,jdbcType=DOUBLE},
+		#{JH027,jdbcType=DOUBLE}, #{JH028,jdbcType=DOUBLE},
+		#{JH029,jdbcType=DOUBLE},
+		#{JH030,jdbcType=DOUBLE},
+		#{JH031,jdbcType=DOUBLE}, #{JH032,jdbcType=DOUBLE},
+		#{JH033,jdbcType=DOUBLE},
+		#{JH034,jdbcType=DOUBLE},
+		#{JH035,jdbcType=DOUBLE}, #{JH036,jdbcType=DOUBLE},
+		#{JH037,jdbcType=DOUBLE},
+		#{JH038,jdbcType=DOUBLE},
+		#{JH039,jdbcType=DOUBLE}, #{JH040,jdbcType=DOUBLE},
+		#{JH041,jdbcType=DOUBLE},
+		#{JH042,jdbcType=DOUBLE},
+		#{JH043,jdbcType=DOUBLE}, #{JH044,jdbcType=DOUBLE},
+		#{JH045,jdbcType=DOUBLE},
+		#{JH046,jdbcType=DOUBLE},
+		#{JH047,jdbcType=DOUBLE}, #{JH048,jdbcType=DOUBLE},
+		#{JH049,jdbcType=DOUBLE},
+		#{JH050,jdbcType=DOUBLE},
+		#{JH051,jdbcType=DOUBLE}, #{JH052,jdbcType=DOUBLE},
+		#{JH053,jdbcType=DOUBLE},
+		#{JH054,jdbcType=DOUBLE},
+		#{JH055,jdbcType=DOUBLE}, #{JH056,jdbcType=DOUBLE},
+		#{JH057,jdbcType=DOUBLE},
+		#{JH058,jdbcType=DOUBLE},
+		#{JH059,jdbcType=DOUBLE}, #{JH060,jdbcType=DOUBLE},
+		#{JH061,jdbcType=DOUBLE},
+		#{JH062,jdbcType=DOUBLE},
+		#{JH063,jdbcType=DOUBLE}, #{JH064,jdbcType=DOUBLE},
+		#{JH065,jdbcType=DOUBLE},
+		#{JH066,jdbcType=DOUBLE},
+		#{JH067,jdbcType=DOUBLE}, #{JH068,jdbcType=DOUBLE},
+		#{JH069,jdbcType=DOUBLE},
+		#{JH070,jdbcType=DOUBLE},
+		#{JH071,jdbcType=DOUBLE}, #{JH072,jdbcType=DOUBLE},
+		#{JH073,jdbcType=DOUBLE},
+		#{JH074,jdbcType=DOUBLE},
+		#{JH075,jdbcType=DOUBLE}, #{JH076,jdbcType=DOUBLE},
+		#{JH077,jdbcType=DOUBLE},
+		#{JH078,jdbcType=DOUBLE},
+		#{JH079,jdbcType=DOUBLE}, #{JH080,jdbcType=DOUBLE},
+		#{JH081,jdbcType=DOUBLE},
+		#{JH082,jdbcType=DOUBLE},
+		#{JH083,jdbcType=DOUBLE}, #{JH084,jdbcType=DOUBLE},
+		#{JH085,jdbcType=DOUBLE},
+		#{JH086,jdbcType=DOUBLE},
+		#{JH087,jdbcType=DOUBLE}, #{JH088,jdbcType=DOUBLE},
+		#{JH089,jdbcType=DOUBLE},
+		#{JH090,jdbcType=DOUBLE},
+		#{JH091,jdbcType=DOUBLE}, #{JH092,jdbcType=DOUBLE},
+		#{JH093,jdbcType=DOUBLE},
+		#{JH094,jdbcType=DOUBLE},
+		#{JH095,jdbcType=DOUBLE}, #{JH096,jdbcType=DOUBLE},
+		#{JH097,jdbcType=DOUBLE},
+		#{JH098,jdbcType=DOUBLE},
+		#{JH099,jdbcType=DOUBLE}, #{JH100,jdbcType=DOUBLE}
+		)
+	</insert>
+	<select id="selectLatestRecordInMin" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from DB_JUHUA_MIN
+		order by ID desc limit 1
+	</select>
+	<insert id="insertInMin" parameterType="com.mktech.entity.DbJuhua">
+		insert into DB_JUHUA_MIN (ID,
+		TIMESTAMP, JH001,
+		JH002, JH003, JH004, JH005,
+		JH006, JH007, JH008,
+		JH009,
+		JH010, JH011, JH012, JH013,
+		JH014, JH015, JH016, JH017,
+		JH018,
+		JH019, JH020, JH021,
+		JH022, JH023, JH024, JH025,
+		JH026, JH027, JH028,
+		JH029,
+		JH030, JH031, JH032, JH033,
+		JH034, JH035, JH036, JH037,
+		JH038,
+		JH039, JH040, JH041,
+		JH042, JH043, JH044, JH045,
+		JH046, JH047, JH048,
+		JH049,
+		JH050, JH051, JH052, JH053,
+		JH054, JH055, JH056, JH057,
+		JH058,
+		JH059, JH060, JH061,
+		JH062, JH063, JH064, JH065,
+		JH066, JH067, JH068,
+		JH069,
+		JH070, JH071, JH072, JH073,
+		JH074, JH075, JH076, JH077,
+		JH078,
+		JH079, JH080, JH081,
+		JH082, JH083, JH084, JH085,
+		JH086, JH087, JH088,
+		JH089,
+		JH090, JH091, JH092, JH093,
+		JH094, JH095, JH096, JH097,
+		JH098,
+		JH099, JH100
+		)
+		values
+		(#{id,jdbcType=INTEGER}, #{timestamp,jdbcType=VARCHAR},
+		#{JH001,jdbcType=DOUBLE},
+		#{JH002,jdbcType=DOUBLE},
+		#{JH003,jdbcType=DOUBLE}, #{JH004,jdbcType=DOUBLE},
+		#{JH005,jdbcType=DOUBLE},
+		#{JH006,jdbcType=DOUBLE},
+		#{JH007,jdbcType=DOUBLE}, #{JH008,jdbcType=DOUBLE},
+		#{JH009,jdbcType=DOUBLE},
+		#{JH010,jdbcType=DOUBLE},
+		#{JH011,jdbcType=DOUBLE}, #{JH012,jdbcType=DOUBLE},
+		#{JH013,jdbcType=DOUBLE},
+		#{JH014,jdbcType=DOUBLE},
+		#{JH015,jdbcType=DOUBLE}, #{JH016,jdbcType=DOUBLE},
+		#{JH017,jdbcType=DOUBLE},
+		#{JH018,jdbcType=DOUBLE},
+		#{JH019,jdbcType=DOUBLE}, #{JH020,jdbcType=DOUBLE},
+		#{JH021,jdbcType=DOUBLE},
+		#{JH022,jdbcType=DOUBLE},
+		#{JH023,jdbcType=DOUBLE}, #{JH024,jdbcType=DOUBLE},
+		#{JH025,jdbcType=DOUBLE},
+		#{JH026,jdbcType=DOUBLE},
+		#{JH027,jdbcType=DOUBLE}, #{JH028,jdbcType=DOUBLE},
+		#{JH029,jdbcType=DOUBLE},
+		#{JH030,jdbcType=DOUBLE},
+		#{JH031,jdbcType=DOUBLE}, #{JH032,jdbcType=DOUBLE},
+		#{JH033,jdbcType=DOUBLE},
+		#{JH034,jdbcType=DOUBLE},
+		#{JH035,jdbcType=DOUBLE}, #{JH036,jdbcType=DOUBLE},
+		#{JH037,jdbcType=DOUBLE},
+		#{JH038,jdbcType=DOUBLE},
+		#{JH039,jdbcType=DOUBLE}, #{JH040,jdbcType=DOUBLE},
+		#{JH041,jdbcType=DOUBLE},
+		#{JH042,jdbcType=DOUBLE},
+		#{JH043,jdbcType=DOUBLE}, #{JH044,jdbcType=DOUBLE},
+		#{JH045,jdbcType=DOUBLE},
+		#{JH046,jdbcType=DOUBLE},
+		#{JH047,jdbcType=DOUBLE}, #{JH048,jdbcType=DOUBLE},
+		#{JH049,jdbcType=DOUBLE},
+		#{JH050,jdbcType=DOUBLE},
+		#{JH051,jdbcType=DOUBLE}, #{JH052,jdbcType=DOUBLE},
+		#{JH053,jdbcType=DOUBLE},
+		#{JH054,jdbcType=DOUBLE},
+		#{JH055,jdbcType=DOUBLE}, #{JH056,jdbcType=DOUBLE},
+		#{JH057,jdbcType=DOUBLE},
+		#{JH058,jdbcType=DOUBLE},
+		#{JH059,jdbcType=DOUBLE}, #{JH060,jdbcType=DOUBLE},
+		#{JH061,jdbcType=DOUBLE},
+		#{JH062,jdbcType=DOUBLE},
+		#{JH063,jdbcType=DOUBLE}, #{JH064,jdbcType=DOUBLE},
+		#{JH065,jdbcType=DOUBLE},
+		#{JH066,jdbcType=DOUBLE},
+		#{JH067,jdbcType=DOUBLE}, #{JH068,jdbcType=DOUBLE},
+		#{JH069,jdbcType=DOUBLE},
+		#{JH070,jdbcType=DOUBLE},
+		#{JH071,jdbcType=DOUBLE}, #{JH072,jdbcType=DOUBLE},
+		#{JH073,jdbcType=DOUBLE},
+		#{JH074,jdbcType=DOUBLE},
+		#{JH075,jdbcType=DOUBLE}, #{JH076,jdbcType=DOUBLE},
+		#{JH077,jdbcType=DOUBLE},
+		#{JH078,jdbcType=DOUBLE},
+		#{JH079,jdbcType=DOUBLE}, #{JH080,jdbcType=DOUBLE},
+		#{JH081,jdbcType=DOUBLE},
+		#{JH082,jdbcType=DOUBLE},
+		#{JH083,jdbcType=DOUBLE}, #{JH084,jdbcType=DOUBLE},
+		#{JH085,jdbcType=DOUBLE},
+		#{JH086,jdbcType=DOUBLE},
+		#{JH087,jdbcType=DOUBLE}, #{JH088,jdbcType=DOUBLE},
+		#{JH089,jdbcType=DOUBLE},
+		#{JH090,jdbcType=DOUBLE},
+		#{JH091,jdbcType=DOUBLE}, #{JH092,jdbcType=DOUBLE},
+		#{JH093,jdbcType=DOUBLE},
+		#{JH094,jdbcType=DOUBLE},
+		#{JH095,jdbcType=DOUBLE}, #{JH096,jdbcType=DOUBLE},
+		#{JH097,jdbcType=DOUBLE},
+		#{JH098,jdbcType=DOUBLE},
+		#{JH099,jdbcType=DOUBLE}, #{JH100,jdbcType=DOUBLE}
+		)
+	</insert>
+	<select id="selectLatestRecordInDay" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from DB_JUHUA_DAY
+		order by ID desc limit 1
+	</select>
+	<insert id="insertInDay" parameterType="com.mktech.entity.DbJuhua">
+		insert into DB_JUHUA_DAY (ID,
+		TIMESTAMP, JH001,
+		JH002, JH003, JH004, JH005,
+		JH006, JH007, JH008,
+		JH009,
+		JH010, JH011, JH012, JH013,
+		JH014, JH015, JH016, JH017,
+		JH018,
+		JH019, JH020, JH021,
+		JH022, JH023, JH024, JH025,
+		JH026, JH027, JH028,
+		JH029,
+		JH030, JH031, JH032, JH033,
+		JH034, JH035, JH036, JH037,
+		JH038,
+		JH039, JH040, JH041,
+		JH042, JH043, JH044, JH045,
+		JH046, JH047, JH048,
+		JH049,
+		JH050, JH051, JH052, JH053,
+		JH054, JH055, JH056, JH057,
+		JH058,
+		JH059, JH060, JH061,
+		JH062, JH063, JH064, JH065,
+		JH066, JH067, JH068,
+		JH069,
+		JH070, JH071, JH072, JH073,
+		JH074, JH075, JH076, JH077,
+		JH078,
+		JH079, JH080, JH081,
+		JH082, JH083, JH084, JH085,
+		JH086, JH087, JH088,
+		JH089,
+		JH090, JH091, JH092, JH093,
+		JH094, JH095, JH096, JH097,
+		JH098,
+		JH099, JH100, JH101,
+		JH102, JH103, JH104, JH105,
+		JH106, JH107, JH108,
+		JH109,
+		JH110
+		)
+		values
+		(#{id,jdbcType=INTEGER}, #{timestamp,jdbcType=VARCHAR},
+		#{JH001,jdbcType=DOUBLE},
+		#{JH002,jdbcType=DOUBLE},
+		#{JH003,jdbcType=DOUBLE}, #{JH004,jdbcType=DOUBLE},
+		#{JH005,jdbcType=DOUBLE},
+		#{JH006,jdbcType=DOUBLE},
+		#{JH007,jdbcType=DOUBLE}, #{JH008,jdbcType=DOUBLE},
+		#{JH009,jdbcType=DOUBLE},
+		#{JH010,jdbcType=DOUBLE},
+		#{JH011,jdbcType=DOUBLE}, #{JH012,jdbcType=DOUBLE},
+		#{JH013,jdbcType=DOUBLE},
+		#{JH014,jdbcType=DOUBLE},
+		#{JH015,jdbcType=DOUBLE}, #{JH016,jdbcType=DOUBLE},
+		#{JH017,jdbcType=DOUBLE},
+		#{JH018,jdbcType=DOUBLE},
+		#{JH019,jdbcType=DOUBLE}, #{JH020,jdbcType=DOUBLE},
+		#{JH021,jdbcType=DOUBLE},
+		#{JH022,jdbcType=DOUBLE},
+		#{JH023,jdbcType=DOUBLE}, #{JH024,jdbcType=DOUBLE},
+		#{JH025,jdbcType=DOUBLE},
+		#{JH026,jdbcType=DOUBLE},
+		#{JH027,jdbcType=DOUBLE}, #{JH028,jdbcType=DOUBLE},
+		#{JH029,jdbcType=DOUBLE},
+		#{JH030,jdbcType=DOUBLE},
+		#{JH031,jdbcType=DOUBLE}, #{JH032,jdbcType=DOUBLE},
+		#{JH033,jdbcType=DOUBLE},
+		#{JH034,jdbcType=DOUBLE},
+		#{JH035,jdbcType=DOUBLE}, #{JH036,jdbcType=DOUBLE},
+		#{JH037,jdbcType=DOUBLE},
+		#{JH038,jdbcType=DOUBLE},
+		#{JH039,jdbcType=DOUBLE}, #{JH040,jdbcType=DOUBLE},
+		#{JH041,jdbcType=DOUBLE},
+		#{JH042,jdbcType=DOUBLE},
+		#{JH043,jdbcType=DOUBLE}, #{JH044,jdbcType=DOUBLE},
+		#{JH045,jdbcType=DOUBLE},
+		#{JH046,jdbcType=DOUBLE},
+		#{JH047,jdbcType=DOUBLE}, #{JH048,jdbcType=DOUBLE},
+		#{JH049,jdbcType=DOUBLE},
+		#{JH050,jdbcType=DOUBLE},
+		#{JH051,jdbcType=DOUBLE}, #{JH052,jdbcType=DOUBLE},
+		#{JH053,jdbcType=DOUBLE},
+		#{JH054,jdbcType=DOUBLE},
+		#{JH055,jdbcType=DOUBLE}, #{JH056,jdbcType=DOUBLE},
+		#{JH057,jdbcType=DOUBLE},
+		#{JH058,jdbcType=DOUBLE},
+		#{JH059,jdbcType=DOUBLE}, #{JH060,jdbcType=DOUBLE},
+		#{JH061,jdbcType=DOUBLE},
+		#{JH062,jdbcType=DOUBLE},
+		#{JH063,jdbcType=DOUBLE}, #{JH064,jdbcType=DOUBLE},
+		#{JH065,jdbcType=DOUBLE},
+		#{JH066,jdbcType=DOUBLE},
+		#{JH067,jdbcType=DOUBLE}, #{JH068,jdbcType=DOUBLE},
+		#{JH069,jdbcType=DOUBLE},
+		#{JH070,jdbcType=DOUBLE},
+		#{JH071,jdbcType=DOUBLE}, #{JH072,jdbcType=DOUBLE},
+		#{JH073,jdbcType=DOUBLE},
+		#{JH074,jdbcType=DOUBLE},
+		#{JH075,jdbcType=DOUBLE}, #{JH076,jdbcType=DOUBLE},
+		#{JH077,jdbcType=DOUBLE},
+		#{JH078,jdbcType=DOUBLE},
+		#{JH079,jdbcType=DOUBLE}, #{JH080,jdbcType=DOUBLE},
+		#{JH081,jdbcType=DOUBLE},
+		#{JH082,jdbcType=DOUBLE},
+		#{JH083,jdbcType=DOUBLE}, #{JH084,jdbcType=DOUBLE},
+		#{JH085,jdbcType=DOUBLE},
+		#{JH086,jdbcType=DOUBLE},
+		#{JH087,jdbcType=DOUBLE}, #{JH088,jdbcType=DOUBLE},
+		#{JH089,jdbcType=DOUBLE},
+		#{JH090,jdbcType=DOUBLE},
+		#{JH091,jdbcType=DOUBLE}, #{JH092,jdbcType=DOUBLE},
+		#{JH093,jdbcType=DOUBLE},
+		#{JH094,jdbcType=DOUBLE},
+		#{JH095,jdbcType=DOUBLE}, #{JH096,jdbcType=DOUBLE},
+		#{JH097,jdbcType=DOUBLE},
+		#{JH098,jdbcType=DOUBLE},
+		#{JH099,jdbcType=DOUBLE}, #{JH100,jdbcType=DOUBLE},
+		#{JH101,jdbcType=DOUBLE}
+		)
+	</insert>
+	<select id="selectRange" resultType="java.util.LinkedHashMap">
+		select
+			max(TIMESTAMP) as MAX,min(TIMESTAMP) as MIN
+		from DB_JUHUA
+	</select>
+	<select id="selectByTimeRangeLimit1" resultMap="BaseResultMap">
+		select
+		<include refid = "Avg_List"/>
+		from DB_JUHUA
+		where TIMESTAMP &gt;= #{min,jdbcType=VARCHAR} and TIMESTAMP &lt;=
+		#{max,jdbcType=VARCHAR} order by id limit 1
+	</select>
+</mapper>

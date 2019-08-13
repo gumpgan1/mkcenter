@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@CIMS213—工业大屏后台管理系统</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/local.css" />
+    <link rel="stylesheet" type="text/css" href="js/layer/theme/default/layer.css" />
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-table.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+    <!-- you need to include the shieldui css and js assets in order for the charts to work --> 
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/layer/layer.js"></script>
+    <style>
+    	.self_btn {background:transparent;border-width:2px;border-color:#cccccc}
+    	#entptable {background:transparent}
+    	#entptable thead{background:#000000}
+    	/* 特地注上td,防止因local.css中td:hover样式干扰tr:hover */
+    	#entptable tbody>tr:hover {
+			background-color: rgba(42, 159, 214,0.5)
+		}
+		#entptable tbody>tr:hover>td{
+			background:none;
+		}
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+		  <!--   导航栏		  -->	
+          <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">CIMS-213</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul id="active" class="nav navbar-nav side-nav">
+                    <li id="_index"><a href="_index.html"><i class="fa fa-bullseye"></i> 总览</a></li>
+                    <li id="_self"><a href="_self.html"><i class="fa fa-user" style="margin-left:3px"></i> 个人信息</a></li>
+                    
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-user">
+					 <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span id="time"></span></a>
+                    </li>
+                    <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>&nbsp;&nbsp;<span id="user"></span>&nbsp;&nbsp;<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:void(0)" onclick="logout()"><i class="fa fa-power-off"></i>登出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+		<!-- 导航栏结束 -->
+		<!-- 主窗体开始 -->
+        <div id="page-wrapper">
+           <div class="row">
+                <div class="col-lg-12">
+                    <h1>企业管理<small> 管理合作企业的相关信息</small></h1>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+            	<div class="col-lg-12">
+	            	<table id="entptable" class="table table-hover" >
+					</table>
+            	</div>
+				<div id="toolbar" class="btn-group">
+			        <button id="btn-add" type="button" class="btn self_btn btn-default">
+			            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+			        </button>
+			        <button id="btn-edit" type="button" class="btn self_btn btn-default">
+			            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+			        </button>
+			        <button id="btn-delete" type="button" class="btn self_btn btn-default">
+			            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+			        </button>
+  			    </div>  
+            </div>  
+        </div>
+        <!-- 主窗体结束 -->
+    </div>
+</body>
+<form id="createEntp" style="color:#696666d9;display:none">
+	<br/>
+	<div class="row">
+         <label for="new_name" class="col-md-2" style="margin-top:10px">
+             	<i class="fa fa-user-circle"></i> 企业名:
+         </label>
+         <div class="col-md-10">
+             <input type="text" name="name" class="form-control" id="new_name" placeholder="请输入企业名">
+         </div>
+     </div>  
+     <br/>
+	 <div class="row">
+	       <label class="col-md-2" style="margin-top:10px">
+	             	<i class="fa fa-location-arrow"></i> 地址:
+	        </label>
+	        <div class="col-md-1">
+	            <label class="form-label" style="margin-top:10px">省：</label>
+	        </div>
+	        <div class="col-md-4">
+	            <select id="province" name="province" style="width:100%;max-width:300px;height:38px;"></select>
+	        </div>
+	        <div class="col-md-1">
+	            <label class="form-label" style="margin-top:10px">市：</label>
+	        </div>
+	        <div class="col-md-4">
+	            <select id="city" name="city" style="width:100%;max-width:300px;height:38px;"></select>
+	        </div>
+	 </div>  
+     <br/>
+     <div class="row">
+     	<div class="col-md-offset-2 col-md-10">
+             <input type="text" name="address" class="form-control" id="new_address" placeholder="请输入详细地址">
+         </div>
+     </div>
+     <br/>
+     <div class="row">
+         <label for="new_phone" class="col-md-2" style="margin-top:10px">
+             	<i class="fa fa-phone-square"></i> 电话:
+         </label>
+         <div class="col-md-10">
+             <input type="text" name="phone" class="form-control" id="new_phone" placeholder="请输入联系方式">
+         </div>
+     </div>  
+     <br/>
+      <div class="row">
+         <label for="new_href" class="col-md-2" style="margin-top:10px">
+             	<i class="fa fa-internet-explorer"></i> 官网:
+         </label>
+         <div class="col-md-10">
+             <input type="text" name="href" class="form-control" id="new_href" placeholder="请输入网址">
+         </div>
+     </div>  
+     <br/>
+     <div class="row">
+         <label for="new_ins" class="col-md-2" style="margin-top:10px">
+             	<i class="fa fa-info-circle"></i> 介绍:
+         </label>
+         <div class="col-md-10">
+             <textarea class="form-control" rows="5" name="instruction" id="new_ins" style="height:272px" placeholder="请输入企业介绍（500字以内）"></textarea>
+         </div>
+     </div>  
+     <br/>
+     <div class="row">
+         <label class="col-md-2" style="margin-top:10px">
+             	<i class="fa fa-location-arrow"></i> 坐标:
+         </label>
+         <div class="col-md-1">
+	            <label class="form-label" style="margin-top:10px">纬：</label>
+         </div>
+         <div class="col-md-4">
+            <input type="text" name="location_Y" class="form-control" id="new_Y" placeholder="请输入纬度值">
+         </div>
+         <div class="col-md-1">
+            <label class="form-label" style="margin-top:10px">经：</label>
+         </div>
+         <div class="col-md-4">
+             <input type="text" name="location_X" class="form-control" id="new_X" placeholder="请输入经度值">
+         </div>
+     </div>  
+     <br/><br/>
+     <div class="row">
+    	<div class="col-lg-offset-3 col-lg-2">
+    		<button type="button" id="new_reset" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			重置	              		    
+            </button>
+    	</div>
+    	<div class="col-lg-offset-2 col-lg-2">
+    		<button type="button" id="new_ok" onclick="createCompany()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			 确定
+     		</button>
+    	</div>
+   	</div>
+</form>
+<form id="changeEntp" style="color:#696666d9;display:none">
+	<br/>
+	<input type="hidden" name="id" id="change_id"/>
+	<div class="row">
+         <label for="change_name" class="col-md-2" style="margin-top:10px">
+             	<i class="fa fa-user-circle"></i> 企业名:
+         </label>
+         <div class="col-md-10">
+             <input type="text" name="name" class="form-control" id="change_name" placeholder="请输入企业名">
+         </div>
+     </div>  
+     <br/>
+	 <div class="row">
+	       <label class="col-md-2" style="margin-top:10px">
+	             	<i class="fa fa-location-arrow"></i> 地址:
+	        </label>
+	        <div class="col-md-1">
+	            <label class="form-label" style="margin-top:10px">省：</label>
+	        </div>
+	        <div class="col-md-4">
+	            <select id="cprovince" name="province" style="width:100%;max-width:300px;height:38px;"></select>
+	        </div>
+	        <div class="col-md-1">
+	            <label class="form-label" style="margin-top:10px">市：</label>
+	        </div>
+	        <div class="col-md-4">
+	            <select id="ccity" name="city" style="width:100%;max-width:300px;height:38px;"></select>
+	        </div>
+	 </div>  
+     <br/>
+     <div class="row">
+     	<div class="col-md-offset-2 col-md-10">
+             <input type="text" name="address" class="form-control" id="change_address" placeholder="请输入详细地址">
+         </div>
+     </div>
+     <br/>
+     <div class="row">
+         <label for="change_phone" class="col-md-2" style="margin-top:10px">
+             	<i class="fa fa-phone-square"></i> 电话:
+         </label>
+         <div class="col-md-10">
+             <input type="text" name="phone" class="form-control" id="change_phone" placeholder="请输入联系方式">
+         </div>
+     </div>  
+     <br/>
+      <div class="row">
+         <label for="change_href" class="col-md-2" style="margin-top:10px">
+             	<i class="fa fa-internet-explorer"></i> 官网:
+         </label>
+         <div class="col-md-10">
+             <input type="text" name="href" class="form-control" id="change_href" placeholder="请输入网址">
+         </div>
+     </div>  
+     <br/>
+     <div class="row">
+         <label for="change_ins" class="col-md-2" style="margin-top:10px">
+             	<i class="fa fa-info-circle"></i> 介绍:
+         </label>
+         <div class="col-md-10">
+             <textarea class="form-control" rows="5" name="instruction" id="change_ins" style="height:272px" placeholder="请输入企业介绍（500字以内）"></textarea>
+         </div>
+     </div>  
+     <br/>
+     <div class="row">
+         <label class="col-md-2" style="margin-top:10px">
+             	<i class="fa fa-location-arrow"></i> 坐标:
+         </label>
+         <div class="col-md-1">
+	            <label class="form-label" style="margin-top:10px">纬：</label>
+         </div>
+         <div class="col-md-4">
+            <input type="text" name="location_Y" class="form-control" id="change_Y" placeholder="请输入纬度值">
+         </div>
+         <div class="col-md-1">
+            <label class="form-label" style="margin-top:10px">经：</label>
+         </div>
+         <div class="col-md-4">
+             <input type="text" name="location_X" class="form-control" id="change_X" placeholder="请输入经度值">
+         </div>
+     </div>  
+     <br/><br/>
+     <div class="row">
+    	<div class="col-lg-offset-3 col-lg-2">
+    		<button type="button" id="change_reset" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			重置	              		    
+            </button>
+    	</div>
+    	<div class="col-lg-offset-2 col-lg-2">
+    		<button type="button" id="change_ok" onclick="changeCompany()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			 确定
+     		</button>
+    	</div>
+   	</div>
+</form>
+<form id="deleteCompany" style="color:#696666d9;display:none">
+	<br/>
+	<div class="row">
+         <label class="col-md-12" style="margin-top:10px;text-align:center;">
+             	<i class="fa fa-warning"></i>是否要删除<span id="del_name" style="color:red"></span>的企业记录？
+         </label>
+         <input type="hidden" name="companyid" id="del_id"/>
+     </div> 
+	<br/>
+     <div class="row">
+    	<div class="col-lg-offset-3 col-lg-2">
+    		<button type="button" id="del_no" onclick="closeDel()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			取消	              		    
+            </button>
+    	</div>
+    	<div class="col-lg-offset-2 col-lg-2">
+    		<button type="button" id="del_ok" onclick="deleteCompany()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			 确定
+     		</button>
+    	</div>
+   	</div>
+</form>
+<script type="text/javascript" src="js/chny-lin.js"></script>
+<script type="text/javascript" src="js/_entp.js"></script>
+<script type="text/javascript" src="js/logout.js"></script>
+</html>

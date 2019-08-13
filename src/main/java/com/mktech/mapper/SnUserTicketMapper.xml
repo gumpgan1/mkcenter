@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mktech.dao.SnUserTicketDao">
+  <resultMap id="BaseResultMap" type="com.mktech.entity.SnUserTicket">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="USERID" jdbcType="INTEGER" property="userid" />
+    <result column="TICKET" jdbcType="VARCHAR" property="ticket" />
+    <result column="EXIPRED" jdbcType="TIMESTAMP" property="exipred" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, USERID, TICKET, EXIPRED, STATUS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SN_USER_TICKET
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+   <select id="selectByTicket" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SN_USER_TICKET
+    where TICKET = #{ticket,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from SN_USER_TICKET
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mktech.entity.SnUserTicket">
+    insert into SN_USER_TICKET (ID, USERID, TICKET, 
+      EXIPRED, STATUS)
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{ticket,jdbcType=VARCHAR}, 
+      #{exipred,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mktech.entity.SnUserTicket">
+    insert into SN_USER_TICKET
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="ticket != null">
+        TICKET,
+      </if>
+      <if test="exipred != null">
+        EXIPRED,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="ticket != null">
+        #{ticket,jdbcType=VARCHAR},
+      </if>
+      <if test="exipred != null">
+        #{exipred,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mktech.entity.SnUserTicket">
+    update SN_USER_TICKET
+    <set>
+      <if test="userid != null">
+        USERID = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="ticket != null">
+        TICKET = #{ticket,jdbcType=VARCHAR},
+      </if>
+      <if test="exipred != null">
+        EXIPRED = #{exipred,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mktech.entity.SnUserTicket">
+    update SN_USER_TICKET
+    set USERID = #{userid,jdbcType=INTEGER},
+      TICKET = #{ticket,jdbcType=VARCHAR},
+      EXIPRED = #{exipred,jdbcType=TIMESTAMP},
+      STATUS = #{status,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateStatusForLoggout" parameterType="java.lang.String">
+    update SN_USER_TICKET
+    set STATUS = 1
+    where TICKET = #{ticket,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mktech.dao.BoardConfig2Dao">
+  <resultMap id="BaseResultMap" type="com.mktech.entity.BoardConfig2">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="LINE_ID" jdbcType="INTEGER" property="lineId" />
+    <result column="USERID" jdbcType="INTEGER" property="userId" />
+    <result column="CODE" jdbcType="VARCHAR" property="code" />
+    <result column="STAS" jdbcType="VARCHAR" property="stas" />
+    <result column="PARS" jdbcType="VARCHAR" property="pars" />
+  </resultMap>
+  <sql id="Base_Column_List">
+   	LINE_ID,USERID,CODE,STAS,PARS
+  </sql>
+  <select id="selectConfigByCode" resultType="java.util.LinkedHashMap">
+	select
+	<include refid="Base_Column_List" />
+	from BOARD_CONFIG2
+	where USERID=#{userId, jdbcType=INTEGER} and CODE = #{code,jdbcType=VARCHAR}
+  </select>
+  <select id="selectConfig" resultType="java.util.LinkedHashMap">
+	select
+	<include refid="Base_Column_List" />
+	from BOARD_CONFIG2
+	where USERID=#{userId, jdbcType=INTEGER}
+  </select>
+  <insert id="insertConfigByCode" parameterType="com.mktech.entity.BoardConfig2">
+    insert into BOARD_CONFIG2 (USERID, LINE_ID, CODE, 
+      STAS, PARS)
+    values (#{userId,jdbcType=INTEGER}, #{lineId,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, 
+      #{stas,jdbcType=VARCHAR}, #{pars,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateConfigByCode" parameterType="com.mktech.entity.BoardConfig2">
+    update BOARD_CONFIG2
+    set
+      LINE_ID = #{lineId,jdbcType=INTEGER},
+      STAS = #{stas,jdbcType=VARCHAR},
+      PARS = #{pars,jdbcType=VARCHAR}
+    where USERID = #{userId,jdbcType=INTEGER} and CODE = #{code,jdbcType=VARCHAR}
+  </update>
+</mapper>

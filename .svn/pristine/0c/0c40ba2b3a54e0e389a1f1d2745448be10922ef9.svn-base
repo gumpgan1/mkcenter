@@ -1,0 +1,517 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>yewu</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/yewu/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/jquery.cookie.js"></script>
+	<!-- <script src="resources/scripts/prototypePre.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/prototypePost.js"></script> 
+    <script src="files/yewu/data.js"></script> -->
+    <script src="resources/highstock/highstock.js"></script>
+    <script src="resources/oldie.js"></script>
+    <script src="resources/xrange.js"></script>
+    <script src="resources/highchart/highcharts-more.js"></script>
+    <script src="resources/highchart/modules/solid-gauge.js"></script>
+    <script src="files/logout.js"></script>
+    <!--  <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>  -->
+
+  </head>
+  <body oncontextmenu=self.event.returnValue=false onselectstart="return false">
+    <div id="base" class="">
+
+      <!-- 总面板 (动态面板) -->
+      <div id="u263" class="ax_default" data-label="总面板">
+        <div id="u263_state0" class="panel_state" data-label="State1" style="">
+          <div id="u263_state0_content" class="panel_state_content">
+
+            <!-- header (动态面板) -->
+            <div id="u264" class="ax_default" data-label="header">
+              <div id="u264_state0" class="panel_state" data-label="State1" style="">
+                <div id="u264_state0_content" class="panel_state_content">
+
+                  <!-- Unnamed (组合 ) -->
+                  <div id="u265" class="ax_default" data-left="0" data-top="0" data-width="0" data-height="0">
+                  </div>
+                  
+                  <!-- Unnamed (组合 ) -->
+		           	<div id="u239" class="ax_default" >
+		           	  <div id= "user_block">
+		           	  	<p style="font-weight:900;color:#">
+		           	  	<a href="javascript:void(0)" style="font-weight:300" onclick="backToMain();">流程参数</a>&nbsp;&nbsp;&nbsp;&nbsp;当前用户&nbsp:&nbsp&nbsp
+		           	  	<span style="text-align: left;font-weight:300;width:80px;display:inline-block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;top: 3px;position: relative;color:#009dd9" id="username"></span>
+		           	  	<a href="javascript:void(0)" style="font-weight:300;" onclick="check2ad()">设置</a>
+		           	  	<span>&nbsp&nbsp&nbsp</span>
+		           	  	<a href="javascript:void(0)" style="font-weight:300;" onclick="logout();">注销</a>
+		           	  	</p>
+		           	  </div>
+		           	  <!-- 按钮 (矩形) -->
+		              <div id="index" class="ax_default button" data-label="按钮" style="cursor:pointer" onClick="javascript:window.open('index.html','_blank')">
+		                <div id="index_div" class=""></div>
+		                <div id="index_text" class="text ">
+		                  <p><span>首页</span></p>
+		                </div>
+		              </div>
+		              <!-- 按钮 (矩形) -->
+		              <div id="u240" class="ax_default button" data-label="按钮" style="cursor:pointer">
+		                <div id="u240_div" class=""></div>
+		                <div id="u240_text" class="text ">
+		                  <p><span>运行数据查询</span></p>
+		                </div>
+		              </div>
+		              <!-- 按钮 (矩形) -->
+		              <div id="u241" class="ax_default button" data-label="按钮" style="cursor:pointer">
+		                <div id="u241_div" class=""></div>
+		                <div id="u241_text" class="text ">
+		                  <p><span>设备状态监控</span></p>
+		                </div>
+		              </div>
+		              <!-- 按钮 (矩形) -->
+		              <div id="u242" class="ax_default button" data-label="按钮" style="cursor:pointer">
+		                <div id="u242_div" class=""></div>
+		                <div id="u242_text" class="text ">
+		                  <p><span>生产状态监控</span></p>
+		                </div>
+		              </div> 
+		             </div>
+                  <!--  -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u267" class="ax_default" data-left="0" data-top="0" data-width="0" data-height="0">
+            </div>
+
+            <!-- Unnamed (图片 ) -->
+            <div id="u268" class="ax_default image">
+              <img id="u268_img" class="img " src="images/index/bk.png"/>
+            </div>
+
+            <!-- Unnamed (图片 ) -->
+            <div id="u269" class="ax_default image">
+              <img id="u269_img" class="img " src="images/index/bk.png"/>
+            </div>
+
+            <!-- Unnamed (图片 ) -->
+            <div id="u270" class="ax_default image">
+              <img id="u270_img" class="img " src="images/index/bk.png"/>
+            </div>
+
+            <!-- Unnamed (图片 ) -->
+            <div id="u271" class="ax_default image">
+              <img id="u271_img" class="img " src="images/index/bk.png"/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 喂料量 (动态面板) 左上的图-->
+      <div id="u272" class="ax_default" data-label="喂料量">
+        <div id="u272_state0" class="panel_state" data-label="State1" style="">
+          <div id="u272_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (矩形) -->
+            <div id="u273" class="ax_default box_2">
+              <div id="u273_div" class=""></div>
+            </div>
+
+            <!-- Unnamed (内联框架) -->
+            <div id="u274" class="ax_default">
+                <div id="container1" style="width: 100%; height: 100%;"></div>
+            </div>
+
+
+            
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u293" class="ax_default" data-left="692" data-top="30" data-width="110" data-height="17">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u294" class="ax_default label">
+                <div id="u294_div" class=""></div>
+                <div id="u294_text" class="text ">
+                  <p><span>日均喂料量</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (椭圆形) -->
+              <div id="u295" class="ax_default marker">
+                <img id="u295_img" class="img " src="images/yewu/u277.png"/>
+              </div>
+            </div>
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u296" class="ax_default" data-left="692" data-top="72" data-width="110" data-height="17">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u297" class="ax_default label">
+                <div id="u297_div" class=""></div>
+                <div id="u297_text" class="text ">
+                  <p><span>日最高喂料量</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (椭圆形) -->
+              <div id="u298" class="ax_default marker">
+                <img id="u298_img" class="img " src="images/yewu/u277.png"/>
+              </div>
+            </div>
+
+            <!-- Unnamed (水平线) -->
+            <div id="u299" class="ax_default line">
+              <img id="u299_img" class="img " src="images/yewu/u299.png"/>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u300" class="ax_default _文本段落1">
+              <div id="u300_div" class=""></div>
+              <div id="u300_text" class="text ">
+                <p><span id="DayCost"></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u301" class="ax_default _文本段落1">
+              <div id="u301_div" class=""></div>
+              <div id="u301_text" class="text ">
+                <p><span id="maxDayCost"></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u302" class="ax_default" data-left="692" data-top="114" data-width="110" data-height="17">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u303" class="ax_default label">
+                <div id="u303_div" class=""></div>
+                <div id="u303_text" class="text ">
+                  <p><span>日最低喂料量</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (椭圆形) -->
+              <div id="u304" class="ax_default marker">
+                <img id="u304_img" class="img " src="images/yewu/u277.png"/>
+              </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u305" class="ax_default _文本段落1">
+              <div id="u305_div" class=""></div>
+              <div id="u305_text" class="text ">
+                <p><span id="minDayCost"></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u312" class="ax_default label">
+              <div id="u312_div" class=""></div>
+              <div id="u312_text" class="text ">
+                <p><span>&gt;&gt;统计值</span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u313" class="ax_default" data-left="16" data-top="4" data-width="71" data-height="22">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u314" class="ax_default label">
+                <div id="u314_div" class=""></div>
+                <div id="u314_text" class="text ">
+                  <p><span>喂料量</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (椭圆形) -->
+              <div id="u315" class="ax_default marker">
+                <img id="u315_img" class="img " src="images/limo/u95.png"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 产出量 (动态面板) 右上的图 -->
+      <div id="u316" class="ax_default" data-label="产出量">
+        <div id="u316_state0" class="panel_state" data-label="State1" style="">
+          <div id="u316_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (矩形) -->
+            <div id="u317" class="ax_default box_2">
+              <div id="u317_div" class=""></div>
+            </div>
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u318" class="ax_default" data-left="16" data-top="4" data-width="107" data-height="22">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u319" class="ax_default label">
+                <div id="u319_div" class=""></div>
+                <div id="u319_text" class="text ">
+                  <p><span>出产量</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (椭圆形) -->
+              <div id="u320" class="ax_default marker">
+                <img id="u320_img" class="img " src="images/limo/u95.png"/>
+              </div>
+            </div>
+
+            <!-- Unnamed (内联框架) -->
+            <div id="u321" class="ax_default">
+              <div id="container21" style="width: 100%; height: 100%;"></div>
+            </div>
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u322" class="ax_default" data-left="714" data-top="253" data-width="68" data-height="17">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u323" class="ax_default label">
+                <div id="u323_div" class=""></div>
+                <div id="u323_text" class="text ">
+                  <p><span>当前料位</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (椭圆形) -->
+              <div id="u324" class="ax_default marker">
+                <img id="u324_img" class="img " src="images/yewu/u277.png"/>
+              </div>
+            </div>
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u325" class="ax_default" data-left="714" data-top="328" data-width="68" data-height="17">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u326" class="ax_default label">
+                <div id="u326_div" class=""></div>
+                <div id="u326_text" class="text ">
+                  <p><span>最高料位</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (椭圆形) -->
+              <div id="u327" class="ax_default marker">
+                <img id="u327_img" class="img " src="images/yewu/u277.png"/>
+              </div>
+            </div>
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u328" class="ax_default" data-left="714" data-top="372" data-width="68" data-height="17">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u329" class="ax_default label">
+                <div id="u329_div" class=""></div>
+                <div id="u329_text" class="text ">
+                  <p><span>最低料位</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (椭圆形) -->
+              <div id="u330" class="ax_default marker">
+                <img id="u330_img" class="img " src="images/yewu/u277.png"/>
+              </div>
+            </div>
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u331" class="ax_default" data-left="714" data-top="418" data-width="54" data-height="17">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u332" class="ax_default label">
+                <div id="u332_div" class=""></div>
+                <div id="u332_text" class="text ">
+                  <p><span>平均值</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (椭圆形) -->
+              <div id="u333" class="ax_default marker">
+                <img id="u333_img" class="img " src="images/yewu/u277.png"/>
+              </div>
+            </div>
+
+            <!-- Unnamed (水平线) -->
+            <div id="u334" class="ax_default line">
+              <img id="u334_img" class="img " src="images/yewu/u334.png"/>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u335" class="ax_default _文本段落1">
+              <div id="u335_div" class=""></div>
+              <div id="u335_text" class="text ">
+                <p><span id="out1"></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u336" class="ax_default _文本段落1">
+              <div id="u336_div" class=""></div>
+              <div id="u336_text" class="text ">
+                <p><span id="maxOut"></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u337" class="ax_default _文本段落1">
+              <div id="u337_div" class=""></div>
+              <div id="u337_text" class="text ">
+                <p><span id="minOut"></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u338" class="ax_default _文本段落1">
+              <div id="u338_div" class=""></div>
+              <div id="u338_text" class="text ">
+                <p><span id="avgOut"></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u339" class="ax_default label">
+              <div id="u339_div" class=""></div>
+              <div id="u339_text" class="text ">
+                <p><span>&gt;&gt;统计值</span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (内联框架) -->
+            <div id="u340" class="ax_default">
+              <div id="container22" style="width: 100%; height: 100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 整体布局+项目+产线名称 -->
+      <div id="u341" class="ax_default" data-left="25" data-top="58" data-width="231" data-height="25">
+
+        <!-- Unnamed (形状) -->
+        <div id="u342" class="ax_default icon">
+          <img id="u342_img" class="img " src="images/index/u12.png"/>
+        </div>
+
+        <!-- Unnamed (矩形) -->
+        <div id="u343" class="ax_default _一级标题">
+          <div id="u343_div" class=""></div>
+          <div id="u343_text" class="text ">
+            <p><span>项目：</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (矩形) -->
+        <div id="u344" class="ax_default label" style="width:150px">
+          <div id="u344_div" class=""></div>
+          <div id="u344_text" class="text ">
+            <p><span id="pageName"></span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 生产状态 (动态面板) 左下的图 -->
+      <div id="u345" class="ax_default" data-label="生产状态">
+        <div id="u345_state0" class="panel_state" data-label="State1" style="">
+          <div id="u345_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (矩形) -->
+            <div id="u346" class="ax_default box_2">
+              <div id="u346_div" class=""></div>
+            </div>
+
+            <!-- Unnamed (内联框架) -->
+            <div id="u347" class="ax_default">
+              <div id="container31" style="width: 100%; height: 100%;"></div>
+            </div>
+            
+            <!-- Unnamed (内联框架) -->
+            <div id="u347_1" class="ax_default">
+              <div id="container33" style="width: 100%; height: 100%;"></div>
+            </div>
+	
+            <!-- Unnamed (组合 ) -->
+            <div id="u348" class="ax_default" data-left="16" data-top="4" data-width="143" data-height="22">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u349" class="ax_default label">
+                <div id="u349_div" class=""></div>
+                <div id="u349_text" class="text ">
+                  <p><span>近一周生产状态</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (椭圆形) -->
+              <div id="u350" class="ax_default marker">
+                <img id="u350_img" class="img " src="images/limo/u95.png"/>
+              </div>
+            </div>
+
+            <!-- Unnamed (内联框架) -->
+            <div id="u351" class="ax_default">
+              <div id="container32" style="width: 93%; height: 93%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 废气 (动态面板) 右下的图 -->
+      <div id="u352" class="ax_default" data-label="废气">
+        <div id="u352_state0" class="panel_state" data-label="State1" style="">
+          <div id="u352_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (矩形) -->
+            <div id="u353" class="ax_default box_2">
+              <div id="u353_div" class=""></div>
+            </div>
+
+            <!-- Unnamed (内联框架) -->
+            <div id="u354" class="ax_default">
+              <div id="container43" style="width: 100%; height: 100%;"></div>
+            </div>
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u355" class="ax_default" data-left="16" data-top="4" data-width="107" data-height="22">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u356" class="ax_default label" style="width:150px">
+                <div id="u356_div" class=""></div>
+                <div id="u356_text" class="text ">
+                  <p><span id="init">自定义内容</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (椭圆形) -->
+              <div id="u357" class="ax_default marker">
+                <img id="u357_img" class="img " src="images/limo/u95.png"/>
+              </div>
+            </div>
+
+            <!-- Unnamed (内联框架) -->
+            <div id="u358" class="ax_default">
+             <div id="container41" style="width: 100%; height: 100%;"></div>
+            </div>
+
+            <!-- Unnamed (内联框架) -->
+            <div id="u359" class="ax_default">
+             <div id="container42" style="width: 100%; height: 100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="files/yewu/table.js"></script>
+</html>

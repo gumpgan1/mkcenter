@@ -1,0 +1,1147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mktech.dao.ILineDao">
+  <resultMap id="BaseResultMap" type="com.mktech.entity.Line">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="TIMESTAMP" jdbcType="VARCHAR" property="timestamp" />
+    <result column="L0001" jdbcType="DOUBLE" property="l0001" />
+    <result column="L0002" jdbcType="DOUBLE" property="l0002" />
+    <result column="L0003" jdbcType="DOUBLE" property="l0003" />
+    <result column="L0004" jdbcType="DOUBLE" property="l0004" />
+    <result column="L0005" jdbcType="DOUBLE" property="l0005" />
+    <result column="L0006" jdbcType="DOUBLE" property="l0006" />
+    <result column="L0007" jdbcType="DOUBLE" property="l0007" />
+    <result column="L0008" jdbcType="DOUBLE" property="l0008" />
+    <result column="L0009" jdbcType="DOUBLE" property="l0009" />
+    <result column="L0010" jdbcType="DOUBLE" property="l0010" />
+    <result column="L0011" jdbcType="DOUBLE" property="l0011" />
+    <result column="L0012" jdbcType="DOUBLE" property="l0012" />
+    <result column="L0013" jdbcType="DOUBLE" property="l0013" />
+    <result column="L0014" jdbcType="DOUBLE" property="l0014" />
+    <result column="L0015" jdbcType="DOUBLE" property="l0015" />
+    <result column="L0016" jdbcType="DOUBLE" property="l0016" />
+    <result column="L0017" jdbcType="DOUBLE" property="l0017" />
+    <result column="L0018" jdbcType="DOUBLE" property="l0018" />
+    <result column="L0019" jdbcType="DOUBLE" property="l0019" />
+    <result column="L0020" jdbcType="DOUBLE" property="l0020" />
+    <result column="L0021" jdbcType="DOUBLE" property="l0021" />
+    <result column="L0022" jdbcType="DOUBLE" property="l0022" />
+    <result column="L0023" jdbcType="DOUBLE" property="l0023" />
+    <result column="L0024" jdbcType="DOUBLE" property="l0024" />
+    <result column="L0025" jdbcType="DOUBLE" property="l0025" />
+    <result column="L0026" jdbcType="DOUBLE" property="l0026" />
+    <result column="L0027" jdbcType="DOUBLE" property="l0027" />
+    <result column="L0028" jdbcType="DOUBLE" property="l0028" />
+    <result column="L0029" jdbcType="DOUBLE" property="l0029" />
+    <result column="L0030" jdbcType="DOUBLE" property="l0030" />
+    <result column="L0031" jdbcType="DOUBLE" property="l0031" />
+    <result column="L0032" jdbcType="DOUBLE" property="l0032" />
+    <result column="L0033" jdbcType="DOUBLE" property="l0033" />
+    <result column="L0034" jdbcType="DOUBLE" property="l0034" />
+    <result column="L0035" jdbcType="DOUBLE" property="l0035" />
+    <result column="L0036" jdbcType="DOUBLE" property="l0036" />
+    <result column="L0037" jdbcType="DOUBLE" property="l0037" />
+    <result column="L0038" jdbcType="DOUBLE" property="l0038" />
+    <result column="L0039" jdbcType="DOUBLE" property="l0039" />
+    <result column="L0040" jdbcType="DOUBLE" property="l0040" />
+    <result column="L0041" jdbcType="DOUBLE" property="l0041" />
+    <result column="L0042" jdbcType="DOUBLE" property="l0042" />
+    <result column="L0043" jdbcType="DOUBLE" property="l0043" />
+    <result column="L0044" jdbcType="DOUBLE" property="l0044" />
+    <result column="L0045" jdbcType="DOUBLE" property="l0045" />
+    <result column="L0046" jdbcType="DOUBLE" property="l0046" />
+    <result column="L0047" jdbcType="DOUBLE" property="l0047" />
+    <result column="L0048" jdbcType="DOUBLE" property="l0048" />
+    <result column="L0049" jdbcType="DOUBLE" property="l0049" />
+    <result column="L0050" jdbcType="DOUBLE" property="l0050" />
+    <result column="L0051" jdbcType="DOUBLE" property="l0051" />
+    <result column="L0052" jdbcType="DOUBLE" property="l0052" />
+    <result column="L0053" jdbcType="DOUBLE" property="l0053" />
+    <result column="L0054" jdbcType="DOUBLE" property="l0054" />
+    <result column="L0055" jdbcType="DOUBLE" property="l0055" />
+    <result column="L0056" jdbcType="DOUBLE" property="l0056" />
+    <result column="L0057" jdbcType="DOUBLE" property="l0057" />
+    <result column="L0058" jdbcType="DOUBLE" property="l0058" />
+    <result column="L0059" jdbcType="DOUBLE" property="l0059" />
+    <result column="L0060" jdbcType="DOUBLE" property="l0060" />
+    <result column="L0061" jdbcType="DOUBLE" property="l0061" />
+    <result column="L0062" jdbcType="DOUBLE" property="l0062" />
+    <result column="L0063" jdbcType="DOUBLE" property="l0063" />
+    <result column="L0064" jdbcType="DOUBLE" property="l0064" />
+    <result column="L0065" jdbcType="DOUBLE" property="l0065" />
+    <result column="L0066" jdbcType="DOUBLE" property="l0066" />
+    <result column="L0067" jdbcType="DOUBLE" property="l0067" />
+    <result column="L0068" jdbcType="DOUBLE" property="l0068" />
+    <result column="L0069" jdbcType="DOUBLE" property="l0069" />
+    <result column="L0070" jdbcType="DOUBLE" property="l0070" />
+    <result column="L0071" jdbcType="DOUBLE" property="l0071" />
+    <result column="L0072" jdbcType="DOUBLE" property="l0072" />
+    <result column="L0073" jdbcType="DOUBLE" property="l0073" />
+    <result column="L0074" jdbcType="DOUBLE" property="l0074" />
+    <result column="L0075" jdbcType="DOUBLE" property="l0075" />
+    <result column="L0076" jdbcType="DOUBLE" property="l0076" />
+    <result column="L0077" jdbcType="DOUBLE" property="l0077" />
+    <result column="L0078" jdbcType="DOUBLE" property="l0078" />
+    <result column="L0079" jdbcType="DOUBLE" property="l0079" />
+    <result column="L0080" jdbcType="DOUBLE" property="l0080" />
+    <result column="L0081" jdbcType="DOUBLE" property="l0081" />
+    <result column="L0082" jdbcType="DOUBLE" property="l0082" />
+    <result column="L0083" jdbcType="DOUBLE" property="l0083" />
+    <result column="L0084" jdbcType="DOUBLE" property="l0084" />
+    <result column="L0085" jdbcType="DOUBLE" property="l0085" />
+    <result column="L0086" jdbcType="DOUBLE" property="l0086" />
+    <result column="L0087" jdbcType="DOUBLE" property="l0087" />
+    <result column="L0088" jdbcType="DOUBLE" property="l0088" />
+    <result column="L0089" jdbcType="DOUBLE" property="l0089" />
+    <result column="L0090" jdbcType="DOUBLE" property="l0090" />
+    <result column="L0091" jdbcType="DOUBLE" property="l0091" />
+    <result column="L0092" jdbcType="DOUBLE" property="l0092" />
+    <result column="L0093" jdbcType="DOUBLE" property="l0093" />
+    <result column="L0094" jdbcType="DOUBLE" property="l0094" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, TIMESTAMP, L0001, L0002, L0003, L0004, L0005, L0006, L0007, L0008, L0009, L0010, 
+    L0011, L0012, L0013, L0014, L0015, L0016, L0017, L0018, L0019, L0020, L0021, L0022, 
+    L0023, L0024, L0025, L0026, L0027, L0028, L0029, L0030, L0031, L0032, L0033, L0034, 
+    L0035, L0036, L0037, L0038, L0039, L0040, L0041, L0042, L0043, L0044, L0045, L0046, 
+    L0047, L0048, L0049, L0050, L0051, L0052, L0053, L0054, L0055, L0056, L0057, L0058, 
+    L0059, L0060, L0061, L0062, L0063, L0064, L0065, L0066, L0067, L0068, L0069, L0070, 
+    L0071, L0072, L0073, L0074, L0075, L0076, L0077, L0078, L0079, L0080, L0081, L0082, 
+    L0083, L0084, L0085, L0086, L0087, L0088, L0089, L0090, L0091, L0092, L0093, L0094
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from LINE_A
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from LINE_A
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mktech.entity.Line">
+    insert into LINE_A (ID, TIMESTAMP, L0001, 
+      L0002, L0003, L0004, L0005, 
+      L0006, L0007, L0008, L0009, 
+      L0010, L0011, L0012, L0013, 
+      L0014, L0015, L0016, L0017, 
+      L0018, L0019, L0020, L0021, 
+      L0022, L0023, L0024, L0025, 
+      L0026, L0027, L0028, L0029, 
+      L0030, L0031, L0032, L0033, 
+      L0034, L0035, L0036, L0037, 
+      L0038, L0039, L0040, L0041, 
+      L0042, L0043, L0044, L0045, 
+      L0046, L0047, L0048, L0049, 
+      L0050, L0051, L0052, L0053, 
+      L0054, L0055, L0056, L0057, 
+      L0058, L0059, L0060, L0061, 
+      L0062, L0063, L0064, L0065, 
+      L0066, L0067, L0068, L0069, 
+      L0070, L0071, L0072, L0073, 
+      L0074, L0075, L0076, L0077, 
+      L0078, L0079, L0080, L0081, 
+      L0082, L0083, L0084, L0085, 
+      L0086, L0087, L0088, L0089, 
+      L0090, L0091, L0092, L0093, 
+      L0094)
+    values (#{id,jdbcType=INTEGER}, #{timestamp,jdbcType=VARCHAR}, #{l0001,jdbcType=DOUBLE}, 
+      #{l0002,jdbcType=DOUBLE}, #{l0003,jdbcType=DOUBLE}, #{l0004,jdbcType=DOUBLE}, #{l0005,jdbcType=DOUBLE}, 
+      #{l0006,jdbcType=DOUBLE}, #{l0007,jdbcType=DOUBLE}, #{l0008,jdbcType=DOUBLE}, #{l0009,jdbcType=DOUBLE}, 
+      #{l0010,jdbcType=DOUBLE}, #{l0011,jdbcType=DOUBLE}, #{l0012,jdbcType=DOUBLE}, #{l0013,jdbcType=DOUBLE}, 
+      #{l0014,jdbcType=DOUBLE}, #{l0015,jdbcType=DOUBLE}, #{l0016,jdbcType=DOUBLE}, #{l0017,jdbcType=DOUBLE}, 
+      #{l0018,jdbcType=DOUBLE}, #{l0019,jdbcType=DOUBLE}, #{l0020,jdbcType=DOUBLE}, #{l0021,jdbcType=DOUBLE}, 
+      #{l0022,jdbcType=DOUBLE}, #{l0023,jdbcType=DOUBLE}, #{l0024,jdbcType=DOUBLE}, #{l0025,jdbcType=DOUBLE}, 
+      #{l0026,jdbcType=DOUBLE}, #{l0027,jdbcType=DOUBLE}, #{l0028,jdbcType=DOUBLE}, #{l0029,jdbcType=DOUBLE}, 
+      #{l0030,jdbcType=DOUBLE}, #{l0031,jdbcType=DOUBLE}, #{l0032,jdbcType=DOUBLE}, #{l0033,jdbcType=DOUBLE}, 
+      #{l0034,jdbcType=DOUBLE}, #{l0035,jdbcType=DOUBLE}, #{l0036,jdbcType=DOUBLE}, #{l0037,jdbcType=DOUBLE}, 
+      #{l0038,jdbcType=DOUBLE}, #{l0039,jdbcType=DOUBLE}, #{l0040,jdbcType=DOUBLE}, #{l0041,jdbcType=DOUBLE}, 
+      #{l0042,jdbcType=DOUBLE}, #{l0043,jdbcType=DOUBLE}, #{l0044,jdbcType=DOUBLE}, #{l0045,jdbcType=DOUBLE}, 
+      #{l0046,jdbcType=DOUBLE}, #{l0047,jdbcType=DOUBLE}, #{l0048,jdbcType=DOUBLE}, #{l0049,jdbcType=DOUBLE}, 
+      #{l0050,jdbcType=DOUBLE}, #{l0051,jdbcType=DOUBLE}, #{l0052,jdbcType=DOUBLE}, #{l0053,jdbcType=DOUBLE}, 
+      #{l0054,jdbcType=DOUBLE}, #{l0055,jdbcType=DOUBLE}, #{l0056,jdbcType=DOUBLE}, #{l0057,jdbcType=DOUBLE}, 
+      #{l0058,jdbcType=DOUBLE}, #{l0059,jdbcType=DOUBLE}, #{l0060,jdbcType=DOUBLE}, #{l0061,jdbcType=DOUBLE}, 
+      #{l0062,jdbcType=DOUBLE}, #{l0063,jdbcType=DOUBLE}, #{l0064,jdbcType=DOUBLE}, #{l0065,jdbcType=DOUBLE}, 
+      #{l0066,jdbcType=DOUBLE}, #{l0067,jdbcType=DOUBLE}, #{l0068,jdbcType=DOUBLE}, #{l0069,jdbcType=DOUBLE}, 
+      #{l0070,jdbcType=DOUBLE}, #{l0071,jdbcType=DOUBLE}, #{l0072,jdbcType=DOUBLE}, #{l0073,jdbcType=DOUBLE}, 
+      #{l0074,jdbcType=DOUBLE}, #{l0075,jdbcType=DOUBLE}, #{l0076,jdbcType=DOUBLE}, #{l0077,jdbcType=DOUBLE}, 
+      #{l0078,jdbcType=DOUBLE}, #{l0079,jdbcType=DOUBLE}, #{l0080,jdbcType=DOUBLE}, #{l0081,jdbcType=DOUBLE}, 
+      #{l0082,jdbcType=DOUBLE}, #{l0083,jdbcType=DOUBLE}, #{l0084,jdbcType=DOUBLE}, #{l0085,jdbcType=DOUBLE}, 
+      #{l0086,jdbcType=DOUBLE}, #{l0087,jdbcType=DOUBLE}, #{l0088,jdbcType=DOUBLE}, #{l0089,jdbcType=DOUBLE}, 
+      #{l0090,jdbcType=DOUBLE}, #{l0091,jdbcType=DOUBLE}, #{l0092,jdbcType=DOUBLE}, #{l0093,jdbcType=DOUBLE}, 
+      #{l0094,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mktech.entity.Line">
+    insert into LINE_A
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="timestamp != null">
+        TIMESTAMP,
+      </if>
+      <if test="l0001 != null">
+        L0001,
+      </if>
+      <if test="l0002 != null">
+        L0002,
+      </if>
+      <if test="l0003 != null">
+        L0003,
+      </if>
+      <if test="l0004 != null">
+        L0004,
+      </if>
+      <if test="l0005 != null">
+        L0005,
+      </if>
+      <if test="l0006 != null">
+        L0006,
+      </if>
+      <if test="l0007 != null">
+        L0007,
+      </if>
+      <if test="l0008 != null">
+        L0008,
+      </if>
+      <if test="l0009 != null">
+        L0009,
+      </if>
+      <if test="l0010 != null">
+        L0010,
+      </if>
+      <if test="l0011 != null">
+        L0011,
+      </if>
+      <if test="l0012 != null">
+        L0012,
+      </if>
+      <if test="l0013 != null">
+        L0013,
+      </if>
+      <if test="l0014 != null">
+        L0014,
+      </if>
+      <if test="l0015 != null">
+        L0015,
+      </if>
+      <if test="l0016 != null">
+        L0016,
+      </if>
+      <if test="l0017 != null">
+        L0017,
+      </if>
+      <if test="l0018 != null">
+        L0018,
+      </if>
+      <if test="l0019 != null">
+        L0019,
+      </if>
+      <if test="l0020 != null">
+        L0020,
+      </if>
+      <if test="l0021 != null">
+        L0021,
+      </if>
+      <if test="l0022 != null">
+        L0022,
+      </if>
+      <if test="l0023 != null">
+        L0023,
+      </if>
+      <if test="l0024 != null">
+        L0024,
+      </if>
+      <if test="l0025 != null">
+        L0025,
+      </if>
+      <if test="l0026 != null">
+        L0026,
+      </if>
+      <if test="l0027 != null">
+        L0027,
+      </if>
+      <if test="l0028 != null">
+        L0028,
+      </if>
+      <if test="l0029 != null">
+        L0029,
+      </if>
+      <if test="l0030 != null">
+        L0030,
+      </if>
+      <if test="l0031 != null">
+        L0031,
+      </if>
+      <if test="l0032 != null">
+        L0032,
+      </if>
+      <if test="l0033 != null">
+        L0033,
+      </if>
+      <if test="l0034 != null">
+        L0034,
+      </if>
+      <if test="l0035 != null">
+        L0035,
+      </if>
+      <if test="l0036 != null">
+        L0036,
+      </if>
+      <if test="l0037 != null">
+        L0037,
+      </if>
+      <if test="l0038 != null">
+        L0038,
+      </if>
+      <if test="l0039 != null">
+        L0039,
+      </if>
+      <if test="l0040 != null">
+        L0040,
+      </if>
+      <if test="l0041 != null">
+        L0041,
+      </if>
+      <if test="l0042 != null">
+        L0042,
+      </if>
+      <if test="l0043 != null">
+        L0043,
+      </if>
+      <if test="l0044 != null">
+        L0044,
+      </if>
+      <if test="l0045 != null">
+        L0045,
+      </if>
+      <if test="l0046 != null">
+        L0046,
+      </if>
+      <if test="l0047 != null">
+        L0047,
+      </if>
+      <if test="l0048 != null">
+        L0048,
+      </if>
+      <if test="l0049 != null">
+        L0049,
+      </if>
+      <if test="l0050 != null">
+        L0050,
+      </if>
+      <if test="l0051 != null">
+        L0051,
+      </if>
+      <if test="l0052 != null">
+        L0052,
+      </if>
+      <if test="l0053 != null">
+        L0053,
+      </if>
+      <if test="l0054 != null">
+        L0054,
+      </if>
+      <if test="l0055 != null">
+        L0055,
+      </if>
+      <if test="l0056 != null">
+        L0056,
+      </if>
+      <if test="l0057 != null">
+        L0057,
+      </if>
+      <if test="l0058 != null">
+        L0058,
+      </if>
+      <if test="l0059 != null">
+        L0059,
+      </if>
+      <if test="l0060 != null">
+        L0060,
+      </if>
+      <if test="l0061 != null">
+        L0061,
+      </if>
+      <if test="l0062 != null">
+        L0062,
+      </if>
+      <if test="l0063 != null">
+        L0063,
+      </if>
+      <if test="l0064 != null">
+        L0064,
+      </if>
+      <if test="l0065 != null">
+        L0065,
+      </if>
+      <if test="l0066 != null">
+        L0066,
+      </if>
+      <if test="l0067 != null">
+        L0067,
+      </if>
+      <if test="l0068 != null">
+        L0068,
+      </if>
+      <if test="l0069 != null">
+        L0069,
+      </if>
+      <if test="l0070 != null">
+        L0070,
+      </if>
+      <if test="l0071 != null">
+        L0071,
+      </if>
+      <if test="l0072 != null">
+        L0072,
+      </if>
+      <if test="l0073 != null">
+        L0073,
+      </if>
+      <if test="l0074 != null">
+        L0074,
+      </if>
+      <if test="l0075 != null">
+        L0075,
+      </if>
+      <if test="l0076 != null">
+        L0076,
+      </if>
+      <if test="l0077 != null">
+        L0077,
+      </if>
+      <if test="l0078 != null">
+        L0078,
+      </if>
+      <if test="l0079 != null">
+        L0079,
+      </if>
+      <if test="l0080 != null">
+        L0080,
+      </if>
+      <if test="l0081 != null">
+        L0081,
+      </if>
+      <if test="l0082 != null">
+        L0082,
+      </if>
+      <if test="l0083 != null">
+        L0083,
+      </if>
+      <if test="l0084 != null">
+        L0084,
+      </if>
+      <if test="l0085 != null">
+        L0085,
+      </if>
+      <if test="l0086 != null">
+        L0086,
+      </if>
+      <if test="l0087 != null">
+        L0087,
+      </if>
+      <if test="l0088 != null">
+        L0088,
+      </if>
+      <if test="l0089 != null">
+        L0089,
+      </if>
+      <if test="l0090 != null">
+        L0090,
+      </if>
+      <if test="l0091 != null">
+        L0091,
+      </if>
+      <if test="l0092 != null">
+        L0092,
+      </if>
+      <if test="l0093 != null">
+        L0093,
+      </if>
+      <if test="l0094 != null">
+        L0094,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="timestamp != null">
+        #{timestamp,jdbcType=VARCHAR},
+      </if>
+      <if test="l0001 != null">
+        #{l0001,jdbcType=DOUBLE},
+      </if>
+      <if test="l0002 != null">
+        #{l0002,jdbcType=DOUBLE},
+      </if>
+      <if test="l0003 != null">
+        #{l0003,jdbcType=DOUBLE},
+      </if>
+      <if test="l0004 != null">
+        #{l0004,jdbcType=DOUBLE},
+      </if>
+      <if test="l0005 != null">
+        #{l0005,jdbcType=DOUBLE},
+      </if>
+      <if test="l0006 != null">
+        #{l0006,jdbcType=DOUBLE},
+      </if>
+      <if test="l0007 != null">
+        #{l0007,jdbcType=DOUBLE},
+      </if>
+      <if test="l0008 != null">
+        #{l0008,jdbcType=DOUBLE},
+      </if>
+      <if test="l0009 != null">
+        #{l0009,jdbcType=DOUBLE},
+      </if>
+      <if test="l0010 != null">
+        #{l0010,jdbcType=DOUBLE},
+      </if>
+      <if test="l0011 != null">
+        #{l0011,jdbcType=DOUBLE},
+      </if>
+      <if test="l0012 != null">
+        #{l0012,jdbcType=DOUBLE},
+      </if>
+      <if test="l0013 != null">
+        #{l0013,jdbcType=DOUBLE},
+      </if>
+      <if test="l0014 != null">
+        #{l0014,jdbcType=DOUBLE},
+      </if>
+      <if test="l0015 != null">
+        #{l0015,jdbcType=DOUBLE},
+      </if>
+      <if test="l0016 != null">
+        #{l0016,jdbcType=DOUBLE},
+      </if>
+      <if test="l0017 != null">
+        #{l0017,jdbcType=DOUBLE},
+      </if>
+      <if test="l0018 != null">
+        #{l0018,jdbcType=DOUBLE},
+      </if>
+      <if test="l0019 != null">
+        #{l0019,jdbcType=DOUBLE},
+      </if>
+      <if test="l0020 != null">
+        #{l0020,jdbcType=DOUBLE},
+      </if>
+      <if test="l0021 != null">
+        #{l0021,jdbcType=DOUBLE},
+      </if>
+      <if test="l0022 != null">
+        #{l0022,jdbcType=DOUBLE},
+      </if>
+      <if test="l0023 != null">
+        #{l0023,jdbcType=DOUBLE},
+      </if>
+      <if test="l0024 != null">
+        #{l0024,jdbcType=DOUBLE},
+      </if>
+      <if test="l0025 != null">
+        #{l0025,jdbcType=DOUBLE},
+      </if>
+      <if test="l0026 != null">
+        #{l0026,jdbcType=DOUBLE},
+      </if>
+      <if test="l0027 != null">
+        #{l0027,jdbcType=DOUBLE},
+      </if>
+      <if test="l0028 != null">
+        #{l0028,jdbcType=DOUBLE},
+      </if>
+      <if test="l0029 != null">
+        #{l0029,jdbcType=DOUBLE},
+      </if>
+      <if test="l0030 != null">
+        #{l0030,jdbcType=DOUBLE},
+      </if>
+      <if test="l0031 != null">
+        #{l0031,jdbcType=DOUBLE},
+      </if>
+      <if test="l0032 != null">
+        #{l0032,jdbcType=DOUBLE},
+      </if>
+      <if test="l0033 != null">
+        #{l0033,jdbcType=DOUBLE},
+      </if>
+      <if test="l0034 != null">
+        #{l0034,jdbcType=DOUBLE},
+      </if>
+      <if test="l0035 != null">
+        #{l0035,jdbcType=DOUBLE},
+      </if>
+      <if test="l0036 != null">
+        #{l0036,jdbcType=DOUBLE},
+      </if>
+      <if test="l0037 != null">
+        #{l0037,jdbcType=DOUBLE},
+      </if>
+      <if test="l0038 != null">
+        #{l0038,jdbcType=DOUBLE},
+      </if>
+      <if test="l0039 != null">
+        #{l0039,jdbcType=DOUBLE},
+      </if>
+      <if test="l0040 != null">
+        #{l0040,jdbcType=DOUBLE},
+      </if>
+      <if test="l0041 != null">
+        #{l0041,jdbcType=DOUBLE},
+      </if>
+      <if test="l0042 != null">
+        #{l0042,jdbcType=DOUBLE},
+      </if>
+      <if test="l0043 != null">
+        #{l0043,jdbcType=DOUBLE},
+      </if>
+      <if test="l0044 != null">
+        #{l0044,jdbcType=DOUBLE},
+      </if>
+      <if test="l0045 != null">
+        #{l0045,jdbcType=DOUBLE},
+      </if>
+      <if test="l0046 != null">
+        #{l0046,jdbcType=DOUBLE},
+      </if>
+      <if test="l0047 != null">
+        #{l0047,jdbcType=DOUBLE},
+      </if>
+      <if test="l0048 != null">
+        #{l0048,jdbcType=DOUBLE},
+      </if>
+      <if test="l0049 != null">
+        #{l0049,jdbcType=DOUBLE},
+      </if>
+      <if test="l0050 != null">
+        #{l0050,jdbcType=DOUBLE},
+      </if>
+      <if test="l0051 != null">
+        #{l0051,jdbcType=DOUBLE},
+      </if>
+      <if test="l0052 != null">
+        #{l0052,jdbcType=DOUBLE},
+      </if>
+      <if test="l0053 != null">
+        #{l0053,jdbcType=DOUBLE},
+      </if>
+      <if test="l0054 != null">
+        #{l0054,jdbcType=DOUBLE},
+      </if>
+      <if test="l0055 != null">
+        #{l0055,jdbcType=DOUBLE},
+      </if>
+      <if test="l0056 != null">
+        #{l0056,jdbcType=DOUBLE},
+      </if>
+      <if test="l0057 != null">
+        #{l0057,jdbcType=DOUBLE},
+      </if>
+      <if test="l0058 != null">
+        #{l0058,jdbcType=DOUBLE},
+      </if>
+      <if test="l0059 != null">
+        #{l0059,jdbcType=DOUBLE},
+      </if>
+      <if test="l0060 != null">
+        #{l0060,jdbcType=DOUBLE},
+      </if>
+      <if test="l0061 != null">
+        #{l0061,jdbcType=DOUBLE},
+      </if>
+      <if test="l0062 != null">
+        #{l0062,jdbcType=DOUBLE},
+      </if>
+      <if test="l0063 != null">
+        #{l0063,jdbcType=DOUBLE},
+      </if>
+      <if test="l0064 != null">
+        #{l0064,jdbcType=DOUBLE},
+      </if>
+      <if test="l0065 != null">
+        #{l0065,jdbcType=DOUBLE},
+      </if>
+      <if test="l0066 != null">
+        #{l0066,jdbcType=DOUBLE},
+      </if>
+      <if test="l0067 != null">
+        #{l0067,jdbcType=DOUBLE},
+      </if>
+      <if test="l0068 != null">
+        #{l0068,jdbcType=DOUBLE},
+      </if>
+      <if test="l0069 != null">
+        #{l0069,jdbcType=DOUBLE},
+      </if>
+      <if test="l0070 != null">
+        #{l0070,jdbcType=DOUBLE},
+      </if>
+      <if test="l0071 != null">
+        #{l0071,jdbcType=DOUBLE},
+      </if>
+      <if test="l0072 != null">
+        #{l0072,jdbcType=DOUBLE},
+      </if>
+      <if test="l0073 != null">
+        #{l0073,jdbcType=DOUBLE},
+      </if>
+      <if test="l0074 != null">
+        #{l0074,jdbcType=DOUBLE},
+      </if>
+      <if test="l0075 != null">
+        #{l0075,jdbcType=DOUBLE},
+      </if>
+      <if test="l0076 != null">
+        #{l0076,jdbcType=DOUBLE},
+      </if>
+      <if test="l0077 != null">
+        #{l0077,jdbcType=DOUBLE},
+      </if>
+      <if test="l0078 != null">
+        #{l0078,jdbcType=DOUBLE},
+      </if>
+      <if test="l0079 != null">
+        #{l0079,jdbcType=DOUBLE},
+      </if>
+      <if test="l0080 != null">
+        #{l0080,jdbcType=DOUBLE},
+      </if>
+      <if test="l0081 != null">
+        #{l0081,jdbcType=DOUBLE},
+      </if>
+      <if test="l0082 != null">
+        #{l0082,jdbcType=DOUBLE},
+      </if>
+      <if test="l0083 != null">
+        #{l0083,jdbcType=DOUBLE},
+      </if>
+      <if test="l0084 != null">
+        #{l0084,jdbcType=DOUBLE},
+      </if>
+      <if test="l0085 != null">
+        #{l0085,jdbcType=DOUBLE},
+      </if>
+      <if test="l0086 != null">
+        #{l0086,jdbcType=DOUBLE},
+      </if>
+      <if test="l0087 != null">
+        #{l0087,jdbcType=DOUBLE},
+      </if>
+      <if test="l0088 != null">
+        #{l0088,jdbcType=DOUBLE},
+      </if>
+      <if test="l0089 != null">
+        #{l0089,jdbcType=DOUBLE},
+      </if>
+      <if test="l0090 != null">
+        #{l0090,jdbcType=DOUBLE},
+      </if>
+      <if test="l0091 != null">
+        #{l0091,jdbcType=DOUBLE},
+      </if>
+      <if test="l0092 != null">
+        #{l0092,jdbcType=DOUBLE},
+      </if>
+      <if test="l0093 != null">
+        #{l0093,jdbcType=DOUBLE},
+      </if>
+      <if test="l0094 != null">
+        #{l0094,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mktech.entity.Line">
+    update LINE_A
+    <set>
+      <if test="timestamp != null">
+        TIMESTAMP = #{timestamp,jdbcType=VARCHAR},
+      </if>
+      <if test="l0001 != null">
+        L0001 = #{l0001,jdbcType=DOUBLE},
+      </if>
+      <if test="l0002 != null">
+        L0002 = #{l0002,jdbcType=DOUBLE},
+      </if>
+      <if test="l0003 != null">
+        L0003 = #{l0003,jdbcType=DOUBLE},
+      </if>
+      <if test="l0004 != null">
+        L0004 = #{l0004,jdbcType=DOUBLE},
+      </if>
+      <if test="l0005 != null">
+        L0005 = #{l0005,jdbcType=DOUBLE},
+      </if>
+      <if test="l0006 != null">
+        L0006 = #{l0006,jdbcType=DOUBLE},
+      </if>
+      <if test="l0007 != null">
+        L0007 = #{l0007,jdbcType=DOUBLE},
+      </if>
+      <if test="l0008 != null">
+        L0008 = #{l0008,jdbcType=DOUBLE},
+      </if>
+      <if test="l0009 != null">
+        L0009 = #{l0009,jdbcType=DOUBLE},
+      </if>
+      <if test="l0010 != null">
+        L0010 = #{l0010,jdbcType=DOUBLE},
+      </if>
+      <if test="l0011 != null">
+        L0011 = #{l0011,jdbcType=DOUBLE},
+      </if>
+      <if test="l0012 != null">
+        L0012 = #{l0012,jdbcType=DOUBLE},
+      </if>
+      <if test="l0013 != null">
+        L0013 = #{l0013,jdbcType=DOUBLE},
+      </if>
+      <if test="l0014 != null">
+        L0014 = #{l0014,jdbcType=DOUBLE},
+      </if>
+      <if test="l0015 != null">
+        L0015 = #{l0015,jdbcType=DOUBLE},
+      </if>
+      <if test="l0016 != null">
+        L0016 = #{l0016,jdbcType=DOUBLE},
+      </if>
+      <if test="l0017 != null">
+        L0017 = #{l0017,jdbcType=DOUBLE},
+      </if>
+      <if test="l0018 != null">
+        L0018 = #{l0018,jdbcType=DOUBLE},
+      </if>
+      <if test="l0019 != null">
+        L0019 = #{l0019,jdbcType=DOUBLE},
+      </if>
+      <if test="l0020 != null">
+        L0020 = #{l0020,jdbcType=DOUBLE},
+      </if>
+      <if test="l0021 != null">
+        L0021 = #{l0021,jdbcType=DOUBLE},
+      </if>
+      <if test="l0022 != null">
+        L0022 = #{l0022,jdbcType=DOUBLE},
+      </if>
+      <if test="l0023 != null">
+        L0023 = #{l0023,jdbcType=DOUBLE},
+      </if>
+      <if test="l0024 != null">
+        L0024 = #{l0024,jdbcType=DOUBLE},
+      </if>
+      <if test="l0025 != null">
+        L0025 = #{l0025,jdbcType=DOUBLE},
+      </if>
+      <if test="l0026 != null">
+        L0026 = #{l0026,jdbcType=DOUBLE},
+      </if>
+      <if test="l0027 != null">
+        L0027 = #{l0027,jdbcType=DOUBLE},
+      </if>
+      <if test="l0028 != null">
+        L0028 = #{l0028,jdbcType=DOUBLE},
+      </if>
+      <if test="l0029 != null">
+        L0029 = #{l0029,jdbcType=DOUBLE},
+      </if>
+      <if test="l0030 != null">
+        L0030 = #{l0030,jdbcType=DOUBLE},
+      </if>
+      <if test="l0031 != null">
+        L0031 = #{l0031,jdbcType=DOUBLE},
+      </if>
+      <if test="l0032 != null">
+        L0032 = #{l0032,jdbcType=DOUBLE},
+      </if>
+      <if test="l0033 != null">
+        L0033 = #{l0033,jdbcType=DOUBLE},
+      </if>
+      <if test="l0034 != null">
+        L0034 = #{l0034,jdbcType=DOUBLE},
+      </if>
+      <if test="l0035 != null">
+        L0035 = #{l0035,jdbcType=DOUBLE},
+      </if>
+      <if test="l0036 != null">
+        L0036 = #{l0036,jdbcType=DOUBLE},
+      </if>
+      <if test="l0037 != null">
+        L0037 = #{l0037,jdbcType=DOUBLE},
+      </if>
+      <if test="l0038 != null">
+        L0038 = #{l0038,jdbcType=DOUBLE},
+      </if>
+      <if test="l0039 != null">
+        L0039 = #{l0039,jdbcType=DOUBLE},
+      </if>
+      <if test="l0040 != null">
+        L0040 = #{l0040,jdbcType=DOUBLE},
+      </if>
+      <if test="l0041 != null">
+        L0041 = #{l0041,jdbcType=DOUBLE},
+      </if>
+      <if test="l0042 != null">
+        L0042 = #{l0042,jdbcType=DOUBLE},
+      </if>
+      <if test="l0043 != null">
+        L0043 = #{l0043,jdbcType=DOUBLE},
+      </if>
+      <if test="l0044 != null">
+        L0044 = #{l0044,jdbcType=DOUBLE},
+      </if>
+      <if test="l0045 != null">
+        L0045 = #{l0045,jdbcType=DOUBLE},
+      </if>
+      <if test="l0046 != null">
+        L0046 = #{l0046,jdbcType=DOUBLE},
+      </if>
+      <if test="l0047 != null">
+        L0047 = #{l0047,jdbcType=DOUBLE},
+      </if>
+      <if test="l0048 != null">
+        L0048 = #{l0048,jdbcType=DOUBLE},
+      </if>
+      <if test="l0049 != null">
+        L0049 = #{l0049,jdbcType=DOUBLE},
+      </if>
+      <if test="l0050 != null">
+        L0050 = #{l0050,jdbcType=DOUBLE},
+      </if>
+      <if test="l0051 != null">
+        L0051 = #{l0051,jdbcType=DOUBLE},
+      </if>
+      <if test="l0052 != null">
+        L0052 = #{l0052,jdbcType=DOUBLE},
+      </if>
+      <if test="l0053 != null">
+        L0053 = #{l0053,jdbcType=DOUBLE},
+      </if>
+      <if test="l0054 != null">
+        L0054 = #{l0054,jdbcType=DOUBLE},
+      </if>
+      <if test="l0055 != null">
+        L0055 = #{l0055,jdbcType=DOUBLE},
+      </if>
+      <if test="l0056 != null">
+        L0056 = #{l0056,jdbcType=DOUBLE},
+      </if>
+      <if test="l0057 != null">
+        L0057 = #{l0057,jdbcType=DOUBLE},
+      </if>
+      <if test="l0058 != null">
+        L0058 = #{l0058,jdbcType=DOUBLE},
+      </if>
+      <if test="l0059 != null">
+        L0059 = #{l0059,jdbcType=DOUBLE},
+      </if>
+      <if test="l0060 != null">
+        L0060 = #{l0060,jdbcType=DOUBLE},
+      </if>
+      <if test="l0061 != null">
+        L0061 = #{l0061,jdbcType=DOUBLE},
+      </if>
+      <if test="l0062 != null">
+        L0062 = #{l0062,jdbcType=DOUBLE},
+      </if>
+      <if test="l0063 != null">
+        L0063 = #{l0063,jdbcType=DOUBLE},
+      </if>
+      <if test="l0064 != null">
+        L0064 = #{l0064,jdbcType=DOUBLE},
+      </if>
+      <if test="l0065 != null">
+        L0065 = #{l0065,jdbcType=DOUBLE},
+      </if>
+      <if test="l0066 != null">
+        L0066 = #{l0066,jdbcType=DOUBLE},
+      </if>
+      <if test="l0067 != null">
+        L0067 = #{l0067,jdbcType=DOUBLE},
+      </if>
+      <if test="l0068 != null">
+        L0068 = #{l0068,jdbcType=DOUBLE},
+      </if>
+      <if test="l0069 != null">
+        L0069 = #{l0069,jdbcType=DOUBLE},
+      </if>
+      <if test="l0070 != null">
+        L0070 = #{l0070,jdbcType=DOUBLE},
+      </if>
+      <if test="l0071 != null">
+        L0071 = #{l0071,jdbcType=DOUBLE},
+      </if>
+      <if test="l0072 != null">
+        L0072 = #{l0072,jdbcType=DOUBLE},
+      </if>
+      <if test="l0073 != null">
+        L0073 = #{l0073,jdbcType=DOUBLE},
+      </if>
+      <if test="l0074 != null">
+        L0074 = #{l0074,jdbcType=DOUBLE},
+      </if>
+      <if test="l0075 != null">
+        L0075 = #{l0075,jdbcType=DOUBLE},
+      </if>
+      <if test="l0076 != null">
+        L0076 = #{l0076,jdbcType=DOUBLE},
+      </if>
+      <if test="l0077 != null">
+        L0077 = #{l0077,jdbcType=DOUBLE},
+      </if>
+      <if test="l0078 != null">
+        L0078 = #{l0078,jdbcType=DOUBLE},
+      </if>
+      <if test="l0079 != null">
+        L0079 = #{l0079,jdbcType=DOUBLE},
+      </if>
+      <if test="l0080 != null">
+        L0080 = #{l0080,jdbcType=DOUBLE},
+      </if>
+      <if test="l0081 != null">
+        L0081 = #{l0081,jdbcType=DOUBLE},
+      </if>
+      <if test="l0082 != null">
+        L0082 = #{l0082,jdbcType=DOUBLE},
+      </if>
+      <if test="l0083 != null">
+        L0083 = #{l0083,jdbcType=DOUBLE},
+      </if>
+      <if test="l0084 != null">
+        L0084 = #{l0084,jdbcType=DOUBLE},
+      </if>
+      <if test="l0085 != null">
+        L0085 = #{l0085,jdbcType=DOUBLE},
+      </if>
+      <if test="l0086 != null">
+        L0086 = #{l0086,jdbcType=DOUBLE},
+      </if>
+      <if test="l0087 != null">
+        L0087 = #{l0087,jdbcType=DOUBLE},
+      </if>
+      <if test="l0088 != null">
+        L0088 = #{l0088,jdbcType=DOUBLE},
+      </if>
+      <if test="l0089 != null">
+        L0089 = #{l0089,jdbcType=DOUBLE},
+      </if>
+      <if test="l0090 != null">
+        L0090 = #{l0090,jdbcType=DOUBLE},
+      </if>
+      <if test="l0091 != null">
+        L0091 = #{l0091,jdbcType=DOUBLE},
+      </if>
+      <if test="l0092 != null">
+        L0092 = #{l0092,jdbcType=DOUBLE},
+      </if>
+      <if test="l0093 != null">
+        L0093 = #{l0093,jdbcType=DOUBLE},
+      </if>
+      <if test="l0094 != null">
+        L0094 = #{l0094,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mktech.entity.Line">
+    update LINE_A
+    set TIMESTAMP = #{timestamp,jdbcType=VARCHAR},
+      L0001 = #{l0001,jdbcType=DOUBLE},
+      L0002 = #{l0002,jdbcType=DOUBLE},
+      L0003 = #{l0003,jdbcType=DOUBLE},
+      L0004 = #{l0004,jdbcType=DOUBLE},
+      L0005 = #{l0005,jdbcType=DOUBLE},
+      L0006 = #{l0006,jdbcType=DOUBLE},
+      L0007 = #{l0007,jdbcType=DOUBLE},
+      L0008 = #{l0008,jdbcType=DOUBLE},
+      L0009 = #{l0009,jdbcType=DOUBLE},
+      L0010 = #{l0010,jdbcType=DOUBLE},
+      L0011 = #{l0011,jdbcType=DOUBLE},
+      L0012 = #{l0012,jdbcType=DOUBLE},
+      L0013 = #{l0013,jdbcType=DOUBLE},
+      L0014 = #{l0014,jdbcType=DOUBLE},
+      L0015 = #{l0015,jdbcType=DOUBLE},
+      L0016 = #{l0016,jdbcType=DOUBLE},
+      L0017 = #{l0017,jdbcType=DOUBLE},
+      L0018 = #{l0018,jdbcType=DOUBLE},
+      L0019 = #{l0019,jdbcType=DOUBLE},
+      L0020 = #{l0020,jdbcType=DOUBLE},
+      L0021 = #{l0021,jdbcType=DOUBLE},
+      L0022 = #{l0022,jdbcType=DOUBLE},
+      L0023 = #{l0023,jdbcType=DOUBLE},
+      L0024 = #{l0024,jdbcType=DOUBLE},
+      L0025 = #{l0025,jdbcType=DOUBLE},
+      L0026 = #{l0026,jdbcType=DOUBLE},
+      L0027 = #{l0027,jdbcType=DOUBLE},
+      L0028 = #{l0028,jdbcType=DOUBLE},
+      L0029 = #{l0029,jdbcType=DOUBLE},
+      L0030 = #{l0030,jdbcType=DOUBLE},
+      L0031 = #{l0031,jdbcType=DOUBLE},
+      L0032 = #{l0032,jdbcType=DOUBLE},
+      L0033 = #{l0033,jdbcType=DOUBLE},
+      L0034 = #{l0034,jdbcType=DOUBLE},
+      L0035 = #{l0035,jdbcType=DOUBLE},
+      L0036 = #{l0036,jdbcType=DOUBLE},
+      L0037 = #{l0037,jdbcType=DOUBLE},
+      L0038 = #{l0038,jdbcType=DOUBLE},
+      L0039 = #{l0039,jdbcType=DOUBLE},
+      L0040 = #{l0040,jdbcType=DOUBLE},
+      L0041 = #{l0041,jdbcType=DOUBLE},
+      L0042 = #{l0042,jdbcType=DOUBLE},
+      L0043 = #{l0043,jdbcType=DOUBLE},
+      L0044 = #{l0044,jdbcType=DOUBLE},
+      L0045 = #{l0045,jdbcType=DOUBLE},
+      L0046 = #{l0046,jdbcType=DOUBLE},
+      L0047 = #{l0047,jdbcType=DOUBLE},
+      L0048 = #{l0048,jdbcType=DOUBLE},
+      L0049 = #{l0049,jdbcType=DOUBLE},
+      L0050 = #{l0050,jdbcType=DOUBLE},
+      L0051 = #{l0051,jdbcType=DOUBLE},
+      L0052 = #{l0052,jdbcType=DOUBLE},
+      L0053 = #{l0053,jdbcType=DOUBLE},
+      L0054 = #{l0054,jdbcType=DOUBLE},
+      L0055 = #{l0055,jdbcType=DOUBLE},
+      L0056 = #{l0056,jdbcType=DOUBLE},
+      L0057 = #{l0057,jdbcType=DOUBLE},
+      L0058 = #{l0058,jdbcType=DOUBLE},
+      L0059 = #{l0059,jdbcType=DOUBLE},
+      L0060 = #{l0060,jdbcType=DOUBLE},
+      L0061 = #{l0061,jdbcType=DOUBLE},
+      L0062 = #{l0062,jdbcType=DOUBLE},
+      L0063 = #{l0063,jdbcType=DOUBLE},
+      L0064 = #{l0064,jdbcType=DOUBLE},
+      L0065 = #{l0065,jdbcType=DOUBLE},
+      L0066 = #{l0066,jdbcType=DOUBLE},
+      L0067 = #{l0067,jdbcType=DOUBLE},
+      L0068 = #{l0068,jdbcType=DOUBLE},
+      L0069 = #{l0069,jdbcType=DOUBLE},
+      L0070 = #{l0070,jdbcType=DOUBLE},
+      L0071 = #{l0071,jdbcType=DOUBLE},
+      L0072 = #{l0072,jdbcType=DOUBLE},
+      L0073 = #{l0073,jdbcType=DOUBLE},
+      L0074 = #{l0074,jdbcType=DOUBLE},
+      L0075 = #{l0075,jdbcType=DOUBLE},
+      L0076 = #{l0076,jdbcType=DOUBLE},
+      L0077 = #{l0077,jdbcType=DOUBLE},
+      L0078 = #{l0078,jdbcType=DOUBLE},
+      L0079 = #{l0079,jdbcType=DOUBLE},
+      L0080 = #{l0080,jdbcType=DOUBLE},
+      L0081 = #{l0081,jdbcType=DOUBLE},
+      L0082 = #{l0082,jdbcType=DOUBLE},
+      L0083 = #{l0083,jdbcType=DOUBLE},
+      L0084 = #{l0084,jdbcType=DOUBLE},
+      L0085 = #{l0085,jdbcType=DOUBLE},
+      L0086 = #{l0086,jdbcType=DOUBLE},
+      L0087 = #{l0087,jdbcType=DOUBLE},
+      L0088 = #{l0088,jdbcType=DOUBLE},
+      L0089 = #{l0089,jdbcType=DOUBLE},
+      L0090 = #{l0090,jdbcType=DOUBLE},
+      L0091 = #{l0091,jdbcType=DOUBLE},
+      L0092 = #{l0092,jdbcType=DOUBLE},
+      L0093 = #{l0093,jdbcType=DOUBLE},
+      L0094 = #{l0094,jdbcType=DOUBLE}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

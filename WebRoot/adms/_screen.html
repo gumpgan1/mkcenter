@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@CIMS213—工业大屏后台管理系统</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/local.css" />
+    <link rel="stylesheet" type="text/css" href="js/layer/theme/default/layer.css" />
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-table.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+    <!-- you need to include the shieldui css and js assets in order for the charts to work --> 
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/layer/layer.js"></script>
+    <style>
+    	.self_btn {background:transparent;border-width:2px;border-color:#cccccc}
+		.nav-tabs > li.active > a, 
+		.nav-tabs > li.active > a:hover, 
+		.nav-tabs > li.active > a:focus {background-color:rgba(31,150,214,0.5)}
+		.tab-pane fade{margin-left:15px}
+		.btn {padding:3px 15%}
+    </style>
+    <style>
+    	.self_btn {background:transparent;border-width:2px;border-color:#cccccc}
+    	#linetable {background:transparent}
+    	#linetable thead{background:#000000}
+    	/* 特地注上td,防止因local.css中td:hover样式干扰tr:hover */
+    	#linetable tbody>tr:hover {
+			background-color: rgba(42, 159, 214,0.5)
+		}
+		#linetable tbody>tr:hover>td{
+			background:none;
+		}
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+		  <!--   导航栏		  -->	
+          <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">CIMS-213</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul id="active" class="nav navbar-nav side-nav">
+                    <li id="_index"><a href="_index.html"><i class="fa fa-bullseye"></i> 总览</a></li>
+                    <li id="_self"><a href="_self.html"><i class="fa fa-user" style="margin-left:3px"></i> 个人信息</a></li>       
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-user">
+					 <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span id="time"></span></a>
+                    </li>
+                    <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>&nbsp;&nbsp;<span id="user"></span>&nbsp;&nbsp;<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:void(0)" onclick="logout()"><i class="fa fa-power-off"></i>登出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+		<!-- 导航栏结束 -->
+		<!-- 主窗体开始 -->
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>大屏配置<small>&nbsp;前端大屏的个性化配置</small></h1>
+                </div>
+            </div>
+            <br/>
+            <ul id="myTab" class="nav nav-tabs" style="border-bottom:1px solid #cccccc;margin-left:15px">
+				<li><a href="#main_view" data-toggle="tab">主界面展示</a></li>
+				<li class="active">
+					<a href="#board" data-toggle="tab">工位面板</a>
+				</li>
+				<li><a href="#yewu" data-toggle="tab">业务面板</a></li>
+			</ul>
+        </div>
+        <!-- 主窗体结束 -->
+        <div id="myTabContent" class="tab-content" style="margin-left:15px;padding:25px">
+			<div class="tab-pane fade in active" id="board" style="height:600px">
+				<div class="row">
+					<label class="col-lg-offset-1 col-lg-1" style="top:5px;white-space:nowrap;">
+					    <i class="fa fa-users"></i> 产线：
+		            </label>
+		            <div class="col-lg-3">
+		               	<select id="lines" onchange="selectConfigs()" style="width:100%;height:30px"></select>
+		            </div>
+		            <label class="col-lg-1" style="top:5px;white-space:nowrap;">
+					    <i class="fa fa-gear"></i> 方案：
+		            </label>
+		            <div class="col-lg-2">
+		                <select id="configs" onchange="getConfigs()" style="width:100%;height:30px"></select>
+		            </div>
+		             <div class="col-lg-offset-1 col-lg-1">
+		                <button id="btn-reset" class="btn self_btn btn-default" style="width:100%" onclick="reset1()">
+			            <span></span>重置
+			        </button>
+		            </div>
+		            <div class="col-lg-1">
+		                <button id="btn-save" class="btn self_btn btn-default" onclick="submit1()" style="width:100%">
+			            <span></span>保存
+			        </button>
+		            </div>
+				</div>
+				<br/>
+				<div class="row" style="position:relative;padding-bottom:51%;background:url(images/data.png) no-repeat;background-size:contain;background-position:left top;">
+	               	<div style="position:absolute;width:15%;height:15%;left:45%;top:12%;">
+	               		<span>工位：&nbsp;</span><select id="stat1" style="position:absolute;width:100%;"></select>
+	               		<br/><br/>
+	               		<span>类型：&nbsp;</span><select id="par1" style="position:absolute;width:100%;"></select>
+	               	</div> 
+				    <div style="position:absolute;width:15%;height:15%;left:76%;top:12%;">
+	               		<span>工位：&nbsp;</span><select id="stat2" style="position:absolute;width:100%;"></select>
+	               		<br/><br/>
+	               		<span>类型：&nbsp;</span><select id="par2" style="position:absolute;width:100%;"></select>
+	               	</div> 
+	               	<div style="position:absolute;width:15%;height:15%;left:45%;top:46%;">
+	               		<span>工位：&nbsp;</span><select id="stat3" style="position:absolute;width:100%;"></select>
+	               		<br/><br/>
+	               		<span>类型：&nbsp;</span><select id="par3" style="position:absolute;width:100%;"></select>
+	               	</div> 
+	               	<div style="position:absolute;width:15%;height:15%;left:76%;top:46%;">
+	               		<span>工位：&nbsp;</span><select id="stat4" style="position:absolute;width:100%;"></select>
+	               		<br/><br/>
+	               		<span>类型：&nbsp;</span><select id="par4" style="position:absolute;width:100%;"></select>
+	               	</div> 
+	               	<div style="position:absolute;width:15%;height:15%;left:45%;top:80%;">
+	               		<span>工位：&nbsp;</span><select id="stat5" style="position:absolute;width:100%;"></select>
+	               		<br/><br/>
+	               		<span>类型：&nbsp;</span><select id="par5" style="position:absolute;width:100%;"></select>
+	               	</div> 
+	               		<div style="position:absolute;width:15%;height:15%;left:76%;top:80%;">
+	               		<span>工位：&nbsp;</span><select id="stat6" style="position:absolute;width:100%;"></select>
+	               		<br/><br/>
+	               		<span>类型：&nbsp;</span><select id="par6" style="position:absolute;width:100%;"></select>
+	               	</div> 
+				</div>
+				<form id="box1">
+					<input type="hidden" name="id" id="cid"/>
+					<input type="hidden" name="code" id="code"/>
+					<input type="hidden" name="stats" id="stats"/>
+					<input type="hidden" name="pars" id="pars"/>
+				</form>
+			</div>
+			<div class="tab-pane fade" id="yewu">
+				<div class="row">
+					<label class="col-lg-offset-2 col-lg-1" style="top:5px;white-space:nowrap;">
+					    <i class="fa fa-users"></i> 产线：
+		            </label>
+		             <div class="col-lg-3">
+		               	<select id="lines2" onchange="selectConfigs2()" style="width:100%;height:30px"></select>
+		            </div>
+		             <div class="col-lg-offset-1 col-lg-1">
+		                <button id="btn-reset" class="btn self_btn btn-default" style="width:100%" onclick="reset2()">
+			            <span></span>重置
+			        </button>
+		            </div>
+		            <div class="col-lg-1">
+		                <button id="btn-save" class="btn self_btn btn-default" onclick="submit2()" style="width:100%">
+			            <span></span>保存
+			        </button>
+		            </div>
+				</div>
+				<br/>
+				<div class="row" style="position:relative;padding-bottom:51%;background:url(images/yewu.png) no-repeat;background-size:contain;background-position:left top;">
+	               	<div style="position:absolute;width:15%;height:15%;left:8%;top:17%;">
+	               		<span>工位：&nbsp;</span><select id="stat2_1" style="position:absolute;width:100%;"></select>
+	               		<br/><br/>
+	               		<span>系数：&nbsp;</span><input type="text" id="par2_1" style="position:absolute;width:100%;height:20px" placeholder="请输入系数" value="1.0">
+	               	</div> 
+				    <div style="position:absolute;width:15%;height:15%;left:57%;top:17%;">
+	               		<span>工位：&nbsp;</span><select id="stat2_2" style="position:absolute;width:100%;"></select>
+	               		<br/><br/>
+	               		<span>系数：&nbsp;</span><input type="text" id="par2_2" style="position:absolute;width:100%;height:20px" placeholder="请输入系数" value="1.0">
+	               	</div> 
+	               	<div style="position:absolute;width:15%;height:15%;left:3%;top:77%;">
+	               		<span>能耗：&nbsp;</span><select id="stat2_3" style="position:absolute;width:100%;"></select>
+	               		<br/><br/>
+	               		<span>系数：&nbsp;</span><input type="text" id="par2_3" style="position:absolute;width:100%;height:20px" placeholder="请输入系数" value="1.0">
+	               	</div> 
+	               	<div style="position:absolute;width:15%;height:15%;left:27%;top:77%;">
+	               		<span>振动：&nbsp;</span><select id="stat2_4" style="position:absolute;width:100%;"></select>
+	               		<br/><br/>
+	               		<span>系数：&nbsp;</span><input type="text" id="par2_4" style="position:absolute;width:100%;height:20px" placeholder="请输入系数" value="1.0">
+	               	</div> 
+	               	<div style="position:absolute;width:10%;height:15%;left:69%;top:59%;">
+	               		<span>工位：&nbsp;</span><select id="stat2_5" style="position:absolute;width:100%;"></select>
+	               		<br/><br/>
+	               		<span>系数：&nbsp;</span><input type="text" id="par2_5" style="position:absolute;width:100%;height:20px" placeholder="请输入系数" value="1.0">
+	               	</div> 
+	               	<div style="position:absolute;width:10%;height:15%;left:85%;top:59%;">
+	               		<span>工位：&nbsp;</span><select id="stat2_6" style="position:absolute;width:100%;"></select>
+	               		<br/><br/>
+	               		<span>系数：&nbsp;</span><input type="text" id="par2_6" style="position:absolute;width:100%;height:20px" placeholder="请输入系数" value="1.0">
+	               	</div> 
+	               	<div style="position:absolute;width:15%;height:15%;left:75%;top:77%;">
+	               		<span>工位：&nbsp;</span><select id="stat2_7" style="position:absolute;width:100%;"></select>
+	               		<br/><br/>
+	               		<span>系数：&nbsp;</span><input type="text" id="par2_7" style="position:absolute;width:100%;height:20px" placeholder="请输入系数" value="1.0">
+	               	</div> 
+	               	<div style="position:absolute;width:15%;height:7%;left:69.4%;top:50.5%;">
+	               		<input type="text" id="stat2_8" style="position:absolute;width:100%;height:27px" placeholder="请输入该模块名称">
+	               	</div> 
+				</div>
+				<form id="box2">
+					<input type="hidden" name="id" id="cid2"/>
+					<input type="hidden" name="code" id="code2"/>
+					<input type="hidden" name="stats" id="stats2"/>
+					<input type="hidden" name="pars" id="pars2"/>
+				</form>
+			</div>
+			<div class="tab-pane fade" id="main_view">
+	            <div class="row">
+	            	<div class="col-lg-12">
+		            	<table id="linetable" class="table table-hover" >
+						</table>
+	            	</div>
+					<div id="toolbar" class="btn-group">
+				        <button id="btn-config" type="button" class="btn self_btn btn-default">
+				            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>配置
+				        </button>
+	  			    </div>  
+	            </div>
+            </div>
+			</div>
+		</div>
+</body>
+<script type="text/javascript" src="js/chny-lin.js"></script>
+<script type="text/javascript" src="js/_screen.js"></script>
+<script type="text/javascript" src="js/logout.js"></script>
+</html>

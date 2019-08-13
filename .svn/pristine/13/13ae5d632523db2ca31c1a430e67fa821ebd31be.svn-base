@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mktech.dao.DbJiangyinLogChangeDao">
+  <resultMap id="BaseResultMap" type="com.mktech.entity.DbJiangyinLogChange">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="CHANGETIME" jdbcType="VARCHAR" property="changeTime" />
+    <result column="CHANGETIME24" jdbcType="VARCHAR" property="changeTime24" />
+    <result column="L0060_BEFORE" jdbcType="VARCHAR" property="l0060_before" />
+    <result column="L0060_NOW" jdbcType="VARCHAR" property="l0060_now" />
+    <result column="L0077_BEFORE" jdbcType="VARCHAR" property="l0077_before" />
+    <result column="L0077_NOW" jdbcType="VARCHAR" property="l0077_now" />
+    <result column="L0093_BEFORE" jdbcType="VARCHAR" property="l0093_before" />
+    <result column="L0093_NOW" jdbcType="VARCHAR" property="l0093_now" />
+    <result column="L0033_BEFORE" jdbcType="VARCHAR" property="l0033_before" />
+    <result column="L0033_NOW" jdbcType="VARCHAR" property="l0033_now" />
+    <result column="L0036_BEFORE" jdbcType="VARCHAR" property="l0036_before" />
+    <result column="L0036_NOW" jdbcType="VARCHAR" property="l0036_now" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, CHANGETIME, CHANGETIME24, L0060_BEFORE, L0060_NOW, 
+    L0077_BEFORE, L0077_NOW, L0093_BEFORE, L0093_NOW, L0033_BEFORE,
+     L0033_NOW, L0036_BEFORE, L0036_NOW 
+  </sql>
+
+  <insert id="insert" parameterType="com.mktech.entity.DbJiangyinLogChange">
+    insert into DB_JIANGYIN_LOG_CHANGE 
+    (ID, CHANGETIME, CHANGETIME24, L0060_BEFORE, L0060_NOW, 
+    L0077_BEFORE, L0077_NOW, L0093_BEFORE, L0093_NOW, L0033_BEFORE,
+     L0033_NOW, L0036_BEFORE, L0036_NOW )
+    values 
+    (#{id,jdbcType=INTEGER}, #{changeTime,jdbcType=VARCHAR},  #{changeTime24,jdbcType=VARCHAR}, #{l0060_before,jdbcType=VARCHAR},
+    #{l0060_now,jdbcType=VARCHAR}, #{l0077_before,jdbcType=VARCHAR}, #{l0077_now,jdbcType=VARCHAR},
+    #{l0093_before,jdbcType=VARCHAR}, #{l0093_now,jdbcType=VARCHAR}, #{l0033_before,jdbcType=VARCHAR},
+    #{l0033_now,jdbcType=VARCHAR}, #{l0036_before,jdbcType=VARCHAR}, #{l0036_now,jdbcType=VARCHAR})
+  </insert>
+
+</mapper>

@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@CIMS213—工业大屏后台管理系统</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/local.css" />
+    <link rel="stylesheet" type="text/css" href="js/layer/theme/default/layer.css" />
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-table.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+    <!-- you need to include the shieldui css and js assets in order for the charts to work --> 
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/layer/layer.js"></script>
+    <style>
+    	.self_btn {background:transparent;border-width:2px;border-color:#cccccc}
+    	#usemtable {background:transparent}
+    	#usemtable thead{background:#000000}
+    	/* 特地注上td,防止因local.css中td:hover样式干扰tr:hover */
+    	#usemtable tbody>tr:hover {
+			background-color: rgba(42, 159, 214,0.5)
+		}
+		#usemtable tbody>tr:hover>td{
+			background:none;
+		}
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+		  <!--   导航栏		  -->	
+          <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">CIMS-213</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul id="active" class="nav navbar-nav side-nav">
+                    <li id="_index"><a href="_index.html"><i class="fa fa-bullseye"></i> 总览</a></li>
+                    <li id="_self"><a href="_self.html"><i class="fa fa-user" style="margin-left:3px"></i> 个人信息</a></li>
+                    
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-user">
+					 <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span id="time"></span></a>
+                    </li>
+                    <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>&nbsp;&nbsp;<span id="user"></span>&nbsp;&nbsp;<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:void(0)" onclick="logout()"><i class="fa fa-power-off"></i>登出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+		<!-- 导航栏结束 -->
+		<!-- 主窗体开始 -->
+        <div id="page-wrapper">
+           <div class="row">
+                <div class="col-lg-12">
+                    <h1>用户管理<small> 管理系统所辖用户的信息</small></h1>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+            	<div class="col-lg-12">
+	            	<table id="usemtable" class="table table-hover" >
+					</table>
+            	</div>
+				<div id="toolbar" class="btn-group">
+			        <button id="btn-add" type="button" class="btn self_btn btn-default">
+			            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+			        </button>
+			        <button id="btn-edit" type="button" class="btn self_btn btn-default">
+			            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+			        </button>
+			        <button id="btn-delete" type="button" class="btn self_btn btn-default">
+			            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+			        </button>
+  			    </div>  
+            </div>  
+        </div>
+        <!-- 主窗体结束 -->
+    </div>
+</body>
+<form id="createUser" style="color:#696666d9;display:none">
+	<br/>
+	<div class="row">
+         <label for="newU" class="col-md-4" style="margin-top:10px">
+             	<i class="fa fa-user-circle"></i> 用户名:
+         </label>
+         <div class="col-md-8">
+             <input type="text" name="username" class="form-control" id="newU" placeholder="请输入用户名，允许大小写字母、数字和下划线">
+         </div>
+     </div>  
+     <br/>
+	<div class="row">
+	       <label class="col-md-4" style="margin-top:10px">
+	             	<i class="fa fa-key"></i> 密码:
+	        </label>
+	        <div class="col-md-8">
+	            <label style="margin-top:10px"><span style="color:red">预设密码均为：123456</span></label>
+	        </div>
+	 </div>  
+     <br/>
+     <div class="row">
+         <label for="newAuth" class="col-md-4" style="margin-top:10px">
+             	<i class="fa fa-key"></i> 权限 ：
+         </label>
+         <div class="col-md-8" id="active1">
+             <label class="radio" style="margin-top:10px">
+                <input type="radio" name="autority" id="new_user" value="0" checked >
+                	  普通用户
+             </label>
+              <label class="radio" style="margin-top:10px">
+                <input type="radio" name="autority" id="new_designer" value="1">
+                	   <span style="color:blue"> 设计人员</span>
+             </label>
+             <label class="radio" style="margin-top:10px">
+                <input type="radio" name="autority" id="new_root" value="99">
+                	  <span style="color:red"> 管理员</span>
+             </label>  
+         </div>
+     </div>
+     <br/>
+     	<div class="row">
+         <label  class="col-md-4" style="margin-top:10px">
+             	<i class="fa fa-user-circle"></i> 所属公司:
+         </label>
+         <div class="col-md-8">
+             <!-- <input type="text" name="companyname" class="form-control" id="ofcompany" placeholder="请输入公司名称"> -->
+             <select id="companyid" name="companyid" style="width:100%;height:38px;"></select>
+         </div>
+     </div>
+     <br/>
+     	<div class="row">
+         <label  class="col-md-4" style="margin-top:10px">
+             	<i class="fa fa-user-circle"></i> 所属产线:
+         </label>
+         <div class="col-md-8">
+             <select id="lineid" name="lineid" style="width:100%;height:38px;"></select>
+         </div>
+     </div>
+     <br/>
+     <div class="row">
+    	<div class="col-lg-offset-3 col-lg-2">
+    		<button type="reset" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			重置	              		    
+            </button>
+    	</div>
+    	<div class="col-lg-offset-2 col-lg-2">
+    		<button type="button" id="new_ok" onclick="createUser()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			 确定
+     		</button>
+    	</div>
+   	</div>
+</form>
+<form id="changeUser" style="color:#696666d9;display:none">
+	<br/>
+	<div class="row">
+         <label class="col-md-4" style="margin-top:10px">
+             	<i class="fa fa-sort-numeric-asc"></i>序号:
+         </label>
+         <div class="col-md-8">
+             <label id="changeNo" style="margin-top:10px">xx</label>
+         </div>
+         <input type="hidden" name="userid" id="No"/>
+     </div> 
+	<br/>
+	<div class="row">
+         <label for="changeU" class="col-md-4" style="margin-top:10px">
+             	<i class="fa fa-user-circle"></i> 用户名:
+         </label>
+         <div class="col-md-8">
+             <input type="text" name="username" class="form-control" id="changeU" placeholder="请输入用户名">
+         </div>
+     </div>  
+     <br/>
+     <div class="row">
+         <label for="newAuth" class="col-md-4" style="margin-top:10px">
+             	<i class="fa fa-key"></i> 权限 ：
+         </label>
+         <div class="col-md-8">
+             <label class="radio" style="margin-top:10px">
+                <input type="radio" name="autority" id="change_user" value="0" checked >
+                	  普通用户
+             </label>
+             <label class="radio" style="margin-top:10px">
+                <input type="radio" name="autority" id="change_designer" value="1">
+                	   <span style="color:blue"> 设计人员</span>
+             </label>
+             <label class="radio" style="margin-top:10px">
+                <input type="radio" name="autority" id="change_root" value="99">
+                	  <span style="color:red"> 管理员</span>
+             </label>
+         </div>
+     </div>
+     <br/>
+     <div class="row">
+    	<div class="col-lg-offset-3 col-lg-2">
+    		<button type="reset" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			重置	              		    
+            </button>
+    	</div>
+    	<div class="col-lg-offset-2 col-lg-2">
+    		<button type="button" id="change_ok" onclick="changeUser()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			 确定
+     		</button>
+    	</div>
+   	</div>
+</form>
+<form id="deleteUser" style="color:#696666d9;display:none">
+	<br/>
+	<div class="row">
+         <label class="col-md-12" style="margin-top:10px;text-align:center;">
+             	<i class="fa fa-warning"></i>是否要删除角色为<span id="del_role" style="color:red"></span>的<span id="del_name" style="color:blue"></span>？
+         </label>
+         <input type="hidden" name="userid" id="del_id"/>
+     </div> 
+	<br/>
+     <div class="row">
+    	<div class="col-lg-offset-3 col-lg-2">
+    		<button type="button" id="del_no" onclick="closeDel()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			取消	              		    
+            </button>
+    	</div>
+    	<div class="col-lg-offset-2 col-lg-2">
+    		<button type="button" id="del_ok" onclick="deleteUser()" class="btn btn-default" style="width:60px;color:#000000;border-color:#000000;border-width:1px">
+          			 确定
+     		</button>
+    	</div>
+   	</div>
+</form>
+<script type="text/javascript" src="js/logout.js"></script>
+<script type="text/javascript" src="js/chny-lin.js"></script>
+<script type="text/javascript" src="js/_usem.js"></script>
+</html>

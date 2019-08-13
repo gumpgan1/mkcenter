@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>testChart.html</title>
+<meta charset="utf-8">
+<link rel="icon"
+	href="https://static.jianshukeji.com/highcharts/images/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* css 代码  */
+</style>
+<script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+<script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+<script	src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+<script	src="assets/js/jquery-2.0.3.min.js"></script>
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+</head>
+
+<body>
+	 <div id="container" style="min-width:400px;height:400px"></div>
+        <script>
+        Highcharts.setOptions({
+    		global: {
+    				useUTC: false
+    		}
+    });
+    var timestamp=1522701557277;
+    var initData = [];
+    var item = "L0063";
+    var minplot = 75;
+    var maxplot = 85;
+	function test_data(){
+		  $.ajax({
+		    	type:'get',
+		    	url:'../data/limo.do?timestamp='+timestamp,
+		    	success:function(data){
+		    		var json =  eval("("+data+")");
+		    		console.log(json.list);
+		    		for(var key in json.list){
+		    			initData.push({
+							x : json.list[key].TIMESTAMP-8*3600*1000,
+							y : (json.list[key])[item]
+						});
+		    			console.log((json.list[key])[item]);
+		    		}
+		    		
+		    		chart.series[0].setData(initData);//数据填充到highcharts上面
+		    	},
+		    	error:function(e){
+		    		
+		    	}
+	})
+  
+    	
+    };
+    function activeLastPointToolip(chart) {
+		var points = chart.series[0].points;
+		chart.tooltip.refresh(points[points.length -1]);
+}
+    var chart = Highcharts.chart('container', {
+    		chart: {
+    				type: 'spline',
+    				marginRight: 10,
+    		},
+    		title: {
+    				text: '动态模拟实时数据'
+    		},
+    		xAxis: {
+    				type:'datetime',
+    				minTickInterval: 20
+    				
+    		},
+    		yAxis: {
+    				title: {
+    						text: null
+    				},
+    				plotLines: [
+    				{   //一条延伸到整个绘图区的线，标志着轴中一个特定值。
+                        color: 'red',
+                        dashStyle: 'Dash', //Dash,Dot,Solid,默认Solid
+                        width: 3,
+                        value: minplot,  //y轴显示位置
+                    },
+                    {   //一条延伸到整个绘图区的线，标志着轴中一个特定值。
+                        color: 'red',
+                        dashStyle: 'Dash', //Dash,Dot,Solid,默认Solid
+                        width: 3,
+                        value: maxplot,  //y轴显示位置 
+                        label:'预警线'
+                    }
+    				]
+    		},
+    		
+    		tooltip: {
+    				formatter: function () {
+    					return '<b>'
+						+ this.series.name
+						+ '</b><br/>'
+						+ Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',this.x)
+						+ '<br/>' + Highcharts.numberFormat(this.y, 2);
+    				}
+    		},
+    		legend: {
+    				enabled: false
+    		},
+    		series: [{
+    				name: '立磨数据',
+    				data:test_data()
+    		}]
+    });   
+    function refreshForm(){
+    	var series = chart.series[0];
+    	timestamp+=2000;
+    	  $.ajax({
+		    	type:'get',
+		    	url:'../data/update_limo.do?timestamp='+timestamp,
+		    	success:function(data){
+		    		var json1 =  eval("("+data+")");
+		    		console.log(json1.list);
+		    		var x = json1.list.timestamp-8*3600*1000;
+		    		var y = json1.list.l0063;
+		    		//console.log(x);
+		    		//console.log(y);
+		    		series.addPoint([ x, y ], true, true);
+					activeLastPointToolip(chart);
+		    		
+		    	},
+		    	error:function(e){
+		    		
+		    	}
+	})
+    }
+    
+    $(document).ready(function () {
+        //每隔1秒自动调用方法，实现图表的实时更新  
+       window.setInterval(refreshForm, 3000);
+    });
+        </script>
+  </body>
+</html>

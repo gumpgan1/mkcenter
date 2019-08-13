@@ -1,0 +1,440 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>数据查询</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="assets/js/jquery-2.0.3.min.js"></script>
+<!-- basic styles -->
+<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+<link rel="stylesheet"
+	href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
+
+<!-- Latest compiled and minified Locales -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+<!-- ace styles -->
+
+<link rel="stylesheet" href="assets/css/ace.min.css" />
+<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
+<!-- page specific plugin styles -->
+<link rel="stylesheet" href="assets/css/jquery-ui-1.10.3.full.min.css" />
+
+
+
+
+<script src="assets/js/ace-extra.min.js"></script>
+
+
+</head>
+
+<body>
+	<div class="navbar navbar-default" id="navbar">
+		<script type="text/javascript">
+			try {
+				ace.settings.check('navbar', 'fixed')
+			} catch (e) {
+			}
+		</script>
+		<div class="navbar-container" id="navbar-container">
+
+			#parse("header.html")</div>
+	</div>
+
+	<div class="main-container" id="main-container">
+		<script type="text/javascript">
+			try {
+				ace.settings.check('main-container', 'fixed')
+			} catch (e) {
+			}
+		</script>
+
+		<div class="main-container-inner">
+			<a class="menu-toggler" id="menu-toggler" href="#"> <span
+				class="menu-text"></span> </a>
+
+			<div class="sidebar" id="sidebar">
+				<script type="text/javascript">
+					try {
+						ace.settings.check('sidebar', 'fixed')
+					} catch (e) {
+					}
+				</script>
+				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+						<button class="btn btn-success">
+							<i class="icon-signal"></i>
+						</button>
+						<button class="btn btn-info">
+							<i class="icon-pencil"></i>
+						</button>
+
+						<button class="btn btn-warning">
+							<i class="icon-group"></i>
+						</button>
+
+						<button class="btn btn-danger">
+							<i class="icon-cogs"></i>
+						</button>
+					</div>
+
+					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+						<span class="btn btn-success"></span> <span class="btn btn-info"></span>
+
+						<span class="btn btn-warning"></span> <span class="btn btn-danger"></span>
+					</div>
+				</div>
+				<ul class="nav nav-list">
+					<li><a href="ControllerIndex.do"> <i
+							class="icon-dashboard"></i> <span class="menu-text"> 控制台 </span>
+					</a>
+					</li>
+
+					<li class="active"><a href="ControllerTable.do"> <i
+							class="icon-list"></i> <span class="menu-text">数据查询 </span> </a>
+					<li><a href="#" class="dropdown-toggle"> <i
+							class="icon-desktop"></i> <span class="menu-text">远程监控</span> <b
+							class="arrow icon-angle-down"></b> </a>
+
+						<ul class="submenu">
+							<li><a href="tables.html"> <i
+									class="icon-double-angle-right"></i>运行状态 </a>
+							</li>
+							<li><a href="tables.html"> <i
+									class="icon-double-angle-right"></i>故障信息 </a>
+							</li>
+							<li><a href="tables.html"> <i
+									class="icon-double-angle-right"></i>指令调控</a>
+							</li>
+						</ul>
+					</li>
+					<li><a href="#" class="dropdown-toggle"> <i
+							class="icon-bar-chart"></i> <span class="menu-text"> 数据分析
+						</span> <b class="arrow icon-angle-down"></b> </a>
+
+						<ul class="submenu">
+							<li><a href="blank.html"> <i
+									class="icon-double-angle-right"></i> 运行统计 </a>
+							</li>
+							<li><a href="blank.html"> <i
+									class="icon-double-angle-right"></i> 算法分析 </a>
+							</li>
+						</ul>
+					</li>
+
+					<li><a href="#" class="dropdown-toggle"> <i
+							class="icon-file-alt"></i> <span class="menu-text"> 其他页面 <span
+								class="badge badge-primary ">5</span> </span> <b
+							class="arrow icon-angle-down"></b> </a>
+						<ul class="submenu">
+							<li><a href="blank.html"> <i
+									class="icon-double-angle-right"></i> ------ </a>
+							</li>
+							<li><a href="blank.html"> <i
+									class="icon-double-angle-right"></i> ------ </a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<div class="sidebar-collapse" id="sidebar-collapse">
+					<i class="icon-double-angle-left"
+						data-icon1="icon-double-angle-left"
+						data-icon2="icon-double-angle-right"></i>
+				</div>
+
+				<script type="text/javascript">
+					try {
+						ace.settings.check('sidebar', 'collapsed')
+					} catch (e) {
+					}
+				</script>
+			</div>
+
+			<div class="main-content">
+				<div class="breadcrumbs" id="breadcrumbs">
+					<script type="text/javascript">
+						try {
+							ace.settings.check('breadcrumbs', 'fixed')
+						} catch (e) {
+						}
+					</script>
+
+					<ul class="breadcrumb">
+						<li><i class="icon-home home-icon"></i> <a href="#">首页</a>
+						</li>
+						<li class="active">数据查询</li>
+					</ul>
+					<!-- .breadcrumb -->
+
+					<div class="nav-search" id="nav-search">
+						<form class="form-search">
+							<span class="input-icon"> <input type="text"
+								placeholder="Search ..." class="nav-search-input"
+								id="nav-search-input" autocomplete="off" /> <i
+								class="icon-search nav-search-icon"></i> </span>
+						</form>
+					</div>
+					<!-- #nav-search -->
+				</div>
+
+				<div class="page-content">
+					<div class="page-header">
+						<h1>
+							数据查询 <small> <i class="icon-double-angle-right"></i> 表格 </small>
+						</h1>
+					</div>
+					<!-- /.page-header -->
+					<div class="row" style="height:115px">
+						<div class="col-md-10 col-md-offset-1"
+							style="padding-left:0px;padding-right:0px;">
+							<div class="widget-box">
+								<div class="widget-header">
+									<h5>筛选条件</h5>
+								</div>
+
+								<div class="widget-body">
+									<div class="widget-main">
+										<div class="row">
+											<div class="col-md-8 input-group">
+												<label style="margin-bottom:0px">&nbsp;起始-结束日期&nbsp;</label>
+												<span class="input-group-addon"> <i
+													class="icon-calendar bigger-110"></i> </span> <input
+													class="form-control" type="text" name="date-range-picker"
+													id="id-date-range-picker-1"
+													style="width:250px;margin-right:15px"> <select
+													class="form-control" id="form-field-select-1"
+													style="width:150px;height: 34px;">
+													<option value="">&nbsp;</option>
+													<option value="">立磨</option>
+													<option value="">烧成</option>
+												</select>
+											</div>
+											<div class="col-md-4">
+												<button class="btn btn-primary" id="btn_reset"
+													style="border-bottom-width: 0px;border-top-width: 0px;border-left-width: 0px;border-right-width: 0px;">重置</button>
+												<button class="btn btn-primary" id="btn_find"
+													style="border-bottom-width: 0px;border-top-width: 0px;border-left-width: 0px;border-right-width: 0px;">查询</button>
+												<button class="btn btn-primary"
+													style="border-bottom-width: 0px;border-top-width: 0px;border-left-width: 0px;border-right-width: 0px;">绘制</button>
+												<button class="btn btn-primary"
+													style="border-bottom-width: 0px;border-top-width: 0px;border-left-width: 0px;border-right-width: 0px;">下载</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div class="row">
+							<div class="col-md-12 table-responsive" style="width:100%;height:500px">
+								<table id="tbl_body">
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- PAGE CONTENT ENDS -->
+
+					<!-- /.col -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.page-content -->
+	
+		<!-- /.main-content -->
+
+		<div class="ace-settings-container" id="ace-settings-container"
+			style="margin-right:20px">
+			<div class="btn btn-app btn-xs btn-warning ace-settings-btn"
+				id="ace-settings-btn">
+				<i class="icon-cog bigger-150"></i>
+			</div>
+
+			<div class="ace-settings-box" id="ace-settings-box">
+				<div>
+					<div class="pull-left">
+						<select id="skin-colorpicker" class="hide">
+							<option data-skin="default" value="#438EB9">#438EB9</option>
+							<option data-skin="skin-1" value="#222A2D">#222A2D</option>
+							<option data-skin="skin-2" value="#C6487E">#C6487E</option>
+							<option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+						</select>
+					</div>
+					<span>&nbsp; 选择皮肤</span>
+				</div>
+
+				<div>
+					<input type="checkbox" class="ace ace-checkbox-2"
+						id="ace-settings-navbar" /> <label class="lbl"
+						for="ace-settings-navbar"> 固定导航条</label>
+				</div>
+
+				<div>
+					<input type="checkbox" class="ace ace-checkbox-2"
+						id="ace-settings-sidebar" /> <label class="lbl"
+						for="ace-settings-sidebar"> 固定滑动条</label>
+				</div>
+
+				<div>
+					<input type="checkbox" class="ace ace-checkbox-2"
+						id="ace-settings-breadcrumbs" /> <label class="lbl"
+						for="ace-settings-breadcrumbs">固定面包屑</label>
+				</div>
+
+				<div>
+					<input type="checkbox" class="ace ace-checkbox-2"
+						id="ace-settings-rtl" /> <label class="lbl"
+						for="ace-settings-rtl">切换到左边</label>
+				</div>
+
+				<div>
+					<input type="checkbox" class="ace ace-checkbox-2"
+						id="ace-settings-add-container" /> <label class="lbl"
+						for="ace-settings-add-container"> 切换窄屏 <b></b> </label>
+				</div>
+			</div>
+		</div>
+		<!-- /#ace-settings-container -->
+	</div>
+	<!-- /.main-container-inner -->
+
+	<a href="#" id="btn-scroll-up"
+		class="btn-scroll-up btn btn-sm btn-inverse"> <i
+		class="icon-double-angle-up icon-only bigger-110"></i> </a>
+	</div>
+
+	
+	<script src="assets/js/jquery.fixedheadertable.js"></script>
+
+	<!--[if !IE]> -->
+
+	<script type="text/javascript">
+		window.jQuery
+				|| document
+						.write("<script src='assets/js/jquery-2.0.3.min.js'>"
+								+ "<"+"script>");
+	</script>
+	
+
+	<script type="text/javascript">
+		if ("ontouchend" in document)
+			document
+					.write("<script src='assets/js/jquery.mobile.custom.min.js'>"
+							+ "<"+"script>");
+	</script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/typeahead-bs2.min.js"></script>
+	<script src="assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+	<script src="assets/js/jquery-ui-1.10.3.full.min.js"></script>
+	<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+	<script src="assets/js/jquery.slimscroll.min.js"></script>
+	<script src="assets/js/jquery.easy-pie-chart.min.js"></script>
+	<script src="assets/js/jquery.sparkline.min.js"></script>
+	<script src="assets/js/flot/jquery.flot.min.js"></script>
+	<script src="assets/js/flot/jquery.flot.pie.min.js"></script>
+	<script src="assets/js/flot/jquery.flot.resize.min.js"></script>
+	<script src="assets/js/jquery.dataTables.min.js"></script>
+	<script src="assets/js/jquery.dataTables.bootstrap.js"></script>
+
+	<script src="Highchart/highcharts.js"></script>
+	<script src="Highchart/modules/exporting.js"></script>
+	<script
+		src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+
+	<!-- ace scripts -->
+
+
+
+	<script src="assets/js/date-time/bootstrap-datepicker.min.js"></script>
+	<script src="assets/js/jqGrid/jquery.jqGrid.min.js"></script>
+	<script src="assets/js/jqGrid/i18n/grid.locale-en.js"></script>
+
+	<script src="assets/js/ace-elements.min.js"></script>
+	<script src="assets/js/ace.min.js"></script>
+	<!-- inline scripts related to this page -->
+	
+	<script type="text/javascript">
+	$(function () {
+	    var oTable = new TableInit();
+	    oTable.Init();
+	});
+
+
+	var TableInit = function () {
+	    var oTableInit = new Object();
+	    //初始化Table
+	    oTableInit.Init = function () {
+	        $('#tbl_body').bootstrapTable({
+	            url: '../data/update_limo.do',         //请求后台的URL（*）
+	            method: 'get',                      //请求方式（*）
+	            toolbar: false,                //工具按钮用哪个容器
+	            striped: true,                      //是否显示行间隔色
+	            cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+	            pagination: true,                   //是否显示分页（*）
+	            sortable: false,                     //是否启用排序
+	            sortOrder: "asc",                   //排序方式
+	            queryParams: oTableInit.queryParams,//传递参数（*）
+	            sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+	            pageNumber:1,                       //初始化加载第一页，默认第一页
+	            pageSize: 10,                       //每页的记录行数（*）
+	            pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+	            search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+	            strictSearch: true,
+	            showColumns: true,                  //是否显示所有的列
+	            showRefresh: true,                  //是否显示刷新按钮
+	            minimumCountColumns: 2,             //最少允许的列数
+	            clickToSelect: true,                //是否启用点击选中行
+	            height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+	            uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
+	            showToggle:true,                    //是否显示详细视图和列表视图的切换按钮
+	            cardView: false,                    //是否显示详细视图
+	            detailView: false,                   //是否显示父子表
+	            columns: [{
+	                field: 'TIMESTAMP',
+	                title: '时间'
+	            }, {
+	                field: 'L0001',
+	                title: 'L0001'
+	            }, {
+	                field: 'L0002',
+	                title: 'L0002'
+	            }, ],
+				onLoadSuccess: function () {
+                 },
+                onLoadError: function () {
+                     showTips("数据加载失败！");
+                 },
+	        });
+	    };
+
+	    //得到查询的参数
+		oTableInit.queryParams = function (params) {
+        var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+           timestamp:'1522701557277'
+        };
+        return temp;
+    };
+	    return oTableInit;
+	};
+
+
+	var ButtonInit = function () {
+	    var oInit = new Object();
+	    var postdata = {};
+
+	    oInit.Init = function () {
+	        //初始化页面上面的按钮事件
+	    };
+
+	    return oInit;
+	};
+	</script>
+	#parse("footer.html")

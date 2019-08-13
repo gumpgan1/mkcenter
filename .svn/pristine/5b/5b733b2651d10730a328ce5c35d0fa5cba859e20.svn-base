@@ -1,0 +1,92 @@
+package com.mktech.python.threthod;
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.security.Principal;
+
+import org.junit.Test;
+import org.springframework.aop.framework.adapter.ThrowsAdviceInterceptor;
+import org.springframework.stereotype.Service;
+
+
+public class threthods {
+	
+	/*public static void main(String[] args) {
+		String i=linjin(3, "L0063", 5);
+		System.out.println(i+"输入成功");
+	}*/
+	
+	
+/*	public static String linjin(int a,String b,int c) {
+		try {
+			System.out.println("成功进入计算方法");
+			String[] args = new String[] { "python", "src/main/java/com/mktech/python/main/abnormal.py", String.valueOf(a),b,String.valueOf(7200*c)};
+			Process proc = Runtime.getRuntime().exec(args);			
+			InputStream is=proc.getInputStream();
+			DataInputStream dis=new DataInputStream(is);
+			String str=dis.readLine();
+			proc.waitFor();
+			return str;
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return "111";
+	
+	
+	}	*/
+
+	public static String linjin(int a,String b,int c) {
+		try {			
+			String[] args = new String[] { "/usr/bin/python3.7","/opt/apache-tomcat-6.0.37/webapps/mkcenter2/WEB-INF/classes/main/java/com/mktech/python/threthod/abnormal.py", String.valueOf(a),b,String.valueOf(7200*c)};			
+			Process proc = Runtime.getRuntime().exec(args);// 执行py文件
+			String result=readStream(proc.getInputStream());
+			/*BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));	        
+	        while ((line = in.readLine()) != null) {
+	                System.out.println(line);
+	                return line;
+	        }
+	        in.close();*/
+	        proc.waitFor();
+	        return result;
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static String readStream(InputStream in) {
+	       try {
+	           //<1>创建字节数组输出流，用来输出读取到的内容
+	           ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	           //<2>创建缓存大小
+	           byte[] buffer = new byte[1024]; // 1KB
+	           //每次读取到内容的长度
+	           int len = -1;
+	           //<3>开始读取输入流中的内容
+	           while ((len = in.read(buffer)) != -1) { //当等于-1说明没有数据可以读取了
+	               baos.write(buffer, 0, len);   //把读取到的内容写到输出流中
+	           }
+	           //<4> 把字节数组转换为字符串
+	           String content = baos.toString();
+	           //<5>关闭输入流和输出流
+	           in.close();
+	           baos.close();
+	           //<6>返回字符串结果
+	           content=content.replaceAll("\r\n", "");
+	           System.out.println(content);
+	           return content;
+	       } catch (Exception e) {
+	           e.printStackTrace();
+	           return  e.getMessage();
+	       }
+	   }
+
+}

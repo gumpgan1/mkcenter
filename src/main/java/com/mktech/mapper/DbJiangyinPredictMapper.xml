@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mktech.dao.DbJiangyinPredictDao">
+  <resultMap id="BaseResultMap" type="com.mktech.entity.DbJiangyinPredict">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="TIMESTAMP" jdbcType="VARCHAR" property="timestamp" />
+    <result column="L0050" jdbcType="DOUBLE" property="l0050" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, TIMESTAMP, L0050
+  </sql>
+  
+  <select id="selectLatestPredictRecord100" resultType="java.util.LinkedHashMap">
+		select 
+		<include refid="Base_Column_List" />
+		from (
+		select 
+		<include refid="Base_Column_List" />
+		from DB_JIANGYIN_PREDICT
+		order by ID desc limit 101) as tbl order by tbl.ID
+	</select>
+	
+	<select id="selectLatestRecord" resultType="java.util.LinkedHashMap">
+		select
+		<include refid="Base_Column_List" />
+		from DB_JIANGYIN_PREDICT
+		order by ID desc limit 5
+	</select>
+</mapper>

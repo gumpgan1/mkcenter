@@ -1,0 +1,16 @@
+..\easyPyMySQL\Table.py
+..\easyPyMySQL\TableField.py
+..\easyPyMySQL\TableLine.py
+..\easyPyMySQL\__init__.py
+..\easyPyMySQL\__pycache__\Table.cpython-37.pyc
+..\easyPyMySQL\__pycache__\TableField.cpython-37.pyc
+..\easyPyMySQL\__pycache__\TableLine.cpython-37.pyc
+..\easyPyMySQL\__pycache__\__init__.cpython-37.pyc
+..\easyPyMySQL\__pycache__\easyPyMySQL.cpython-37.pyc
+..\easyPyMySQL\easyPyMySQL.py
+PKG-INFO
+SOURCES.txt
+dependency_links.txt
+requires.txt
+top_level.txt
+zip-safe

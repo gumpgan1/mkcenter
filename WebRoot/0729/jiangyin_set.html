@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>limo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="peizhi/style.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+     <!-- <link href="files/limo/styles.css" type="text/css" rel="stylesheet"/>  -->
+    <link href="peizhi/amazejs/amazeui.min.css" type="text/css" rel="stylesheet"/>
+    <link href="peizhi/amazejs/amazeui.chosen.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+     <script src="peizhi/amazejs/amazeui.chosen.min.js"></script> 
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/jquery.cookie.js"></script>
+   <!--  <script src="resources/scripts/prototypePre.js"></script> 
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/prototypePost.js"></script>
+    <script src="files/limo/data.js"></script> -->
+    <script src="resources/highchart/highcharts.js"></script>
+    <script src="files/logout.js"></script>
+  	
+    <script src='peizhi/draggabilly.pkgd.js'></script>
+   <!--  <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script> -->
+    
+	<script src="peizhi/jquery.editable-select.js" ></script>
+	<link  rel="stylesheet"  type="text/css"  href="peizhi/jquery.editable-select.css"/>
+
+	
+  </head>
+  <body oncontextmenu=self.event.returnValue=false onselectstart="return false">
+    <div id="base" class="">
+      <!-- background (动态面板) -->
+      <div id="u79" class="ax_default" data-label="background">
+        <div id="u79_state0" class="panel_state" data-label="State1" style="">
+          <div id="u79_state0_content" class="panel_state_content">
+
+            <!-- header (动态面板) -->
+            <div id="u80" class="ax_default" data-label="header">
+              <div id="u80_state0" class="panel_state" data-label="State1" style="">
+                <div id="u80_state0_content" class="panel_state_content">
+					
+                  <!-- Unnamed (组合 ) -->
+                  <div id="u81" class="ax_default" data-left="0" data-top="0" data-width="0" data-height="0">
+                  </div>
+               	 </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (图片 ) -->
+            <div id="u82" class="ax_default image">
+              <img id="u82_img" class="img " src="images/index/bk.png"/>
+            </div>
+
+
+            <!-- Unnamed (图片 ) -->
+            <div id="u84" class="ax_default image" >
+              <img id="u84_img" class="img "   src="images/index/bk.png"/>
+            </div>
+
+            <!-- Unnamed (图片 ) -->
+            <div id="u85" class="ax_default image">
+              <img id="u85_img" class="img " src="images/index/bk.png"/>
+            </div>
+
+            <!-- Unnamed (图片 ) -->
+            <div id="u86" class="ax_default image" >
+              <img id="u86_img" class="img "  src="images/index/bk.png"/>
+            </div>
+            
+            
+            <div id="u87" class="ax_default image" >
+              <img id="u87_img" class="img "  src="images/index/bk.png"/>
+            </div>
+            
+            <div id="u88" class="ax_default image" >
+              <img id="u88_img" class="img "  src="images/index/bk.png"/>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+      
+      
+
+      
+
+      <!-- 厂线 (动态面板) -->
+      <div id="u189" class="ax_default" data-label="厂线">
+        <div id="u189_state0" class="panel_state" data-label="State1" style="">
+          <div id="u189_state0_content" class="panel_state_content">
+
+            
+
+            
+          </div>
+        </div>
+      </div>
+      
+ 	  <!--   配置信息   -->
+      <div id="u263" class="ax_default" data-label="推送" >
+  		<div id="u263_state0" class="panel_state" data-label="State1" style="">
+          <div id="u263_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (组合 ) -->
+            <div id="u264" class="ax_default" data-left="0" data-top="0" data-width="110" data-height="24">
+
+              <!-- Unnamed (形状) -->
+              <div id="u265" class="ax_default icon">
+                <img id="u265_img" class="img " src="images/index/u12.png"/>
+              </div>
+
+              <!-- Unnamed (矩形) -->
+              <div id="u266" class="ax_default _一级标题">
+                <div id="u266_text" class="text ">
+                  <p><span>显示配置</span></p>
+                </div>
+              </div>
+            </div>
+            
+            <div id="selectshow" style="position:absolute;top:70px;">
+            	<select id="editable-select1" > 
+				</select>    				      	
+            </div>
+            
+            <div id ="buttonseries">
+	            	<input style="position:absolute;top:72px;left:230px;"type = 'button' onclick='addElement()' value='add'>
+					<input style="position:absolute;top:72px;left:297px;"type = 'button'type = 'button' onclick='dropElement()' value='delete'>				
+					<input style="position:absolute;top:72px;left:380px;"type = 'button'type = 'button' onclick='save()' value='save'>
+            </div> 
+
+            
+           </div>
+       </div>
+  	</div>
+  
+  	  	<!-- 容器配置 -->
+  	  	<div id="rqpz" class="ax_default" data-label="推送" >
+  			<div id="rqpz_state0" class="panel_state" data-label="State1" style="">
+          		<div id="rqpz_state0_content" class="panel_state_content">
+          
+         	 <div id="icon1" class="ax_default icon">
+                <img id="icon1_img" class="img " src="images/index/u12.png"/>
+              </div>
+              
+          		<div id="u266" class="ax_default _一级标题">
+                	<div id="u266_text" class="text ">
+                  		<p><span>容器配置</span></p>
+                	</div>
+              	</div>
+              	
+              	<div id="selectshow2" style="position:absolute;top:60px;" >
+            		<select id="select2" style="width:300px;" multiple  class="selectmultiple" >					  
+					</select>					   				      	
+            	</div>
+            	
+            	<div id="selectshow3" style="position:absolute;top:110px;">
+            		<select id="select3" style="width:100px; top:20px;">
+						<option value="1">位置1</option>
+						<option value="2">位置2</option>
+						<option value="3">位置3</option>
+					</select>
+            	</div>
+            	
+            	<div id="selectshow4" style="position:absolute;top:110px;left:180px;">
+            		<select id="select4" style="width:100px; top:20px;">
+						<option value="spline">折线图</option>
+						<option value="column">柱状图</option>
+					</select>
+            	</div>
+            	
+            	
+            	<div id ="buttonseries">
+					<input style="position:absolute;top:65px;left:365px;"type = 'button'type = 'button' onclick='initrqchart()' value='newchart'>
+					<input style="position:absolute;top:125px;left:365px;"type = 'button'type = 'button' onclick='savechart()' value='savechart'>
+           		 </div> 
+          		
+          		</div>
+          	</div>
+         </div>
+         
+        <!-- 容器 -->
+        <div id="rongqi1" class="ax_default" data-label="推送" >
+  			<div id="rongqi1_state0" class="panel_state" data-label="State1" style="">
+          		<div id="rongqi1_state0_content" class="panel_state_content">
+         	
+         		<div id="icon2" class="ax_default icon">
+                	<img id="icon2_img" class="img " src="images/index/u12.png"/>
+              	</div>
+              	
+              	<div id="title1" class="ax_default _一级标题">
+                	<div id="title1_text" class="text " style="position:absolute;top:18px;">
+                  		<!-- <p><span>容器配置</span></p> -->
+                	</div>
+              	</div>
+              	
+		         <div id="rqchartdiv1" class="ax_default" style="width:522px;height:160px;top:50px;left:-10px">
+		                <div id="rqchart1" style="width:95%;height:100%;"></div>
+		          </div>
+            
+            	</div>
+          	</div>
+         </div>
+         
+         <!-- 容器2 -->
+         <div id="rongqi2" class="ax_default" data-label="推送">
+  			<div id="rongqi2_state0" class="panel_state" data-label="State1" style="">
+          		<div id="rongqi2_state0_content" class="panel_state_content">
+         	
+         		<div id="icon3" class="ax_default icon">
+                	<img id="icon3_img" class="img " src="images/index/u12.png"/>
+              	</div>
+              	
+              	<div id="title2" class="ax_default _一级标题">
+                	<div id="title2_text" class="text " style="position:absolute;top:18px;">
+                  		<!-- <p><span>容器配置</span></p> -->
+                	</div>
+              	</div>
+              	
+		         <div id="rqchartdiv2" class="ax_default" style="width:522px;height:160px;top:35px;left:-10px">
+		                <div id="rqchart2" style="width:95%;height:100%;"></div>
+		            </div>
+            
+            	</div>
+          	</div>
+         </div>
+         
+         <!-- 容器3 -->
+         <div id="rongqi3" class="ax_default" data-label="推送" >
+  			<div id="rongqi3_state0" class="panel_state" data-label="State1" style="">
+          		<div id="rongqi3_state0_content" class="panel_state_content">
+         	
+         		<div id="icon4" class="ax_default icon">
+                	<img id="icon4_img" class="img " src="images/index/u12.png"/>
+              	</div>
+              	
+              	<div id="title3" class="ax_default _一级标题">
+                	<div id="title3_text" class="text " style="position:absolute;top:18px;">
+                  		<!-- <p><span>容器配置</span></p> -->
+                	</div>
+              	</div>
+		         <div id="rqchartdiv3" class="ax_default" style="width:522px;height:160px;top:35px;left:-10px">
+		                <div id="rqchart3" style="width:95%;height:100%;"></div>
+		            </div>
+            
+            	</div>
+          	</div>
+         </div>
+         
+         
+  </div>
+  </body>
+	<script src="peizhi/jiangyin1.js"></script>
+	<!-- <script>	
+		  $('.selectmultiple').chosen();
+	</script> -->
+	
+</html>

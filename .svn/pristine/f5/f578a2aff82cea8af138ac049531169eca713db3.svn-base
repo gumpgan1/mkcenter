@@ -1,0 +1,30 @@
+package com.mktech.service.impl;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.mktech.dao.DbJiangyinLogDao;
+import com.mktech.entity.DbJiangyinLog;
+import com.mktech.service.DbJiangyinLogService;
+
+@Service
+public class DbJiangyinLogServiceImpl implements DbJiangyinLogService {
+
+	@Resource
+	private DbJiangyinLogDao dbJangyinLogMapper;
+	
+	@Override
+	public void insert(DbJiangyinLog dbJiangyinLog) {
+		//System.out.println("调用了service方法");
+		dbJangyinLogMapper.insert(dbJiangyinLog);
+		//往另一个监控变量变化表里注入时间戳
+	}
+	
+	public DbJiangyinLog selectNew() {
+		//System.out.println("调用了select方法");
+		return dbJangyinLogMapper.selectNew();
+		
+	}
+
+}

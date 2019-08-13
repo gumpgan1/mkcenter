@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mktech.dao.BoardConfigDao">
+  <resultMap id="BaseResultMap" type="com.mktech.entity.BoardConfig">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="LINE_ID" jdbcType="INTEGER" property="lineId" />
+    <result column="CODE" jdbcType="VARCHAR" property="code" />
+    <result column="STAS" jdbcType="VARCHAR" property="stas" />
+    <result column="PARS" jdbcType="VARCHAR" property="pars" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, LINE_ID, CODE, STAS, PARS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from BOARD_CONFIG
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from BOARD_CONFIG
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mktech.entity.BoardConfig">
+    insert into BOARD_CONFIG (LINE_ID, CODE, 
+      STAS, PARS)
+    values (#{lineId,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, 
+      #{stas,jdbcType=VARCHAR}, #{pars,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mktech.entity.BoardConfig">
+    insert into BOARD_CONFIG
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="lineId != null">
+        LINE_ID,
+      </if>
+      <if test="code != null">
+        CODE,
+      </if>
+      <if test="stas != null">
+        STAS,
+      </if>
+      <if test="pars != null">
+        PARS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="lineId != null">
+        #{lineId,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="stas != null">
+        #{stas,jdbcType=VARCHAR},
+      </if>
+      <if test="pars != null">
+        #{pars,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mktech.entity.BoardConfig">
+    update BOARD_CONFIG
+    <set>
+      <if test="lineId != null">
+        LINE_ID = #{lineId,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        CODE = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="stas != null">
+        STAS = #{stas,jdbcType=VARCHAR},
+      </if>
+      <if test="pars != null">
+        PARS = #{pars,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mktech.entity.BoardConfig">
+    update BOARD_CONFIG
+    set LINE_ID = #{lineId,jdbcType=INTEGER},
+      CODE = #{code,jdbcType=VARCHAR},
+      STAS = #{stas,jdbcType=VARCHAR},
+      PARS = #{pars,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+   <select id="selectConfigByCode" resultType="java.util.LinkedHashMap">
+		select
+		<include refid="Base_Column_List" />
+		from BOARD_CONFIG
+		where LINE_ID = #{lineId,jdbcType=INTEGER} and CODE = #{code,jdbcType=VARCHAR}
+	</select>
+	 <select id="selectDefaultConfigByLine" resultType="java.util.LinkedHashMap"
+	 parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from BOARD_CONFIG
+		where LINE_ID = #{lineId,jdbcType=INTEGER} and (CODE = 'ENERS' or CODE = 'SHAKS')
+	</select>
+	<select id="selectDefaultConfigYwByLine" resultType="java.util.LinkedHashMap"
+	 parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from BOARD_CONFIG
+		where LINE_ID = #{lineId,jdbcType=INTEGER} and CODE = 'YWS' 
+	</select>
+</mapper>
