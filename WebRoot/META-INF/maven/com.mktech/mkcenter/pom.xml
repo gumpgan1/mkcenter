@@ -7,7 +7,7 @@
 	<packaging>war</packaging>
 	<properties>
 		<!-- springframe 版本控制 -->
-		<spring.version>4.3.7.RELEASE</spring.version>
+		<spring.version>5.2.22.RELEASE</spring.version>
 		<mybatis.version>3.4.2</mybatis.version>
 		<axis2.version>1.6.2</axis2.version>
 		<velocity.version>1.7</velocity.version>
