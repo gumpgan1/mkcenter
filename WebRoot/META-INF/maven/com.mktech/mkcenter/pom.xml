@@ -9,7 +9,7 @@
 		<!-- springframe 版本控制 -->
 		<spring.version>4.3.7.RELEASE</spring.version>
 		<mybatis.version>3.4.2</mybatis.version>
-		<axis2.version>1.6.2</axis2.version>
+		<axis2.version>1.6.3</axis2.version>
 		<velocity.version>1.7</velocity.version>
 		<webVersion>3.0</webVersion>
 	</properties>
